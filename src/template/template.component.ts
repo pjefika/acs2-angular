@@ -1,3 +1,5 @@
+import { DetalheComponent } from './../detalhe/detalhe.component';
+import { BuscaComponent } from './../busca/busca.component';
 import { HolderService } from './../utils/holder/holder.service';
 import { ValidLoginService } from './../utils/login/valid-login.service';
 import { Router } from '@angular/router';
@@ -10,6 +12,8 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class TemplateComponent implements OnInit {
+
+    private componentData = null;
 
     constructor(
         private router: Router,
@@ -27,6 +31,22 @@ export class TemplateComponent implements OnInit {
 
     buscaEquipamento() {
         this.holderService.whoMenuIsActive = "busca-component";
+        this.componentData = {
+            component: BuscaComponent,
+            inputs: {
+                nothing: null
+            }
+        }
+    }
+
+    createDetalhesEquipamento() {
+        this.holderService.whoMenuIsActive = "detalhe-component";
+        this.componentData = {
+            component: DetalheComponent,
+            inputs: {
+                id: null
+            }
+        }
     }
 
     buscaLogs() {

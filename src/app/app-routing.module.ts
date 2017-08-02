@@ -1,3 +1,4 @@
+import { DetalheComponent } from './../detalhe/detalhe.component';
 import { TemplateComponent } from './../template/template.component';
 import { LoginComponent } from './../login/login.component';
 import { NgModule } from '@angular/core';

@@ -21,7 +21,7 @@ export class MenuComponent implements OnInit {
 
     ngOnInit() { }
 
-    abreCompoent(l) {       
+    abreCompoent(l) {
         switch (l.component) {
             case "busca-component":
                 this.templateComponent.buscaEquipamento();
@@ -30,6 +30,10 @@ export class MenuComponent implements OnInit {
                 this.templateComponent.buscaLogs();
                 break;
         }
+    }
+
+    sair() {
+        this.templateComponent.sair();
     }
 
     activeMenu(l): Boolean {
