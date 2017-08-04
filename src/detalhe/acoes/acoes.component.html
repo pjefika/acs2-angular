@@ -1,7 +1,19 @@
-<ul class="list-group">
-  <li class="list-group-item">Cras justo odio</li>
-  <li class="list-group-item">Dapibus ac facilisis in</li>
-  <li class="list-group-item">Morbi leo risus</li>
-  <li class="list-group-item">Porta ac consectetur ac</li>
-  <li class="list-group-item">Vestibulum at eros</li>
-</ul>
+<div class="list-group">
+    <label class="list-group-item">Ações</label>
+    <modal-component [modalTile]="'Reiniciar Modem'" [nomeDoBtn]="'Reiniciar'" [styleBtn]="'list-group-item list-group-item-action'"
+        [disableBtn]="btnActive" [component]="reset-component"></modal-component>
+    <modal-component [modalTile]="'Reset de Fábrica'" [nomeDoBtn]="'Reset de Fábrica'" [styleBtn]="'list-group-item list-group-item-action'"
+        [disableBtn]="btnActive"></modal-component>
+    <modal-component [modalTile]="'Efetuar Ping'" [nomeDoBtn]="'Efetuar Ping'" [styleBtn]="'list-group-item list-group-item-action'"
+        [disableBtn]="btnActive"></modal-component>
+    <modal-component [modalTile]="'Configurar Wifi'" [nomeDoBtn]="'Configurar Wifi'" [styleBtn]="'list-group-item list-group-item-action'"
+        [disableBtn]="btnActive"></modal-component>
+    <modal-component [modalTile]="'Configurar Autenticação PPPoE'" [nomeDoBtn]="'Configurar Autenticação PPPoE'" [styleBtn]="'list-group-item list-group-item-action'"
+        [disableBtn]="btnActive"></modal-component>
+    <modal-component [modalTile]="'Configurar Sip'" [nomeDoBtn]="'Configurar Sip'" [styleBtn]="'list-group-item list-group-item-action'"
+        [disableBtn]="btnActive"></modal-component>
+    <modal-component [modalTile]="'Configurar ServiceClass'" [nomeDoBtn]="'Configurar ServiceClass'" [styleBtn]="'list-group-item list-group-item-action'"
+        [disableBtn]="btnActive"></modal-component>
+    <modal-component [modalTile]="'Configurar DHCP'" [nomeDoBtn]="'Configurar DHCP'" [styleBtn]="'list-group-item list-group-item-action'"
+        [disableBtn]="btnActive"></modal-component>
+</div>

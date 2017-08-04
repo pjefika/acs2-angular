@@ -1,0 +1,22 @@
+<div class="full-widith">
+    <table class="row-border hover table table-bordered">
+        <thead>
+            <tr>
+                <th>Login</th>
+                <th>Ação</th>
+                <th>Data</th>
+                <th>Informações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let log of logs">
+                <td>{{log.login}}</td>
+                <td>{{log.acao}}</td>
+                <td>{{log.data}}</td>
+                <td>
+                    <modal-component [modalTile]="'Detalhes do Log'" [nomeDoBtn]="'Detalhes'"></modal-component>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

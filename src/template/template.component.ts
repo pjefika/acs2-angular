@@ -1,3 +1,4 @@
+import { LogsComponent } from './../logs/logs.component';
 import { DetalheComponent } from './../detalhe/detalhe.component';
 import { BuscaComponent } from './../busca/busca.component';
 import { HolderService } from './../utils/holder/holder.service';
@@ -39,18 +40,24 @@ export class TemplateComponent implements OnInit {
         }
     }
 
-    createDetalhesEquipamento() {
+    createDetalhesEquipamento(eqp) {
         this.holderService.whoMenuIsActive = "detalhe-component";
         this.componentData = {
             component: DetalheComponent,
             inputs: {
-                id: null
+                eqp: eqp
             }
         }
     }
 
-    buscaLogs() {
+    createLogsComponent() {
         this.holderService.whoMenuIsActive = "logs-component";
+        this.componentData = {
+            component: LogsComponent,
+            inputs: {
+                nothing: null
+            }
+        }
     }
 
     sair() {

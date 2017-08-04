@@ -7,7 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class ConsultasComponent implements OnInit {
+
+    btnActive: boolean = false;
+
     constructor() { }
 
     ngOnInit() { }
+
+    activeBtn() {
+        this.btnActive = true;
+    }
+
 }

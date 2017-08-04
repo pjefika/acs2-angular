@@ -27,7 +27,7 @@ export class MenuComponent implements OnInit {
                 this.templateComponent.buscaEquipamento();
                 break;
             case "logs-component":
-                this.templateComponent.buscaLogs();
+                this.templateComponent.createLogsComponent();
                 break;
         }
     }

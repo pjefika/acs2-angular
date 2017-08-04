@@ -1,0 +1,28 @@
+<div>
+    <div>
+        <h1>Buscar Logs</h1>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-md-3">
+            <div [(ngModel)]="toggleSearch" ngbRadioGroup name="togglesearch">
+                <label ngbButtonLabel class="btn-primary">
+                    <input ngbButton type="radio" [value]="matricula"> Matrícula
+                </label>
+                <label ngbButtonLabel class="btn-primary">
+                    <input ngbButton type="radio" value="parametro"> Parâmetros
+                </label>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div class="input-group">
+                <input type="text" class="form-control" [(ngModel)]="inputSearch">
+                <span class="input-group-btn">
+                    <button class="btn btn-primary" type="button">Consultar</button>
+                </span>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <result-logs-table-component></result-logs-table-component>
+</div>

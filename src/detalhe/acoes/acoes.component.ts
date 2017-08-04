@@ -6,7 +6,17 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class AcoesComponent implements OnInit {
+
+    btnActive: boolean = false;
+    
     constructor() { }
 
-    ngOnInit() { }
+    ngOnInit() {
+
+    }
+
+    activeBtn() {
+        this.btnActive = true;
+    }
+
 }

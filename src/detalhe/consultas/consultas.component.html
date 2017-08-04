@@ -1,7 +1,11 @@
-<ul class="list-group">
-    <li class="list-group-item">Cras justo odio</li>
-    <li class="list-group-item">Dapibus ac facilisis in</li>
-    <li class="list-group-item">Morbi leo risus</li>
-    <li class="list-group-item">Porta ac consectetur ac</li>
-    <li class="list-group-item">Vestibulum at eros</li>
-</ul>
+<div class="list-group">
+    <label class="list-group-item">Consultas</label>
+    <button type="button" class="list-group-item list-group-item-action" [class.disabled]="btnActive">Consultar WAN</button>
+    <button type="button" class="list-group-item list-group-item-action" [class.disabled]="btnActive">Consultar Interface Statistics</button>
+    <button type="button" class="list-group-item list-group-item-action" [class.disabled]="btnActive">Consultar LAN Host</button>
+    <button type="button" class="list-group-item list-group-item-action" [class.disabled]="btnActive">Consultar xDSL</button>
+    <button type="button" class="list-group-item list-group-item-action" [class.disabled]="btnActive">Consultar Port Mapping</button>
+    <button type="button" class="list-group-item list-group-item-action" [class.disabled]="btnActive">Consultar SIP</button>
+    <button type="button" class="list-group-item list-group-item-action" [class.disabled]="btnActive">Consultar DMZ</button>
+    <button type="button" class="list-group-item list-group-item-action" [class.disabled]="btnActive">Historia</button>
+</div>

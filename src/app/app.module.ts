@@ -1,5 +1,15 @@
+import { ResetComponent } from './../utils/comandos/acoes/reset/reset.component';
+import { ResulTableEquipamentoComponent } from './../busca/result-table-equipamento/result-table-equipamento.component';
+import { DetalheLogModalComponent } from './../logs/detalhe-log-modal/detalhe-log-modal.component';
+import { ModalComponent } from './../utils/modal/modal.component';
+import { ResultLogsTableComponent } from './../logs/result-table/result-logs-table.component';
+import { LogsComponent } from './../logs/logs.component';
+import { AcoesComponent } from './../detalhe/acoes/acoes.component';
+import { ConsultasComponent } from './../detalhe/consultas/consultas.component';
+import { EquipamentoComponent } from './../detalhe/equipamento/equipamento.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LoadingComponent } from './../utils/loading/loading.component';
 import { DetalheComponent } from './../detalhe/detalhe.component';
-import { ResultTableComponent } from './../busca/result-table/result-table.component';
 import { DynamicComponent } from './../dynamiccomponent/dynamic.component';
 import { BuscaComponent } from './../busca/busca.component';
 import { BuscaService } from './../busca/busca.service';
@@ -14,7 +24,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { LoginComponent } from './../login/login.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { DataTablesModule } from 'angular-datatables';
+import { DataTableModule } from 'angular-2-data-table';
+import { MomentModule } from 'angular2-moment';
+
 
 import { AppComponent } from './app.component';
 
@@ -29,16 +41,27 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     MenuComponent,
     BuscaComponent,
     DynamicComponent,
-    ResultTableComponent,
-    DetalheComponent
+    DetalheComponent,
+    LoadingComponent,
+    EquipamentoComponent,
+    ConsultasComponent,
+    AcoesComponent,
+    LogsComponent,
+    ResultLogsTableComponent,
+    ModalComponent,
+    DetalheLogModalComponent,
+    ResulTableEquipamentoComponent,
+    ResetComponent
   ],
   imports: [
     BrowserModule,
-    DataTablesModule,
     NgbModule.forRoot(),
     AppRoutingModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    BrowserAnimationsModule,
+    DataTableModule,
+    MomentModule
   ],
   providers: [
     ValidLoginService,
@@ -48,7 +71,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   entryComponents: [
-    BuscaComponent
+    BuscaComponent,
+    LogsComponent
   ]
 })
 export class AppModule { }

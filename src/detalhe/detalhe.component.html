@@ -1,11 +1,20 @@
-<div class="row">
-    <div class="col-md-3">
-        <equipamento-component></equipamento-component>
+<div *ngIf="eqpReady">
+    <div>
+        <h1>Detalhes do Equipamento: <span> {{eqp.deviceId.serialNumber}}</span></h1>
     </div>
-    <div class="col-md-3">
-        <consultas-component></consultas-component>
+    <hr>
+    <div class="row">
+        <div class="col-md-4">
+            <equipamento-component [equipamento]="eqp"></equipamento-component>
+        </div>
+        <div class="col-md-4">
+            <consultas-component></consultas-component>
+        </div>
+        <div class="col-md-4">
+            <acoes-component></acoes-component>
+        </div>
     </div>
-    <div class="col-md-3">
-        <acoes-component></acoes-component>
-    </div>
+</div>
+<div class="loading-margin-top">
+    <loading-component [searchWhat]="searchWhat" [searching]="searching"></loading-component>
 </div>

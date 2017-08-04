@@ -1,0 +1,10 @@
+<div class="full-width" *ngIf="listaMontada">
+    <data-table headerTitle="Equipamentos" [items]="listaMontada" [itemCount]="listEqpCount" [translations]="translations" (rowClick)="rowClick($event)" (reload)="reloadEqp($event)"
+        [limit]="5" [sortBy]="'rating'" [sortAsc]="false" [indexColumn]="false">
+        <data-table-column [property]="'subscriberID'" [header]="'Subscriber'" [sortable]="true"></data-table-column>
+        <data-table-column [property]="'serialNumber'" [header]="'Serial'" [sortable]="true"></data-table-column>
+        <data-table-column [property]="'ipAddress'" [header]="'IP'" [sortable]="true"></data-table-column>
+        <data-table-column [property]="'macAddress'" [header]="'MAC'" [sortable]="true"></data-table-column>
+        <data-table-column [property]="'manufacturer'" [header]="'Fabricante'" [sortable]="true"></data-table-column>
+    </data-table>
+</div>
