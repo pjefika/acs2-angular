@@ -1,3 +1,4 @@
+import { CheckOnlineComponent } from './../utils/comandos/consultas/check-online/check-online.component';
 import { HistoriaComponent } from './../utils/comandos/consultas/historia/historia.component';
 import { DmzComponent } from './../utils/comandos/consultas/dmz/dmz.component';
 import { SipConsultaComponent } from './../utils/comandos/consultas/sip/sip.component';
@@ -81,7 +82,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     PortMappingComponent,
     SipConsultaComponent,
     DmzComponent,
-    HistoriaComponent
+    HistoriaComponent,
+    CheckOnlineComponent
   ],
   imports: [
     BrowserModule,
@@ -118,7 +120,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     PortMappingComponent,
     SipConsultaComponent,
     DmzComponent,
-    HistoriaComponent
+    HistoriaComponent,
+    CheckOnlineComponent
   ]
 })
 export class AppModule { }
