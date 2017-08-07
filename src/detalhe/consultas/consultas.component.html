@@ -1,11 +1,19 @@
 <div class="list-group">
     <label class="list-group-item">Consultas</label>
-    <button type="button" class="list-group-item list-group-item-action" [class.disabled]="btnActive">Consultar WAN</button>
-    <button type="button" class="list-group-item list-group-item-action" [class.disabled]="btnActive">Consultar Interface Statistics</button>
-    <button type="button" class="list-group-item list-group-item-action" [class.disabled]="btnActive">Consultar LAN Host</button>
-    <button type="button" class="list-group-item list-group-item-action" [class.disabled]="btnActive">Consultar xDSL</button>
-    <button type="button" class="list-group-item list-group-item-action" [class.disabled]="btnActive">Consultar Port Mapping</button>
-    <button type="button" class="list-group-item list-group-item-action" [class.disabled]="btnActive">Consultar SIP</button>
-    <button type="button" class="list-group-item list-group-item-action" [class.disabled]="btnActive">Consultar DMZ</button>
-    <button type="button" class="list-group-item list-group-item-action" [class.disabled]="btnActive">Historia</button>
+    <modal-component [nomeDoBtn]="'Consultar WAN'" [styleBtn]="'list-group-item list-group-item-action'" [disableBtn]="btnActive"
+        [component]="'wan-component'"></modal-component>
+    <modal-component [nomeDoBtn]="'Consultar Interface Statistics'" [styleBtn]="'list-group-item list-group-item-action'" [disableBtn]="btnActive"
+        [component]="'interface-statics-component'"></modal-component>
+    <modal-component [nomeDoBtn]="'Consultar LAN Host'" [styleBtn]="'list-group-item list-group-item-action'" [disableBtn]="btnActive"
+        [component]="'lan-host-component'"></modal-component>
+    <modal-component [nomeDoBtn]="'Consultar xDSL'" [styleBtn]="'list-group-item list-group-item-action'" [disableBtn]="btnActive"
+        [component]="'xdsl-component'"></modal-component>
+    <modal-component [nomeDoBtn]="'Consultar Port Mapping'" [styleBtn]="'list-group-item list-group-item-action'" [disableBtn]="btnActive"
+        [component]="'port-mapping-component'"></modal-component>
+    <modal-component [nomeDoBtn]="'Consultar SIP'" [styleBtn]="'list-group-item list-group-item-action'" [disableBtn]="btnActive"
+        [component]="'sip-consulta-component'"></modal-component>
+    <modal-component [nomeDoBtn]="'Consultar DMZ'" [styleBtn]="'list-group-item list-group-item-action'" [disableBtn]="btnActive"
+        [component]="'dmz-component'"></modal-component>
+    <modal-component [nomeDoBtn]="'Historia'" [styleBtn]="'list-group-item list-group-item-action'" [disableBtn]="btnActive"
+        [component]="'historia-component'"></modal-component>
 </div>

@@ -1,3 +1,18 @@
+import { HistoriaComponent } from './../utils/comandos/consultas/historia/historia.component';
+import { DmzComponent } from './../utils/comandos/consultas/dmz/dmz.component';
+import { SipConsultaComponent } from './../utils/comandos/consultas/sip/sip.component';
+import { PortMappingComponent } from './../utils/comandos/consultas/port-mapping/port-mapping.component';
+import { XdslComponent } from './../utils/comandos/consultas/xdsl/xdsl.component';
+import { LanHostComponent } from './../utils/comandos/consultas/lan-host/lan-host.component';
+import { InterfaceStaticsComponent } from './../utils/comandos/consultas/interface-statics/interface-statics.component';
+import { WanComponent } from './../utils/comandos/consultas/wan/wan.component';
+import { DhcpComponent } from './../utils/comandos/acoes/dhcp/dhcp.component';
+import { ServiceClassComponent } from './../utils/comandos/acoes/service-class/service-class.component';
+import { SipComponent } from './../utils/comandos/acoes/sip/sip.component';
+import { AuthPPPoEComponent } from './../utils/comandos/acoes/auth-pppoe/auth-pppoe.component';
+import { WifiComponent } from './../utils/comandos/acoes/wifi/wifi.component';
+import { PingComponent } from './../utils/comandos/acoes/ping/ping.component';
+import { FactoryResetComponent } from './../utils/comandos/acoes/factory-reset/factory-reset.component';
 import { ResetComponent } from './../utils/comandos/acoes/reset/reset.component';
 import { ResulTableEquipamentoComponent } from './../busca/result-table-equipamento/result-table-equipamento.component';
 import { DetalheLogModalComponent } from './../logs/detalhe-log-modal/detalhe-log-modal.component';
@@ -51,7 +66,22 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ModalComponent,
     DetalheLogModalComponent,
     ResulTableEquipamentoComponent,
-    ResetComponent
+    ResetComponent,
+    FactoryResetComponent,
+    PingComponent,
+    WifiComponent,
+    AuthPPPoEComponent,
+    SipComponent,
+    ServiceClassComponent,
+    DhcpComponent,
+    WanComponent,
+    InterfaceStaticsComponent,
+    LanHostComponent,
+    XdslComponent,
+    PortMappingComponent,
+    SipConsultaComponent,
+    DmzComponent,
+    HistoriaComponent
   ],
   imports: [
     BrowserModule,
@@ -72,7 +102,23 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   entryComponents: [
     BuscaComponent,
-    LogsComponent
+    LogsComponent,
+    ResetComponent,
+    FactoryResetComponent,
+    PingComponent,
+    WifiComponent,
+    AuthPPPoEComponent,
+    SipComponent,
+    ServiceClassComponent,
+    DhcpComponent,
+    WanComponent,
+    InterfaceStaticsComponent,
+    LanHostComponent,
+    XdslComponent,
+    PortMappingComponent,
+    SipConsultaComponent,
+    DmzComponent,
+    HistoriaComponent
   ]
 })
 export class AppModule { }

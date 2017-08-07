@@ -35,6 +35,7 @@ export class BuscaComponent implements OnInit {
     }
 
     buscar() {
+        this.listEqp = null;
         this.searchWhat = "Buscando Equipamentos"
         this.searching = true;
         this.buscaService.getJson()
