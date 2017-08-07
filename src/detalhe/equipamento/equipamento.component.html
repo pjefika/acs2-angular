@@ -1,18 +1,13 @@
 <ul class="list-group">
-    <li class="list-group-item" [ngClass]="equipamento.activated ? 'list-group-item-success': 'list-group-item-danger'">
-        Status:
-        <span *ngIf="equipamento.activated">
-            Ativo
-        </span>
-        <span *ngIf="!equipamento.activated">
-            Inativo
-        </span>
+    <li class="list-group-item" [ngClass]="actived ? 'list-group-item-success': 'list-group-item-danger'">
+        <span *ngIf="actived">Status: Ativo</span>
+        <span *ngIf="!actived">Status: Inativo</span>
     </li>
     <li class="list-group-item">Serial: {{equipamento.deviceId.serialNumber}}</li>
     <li class="list-group-item">Subscriber Id: {{equipamento.subscriberID}}</li>
     <li class="list-group-item">Firmware: {{equipamento.softwareVersion}}</li>
     <li class="list-group-item">Nome do Modelo: {{equipamento.model}}</li>
     <li class="list-group-item">Fabricante: {{equipamento.manufacturer}}</li>
-    <li class="list-group-item">IP: {{equipamento.ipAddress}}</li>
-    <li class="list-group-item">Data Autenticação: {{formDate()}}</li>
+    <li class="list-group-item">IP: {{equipamento.IPAddress}}</li>
+    <li class="list-group-item">Data Autenticação: {{ (equipamento.lastActivationTime | amFromUnix) | amDateFormat: 'DD/MM/YYYY HH:mm:ss'}}</li>
 </ul>

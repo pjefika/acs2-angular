@@ -1,3 +1,4 @@
+import { HolderService } from './../holder/holder.service';
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
@@ -7,14 +8,9 @@ import { Component, OnInit, Input } from '@angular/core';
 
 export class AlertComponent implements OnInit {
 
-    @Input() alertOn: boolean = false;
+    constructor(
+        public holderService: HolderService) { }
 
-    @Input() alertInfo: {
-        alertType: string,
-        alertMsg: string
+    ngOnInit() {
     }
-
-    constructor() { }
-
-    ngOnInit() { }
 }

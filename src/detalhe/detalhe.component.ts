@@ -1,3 +1,6 @@
+import { HolderService } from './../utils/holder/holder.service';
+import { EquipamentoResult } from './../viewmodel/equipamento/table-result/equipmento-result';
+import { EquipamentoInfo } from './../viewmodel/equipamento/device';
 import { Equipamento } from './../viewmodel/equipamento/equipamento';
 import { DetalheService } from './detalhe.service';
 import { Component, OnInit, Injector } from '@angular/core';
@@ -14,29 +17,43 @@ export class DetalheComponent implements OnInit {
     private eqpReady: boolean = false;
     private searching: boolean = false;
     private searchWhat: string;
-
-    private id: number;
-
-    private eqp: Equipamento;
+    private eqp: EquipamentoResult;
+    private device: EquipamentoInfo;
 
     constructor(
         private detalheService: DetalheService,
-        private injector: Injector) {
+        private injector: Injector,
+        private holderService: HolderService) {
         this.eqp = this.injector.get("eqp");
     }
 
     ngOnInit() {
-        //console.log(this.eqp);
         this.buscaEqpInd();
     }
 
     buscaEqpInd() {
         this.searching = true;
         this.searchWhat = "Carregando Equipamento";
+        this.detalheService.getDetalhes(this.eqp.id)
+            .then(data => {
+                this.device = data;
+                this.eqpReady = true;
+                this.searching = false;
+                if (!this.device.online) {
+                    this.callAlert("Equipamento inativo.", "danger")
+                }
+            }, error => {
+                this.searching = false;
+                this.callAlert("Erro ao buscar equipamento por favor verifique.", "danger")
+            })
 
-        setTimeout(() => {
-            this.eqpReady = true;
-            this.searching = false;
-        }, 1000);
+    }
+
+    callAlert(msg, type) {
+        this.holderService.alertOn = true;
+        this.holderService.alertInfo = {
+            alertType: type,
+            alertMsg: msg
+        }
     }
 }

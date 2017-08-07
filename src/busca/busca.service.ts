@@ -1,5 +1,5 @@
 import { Equipamento } from './../viewmodel/equipamento/equipamento';
-import { Http } from '@angular/http';
+import { Http, RequestOptions, Headers } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { Injectable } from '@angular/core';
 
@@ -9,15 +9,24 @@ import 'rxjs/Rx';
 @Injectable()
 export class BuscaService {
 
+    private headersAppJson = new Headers({ 'Content-Type': 'application/json' });
+    private options = new RequestOptions({ headers: this.headersAppJson });
+    private url = "http://10.40.195.81:8080/acs/";
+
     constructor(
         private http: Http) { }
 
-    public getJson(): Promise<Equipamento[]> {
-        return this.http.get("assets/mock/mockeqpfull.json")
+    public getLista(criterio: string, input: string): Promise<Equipamento[]> {
+        let usr = JSON.parse(sessionStorage.getItem('user'));
+        const url = `${this.url}` + "search/search";
+        let _data: { criterio: string, input: string, executor: string };
+        _data = { criterio: criterio, input: input, executor: usr.usr };
+        //console.log(_data);
+        return this.http.post(url, JSON.stringify(_data), this.options)
+            .timeout(120000)
             .toPromise()
             .then(response => {
-                let resplist = response.json();
-                return resplist.list as Equipamento[];
+                return response.json() as Equipamento[]
             })
             .catch(this.handleError);
     }

@@ -11,20 +11,14 @@ export class EquipamentoComponent implements OnInit {
 
     @Input() equipamento: Equipamento;
 
+    @Input() actived: boolean;
+
     private status: boolean = false;
 
     constructor() { }
 
     ngOnInit() {
-        //console.log(this.equipamento)
-    }
-
-    formDate() {
-
-        let date = this.equipamento.lastActivationTime.day + "/" + + this.equipamento.lastActivationTime.month + "/" + this.equipamento.lastActivationTime.year + " " +
-            this.equipamento.lastActivationTime.hour + ":" + this.equipamento.lastActivationTime.minute + ":" + this.equipamento.lastActivationTime.second;
-
-        return date;
 
     }
+
 }

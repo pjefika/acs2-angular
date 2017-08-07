@@ -1,3 +1,4 @@
+import { EquipamentoResult } from './../../viewmodel/equipamento/table-result/equipmento-result';
 import { TemplateComponent } from './../../template/template.component';
 import { ListEqp } from './../../template/mock/mocklisteqp';
 import { Equipamento } from './../../viewmodel/equipamento/equipamento';
@@ -13,15 +14,17 @@ import { DataTable, DataTableTranslations, DataTableResource } from 'angular-2-d
 export class ResulTableEquipamentoComponent implements OnInit, OnChanges {
 
     @Input() listEqp: Equipamento[];
-    private listaMontada: Equipamento[];
     private listEqpCount: 0;
     private listEqpResource;
     private translations;
 
+    private mountedList: EquipamentoResult[];
+
     constructor(
-        private templateComponent:TemplateComponent) { }
+        private templateComponent: TemplateComponent) { }
 
     ngOnInit() {
+
     }
 
     ngOnChanges(changes: SimpleChanges) {
@@ -32,7 +35,8 @@ export class ResulTableEquipamentoComponent implements OnInit, OnChanges {
     }
 
     reloadEqp(params) {
-        this.listEqpResource.query(params).then(eqps => this.listaMontada = eqps);
+        //Deixar pra nao informar erro...
+        //this.listEqpResource.query(params).then(eqps => this.mountedList = eqps);
     }
 
     rowClick(rowEvent) {
@@ -41,14 +45,34 @@ export class ResulTableEquipamentoComponent implements OnInit, OnChanges {
 
     dataTableOptions(l) {
         if (l) {
-            this.listEqpResource = new DataTableResource(this.listEqp);
+            this.mountList(l);
+            this.listEqpResource = new DataTableResource(l);
             this.listEqpResource.count().then(count => this.listEqpCount = count);
-            this.listaMontada = l;
             this.translations = <DataTableTranslations>{
                 paginationLimit: 'Total por página',
                 paginationRange: 'Resultados'
             };
         }
+    }
+
+    mountList(l) {
+        let lst: EquipamentoResult;
+        let i = 0;
+        l.forEach(eqp => {
+            lst = {
+                fabricante: eqp.manufacturer,
+                ip: eqp.IPAddress,
+                mac: eqp.macAddress,
+                serial: eqp.deviceId.serialNumber,
+                subscriber: eqp.subscriberID,
+                id: eqp.deviceGUID
+            }
+            if (i === 0) {
+                this.mountedList = [lst];
+            } else {
+                this.mountedList.push(lst);
+            }
+        });
     }
 
 }

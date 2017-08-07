@@ -1,17 +1,17 @@
 <div *ngIf="eqpReady">
     <div>
-        <h1>Detalhes do Equipamento: <span> {{eqp.deviceId.serialNumber}}</span></h1>
+        <h1>Detalhes do Equipamento: <span> {{eqp.serial}}</span></h1>
     </div>
     <hr>
     <div class="row">
         <div class="col-md-4">
-            <equipamento-component [equipamento]="eqp"></equipamento-component>
+            <equipamento-component [equipamento]="device.device" [actived]="device.online"></equipamento-component>
         </div>
         <div class="col-md-4">
-            <consultas-component></consultas-component>
+            <consultas-component [actived]="device.online"></consultas-component>
         </div>
         <div class="col-md-4">
-            <acoes-component></acoes-component>
+            <acoes-component [actived]="device.online"></acoes-component>
         </div>
     </div>
 </div>
