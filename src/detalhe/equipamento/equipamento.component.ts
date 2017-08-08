@@ -1,3 +1,4 @@
+import { DetalheComponent } from './../detalhe.component';
 import { HolderService } from './../../utils/holder/holder.service';
 import { Equipamento } from './../../viewmodel/equipamento/equipamento';
 import { Component, OnInit, Input } from '@angular/core';
@@ -15,10 +16,15 @@ export class EquipamentoComponent implements OnInit {
     private status: boolean = false;
 
     constructor(
-        private holderService: HolderService) { }
+        public holderService: HolderService,
+        private detalheComponent: DetalheComponent) { }
 
     ngOnInit() {
 
+    }
+
+    busca() {
+        this.detalheComponent.buscaEqpInd();
     }
 
 }

@@ -33,6 +33,7 @@ export class DetalheComponent implements OnInit {
 
     buscaEqpInd() {
         this.searching = true;
+        this.eqpReady = false;
         this.searchWhat = "Carregando Equipamento";
         this.detalheService.getDetalhes(this.eqp.id)
             .then(data => {
