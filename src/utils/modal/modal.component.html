@@ -1,1 +1,1 @@
-<button type="button" [class]="styleBtn" [class.disabled]="disableBtn" (click)="open()" >{{nomeDoBtn}}</button>
+<button type="button" [class]="styleBtn" [class.disabled]="!holderService.checkOnline" (click)="open()">{{nomeDoBtn}}</button>

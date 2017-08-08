@@ -1,5 +1,5 @@
 <ul class="list-group">
-    <li class="list-group-item" [ngClass]="actived ? 'list-group-item-success': 'list-group-item-danger'">
+    <li class="list-group-item" [ngClass]="holderService.checkOnline ? 'list-group-item-success': 'list-group-item-danger'">
         <span *ngIf="actived">Status: Ativo</span>
         <span *ngIf="!actived">Status: Inativo</span>
     </li>

@@ -13,5 +13,7 @@ export class HolderService {
     }
     equipamento: Equipamento;
 
+    checkOnline: boolean;
+
     constructor() { }
 }

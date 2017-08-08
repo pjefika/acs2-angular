@@ -19,24 +19,27 @@ export class ResetComponent implements OnInit {
     constructor(
         public activeModal: NgbActiveModal,
         private resetService: ResetService,
-        private holderService: HolderService) { }
+        public holderService: HolderService) { }
 
     ngOnInit() { }
 
     resetar() {
-        this.disableBtn = true;
-        this.nomeBtn = "Aguarde";
-        this.resetService.resetModem(this.holderService.equipamento)
-            .then(data => {
-                if (data) {
-                    this.callAlert("Modem Reiniciado com sucesso, aguarde o mesmo sincronizar.", "success");
-                    this.activeModal.close()
-                } else {
-                    this.callAlert("O modem não pode ser reiniciado.", "danger");
-                }
-            }, error => {
-                this.callAlert("problema ao resetar modem.", "danger");
-            });
+        if (!this.disableBtn) {
+            this.disableBtn = true;
+            this.nomeBtn = "Aguarde";
+            this.resetService.resetModem(this.holderService.equipamento)
+                .then(data => {
+                    if (data) {
+                        this.callAlert("Modem Reiniciado com sucesso, aguarde o mesmo sincronizar.", "success");
+                        this.activeModal.close()
+                        this.holderService.checkOnline = false;
+                    } else {
+                        this.callAlert("O modem não pode ser reiniciado.", "danger");
+                    }
+                }, error => {
+                    this.callAlert("problema ao resetar modem.", "danger");
+                });
+        }
     }
 
     callAlert(msg, type) {

@@ -1,19 +1,11 @@
 <div class="list-group" *ngIf="isModem">
     <label class="list-group-item">Consultas</label>
-    <modal-component [nomeDoBtn]="'Consultar WAN'" [styleBtn]="'list-group-item list-group-item-action'" [aqpAtivo]="actived"
-        [component]="'wan-component'" [disableBtn]="!disableBtn"></modal-component>
-    <modal-component [nomeDoBtn]="'Consultar Interface Statistics'" [styleBtn]="'list-group-item list-group-item-action'" [aqpAtivo]="actived"
-        [component]="'interface-statics-component'" [disableBtn]="!disableBtn"></modal-component>
-    <modal-component [nomeDoBtn]="'Consultar LAN Host'" [styleBtn]="'list-group-item list-group-item-action'" [aqpAtivo]="actived"
-        [component]="'lan-host-component'" [disableBtn]="!disableBtn"></modal-component>
-    <modal-component [nomeDoBtn]="'Consultar xDSL'" [styleBtn]="'list-group-item list-group-item-action'" [aqpAtivo]="actived"
-        [component]="'xdsl-component'" [disableBtn]="!disableBtn"></modal-component>
-    <modal-component [nomeDoBtn]="'Consultar Port Mapping'" [styleBtn]="'list-group-item list-group-item-action'" [aqpAtivo]="actived"
-        [component]="'port-mapping-component'" [disableBtn]="!disableBtn"></modal-component>
-    <modal-component [nomeDoBtn]="'Consultar SIP'" [styleBtn]="'list-group-item list-group-item-action'" [aqpAtivo]="actived"
-        [component]="'sip-consulta-component'" [disableBtn]="!disableBtn"></modal-component>
-    <modal-component [nomeDoBtn]="'Consultar DMZ'" [styleBtn]="'list-group-item list-group-item-action'" [aqpAtivo]="actived"
-        [component]="'dmz-component'" [disableBtn]="!disableBtn"></modal-component>
-    <modal-component [nomeDoBtn]="'Historia'" [styleBtn]="'list-group-item list-group-item-action'" [aqpAtivo]="actived" [component]="'historia-component'"
-        [disableBtn]="!disableBtn"></modal-component>
+    <modal-component [nomeDoBtn]="'Consultar WAN'" [styleBtn]="'list-group-item list-group-item-action'" [component]="'wan-component'"></modal-component>
+    <modal-component [nomeDoBtn]="'Consultar Interface Statistics'" [styleBtn]="'list-group-item list-group-item-action'" [component]="'interface-statics-component'"></modal-component>
+    <modal-component [nomeDoBtn]="'Consultar LAN Host'" [styleBtn]="'list-group-item list-group-item-action'" [component]="'lan-host-component'"></modal-component>
+    <modal-component [nomeDoBtn]="'Consultar xDSL'" [styleBtn]="'list-group-item list-group-item-action'" [component]="'xdsl-component'"></modal-component>
+    <modal-component [nomeDoBtn]="'Consultar Port Mapping'" [styleBtn]="'list-group-item list-group-item-action'" [component]="'port-mapping-component'"></modal-component>
+    <modal-component [nomeDoBtn]="'Consultar SIP'" [styleBtn]="'list-group-item list-group-item-action'" [component]="'sip-consulta-component'"></modal-component>
+    <modal-component [nomeDoBtn]="'Consultar DMZ'" [styleBtn]="'list-group-item list-group-item-action'" [component]="'dmz-component'"></modal-component>
+    <modal-component [nomeDoBtn]="'Historia'" [styleBtn]="'list-group-item list-group-item-action'" [component]="'historia-component'"></modal-component>
 </div>

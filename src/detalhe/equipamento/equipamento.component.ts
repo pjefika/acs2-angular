@@ -1,3 +1,4 @@
+import { HolderService } from './../../utils/holder/holder.service';
 import { Equipamento } from './../../viewmodel/equipamento/equipamento';
 import { Component, OnInit, Input } from '@angular/core';
 
@@ -11,11 +12,10 @@ export class EquipamentoComponent implements OnInit {
 
     @Input() equipamento: Equipamento;
 
-    @Input() actived: boolean;
-
     private status: boolean = false;
 
-    constructor() { }
+    constructor(
+        private holderService: HolderService) { }
 
     ngOnInit() {
 

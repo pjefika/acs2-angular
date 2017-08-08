@@ -1,3 +1,4 @@
+import { HolderService } from './../../utils/holder/holder.service';
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
@@ -8,18 +9,13 @@ import { Component, OnInit, Input } from '@angular/core';
 
 export class ConsultasComponent implements OnInit {
 
-    @Input() actived: boolean;
-    disableBtn: boolean = false;
     @Input() isModem: boolean;
 
-    constructor() { }
+    constructor(
+        public holderService: HolderService) { }
 
-    ngOnInit() { 
-        this.disable();
-    }
-
-    disable() {
-        this.disableBtn = true;
+    ngOnInit() {
+        
     }
 
 }

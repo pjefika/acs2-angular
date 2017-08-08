@@ -1,3 +1,4 @@
+import { HolderService } from './../holder/holder.service';
 import { HistoriaComponent } from './../comandos/consultas/historia/historia.component';
 import { DmzComponent } from './../comandos/consultas/dmz/dmz.component';
 import { SipConsultaComponent } from './../comandos/consultas/sip/sip.component';
@@ -26,18 +27,15 @@ export class ModalComponent implements OnInit {
 
     @Input() nomeDoBtn: string;
     @Input() styleBtn: string;
-    @Input() disableBtn: boolean;
-    @Input() aqpAtivo: boolean;
     @Input() component: any;
 
     constructor(
-        private modalService: NgbModal) { }
+        private modalService: NgbModal,
+        public holderService: HolderService) { }
 
     ngOnInit() {
-        if (this.aqpAtivo) {
-            this.whatComponentAction();
-            this.whatComponentSearch();
-        }
+        this.whatComponentAction();
+        this.whatComponentSearch();
     }
 
     whatComponentAction() {
@@ -99,7 +97,9 @@ export class ModalComponent implements OnInit {
     }
 
     open() {
-        this.modalService.open(this.component, { backdrop: 'static' })
+        if (this.holderService.checkOnline) {
+            this.modalService.open(this.component, { backdrop: 'static' })
+        }
     }
 
 }
