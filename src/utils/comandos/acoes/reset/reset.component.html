@@ -8,6 +8,6 @@
     <p>Deseja resetar o modem?</p>
 </div>
 <div class="modal-footer">
-    <button type="button" class="btn btn-primary" (click)="resetar()">Sim</button>
+    <button type="button" class="btn btn-primary" (click)="resetar()" [class.disabled]="disableBtn">{{nomeBtn}}</button>
     <button type="button" class="btn btn-secondary" (click)="activeModal.close('Close click')">Não</button>
 </div>

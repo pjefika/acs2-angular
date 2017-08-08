@@ -37,6 +37,7 @@ export class DetalheComponent implements OnInit {
         this.detalheService.getDetalhes(this.eqp.id)
             .then(data => {
                 this.device = data;
+                this.holderService.equipamento = this.device.device;
                 this.eqpReady = true;
                 this.searching = false;
                 if (!this.device.online) {
