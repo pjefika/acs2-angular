@@ -8,10 +8,10 @@
             <equipamento-component [equipamento]="device.device" [actived]="device.online"></equipamento-component>
         </div>
         <div class="col-md-4">
-            <consultas-component [actived]="device.online"></consultas-component>
+            <consultas-component [actived]="device.online" [isModem]="isModem()"></consultas-component>
         </div>
         <div class="col-md-4">
-            <acoes-component [actived]="device.online"></acoes-component>
+            <acoes-component [actived]="device.online" [isModem]="isModem()"></acoes-component>
         </div>
     </div>
 </div>

@@ -1,19 +1,19 @@
-<div class="list-group">
+<div class="list-group" *ngIf="isModem">
     <label class="list-group-item">Ações</label>
-    <modal-component [nomeDoBtn]="'Reiniciar'" [styleBtn]="'list-group-item list-group-item-action'" [disableBtn]="actived"
-        [component]="'reset-component'"></modal-component>
-    <modal-component [nomeDoBtn]="'Reset de Fábrica'" [styleBtn]="'list-group-item list-group-item-action'" [disableBtn]="actived"
-        [component]="'factory-reset-component'"></modal-component>
-    <modal-component [nomeDoBtn]="'Efetuar Ping'" [styleBtn]="'list-group-item list-group-item-action'" [disableBtn]="actived"
-        [component]="'ping-component'"></modal-component>
-    <modal-component [nomeDoBtn]="'Configurar Wifi'" [styleBtn]="'list-group-item list-group-item-action'" [disableBtn]="actived"
-        [component]="'wifi-component'"></modal-component>
-    <modal-component [nomeDoBtn]="'Configurar Autenticação PPPoE'" [styleBtn]="'list-group-item list-group-item-action'" [disableBtn]="actived"
-        [component]="'auth-pppoe-component'"></modal-component>
-    <modal-component [nomeDoBtn]="'Configurar Sip'" [styleBtn]="'list-group-item list-group-item-action'" [disableBtn]="actived"
-        [component]="'sip-componen'"></modal-component>
-    <modal-component [nomeDoBtn]="'Configurar ServiceClass'" [styleBtn]="'list-group-item list-group-item-action'" [disableBtn]="actived"
-        [component]="'service-class-component'"></modal-component>
-    <modal-component [nomeDoBtn]="'Configurar DHCP'" [styleBtn]="'list-group-item list-group-item-action'" [disableBtn]="actived"
-        [component]="'dhcp-component'"></modal-component>
+    <modal-component [nomeDoBtn]="'Reiniciar'" [styleBtn]="'list-group-item list-group-item-action'" [aqpAtivo]="actived" [component]="'reset-component'"
+        [disableBtn]="!disableBtn"></modal-component>
+    <modal-component [nomeDoBtn]="'Reset de Fábrica'" [styleBtn]="'list-group-item list-group-item-action'" [aqpAtivo]="actived"
+        [component]="'factory-reset-component'" [disableBtn]="!disableBtn"></modal-component>
+    <modal-component [nomeDoBtn]="'Efetuar Ping'" [styleBtn]="'list-group-item list-group-item-action'" [aqpAtivo]="actived"
+        [component]="'ping-component'" [disableBtn]="!disableBtn"></modal-component>
+    <modal-component [nomeDoBtn]="'Configurar Wifi'" [styleBtn]="'list-group-item list-group-item-action'" [aqpAtivo]="actived"
+        [component]="'wifi-component'" [disableBtn]="!disableBtn"></modal-component>
+    <modal-component [nomeDoBtn]="'Configurar Autenticação PPPoE'" [styleBtn]="'list-group-item list-group-item-action'" [aqpAtivo]="actived"
+        [component]="'auth-pppoe-component'" [disableBtn]="!disableBtn"></modal-component>
+    <modal-component [nomeDoBtn]="'Configurar Sip'" [styleBtn]="'list-group-item list-group-item-action'" [aqpAtivo]="actived"
+        [component]="'sip-componen'" [disableBtn]="!disableBtn"></modal-component>
+    <modal-component [nomeDoBtn]="'Configurar ServiceClass'" [styleBtn]="'list-group-item list-group-item-action'" [aqpAtivo]="actived"
+        [component]="'service-class-component'" [disableBtn]="!disableBtn"></modal-component>
+    <modal-component [nomeDoBtn]="'Configurar DHCP'" [styleBtn]="'list-group-item list-group-item-action'" [aqpAtivo]="actived"
+        [component]="'dhcp-component'" [disableBtn]="!disableBtn"></modal-component>
 </div>

@@ -45,8 +45,7 @@ export class DetalheComponent implements OnInit {
             }, error => {
                 this.searching = false;
                 this.callAlert("Erro ao buscar equipamento por favor verifique.", "danger")
-            })
-
+            });
     }
 
     callAlert(msg, type) {
@@ -55,5 +54,9 @@ export class DetalheComponent implements OnInit {
             alertType: type,
             alertMsg: msg
         }
+    }
+
+    isModem() {
+        return this.device.device.type === 0;
     }
 }

@@ -8,16 +8,18 @@ import { Component, OnInit, Input } from '@angular/core';
 
 export class ConsultasComponent implements OnInit {
 
-    btnActive: boolean = false;
-
     @Input() actived: boolean;
+    disableBtn: boolean = false;
+    @Input() isModem: boolean;
 
     constructor() { }
 
-    ngOnInit() { }
+    ngOnInit() { 
+        this.disable();
+    }
 
-    activeBtn() {
-        this.btnActive = true;
+    disable() {
+        this.disableBtn = true;
     }
 
 }

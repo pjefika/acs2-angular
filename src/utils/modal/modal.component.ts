@@ -26,15 +26,18 @@ export class ModalComponent implements OnInit {
 
     @Input() nomeDoBtn: string;
     @Input() styleBtn: string;
-    @Input() disableBtn: boolean
+    @Input() disableBtn: boolean;
+    @Input() aqpAtivo: boolean;
     @Input() component: any;
 
     constructor(
         private modalService: NgbModal) { }
 
     ngOnInit() {
-        this.whatComponentAction();
-        this.whatComponentSearch();
+        if (this.aqpAtivo) {
+            this.whatComponentAction();
+            this.whatComponentSearch();
+        }
     }
 
     whatComponentAction() {
