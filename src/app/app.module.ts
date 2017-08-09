@@ -1,3 +1,4 @@
+import { UrlService } from './../utils/url-service/url.service';
 import { CheckOnlineComponent } from './../utils/comandos/consultas/check-online/check-online.component';
 import { HistoriaComponent } from './../utils/comandos/consultas/historia/historia.component';
 import { DmzComponent } from './../utils/comandos/consultas/dmz/dmz.component';
@@ -98,11 +99,13 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   providers: [
     ValidLoginService,
     HolderService,
-    BuscaService
+    BuscaService,
+    UrlService
   ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   entryComponents: [
+    DetalheComponent,
     BuscaComponent,
     LogsComponent,
     ResetComponent,

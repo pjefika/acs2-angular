@@ -1,3 +1,4 @@
+import { UrlService } from './../utils/url-service/url.service';
 import { Equipamento } from './../viewmodel/equipamento/equipamento';
 import { Http, RequestOptions, Headers } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
@@ -9,20 +10,16 @@ import 'rxjs/Rx';
 @Injectable()
 export class BuscaService {
 
-    private headersAppJson = new Headers({ 'Content-Type': 'application/json' });
-    private options = new RequestOptions({ headers: this.headersAppJson });
-    private url = "http://10.40.195.81:8080/acs/";
-
     constructor(
-        private http: Http) { }
+        private http: Http,
+        private urlService: UrlService) { }
 
     public getLista(criterio: string, input: string): Promise<Equipamento[]> {
         let usr = JSON.parse(sessionStorage.getItem('user'));
-        const url = `${this.url}` + "search/search";
+        const url = `${this.urlService.url}` + "search/search";
         let _data: { criterio: string, input: string, executor: string };
         _data = { criterio: criterio, input: input, executor: usr.usr };
-        //console.log(_data);
-        return this.http.post(url, JSON.stringify(_data), this.options)
+        return this.http.post(url, JSON.stringify(_data), this.urlService.options)
             .timeout(120000)
             .toPromise()
             .then(response => {

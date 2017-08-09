@@ -1,3 +1,4 @@
+import { UrlService } from './../utils/url-service/url.service';
 import { EquipamentoInfo } from './../viewmodel/equipamento/device';
 import { Headers, RequestOptions, Http } from '@angular/http';
 import { Injectable } from '@angular/core';
@@ -8,19 +9,16 @@ import 'rxjs/Rx';
 @Injectable()
 export class DetalheService {
 
-    private headersAppJson = new Headers({ 'Content-Type': 'application/json' });
-    private options = new RequestOptions({ headers: this.headersAppJson });
-    private url = "http://10.40.195.81:8080/acs/";
-
     constructor(
-        private http: Http) { }
+        private http: Http,
+        private urlService: UrlService) { }
 
     getDetalhes(id: number): Promise<EquipamentoInfo> {
         let usr = JSON.parse(sessionStorage.getItem('user'));
-        const url = `${this.url}` + "device/detail";
+        const url = `${this.urlService.url}` + "device/detail";
         let _data: { guid: number, executor: string };
         _data = { guid: id, executor: usr.usr }
-        return this.http.post(url, JSON.stringify(_data), this.options)
+        return this.http.post(url, JSON.stringify(_data), this.urlService.options)
             .timeout(120000)
             .toPromise()
             .then(response => {

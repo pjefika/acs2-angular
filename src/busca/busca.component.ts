@@ -42,7 +42,7 @@ export class BuscaComponent implements OnInit {
     }
 
     ngOnInit() {
-
+        this.resetHolder();
     }
 
     buscar() {
@@ -99,6 +99,14 @@ export class BuscaComponent implements OnInit {
             alertType: type,
             alertMsg: msg
         }
+    }
+
+    resetHolder() {
+        this.holderService.alertInfo = null;
+        this.holderService.alertOn = false;
+        this.holderService.checkOnline = false;
+        this.holderService.whoMenuIsActive = null;
+        this.holderService.equipamento = null;
     }
 
 }

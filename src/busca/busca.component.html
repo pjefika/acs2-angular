@@ -5,7 +5,7 @@
     <hr>
     <div class="row">
         <div class="col-md-4">
-            <form>
+            <form (keyup.enter)="buscar()">
                 <div class="form-group">
                     <label>Designador</label>
                     <input class="form-control" type="text" placeholder="Busca por Designador..." name="designador" [(ngModel)]="searchCond.designador">
