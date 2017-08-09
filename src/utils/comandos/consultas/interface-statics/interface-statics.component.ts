@@ -1,3 +1,5 @@
+import { HolderService } from './../../../holder/holder.service';
+import { InterfaceStatic } from './../../../../viewmodel/interfacestatic/interfacestatic';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { InterfaceStaticsService } from './interface-static.service';
 import { Component, OnInit } from '@angular/core';
@@ -11,8 +13,30 @@ import { Component, OnInit } from '@angular/core';
 
 export class InterfaceStaticsComponent implements OnInit {
 
-    constructor(
-        public activeModal: NgbActiveModal) { }
+    private intStatic: InterfaceStatic;
+    private searching: boolean = false;
 
-    ngOnInit() { }
+    constructor(
+        public activeModal: NgbActiveModal,
+        private interfaceStaticsService: InterfaceStaticsService,
+        public holderService: HolderService) { }
+
+    ngOnInit() {
+        this.getInterfaceStatistics();
+    }
+
+    getInterfaceStatistics() {
+        this.searching = true;
+        this.interfaceStaticsService.getInterfaceStatistics(this.holderService.equipamento)
+            .then(data => {
+                this.intStatic = data;
+                console.log(this.intStatic);
+                this.searching = false;
+            }, error => {
+                console.log("erro ao buscar interface static");
+                this.searching = false;
+            });
+    }
+
+
 }

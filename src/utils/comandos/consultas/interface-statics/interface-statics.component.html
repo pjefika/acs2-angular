@@ -5,7 +5,31 @@
       </button>
 </div>
 <div class="modal-body">
-    <p>Interface</p>
+    <loading-component [searchWhat]="'Buscando Interface Statics'" [searching]="searching"></loading-component>
+    <div *ngIf="intStatic">
+        <table class="table table-bordered table-sm">
+            <thead>
+                <tr>
+                    <th>adminStatus</th>
+                    <th>bytesRecv</th>
+                    <th>bytesSent</th>
+                    <th>ipAddress</th>
+                    <th>macAddress</th>
+                    <th>operStatus</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let interface of intStatic">
+                    <td>{{interface.adminStatus}}</td>
+                    <td>{{interface.bytesRecv}}</td>
+                    <td>{{interface.bytesSent}}</td>
+                    <td>{{interface.ipAddress}}</td>
+                    <td>{{interface.macAddress}}</td>
+                    <td>{{interface.operStatus}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
 <div class="modal-footer">
     <button type="button" class="btn btn-secondary" (click)="activeModal.close('Close click')">Fechar</button>

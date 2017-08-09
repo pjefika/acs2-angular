@@ -29,6 +29,11 @@ export class ModalComponent implements OnInit {
     @Input() styleBtn: string;
     @Input() component: any;
 
+    private modalOptions: {
+        backdrop?: boolean | 'static',
+        size?: 'sm' | 'lg'
+    }
+
     constructor(
         private modalService: NgbModal,
         public holderService: HolderService) { }
@@ -42,9 +47,11 @@ export class ModalComponent implements OnInit {
         switch (this.component) {
             case "reset-component":
                 this.component = ResetComponent;
+                this.setModalOptions("static", "sm");
                 break;
             case "factory-reset-component":
                 this.component = FactoryResetComponent
+                this.setModalOptions("static", "sm");
                 break;
             case "ping-component":
                 this.component = PingComponent
@@ -74,6 +81,7 @@ export class ModalComponent implements OnInit {
                 break;
             case "interface-statics-component":
                 this.component = InterfaceStaticsComponent
+                this.setModalOptions("static", "lg");
                 break;
             case "lan-host-component":
                 this.component = LanHostComponent
@@ -96,9 +104,16 @@ export class ModalComponent implements OnInit {
         }
     }
 
+    setModalOptions(bdname: boolean | 'static', sz?: 'sm' | 'lg') {
+        this.modalOptions = {
+            backdrop: bdname,
+            size: sz
+        }
+    }
+
     open() {
         if (this.holderService.checkOnline) {
-            this.modalService.open(this.component, { backdrop: 'static' })
+            this.modalService.open(this.component, this.modalOptions)
         }
     }
 

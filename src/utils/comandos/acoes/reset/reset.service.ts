@@ -15,10 +15,8 @@ export class ResetService {
     public resetModem(device: Equipamento): Promise<Boolean> {
         let usr = JSON.parse(sessionStorage.getItem('user'));
         const url = `${this.url}` + "device/reboot";
-
         let _data: { device: Equipamento, executor: string };
         _data = { device: device, executor: usr.usr }
-
         return this.http.post(url, JSON.stringify(_data), this.options)
             .timeout(12000)
             .toPromise()
