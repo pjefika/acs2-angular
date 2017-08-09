@@ -8,6 +8,6 @@
     <p>Deseja fazer o reset de fábrica no modem?</p>
 </div>
 <div class="modal-footer">
-    <button type="button" class="btn btn-primary" (click)="factoryReset()">Sim</button>
+    <button type="button" class="btn btn-primary" (click)="factoryReset()" [class.disabled]="disableBtn">{{nomeBtn}}</button>
     <button type="button" class="btn btn-secondary" (click)="activeModal.close('Close click')">Não</button>
 </div>
