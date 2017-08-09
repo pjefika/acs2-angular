@@ -1,3 +1,5 @@
+import { HolderService } from './../../../holder/holder.service';
+import { PPPoECredentials } from './../../../../viewmodel/pppoecredentials/pppoecredentials';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { AuthPPPoEService } from './auth-pppoe.service';
 import { Component, OnInit } from '@angular/core';
@@ -11,13 +13,34 @@ import { Component, OnInit } from '@angular/core';
 
 export class AuthPPPoEComponent implements OnInit {
 
-    constructor(
-        public activeModal: NgbActiveModal) { }
+    private pppoecred: PPPoECredentials;
+    private searching: boolean = false;
 
-    ngOnInit() { }
+    constructor(
+        public activeModal: NgbActiveModal,
+        private authPPPoEService: AuthPPPoEService,
+        public holderService: HolderService) { }
+
+    ngOnInit() {
+        this.getPPPoECredentials();
+    }
+
+    getPPPoECredentials() {
+        this.searching = true;
+        this.authPPPoEService.getPPPoECredentials(this.holderService.equipamento)
+            .then(data => {
+                this.pppoecred = data;
+                this.searching = false;
+            }, error => {
+                this.searching = false;
+                console.log("Erro ao realizar busca");
+            })
+    }
 
     modificar() {
-        console.log("Modificando Fake");
-        
+        if (this.pppoecred) {
+            console.log("Modificando Fake");
+        }
     }
+
 }

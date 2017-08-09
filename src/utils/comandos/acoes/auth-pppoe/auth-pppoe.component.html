@@ -5,9 +5,17 @@
       </button>
 </div>
 <div class="modal-body">
-    <p>Autenticação PPPoE</p>
+    <loading-component [searchWhat]="'Buscando PPPoE Credentials'" [searching]="searching"></loading-component>
+    <div *ngIf="pppoecred" class="form-group">
+        <label>Password</label>
+        <input type="text" class="form-control" name="password" [(ngModel)]="pppoecred.password">
+    </div>
+    <div *ngIf="pppoecred" class="form-group">
+        <label>Username</label>
+        <input type="text" class="form-control" name="username" [(ngModel)]="pppoecred.username">
+    </div>
 </div>
 <div class="modal-footer">
-    <button type="button" class="btn btn-primary" (click)="modificar()">Modificar</button>
+    <button type="button" class="btn btn-primary" (click)="modificar()" [class.disabled]="!pppoecred">Modificar</button>
     <button type="button" class="btn btn-secondary" (click)="activeModal.close('Close click')">Fechar</button>
 </div>
