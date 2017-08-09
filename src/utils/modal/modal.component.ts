@@ -58,9 +58,11 @@ export class ModalComponent implements OnInit {
                 break;
             case "wifi-component":
                 this.component = WifiComponent
+                this.setModalOptions("static");
                 break;
             case "auth-pppoe-component":
                 this.component = AuthPPPoEComponent
+                this.setModalOptions("static");
                 break;
             case "sip-componen":
                 this.component = SipComponent

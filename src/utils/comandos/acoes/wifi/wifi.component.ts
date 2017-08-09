@@ -1,3 +1,5 @@
+import { Wifi } from './../../../../viewmodel/wifi/wifi';
+import { HolderService } from './../../../holder/holder.service';
 import { WifiService } from './wifi.service';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { Component, OnInit } from '@angular/core';
@@ -11,13 +13,35 @@ import { Component, OnInit } from '@angular/core';
 
 export class WifiComponent implements OnInit {
 
+    private wifi: Wifi;
+    private searching: boolean = false;
+
     constructor(
-        public activeModal: NgbActiveModal) { }
+        public activeModal: NgbActiveModal,
+        private wifiService: WifiService,
+        public holderService: HolderService) { }
 
-    ngOnInit() { }
+    ngOnInit() {
+        this.getWifi();
+    }
 
-    confWifi() {
-        console.log("Configurando Wifi Fake");
+    getWifi() {
+        this.searching = true;
+        this.wifiService.getWifi(this.holderService.equipamento)
+            .then(data => {
+                this.wifi = data;
+                console.log(this.wifi)
+                this.searching = false;
+            }, error => {
+                this.searching = false;
+                console.log("Erro ao realizar consulta.");
+            })
 
+    }
+
+    setWifi() {
+        if (this.wifi) {
+            console.log("Configurando Wifi Fake");
+        }
     }
 }
