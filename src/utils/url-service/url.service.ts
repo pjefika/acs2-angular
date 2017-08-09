@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 export class UrlService {
 
     //private urlIp = "10.40.195.81"; // Produção
-    private urlIp = "10.40.193.4"; // Produção 
+    private urlIp = "localhost"; // Produção 
 
     private headersAppJson = new Headers({ 'Content-Type': 'application/json' });
     public options = new RequestOptions({ headers: this.headersAppJson });

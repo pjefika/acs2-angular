@@ -14,11 +14,13 @@ import { DataTable, DataTableTranslations, DataTableResource } from 'angular-2-d
 export class ResulTableEquipamentoComponent implements OnInit, OnChanges {
 
     @Input() listEqp: Equipamento[];
-    private listEqpCount: 0;
-    private listEqpResource;
-    private translations;
 
     private mountedList: EquipamentoResult[];
+    private listCount = 0;
+
+    private listEqpResource;
+    private translations;
+    private limit;
 
     constructor(
         private templateComponent: TemplateComponent) { }
@@ -28,30 +30,8 @@ export class ResulTableEquipamentoComponent implements OnInit, OnChanges {
     }
 
     ngOnChanges(changes: SimpleChanges) {
-        //Detecta se variavel mudou e monta as opções da datatable
         if (changes.listEqp.currentValue) {
-            this.dataTableOptions(changes.listEqp.currentValue);
-        }
-    }
-
-    reloadEqp(params) {
-        //Deixar pra nao informar erro...
-        //this.listEqpResource.query(params).then(eqps => this.mountedList = eqps);
-    }
-
-    rowClick(rowEvent) {
-        this.templateComponent.createDetalhesEquipamento(rowEvent.row.item);
-    }
-
-    dataTableOptions(l) {
-        if (l) {
-            this.mountList(l);
-            this.listEqpResource = new DataTableResource(l);
-            this.listEqpResource.count().then(count => this.listEqpCount = count);
-            this.translations = <DataTableTranslations>{
-                paginationLimit: 'Total por página',
-                paginationRange: 'Resultados'
-            };
+            this.mountList(changes.listEqp.currentValue);
         }
     }
 
@@ -72,7 +52,46 @@ export class ResulTableEquipamentoComponent implements OnInit, OnChanges {
             } else {
                 this.mountedList.push(lst);
             }
+            i = 1;
         });
+        //console.log("montou lista...");
+        this.dataTableOptions();
     }
+
+    reloadEqp(params) {
+        this.listEqpResource.query(params).then(item => this.mountedList = item);
+    }
+
+    rowClick(rowEvent) {
+        this.templateComponent.createDetalhesEquipamento(rowEvent.row.item);
+    }
+
+    dataTableOptions() {
+        if (this.mountedList) {
+
+            this.listEqpResource = new DataTableResource(this.mountedList);
+
+            //console.log(this.listEqpResource)
+
+            this.listEqpResource.count().then(count => {
+                this.listCount = count
+                //console.log("Contagem: " + count);
+                if (count > 10) {
+                    this.limit = 5;
+                } else {
+                    this.limit = count
+                }
+                //console.log("Limit: " + this.limit);
+            });
+
+
+            this.translations = <DataTableTranslations>{
+                paginationLimit: 'Total por página',
+                paginationRange: 'Resultados'
+            };
+
+        }
+    }
+
 
 }

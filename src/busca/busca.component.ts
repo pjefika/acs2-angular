@@ -29,12 +29,6 @@ export class BuscaComponent implements OnInit {
     private searching: boolean = false;
     private searchWhat: string;
 
-    private alertOn: boolean = false;
-    private alertInfo: {
-        alertType: string,
-        alertMsg: string
-    }
-
     constructor(
         private buscaService: BuscaService,
         private holderService: HolderService) {
@@ -102,11 +96,14 @@ export class BuscaComponent implements OnInit {
     }
 
     resetHolder() {
-        this.holderService.alertInfo = null;
+        this.holderService.alertInfo = {
+            alertMsg: "",
+            alertType: ""
+        }
         this.holderService.alertOn = false;
         this.holderService.checkOnline = false;
-        this.holderService.whoMenuIsActive = null;
-        this.holderService.equipamento = null;
+        this.holderService.whoMenuIsActive = "";
+        this.holderService.equipamento = new Equipamento;
     }
 
 }
