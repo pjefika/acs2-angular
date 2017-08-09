@@ -29,6 +29,8 @@ export class BuscaComponent implements OnInit {
     private searching: boolean = false;
     private searchWhat: string;
 
+    private showTableResult: boolean = false;
+
     constructor(
         private buscaService: BuscaService,
         private holderService: HolderService) {
@@ -48,11 +50,13 @@ export class BuscaComponent implements OnInit {
         this.listEqp = null;
         this.searchWhat = "Buscando Equipamentos"
         this.searching = true;
+        this.showTableResult = false;
         this.buscaService.getLista(this.whatIsSearching, this.whatIsSearchingInput)
             .then(data => {
                 this.listEqp = data;
                 this.searching = false;
                 this.holderService.alertOn = false;
+                this.showTableResult = true;
                 if (data.length === 0) {
                     this.callAlert("A busca não obteve resultados.", "danger");
                 }

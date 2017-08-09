@@ -14,6 +14,7 @@ import { DataTable, DataTableTranslations, DataTableResource } from 'angular-2-d
 export class ResulTableEquipamentoComponent implements OnInit, OnChanges {
 
     @Input() listEqp: Equipamento[];
+    @Input() showTable: boolean = false;
 
     private mountedList: EquipamentoResult[];
     private listCount = 0;
@@ -30,8 +31,11 @@ export class ResulTableEquipamentoComponent implements OnInit, OnChanges {
     }
 
     ngOnChanges(changes: SimpleChanges) {
-        if (changes.listEqp.currentValue) {
-            this.mountList(changes.listEqp.currentValue);
+        if (changes.listEqp.currentValue != changes.listEqp.previousValue) {
+            this.listEqp = changes.listEqp.currentValue;
+            if (this.listEqp) {
+                this.mountList(changes.listEqp.currentValue);
+            }
         }
     }
 
@@ -54,7 +58,6 @@ export class ResulTableEquipamentoComponent implements OnInit, OnChanges {
             }
             i = 1;
         });
-        //console.log("montou lista...");
         this.dataTableOptions();
     }
 
@@ -68,28 +71,19 @@ export class ResulTableEquipamentoComponent implements OnInit, OnChanges {
 
     dataTableOptions() {
         if (this.mountedList) {
-
             this.listEqpResource = new DataTableResource(this.mountedList);
-
-            //console.log(this.listEqpResource)
-
             this.listEqpResource.count().then(count => {
                 this.listCount = count
-                //console.log("Contagem: " + count);
                 if (count > 10) {
                     this.limit = 5;
                 } else {
                     this.limit = count
                 }
-                //console.log("Limit: " + this.limit);
             });
-
-
             this.translations = <DataTableTranslations>{
                 paginationLimit: 'Total por página',
                 paginationRange: 'Resultados'
             };
-
         }
     }
 
