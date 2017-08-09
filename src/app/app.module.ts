@@ -1,3 +1,4 @@
+import { ToastyModule } from 'ng2-toasty';
 import { UrlService } from './../utils/url-service/url.service';
 import { CheckOnlineComponent } from './../utils/comandos/consultas/check-online/check-online.component';
 import { HistoriaComponent } from './../utils/comandos/consultas/historia/historia.component';
@@ -94,7 +95,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     HttpModule,
     BrowserAnimationsModule,
     DataTableModule,
-    MomentModule
+    MomentModule,
+    ToastyModule.forRoot()
   ],
   providers: [
     ValidLoginService,

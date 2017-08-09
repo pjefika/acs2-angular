@@ -28,7 +28,7 @@ export class TemplateComponent implements OnInit {
                     this.router.navigate(['./acs2/entrar']);
                 }
             });
-            this.buscaEquipamento();
+        this.buscaEquipamento();
     }
 
     buscaEquipamento() {
