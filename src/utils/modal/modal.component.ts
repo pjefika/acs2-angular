@@ -55,6 +55,7 @@ export class ModalComponent implements OnInit {
                 break;
             case "ping-component":
                 this.component = PingComponent
+                this.setModalOptions("static");
                 break;
             case "wifi-component":
                 this.component = WifiComponent
@@ -69,9 +70,11 @@ export class ModalComponent implements OnInit {
                 break;
             case "service-class-component":
                 this.component = ServiceClassComponent
+                this.setModalOptions("static");
                 break;
             case "dhcp-component":
                 this.component = DhcpComponent
+                this.setModalOptions("static");
                 break;
         }
     }
@@ -91,6 +94,7 @@ export class ModalComponent implements OnInit {
                 break;
             case "xdsl-component":
                 this.component = XdslComponent
+                this.setModalOptions("static");
                 break;
             case "port-mapping-component":
                 this.component = PortMappingComponent

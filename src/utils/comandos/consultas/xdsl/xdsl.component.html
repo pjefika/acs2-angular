@@ -5,7 +5,84 @@
       </button>
 </div>
 <div class="modal-body">
-    <p>xDSL</p>
+    <loading-component [searchWhat]="'Buscando xDSL'" [searching]="searching"></loading-component>
+    <div *ngIf="xdsl">
+        <table class="table table-bordered table-sm">
+            <tbody>
+                <tr>
+                    <th>downstreamCurrRate</th>
+                    <td>{{xdsl.downstreamCurrRate}}</td>
+                </tr>
+                <tr>
+                    <th>upstreamCurrRate</th>
+                    <td>{{xdsl.upstreamCurrRate}}</td>
+                </tr>
+                <tr>
+                    <th>downstreamMaxRate</th>
+                    <td>{{xdsl.downstreamMaxRate}}</td>
+                </tr>
+                <tr>
+                    <th>upstreamMaxRate</th>
+                    <td>{{xdsl.upstreamMaxRate}}</td>
+                </tr>
+                <tr>
+                    <th>modulationType</th>
+                    <td>{{xdsl.modulationType}}</td>
+                </tr>
+                <tr>
+                    <th>downstreamPower</th>
+                    <td>{{xdsl.downstreamPower}}</td>
+                </tr>
+                <tr>
+                    <th>upstreamPower</th>
+                    <td>{{xdsl.upstreamPower}}</td>
+                </tr>
+                <tr>
+                    <th>downstreamAttenuation</th>
+                    <td>{{xdsl.downstreamAttenuation}}</td>
+                </tr>
+                <tr>
+                    <th>downstreamAttenuation</th>
+                    <td>{{xdsl.downstreamAttenuation}}</td>
+                </tr>
+                <tr>
+                    <th>upstreamAttenuation</th>
+                    <td>{{xdsl.upstreamAttenuation}}</td>
+                </tr>
+                <tr>
+                    <th>upstreamAttenuation</th>
+                    <td>{{xdsl.upstreamAttenuation}}</td>
+                </tr>
+                <tr>
+                    <th>downstreamNoiseMargin</th>
+                    <td>{{xdsl.downstreamNoiseMargin}}</td>
+                </tr>
+                <tr>
+                    <th>upstreamNoiseMargin</th>
+                    <td>{{xdsl.upstreamNoiseMargin}}</td>
+                </tr>
+
+                <tr>
+                    <th>crcerrors</th>
+                    <td>{{xdsl.crcerrors}}</td>
+                </tr>
+                <tr>
+                    <th>fecerrors</th>
+                    <td>{{xdsl.fecerrors}}</td>
+                </tr>
+                <tr>
+                    <th>hecerrors</th>
+                    <td>{{xdsl.hecerrors}}</td>
+                </tr>
+
+                <tr>
+                    <th>showtimeStart</th>
+                    <td>{{xdsl.showtimeStart}}</td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
 </div>
 <div class="modal-footer">
     <button type="button" class="btn btn-secondary" (click)="activeModal.close('Close click')">Fechar</button>
