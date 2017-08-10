@@ -1,3 +1,4 @@
+import { ToastyComponent } from './../../../toasty/toasty.component';
 import { HolderService } from './../../../holder/holder.service';
 import { InterfaceStatic } from './../../../../viewmodel/interfacestatic/interfacestatic';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
@@ -8,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
     selector: 'interface-statics-component',
     templateUrl: 'interface-statics.component.html',
     styleUrls: ['interface-statics.component.css'],
-    providers: [InterfaceStaticsService]
+    providers: [InterfaceStaticsService, ToastyComponent]
 })
 
 export class InterfaceStaticsComponent implements OnInit {
@@ -19,7 +20,8 @@ export class InterfaceStaticsComponent implements OnInit {
     constructor(
         public activeModal: NgbActiveModal,
         private interfaceStaticsService: InterfaceStaticsService,
-        public holderService: HolderService) { }
+        public holderService: HolderService,
+        private toastyComponent: ToastyComponent) { }
 
     ngOnInit() {
         this.getInterfaceStatistics();
@@ -33,10 +35,19 @@ export class InterfaceStaticsComponent implements OnInit {
                 console.log(this.intStatic);
                 this.searching = false;
             }, error => {
-                console.log("erro ao buscar interface static");
+                this.callToasty("Ops, aconteceu algo.", "Erro ao buscar interface static.", "error", 0);
                 this.searching = false;
             });
     }
 
+    callToasty(titulo: string, msg: string, theme: string, timeout?: number) {
+        this.toastyComponent.toastyInfo = {
+            titulo: titulo,
+            msg: msg,
+            theme: theme,
+            timeout: timeout
+        }
+        this.toastyComponent.addToasty();
+    }
 
 }

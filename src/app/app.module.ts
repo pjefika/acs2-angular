@@ -1,3 +1,4 @@
+import { ToastyComponent } from './../utils/toasty/toasty.component';
 import { ToastyModule } from 'ng2-toasty';
 import { UrlService } from './../utils/url-service/url.service';
 import { CheckOnlineComponent } from './../utils/comandos/consultas/check-online/check-online.component';
@@ -85,7 +86,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     SipConsultaComponent,
     DmzComponent,
     HistoriaComponent,
-    CheckOnlineComponent
+    CheckOnlineComponent,
+    ToastyComponent
   ],
   imports: [
     BrowserModule,

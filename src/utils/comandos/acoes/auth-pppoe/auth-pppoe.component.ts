@@ -1,3 +1,4 @@
+import { ToastyComponent } from './../../../toasty/toasty.component';
 import { HolderService } from './../../../holder/holder.service';
 import { PPPoECredentials } from './../../../../viewmodel/pppoecredentials/pppoecredentials';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
@@ -8,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
     selector: 'auth-pppoe-component',
     templateUrl: 'auth-pppoe.component.html',
     styleUrls: ['auth-pppoe.component.css'],
-    providers: [AuthPPPoEService]
+    providers: [AuthPPPoEService, ToastyComponent]
 })
 
 export class AuthPPPoEComponent implements OnInit {
@@ -19,7 +20,8 @@ export class AuthPPPoEComponent implements OnInit {
     constructor(
         public activeModal: NgbActiveModal,
         private authPPPoEService: AuthPPPoEService,
-        public holderService: HolderService) { }
+        public holderService: HolderService,
+        private toastyComponent: ToastyComponent) { }
 
     ngOnInit() {
         this.getPPPoECredentials();
@@ -33,7 +35,7 @@ export class AuthPPPoEComponent implements OnInit {
                 this.searching = false;
             }, error => {
                 this.searching = false;
-                console.log("Erro ao realizar busca");
+                this.callToasty("Ops, aconteceu algo.", "Ocorreu um problema ao realizar busca.", "error", 0);
             })
     }
 
@@ -41,6 +43,16 @@ export class AuthPPPoEComponent implements OnInit {
         if (this.pppoecred) {
             console.log("Modificando Fake");
         }
+    }
+
+    callToasty(titulo: string, msg: string, theme: string, timeout?: number) {
+        this.toastyComponent.toastyInfo = {
+            titulo: titulo,
+            msg: msg,
+            theme: theme,
+            timeout: timeout
+        }
+        this.toastyComponent.addToasty();
     }
 
 }

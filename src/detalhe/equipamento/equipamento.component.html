@@ -13,7 +13,7 @@
     <li class="list-group-item">Serial: {{equipamento.deviceId.serialNumber}}</li>
     <li class="list-group-item">Subscriber Id: {{equipamento.subscriberID}}</li>
     <li class="list-group-item">Firmware: {{equipamento.softwareVersion}}</li>
-    <li class="list-group-item">Nome do Modelo: {{equipamento.model}}</li>
+    <li class="list-group-item">Nome do Modelo: {{equipamento.modelName}}</li>
     <li class="list-group-item">Fabricante: {{equipamento.manufacturer}}</li>
     <li class="list-group-item">IP: {{equipamento.IPAddress}}</li>
     <li class="list-group-item">Data Autenticação: {{ ((equipamento.lastActivationTime / 1000) | amFromUnix) | amDateFormat: 'DD/MM/YYYY HH:mm:ss'}}</li>

@@ -1,3 +1,4 @@
+import { HolderService } from './../../utils/holder/holder.service';
 import { EquipamentoResult } from './../../viewmodel/equipamento/table-result/equipmento-result';
 import { TemplateComponent } from './../../template/template.component';
 import { ListEqp } from './../../template/mock/mocklisteqp';
@@ -24,10 +25,14 @@ export class ResulTableEquipamentoComponent implements OnInit, OnChanges {
     private limit;
 
     constructor(
-        private templateComponent: TemplateComponent) { }
+        private templateComponent: TemplateComponent,
+        private holderService: HolderService) { }
 
     ngOnInit() {
-
+        if (this.holderService.lstEquipamentos) {
+            this.mountedList = this.holderService.lstEquipamentos;
+            this.dataTableOptions();
+        }
     }
 
     ngOnChanges(changes: SimpleChanges) {
@@ -58,6 +63,7 @@ export class ResulTableEquipamentoComponent implements OnInit, OnChanges {
             }
             i = 1;
         });
+        this.holderService.lstEquipamentos = this.mountedList;
         this.dataTableOptions();
     }
 

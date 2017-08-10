@@ -1,3 +1,4 @@
+import { EquipamentoResult } from './../../viewmodel/equipamento/table-result/equipmento-result';
 import { Equipamento } from './../../viewmodel/equipamento/equipamento';
 import { Injectable } from '@angular/core';
 
@@ -14,6 +15,8 @@ export class HolderService {
     equipamento: Equipamento;
 
     checkOnline: boolean;
+
+    lstEquipamentos: EquipamentoResult[];
 
     constructor() { }
 }

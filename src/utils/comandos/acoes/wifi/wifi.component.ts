@@ -1,3 +1,4 @@
+import { ToastyComponent } from './../../../toasty/toasty.component';
 import { Wifi } from './../../../../viewmodel/wifi/wifi';
 import { HolderService } from './../../../holder/holder.service';
 import { WifiService } from './wifi.service';
@@ -8,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
     selector: 'wifi-component',
     templateUrl: 'wifi.component.html',
     styleUrls: ['wifi.component.css'],
-    providers: [WifiService]
+    providers: [WifiService, ToastyComponent]
 })
 
 export class WifiComponent implements OnInit {
@@ -20,7 +21,8 @@ export class WifiComponent implements OnInit {
     constructor(
         public activeModal: NgbActiveModal,
         private wifiService: WifiService,
-        public holderService: HolderService) { }
+        public holderService: HolderService,
+        private toastyComponent: ToastyComponent) { }
 
     ngOnInit() {
         this.getWifi();
@@ -38,7 +40,7 @@ export class WifiComponent implements OnInit {
             }, error => {
                 this.searching = false;
                 this.btnSetWifi = false;
-                this.callAlert("Erro ao realizar consulta", "danger");
+                this.callToasty("Ops, aconteceu algo.", "Erro ao realizar consulta.", "error", 0);
             });
     }
 
@@ -48,13 +50,13 @@ export class WifiComponent implements OnInit {
             this.wifiService.setWifi(this.holderService.equipamento, this.wifi)
                 .then(data => {
                     if (data) {
-                        this.callAlert("Alterações realizadas com sucesso.", "success");
+                        this.callToasty("Successo", "Alterações realizadas com sucesso.", "success", 0);
                         this.activeModal.close();
                     } else {
-                        this.callAlert("Erro ao realizar alterações.", "danger");
+                        this.callToasty("Ops, aconteceu algo.", "Erro ao realizar alterações.", "error", 0);
                     }
                 }, error => {
-                    this.callAlert("Erro ao realizar alterações.", "danger");
+                    this.callToasty("Ops, aconteceu algo.", "Sistema não conseguiu realizar alterações.", "error", 0);
                 });
         }
     }
@@ -65,5 +67,15 @@ export class WifiComponent implements OnInit {
             alertType: type,
             alertMsg: msg
         }
+    }
+
+    callToasty(titulo: string, msg: string, theme: string, timeout?: number) {
+        this.toastyComponent.toastyInfo = {
+            titulo: titulo,
+            msg: msg,
+            theme: theme,
+            timeout: timeout
+        }
+        this.toastyComponent.addToasty();
     }
 }

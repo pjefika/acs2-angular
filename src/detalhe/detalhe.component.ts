@@ -1,3 +1,4 @@
+import { ToastyComponent } from './../utils/toasty/toasty.component';
 import { HolderService } from './../utils/holder/holder.service';
 import { EquipamentoResult } from './../viewmodel/equipamento/table-result/equipmento-result';
 import { EquipamentoInfo } from './../viewmodel/equipamento/device';
@@ -9,7 +10,7 @@ import { Component, OnInit, Injector } from '@angular/core';
     selector: 'detalhe-component',
     templateUrl: 'detalhe.component.html',
     styleUrls: ['detalhe.component.css'],
-    providers: [DetalheService]
+    providers: [DetalheService, ToastyComponent]
 })
 
 export class DetalheComponent implements OnInit {
@@ -23,7 +24,8 @@ export class DetalheComponent implements OnInit {
     constructor(
         private detalheService: DetalheService,
         private injector: Injector,
-        private holderService: HolderService) {
+        private holderService: HolderService,
+        private toastyComponent: ToastyComponent) {
         this.eqp = this.injector.get("eqp");
     }
 
@@ -43,11 +45,11 @@ export class DetalheComponent implements OnInit {
                 this.eqpReady = true;
                 this.searching = false;
                 if (!this.device.online) {
-                    this.callAlert("Equipamento inativo.", "danger")
+                    this.callToasty("Ops, aconteceu algo.", "Equipamento inativo.", "error", 10000);
                 }
             }, error => {
                 this.searching = false;
-                this.callAlert("Erro ao buscar equipamento por favor verifique.", "danger")
+                this.callToasty("Ops, aconteceu algo.", "Erro ao buscar equipamento por favor verifique.", "error", 10000);
             });
     }
 
@@ -57,6 +59,16 @@ export class DetalheComponent implements OnInit {
             alertType: type,
             alertMsg: msg
         }
+    }
+
+    callToasty(titulo: string, msg: string, theme: string, timeout?: number) {
+        this.toastyComponent.toastyInfo = {
+            titulo: titulo,
+            msg: msg,
+            theme: theme,
+            timeout: timeout
+        }
+        this.toastyComponent.addToasty();
     }
 
     isModem() {

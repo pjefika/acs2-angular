@@ -1,3 +1,4 @@
+import { ToastyComponent } from './../../../toasty/toasty.component';
 import { HolderService } from './../../../holder/holder.service';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { FactoryResetService } from './factory-reset.service';
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
     selector: 'factory-reset-component',
     templateUrl: 'factory-reset.component.html',
     styleUrls: ['factory-reset.component.css'],
-    providers: [FactoryResetService]
+    providers: [FactoryResetService, ToastyComponent]
 })
 
 export class FactoryResetComponent implements OnInit {
@@ -18,7 +19,8 @@ export class FactoryResetComponent implements OnInit {
     constructor(
         public activeModal: NgbActiveModal,
         private factoryResetService: FactoryResetService,
-        public holderService: HolderService) { }
+        public holderService: HolderService,
+        private toastyComponent: ToastyComponent) { }
 
     ngOnInit() { }
 
@@ -29,14 +31,14 @@ export class FactoryResetComponent implements OnInit {
             this.factoryResetService.factoryReset(this.holderService.equipamento)
                 .then(data => {
                     if (data) {
-                        this.callAlert("Reset de fábrica realizado com sucesso, aguarde as configurações do modem.", "success");
+                        this.callToasty("Sucesso", "Reset de fábrica realizado com sucesso, aguarde as configurações do modem.", "success", 0);
                         this.activeModal.close()
                         this.holderService.checkOnline = false;
                     } else {
-                        this.callAlert("Reset de fábrica não realizado.", "danger");
+                        this.callToasty("Ops, aconteceu algo.", "Reset de fábrica não realizado.", "error", 0);
                     }
                 }, error => {
-                    this.callAlert("problema ao realizar reset de fábrica no modem.", "danger");
+                    this.callToasty("Ops, aconteceu algo.", "Sistema não conseguiu realizar ação no modem", "error", 0);
                 });
 
         }
@@ -48,6 +50,16 @@ export class FactoryResetComponent implements OnInit {
             alertType: type,
             alertMsg: msg
         }
+    }
+
+    callToasty(titulo: string, msg: string, theme: string, timeout?: number) {
+        this.toastyComponent.toastyInfo = {
+            titulo: titulo,
+            msg: msg,
+            theme: theme,
+            timeout: timeout
+        }
+        this.toastyComponent.addToasty();
     }
 
 }

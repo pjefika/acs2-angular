@@ -1,3 +1,4 @@
+import { ToastyComponent } from './../utils/toasty/toasty.component';
 import { HolderService } from './../utils/holder/holder.service';
 import { ResulTableEquipamentoComponent } from './result-table-equipamento/result-table-equipamento.component';
 import { Equipamento } from './../viewmodel/equipamento/equipamento';
@@ -9,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
     selector: 'busca-component',
     templateUrl: 'busca.component.html',
     styleUrls: ['busca.component.css'],
-    providers: [BuscaService]
+    providers: [BuscaService, ToastyComponent]
 })
 
 export class BuscaComponent implements OnInit {
@@ -33,12 +34,16 @@ export class BuscaComponent implements OnInit {
 
     constructor(
         private buscaService: BuscaService,
-        private holderService: HolderService) {
+        private holderService: HolderService,
+        private toastyComponent: ToastyComponent) {
         this.initConditions();
     }
 
     ngOnInit() {
         this.resetHolder();
+        if(this.holderService.lstEquipamentos) {
+            this.showTableResult = true;
+        }
     }
 
     buscar() {
@@ -58,11 +63,11 @@ export class BuscaComponent implements OnInit {
                 this.holderService.alertOn = false;
                 this.showTableResult = true;
                 if (data.length === 0) {
-                    this.callAlert("A busca não obteve resultados.", "danger");
+                    this.callToasty("Ops, aconteceu algo.", "A busca não obteve resultados.", "error", 0);
                 }
             }, error => {
                 this.searching = false;
-                this.callAlert("Por favor verifique os dados inseridos.", "danger");
+                this.callToasty("Ops, aconteceu algo.", "Por favor verifique os dados inseridos.", "error", 0);
             })
     }
 
@@ -97,6 +102,16 @@ export class BuscaComponent implements OnInit {
             alertType: type,
             alertMsg: msg
         }
+    }
+
+    callToasty(titulo: string, msg: string, theme: string, timeout?: number) {
+        this.toastyComponent.toastyInfo = {
+            titulo: titulo,
+            msg: msg,
+            theme: theme,
+            timeout: timeout
+        }
+        this.toastyComponent.addToasty();
     }
 
     resetHolder() {
