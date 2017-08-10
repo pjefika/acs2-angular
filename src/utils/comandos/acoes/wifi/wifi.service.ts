@@ -4,6 +4,9 @@ import { Equipamento } from './../../../../viewmodel/equipamento/equipamento';
 import { Http, RequestOptions, Headers } from '@angular/http';
 import { Injectable } from '@angular/core';
 
+import 'rxjs/add/operator/toPromise';
+import 'rxjs/Rx';
+
 @Injectable()
 export class WifiService {
 

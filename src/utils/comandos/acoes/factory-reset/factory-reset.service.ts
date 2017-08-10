@@ -3,6 +3,9 @@ import { Equipamento } from './../../../../viewmodel/equipamento/equipamento';
 import { Headers, RequestOptions, Http } from '@angular/http';
 import { Injectable } from '@angular/core';
 
+import 'rxjs/add/operator/toPromise';
+import 'rxjs/Rx';
+
 @Injectable()
 export class FactoryResetService {
 
