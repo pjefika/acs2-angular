@@ -87,6 +87,7 @@ export class ModalComponent implements OnInit {
                 break;
             case "lan-host-component":
                 this.component = LanHostComponent
+                this.setModalOptions("static", "lg");
                 break;
             case "xdsl-component":
                 this.component = XdslComponent

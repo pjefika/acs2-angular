@@ -5,7 +5,33 @@
       </button>
 </div>
 <div class="modal-body">
-    <p>Lan Host</p>
+    <loading-component [searchWhat]="'Buscando Lan Hosts'" [searching]="searching"></loading-component>
+    <div *ngIf="lanHost">
+        <table class="table table-bordered table-sm table-responsive">
+            <thead>
+                <tr>
+                    <th>IP</th>
+                    <th>Source</th>
+                    <th>Time Remaining</th>
+                    <th>MAC</th>
+                    <th>Host</th>
+                    <th>Type</th>
+                    <th>Ativo</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let host of lanHost">
+                    <td>{{host.ipAddress}}</td>
+                    <td>{{host.addressSource}}</td>
+                    <td>{{host.leaseTimeRemaining}}</td>
+                    <td>{{host.macAddress}}</td>
+                    <td>{{host.hostName}}</td>
+                    <td>{{host.interfaceType}}</td>
+                    <td>{{host.ativo}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
 <div class="modal-footer">
     <button type="button" class="btn btn-secondary" (click)="activeModal.close('Close click')">Fechar</button>

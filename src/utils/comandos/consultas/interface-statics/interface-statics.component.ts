@@ -32,10 +32,9 @@ export class InterfaceStaticsComponent implements OnInit {
         this.interfaceStaticsService.getInterfaceStatistics(this.holderService.equipamento)
             .then(data => {
                 this.intStatic = data;
-                console.log(this.intStatic);
                 this.searching = false;
             }, error => {
-                this.callToasty("Ops, aconteceu algo.", "Erro ao buscar interface static.", "error", 0);
+                this.callToasty("Ops, aconteceu algo.", "Erro ao buscar interface static.", "error", 10000);
                 this.searching = false;
             });
     }
