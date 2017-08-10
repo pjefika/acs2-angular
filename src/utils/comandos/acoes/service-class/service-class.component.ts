@@ -45,10 +45,21 @@ export class ServiceClassComponent implements OnInit {
     }
 
     setServiceClass() {
-        if (this.btnServiceClass) {
+        if (this.serviceClass) {
+            this.btnServiceClass = true;
             this.nomeBtn = "Aguarde";
-            this.searching = true;
-            this.searching = false;
+            this.serviceClassService.setServiceClass(this.holderService.equipamento, this.serviceClass)
+                .then(data => {
+                    this.nomeBtn = "Modificar";
+                    if (data) {
+                        this.callToasty("Sucesso.", "Service Class modificado com sucesso.", "success", 10000);
+                    }
+                    this.btnServiceClass = false;
+                }, error => {
+                    this.nomeBtn = "Modificar";
+                    this.callToasty("Ops, aconteceu algo.", "Erro ao modificar Service Class.", "error", 10000);
+                    this.btnServiceClass = false;
+                });
         }
     }
 

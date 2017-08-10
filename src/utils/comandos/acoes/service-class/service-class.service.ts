@@ -28,6 +28,20 @@ export class ServiceClassService {
             .catch(this.handleError);
     }
 
+    public setServiceClass(device: Equipamento, service: ServiceClass): Promise<Boolean> {
+        let usr = JSON.parse(sessionStorage.getItem('user'));
+        const url = `${this.urlService.url}` + "device/setServiceClass";
+        let _data: { device: Equipamento, service: ServiceClass, executor: string };
+        _data = { device: device, service: service, executor: usr.usr }
+        return this.http.post(url, JSON.stringify(_data), this.urlService.options)
+            .timeout(120000)
+            .toPromise()
+            .then(response => {
+                return response.json() as Boolean
+            })
+            .catch(this.handleError);
+    }
+
     private handleError(error: any): Promise<any> {
         //console.error('Ocorreu o seguinte erro: ', error); // for demo purposes only
         let er: any;
