@@ -5,9 +5,41 @@
       </button>
 </div>
 <div class="modal-body">
-    <p>Ping</p>
+    <div class="form-group">
+        <label>Host</label>
+        <input type="text" class="form-control" [(ngModel)]="host">
+    </div>
+    <table class="table table-bordered table-sm centraliza" *ngIf="ping">
+        <tbody>
+            <tr>
+                <th>status</th>
+                <td>{{ping.status}}</td>
+            </tr>
+            <tr>
+                <th>avgRespTime</th>
+                <td>{{ping.avgRespTime}}</td>
+            </tr>
+            <tr>
+                <th>qtdSuccess</th>
+                <td>{{ping.qtdSuccess}}</td>
+            </tr>
+            <tr>
+                <th>qtdFailures</th>
+                <td>{{ping.qtdFailures}}</td>
+            </tr>
+            <tr>
+                <th>hostAddress</th>
+                <td>{{ping.hostAddress}}</td>
+            </tr>
+            <tr>
+                <th>repetitions</th>
+                <td>{{ping.repetitions}}</td>
+            </tr>
+            
+        </tbody>
+    </table>
 </div>
 <div class="modal-footer">
-    <button type="button" class="btn btn-primary" (click)="pingar()">Pingar</button>
+    <button type="button" class="btn btn-primary" (click)="pingDiagnostic()" [class.disabled]="btnPing">{{nomeBtn}}</button>
     <button type="button" class="btn btn-secondary" (click)="activeModal.close('Close click')">Fechar</button>
 </div>
