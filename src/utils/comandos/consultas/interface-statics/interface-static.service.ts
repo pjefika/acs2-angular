@@ -22,7 +22,7 @@ export class InterfaceStaticsService {
             .then(response => {
                 return response.json() as InterfaceStatic
             })
-            .catch(this.handleError)
+            .catch(this.handleError);
     }
 
     private handleError(error: any): Promise<any> {

@@ -5,7 +5,45 @@
       </button>
 </div>
 <div class="modal-body">
-    <p>WAN</p>
+    <loading-component [searchWhat]="'Buscando Wan Infos'" [searching]="searching"></loading-component>
+    <div *ngIf="wan">
+        <table class="table table-bordered table-sm">
+            <tbody>
+                <tr>
+                    <th>bytesReceived</th>
+                    <td>{{wan.bytesReceived}}</td>
+                </tr>
+                <tr>
+                    <th>bytesSent</th>
+                    <td>{{wan.bytesSent}}</td>
+                </tr>
+                <tr>
+                    <th>discardPacketsReceived</th>
+                    <td>{{wan.discardPacketsReceived}}</td>
+                </tr>
+                <tr>
+                    <th>discardPacketsSent</th>
+                    <td>{{wan.discardPacketsSent}}</td>
+                </tr>
+                <tr>
+                    <th>errorsReceived</th>
+                    <td>{{wan.errorsReceived}}</td>
+                </tr>
+                <tr>
+                    <th>packetsReceived</th>
+                    <td>{{wan.packetsReceived}}</td>
+                </tr>
+                <tr>
+                    <th>errorsSent</th>
+                    <td>{{wan.errorsSent}}</td>
+                </tr>
+                <tr>
+                    <th>packetsSent</th>
+                    <td>{{wan.packetsSent}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
 <div class="modal-footer">
     <button type="button" class="btn btn-secondary" (click)="activeModal.close('Close click')">Fechar</button>
