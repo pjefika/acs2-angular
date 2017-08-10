@@ -5,9 +5,15 @@
       </button>
 </div>
 <div class="modal-body">
-    <p>Service Class</p>
+    <loading-component [searchWhat]="'Buscando Service Class'" [searching]="searching"></loading-component>
+    <div *ngIf="serviceClass">
+        <div class="form-group">
+            <label>Service Class</label>
+            <input type="text" class="form-control" [(ngModel)]="serviceClass.classOfService">
+        </div>
+    </div>
 </div>
 <div class="modal-footer">
-    <button type="button" class="btn btn-primary" (click)="configurar()">Configurar</button>
+    <button type="button" class="btn btn-primary" (click)="getServiceClass()" [class.disabled]="btnServiceClass">{{nomeBtn}}</button>
     <button type="button" class="btn btn-secondary" (click)="activeModal.close('Close click')">Fechar</button>
 </div>
