@@ -32,6 +32,8 @@ export class BuscaComponent implements OnInit {
 
     public showTableResult: boolean = false;
 
+    public nomeBtn: string = "Buscar";
+
     constructor(
         private buscaService: BuscaService,
         public holderService: HolderService,
@@ -41,34 +43,37 @@ export class BuscaComponent implements OnInit {
 
     ngOnInit() {
         this.resetHolder();
-        if(this.holderService.lstEquipamentos) {
+        if (this.holderService.lstEquipamentos) {
             this.showTableResult = true;
         }
     }
 
     buscar() {
-        this.whatIsSearching = null;
-        this.whatIsSearchingInput = null;
-
-        this.seeWhatIsSearching();
-
-        this.listEqp = null;
-        this.searchWhat = "Buscando Equipamentos"
-        this.searching = true;
-        this.showTableResult = false;
-        this.buscaService.getLista(this.whatIsSearching, this.whatIsSearchingInput)
-            .then(data => {
-                this.listEqp = data;
-                this.searching = false;
-                this.holderService.alertOn = false;
-                this.showTableResult = true;
-                if (data.length === 0) {
-                    this.callToasty("Ops, aconteceu algo.", "A busca não obteve resultados.", "error", 15000);
-                }
-            }, error => {
-                this.searching = false;
-                this.callToasty("Ops, aconteceu algo.", error.mError, "error", 0);
-            })
+        if (!this.searching) {
+            this.nomeBtn = "Aguarde";
+            this.whatIsSearching = null;
+            this.whatIsSearchingInput = null;
+            this.seeWhatIsSearching();
+            this.listEqp = null;
+            this.searchWhat = "Buscando Equipamentos"
+            this.searching = true;
+            this.showTableResult = false;
+            this.buscaService.getLista(this.whatIsSearching, this.whatIsSearchingInput)
+                .then(data => {
+                    this.listEqp = data;
+                    this.searching = false;
+                    this.holderService.alertOn = false;
+                    this.showTableResult = true;
+                    if (data.length === 0) {
+                        this.callToasty("Ops, aconteceu algo.", "A busca não obteve resultados.", "error", 15000);
+                    }
+                    this.nomeBtn = "Buscar";
+                }, error => {
+                    this.searching = false;
+                    this.callToasty("Ops, aconteceu algo.", error.mError, "error", 0);
+                    this.nomeBtn = "Buscar";
+                });
+        }
     }
 
     seeWhatIsSearching() {

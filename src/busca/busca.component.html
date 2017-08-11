@@ -22,7 +22,7 @@
                     <label>IP</label>
                     <input class="form-control" type="text" placeholder="Busca por IP..." name="ip" [(ngModel)]="searchCond.ip">
                 </div>
-                <button type="button" class="btn btn-primary" (click)="buscar()">Buscar</button>
+                <button type="button" class="btn btn-primary" (click)="buscar()" [class.disabled]="searching">{{nomeBtn}}</button>
                 <button type="button" class="btn btn-default" (click)="initConditions()">Limpar</button>
             </form>
         </div>

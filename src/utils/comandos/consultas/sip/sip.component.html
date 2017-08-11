@@ -9,7 +9,7 @@
         <label>phyref</label>
         <input type="text" class="form-control" [(ngModel)]="phyref">
     </div>
-    <table class="table table-bordered table-sm centraliza" *ngIf="sip">
+    <table class="table table-bordered table-sm alinhar-text-center" *ngIf="sip">
         <tbody>
             <tr>
                 <th>uri</th>
@@ -91,6 +91,6 @@
     </table>
 </div>
 <div class="modal-footer">
-    <button type="button" class="btn btn-primary" (click)="getSipDiagnostics()" [class.disabled]="btnSip">Consultar</button>
+    <button type="button" class="btn btn-primary" (click)="getSipDiagnostics()" [class.disabled]="btnSip">{{nomeBtn}}}</button>
     <button type="button" class="btn btn-secondary" (click)="activeModal.close('Close click')">Fechar</button>
 </div>

@@ -2,19 +2,34 @@
     <li class="list-group-item" [ngClass]="holderService.checkOnline ? 'list-group-item-success': 'list-group-item-danger'">
         <div class="row">
             <div class="col-sm-9">
-                <span *ngIf="holderService.checkOnline">Status: Ativo</span>
-                <span *ngIf="!holderService.checkOnline">Status: Inativo</span>
+                <span *ngIf="holderService.checkOnline"><span class="negrito">Status: </span> Ativo</span>
+                <span *ngIf="!holderService.checkOnline"><span class="negrito">Status: </span> Inativo</span>
             </div>
             <div class="col-sm-3">
                 <button class="btn btn-secondary btn-sm" (click)="busca()">Atualizar</button>
             </div>
         </div>
     </li>
-    <li class="list-group-item">Serial: {{equipamento.deviceId.serialNumber}}</li>
-    <li class="list-group-item">Subscriber Id: {{equipamento.subscriberID}}</li>
-    <li class="list-group-item">Firmware: {{equipamento.softwareVersion}}</li>
-    <li class="list-group-item">Nome do Modelo: {{equipamento.modelName}}</li>
-    <li class="list-group-item">Fabricante: {{equipamento.manufacturer}}</li>
-    <li class="list-group-item">IP: {{equipamento.IPAddress}}</li>
-    <li class="list-group-item">Data Autenticação: {{ ((equipamento.lastActivationTime / 1000) | amFromUnix) | amDateFormat: 'DD/MM/YYYY HH:mm:ss'}}</li>
+    <li class="list-group-item ">
+        <span class="negrito">Serial: </span> {{equipamento.deviceId.serialNumber}}
+    </li>
+    <li class="list-group-item ">
+        <span class="negrito">Subscriber Id: </span> {{equipamento.subscriberID}}
+    </li>
+    <li class="list-group-item ">
+        <span class="negrito">Firmware: </span>{{equipamento.softwareVersion}}
+    </li>
+    <li class="list-group-item ">
+        <span class="negrito">Nome do Modelo: </span> {{equipamento.modelName}}
+    </li>
+    <li class="list-group-item ">
+        <span class="negrito">Fabricante: </span> {{equipamento.manufacturer}}
+    </li>
+    <li class="list-group-item ">
+        <span class="negrito">IP: </span> {{equipamento.IPAddress}}
+    </li>
+    <li class="list-group-item ">
+        <span class="negrito">Data Autenticação: </span> {{ ((equipamento.lastActivationTime / 1000) | amFromUnix) | amDateFormat:
+        'DD/MM/YYYY HH:mm:ss'}}
+    </li>
 </ul>

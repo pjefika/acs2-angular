@@ -20,6 +20,7 @@ export class SipGetComponent implements OnInit {
     public btnSipModificar: boolean = true;
     public btnNome: string = "Modificar";
     public searching: boolean = false;
+    public nomeBtn: string = "Consultar";
 
     constructor(
         public activeModal: NgbActiveModal,
@@ -33,23 +34,20 @@ export class SipGetComponent implements OnInit {
     getSipDiagnostics() {
         this.searching = true;
         this.btnSip = true;
+        this.nomeBtn = "Aguarde";
         this.sipService.getSipDiagnostics(this.holderService.equipamento, this.phyref)
             .then(data => {
                 this.sip = data;
                 this.searching = false;
                 this.btnSip = false;
                 this.btnSipModificar = false;
+                this.nomeBtn = "Consultar";
             }, error => {
                 this.searching = false;
                 this.btnSip = false;
+                this.nomeBtn = "Consultar";
                 this.callToasty("Ops, aconteceu algo.", error.mError, "error", 10000);
             });
-    }
-
-    setSipDiagnostics() {
-        if (this.sip) {
-
-        }
     }
 
     callToasty(titulo: string, msg: string, theme: string, timeout?: number) {
