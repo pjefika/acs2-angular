@@ -1,7 +1,7 @@
 <div *ngIf="showTable">
     <div class="full-width" *ngIf="mountedList">
         <data-table headerTitle="Equipamentos" [items]="mountedList" [itemCount]="listCount" (rowClick)="rowClick($event)" (reload)="reloadEqp($event)"
-            [limit]="limit" [sortBy]="'rating'" [indexColumn]="false">
+            [limit]="limit" [sortBy]="'rating'" [indexColumn]="false" [translations]="translations">
             <data-table-column [property]="'subscriber'" [header]="'Subscriber'" [sortable]="true"></data-table-column>
             <data-table-column [property]="'serial'" [header]="'Serial'" [sortable]="true"></data-table-column>
             <data-table-column [property]="'ip'" [header]="'IP'" [sortable]="true"></data-table-column>
