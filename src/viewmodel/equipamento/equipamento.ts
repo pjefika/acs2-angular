@@ -12,12 +12,5 @@ export class Equipamento {
     IPAddress: string;
     firmwareVersion: string;
     type: number;
-    lastActivationTime: {
-        day: number;
-        month: number;
-        year: number;
-        hour: number;
-        minute: number;
-        second: number;
-    }
+    lastActivationTime: number
 }

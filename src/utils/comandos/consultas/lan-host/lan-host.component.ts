@@ -14,8 +14,8 @@ import { Component, OnInit } from '@angular/core';
 
 export class LanHostComponent implements OnInit {
 
-    private lanHost: LanHost;
-    private searching: boolean = false;
+    public lanHost: LanHost;
+    public searching: boolean = false;
 
     constructor(
         public activeModal: NgbActiveModal,

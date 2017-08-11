@@ -14,8 +14,8 @@ import { Component, OnInit } from '@angular/core';
 
 export class XdslComponent implements OnInit {
 
-    private xdsl: Xdsl;
-    private searching: boolean = false;
+    public xdsl: Xdsl;
+    public searching: boolean = false;
 
     constructor(
         public activeModal: NgbActiveModal,

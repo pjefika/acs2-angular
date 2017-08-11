@@ -17,12 +17,12 @@ export class ResulTableEquipamentoComponent implements OnInit, OnChanges {
     @Input() listEqp: Equipamento[];
     @Input() showTable: boolean = false;
 
-    private mountedList: EquipamentoResult[];
-    private listCount = 0;
+    public mountedList: EquipamentoResult[];
+    public listCount = 0;
 
-    private listEqpResource;
-    private translations;
-    private limit;
+    public listEqpResource;
+    public translations;
+    public limit;
 
     constructor(
         private templateComponent: TemplateComponent,

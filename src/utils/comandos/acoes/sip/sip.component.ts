@@ -15,12 +15,12 @@ import { Component, OnInit } from '@angular/core';
 
 export class SipSetComponent implements OnInit {
 
-    private phyref: string = "1";
-    private sip: Sip;
-    private sipIn: SipIn;
-    private btnSipModificar: boolean = true;
-    private btnNome: string = "Modificar";
-    private searching: boolean = false;
+    public phyref: string = "1";
+    public sip: Sip;
+    public sipIn: SipIn;
+    public btnSipModificar: boolean = true;
+    public btnNome: string = "Modificar";
+    public searching: boolean = false;
 
     constructor(
         public activeModal: NgbActiveModal,

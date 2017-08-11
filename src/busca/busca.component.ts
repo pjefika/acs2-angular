@@ -15,27 +15,27 @@ import { Component, OnInit } from '@angular/core';
 
 export class BuscaComponent implements OnInit {
 
-    private listEqp: Equipamento[];
+    public listEqp: Equipamento[];
 
-    private searchCond: {
+    public searchCond: {
         designador: string,
         serial: string,
         mac: string,
         ip: string
     }
 
-    private whatIsSearchingInput: string;
-    private whatIsSearching: string;
+    public whatIsSearchingInput: string;
+    public whatIsSearching: string;
 
-    private searching: boolean = false;
-    private searchWhat: string;
+    public searching: boolean = false;
+    public searchWhat: string;
 
-    private showTableResult: boolean = false;
+    public showTableResult: boolean = false;
 
     constructor(
         private buscaService: BuscaService,
-        private holderService: HolderService,
-        private toastyComponent: ToastyComponent) {
+        public holderService: HolderService,
+        public toastyComponent: ToastyComponent) {
         this.initConditions();
     }
 

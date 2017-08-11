@@ -13,7 +13,7 @@ export class EquipamentoComponent implements OnInit {
 
     @Input() equipamento: Equipamento;
 
-    private status: boolean = false;
+    public status: boolean = false;
 
     constructor(
         public holderService: HolderService,

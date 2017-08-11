@@ -14,10 +14,10 @@ import { Component, OnInit } from '@angular/core';
 
 export class WifiComponent implements OnInit {
 
-    private wifi: Wifi;
-    private searching: boolean = false;
-    private btnSetWifi: boolean = false;
-    private nomeBtn: string = "Modificar";
+    public wifi: Wifi;
+    public searching: boolean = false;
+    public btnSetWifi: boolean = false;
+    public nomeBtn: string = "Modificar";
 
     constructor(
         public activeModal: NgbActiveModal,

@@ -14,8 +14,8 @@ import { Component, OnInit } from '@angular/core';
 
 export class InterfaceStaticsComponent implements OnInit {
 
-    private intStatic: InterfaceStatic;
-    private searching: boolean = false;
+    public intStatic: InterfaceStatic;
+    public searching: boolean = false;
 
     constructor(
         public activeModal: NgbActiveModal,

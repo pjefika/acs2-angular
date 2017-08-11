@@ -13,8 +13,8 @@ import { Component, OnInit } from '@angular/core';
 
 export class FactoryResetComponent implements OnInit {
 
-    private nomeBtn: string = "Sim";
-    private disableBtn: boolean = false;
+    public nomeBtn: string = "Sim";
+    public disableBtn: boolean = false;
 
     constructor(
         public activeModal: NgbActiveModal,

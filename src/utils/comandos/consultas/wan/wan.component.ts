@@ -15,8 +15,8 @@ import { Component, OnInit } from '@angular/core';
 
 export class WanComponent implements OnInit {
 
-    private wan: Wan;
-    private searching: boolean = false;
+    public wan: Wan;
+    public searching: boolean = false;
 
     constructor(
         public activeModal: NgbActiveModal,

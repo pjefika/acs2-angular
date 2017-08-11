@@ -15,11 +15,11 @@ import { Component, OnInit, Injector } from '@angular/core';
 
 export class DetalheComponent implements OnInit {
 
-    private eqpReady: boolean = false;
-    private searching: boolean = false;
-    private searchWhat: string;
-    private eqp: EquipamentoResult;
-    private device: EquipamentoInfo;
+    public eqpReady: boolean = false;
+    public searching: boolean = false;
+    public searchWhat: string;
+    public eqp: EquipamentoResult;
+    public device: EquipamentoInfo;
 
     constructor(
         private detalheService: DetalheService,

@@ -14,12 +14,12 @@ import { Component, OnInit } from '@angular/core';
 
 export class TemplateComponent implements OnInit {
 
-    private componentData = null;
+    public componentData = null;
 
     constructor(
         private router: Router,
         private validLoginService: ValidLoginService,
-        private holderService: HolderService) { }
+        public holderService: HolderService) { }
 
     ngOnInit() {
         this.validLoginService.isLogado()

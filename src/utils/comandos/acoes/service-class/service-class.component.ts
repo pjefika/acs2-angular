@@ -14,10 +14,10 @@ import { Component, OnInit } from '@angular/core';
 
 export class ServiceClassComponent implements OnInit {
 
-    private serviceClass: ServiceClass;
-    private searching: boolean = false;
-    private btnServiceClass: boolean = false;
-    private nomeBtn: string = "Modificar";
+    public serviceClass: ServiceClass;
+    public searching: boolean = false;
+    public btnServiceClass: boolean = false;
+    public nomeBtn: string = "Modificar";
 
     constructor(
         public activeModal: NgbActiveModal,

@@ -14,9 +14,9 @@ import { Component, OnInit } from '@angular/core';
 
 export class DhcpComponent implements OnInit {
 
-    private searching: boolean = false;
-    private dhcp: Dhcp;
-    private btnSetDhcp: boolean = false;
+    public searching: boolean = false;
+    public dhcp: Dhcp;
+    public btnSetDhcp: boolean = false;
 
     constructor(
         public activeModal: NgbActiveModal,

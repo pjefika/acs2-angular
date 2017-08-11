@@ -14,12 +14,12 @@ import { Component, OnInit } from '@angular/core';
 
 export class SipGetComponent implements OnInit {
 
-    private phyref: number = 1;
-    private sip: Sip;
-    private btnSip: boolean = false;
-    private btnSipModificar: boolean = true;
-    private btnNome: string = "Modificar";
-    private searching: boolean = false;
+    public phyref: number = 1;
+    public sip: Sip;
+    public btnSip: boolean = false;
+    public btnSipModificar: boolean = true;
+    public btnNome: string = "Modificar";
+    public searching: boolean = false;
 
     constructor(
         public activeModal: NgbActiveModal,

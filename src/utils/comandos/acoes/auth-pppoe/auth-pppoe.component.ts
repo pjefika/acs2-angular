@@ -14,8 +14,8 @@ import { Component, OnInit } from '@angular/core';
 
 export class AuthPPPoEComponent implements OnInit {
 
-    private pppoecred: PPPoECredentials;
-    private searching: boolean = false;
+    public pppoecred: PPPoECredentials;
+    public searching: boolean = false;
 
     constructor(
         public activeModal: NgbActiveModal,

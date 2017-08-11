@@ -14,10 +14,10 @@ import { Component, OnInit } from '@angular/core';
 
 export class PingComponent implements OnInit {
 
-    private host: string = "www.google.com";
-    private ping: Ping;
-    private btnPing: boolean = false;
-    private nomeBtn: string = "Pingar";
+    public host: string = "www.google.com";
+    public ping: Ping;
+    public btnPing: boolean = false;
+    public nomeBtn: string = "Pingar";
 
     constructor(
         public activeModal: NgbActiveModal,
