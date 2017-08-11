@@ -34,7 +34,7 @@ export class InterfaceStaticsComponent implements OnInit {
                 this.intStatic = data;
                 this.searching = false;
             }, error => {
-                this.callToasty("Ops, aconteceu algo.", "Erro ao buscar interface static.", "error", 10000);
+                this.callToasty("Ops, aconteceu algo.", error.mError, "error", 10000);
                 this.searching = false;
             });
     }

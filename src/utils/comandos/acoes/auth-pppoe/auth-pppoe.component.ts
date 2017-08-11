@@ -35,7 +35,7 @@ export class AuthPPPoEComponent implements OnInit {
                 this.searching = false;
             }, error => {
                 this.searching = false;
-                this.callToasty("Ops, aconteceu algo.", "Ocorreu um problema ao realizar busca.", "error", 0);
+                this.callToasty("Ops, aconteceu algo.", error.mError, "error", 0);
             })
     }
 

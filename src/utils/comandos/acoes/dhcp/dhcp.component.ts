@@ -38,7 +38,7 @@ export class DhcpComponent implements OnInit {
                 this.btnSetDhcp = false;
             }, error => {
                 this.btnSetDhcp = false;
-                this.callToasty("Ops, aconteceu algo.", "Erro ao realizar busca das informações.", "error", 10000);
+                this.callToasty("Ops, aconteceu algo.", error.mError, "error", 10000);
             });
     }
 
@@ -53,7 +53,7 @@ export class DhcpComponent implements OnInit {
                         this.callToasty("Ops, aconteceu algo.", "Erro ao realizar alteração das informações.", "error", 10000);
                     }
                 }, error => {
-                    this.callToasty("Ops, aconteceu algo.", "O sistema não consegue realizar alteração das informações..", "error", 10000);
+                    this.callToasty("Ops, aconteceu algo.", error.mError, "error", 10000);
                 });
         }
     }

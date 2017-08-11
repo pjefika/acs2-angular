@@ -38,7 +38,7 @@ export class FactoryResetComponent implements OnInit {
                         this.callToasty("Ops, aconteceu algo.", "Reset de fábrica não realizado.", "error", 0);
                     }
                 }, error => {
-                    this.callToasty("Ops, aconteceu algo.", "Sistema não conseguiu realizar ação no modem", "error", 0);
+                    this.callToasty("Ops, aconteceu algo.", error.mError, "error", 0);
                 });
 
         }

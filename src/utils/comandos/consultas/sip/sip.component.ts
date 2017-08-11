@@ -42,7 +42,7 @@ export class SipGetComponent implements OnInit {
             }, error => {
                 this.searching = false;
                 this.btnSip = false;
-                this.callToasty("Ops, aconteceu algo.", "Erro ao buscar Sip Diagnostics.", "error", 10000);
+                this.callToasty("Ops, aconteceu algo.", error.mError, "error", 10000);
             });
     }
 

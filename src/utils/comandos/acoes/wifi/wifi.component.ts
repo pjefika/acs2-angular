@@ -40,7 +40,8 @@ export class WifiComponent implements OnInit {
             }, error => {
                 this.searching = false;
                 this.btnSetWifi = false;
-                this.callToasty("Ops, aconteceu algo.", "Erro ao realizar consulta.", "error", 10000);
+                this.activeModal.close();
+                this.callToasty("Ops, aconteceu algo.", error.mError, "error", 10000);
             });
     }
 
@@ -56,7 +57,7 @@ export class WifiComponent implements OnInit {
                         this.callToasty("Ops, aconteceu algo.", "Erro ao realizar alterações.", "error", 10000);
                     }
                 }, error => {
-                    this.callToasty("Ops, aconteceu algo.", "Sistema não conseguiu realizar alterações.", "error", 10000);
+                    this.callToasty("Ops, aconteceu algo.", error.mError, "error", 10000);
                 });
         }
     }

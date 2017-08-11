@@ -11,7 +11,6 @@ import 'rxjs/Rx';
 export class ServiceClassService {
 
     constructor(
-        private http: Http,
         private urlService: UrlService) { }
 
     public getServiceClass(device: Equipamento): Promise<ServiceClass> {
@@ -19,11 +18,9 @@ export class ServiceClassService {
         const url = `${this.urlService.url}` + "device/getServiceClass";
         let _data: { device: Equipamento, executor: string };
         _data = { device: device, executor: usr.usr }
-        return this.http.post(url, JSON.stringify(_data), this.urlService.options)
-            .timeout(120000)
-            .toPromise()
-            .then(response => {
-                return response.json() as ServiceClass
+        return this.urlService.httpPostRequest(_data, "device/getServiceClass")
+            .then(data => {
+                return data as ServiceClass
             })
             .catch(this.handleError);
     }
@@ -33,32 +30,15 @@ export class ServiceClassService {
         const url = `${this.urlService.url}` + "device/setServiceClass";
         let _data: { device: Equipamento, service: ServiceClass, executor: string };
         _data = { device: device, service: service, executor: usr.usr }
-        return this.http.post(url, JSON.stringify(_data), this.urlService.options)
-            .timeout(120000)
-            .toPromise()
-            .then(response => {
-                return response.json() as Boolean
+        return this.urlService.httpPostRequest(_data, "device/setServiceClass")
+            .then(data => {
+                return data as Boolean
             })
             .catch(this.handleError);
     }
 
     private handleError(error: any): Promise<any> {
-        //console.error('Ocorreu o seguinte erro: ', error); // for demo purposes only
-        let er: any;
-        if (error.message === "Timeout has occurred") {
-            er = {
-                tError: "Timeout",
-                mError: "Tempo de busca excedido, por favor realize a busca novamente, caso o problema persista informe ao administrador do sistema."
-            }
-        } else {
-            let erJson: any;
-            erJson = error.json();
-            er = {
-                tError: "",
-                mError: erJson.message
-            }
-        }
-        return Promise.reject(er);
+        return Promise.reject(error);
     }
 
 }

@@ -63,11 +63,11 @@ export class BuscaComponent implements OnInit {
                 this.holderService.alertOn = false;
                 this.showTableResult = true;
                 if (data.length === 0) {
-                    this.callToasty("Ops, aconteceu algo.", "A busca não obteve resultados.", "error", 0);
+                    this.callToasty("Ops, aconteceu algo.", "A busca não obteve resultados.", "error", 15000);
                 }
             }, error => {
                 this.searching = false;
-                this.callToasty("Ops, aconteceu algo.", "Por favor verifique os dados inseridos.", "error", 0);
+                this.callToasty("Ops, aconteceu algo.", error.mError, "error", 0);
             })
     }
 

@@ -39,7 +39,7 @@ export class PingComponent implements OnInit {
             }, error => {
                 this.btnPing = false;
                 this.nomeBtn = "Pingar";
-                this.callToasty("Ops, aconteceu algo.", "Erro ao realizar ação.", "error", 10000);
+                this.callToasty("Ops, aconteceu algo.", error.mError, "error", 10000);
             })
     }
 

@@ -75,7 +75,7 @@ export class SipSetComponent implements OnInit {
                         this.callToasty("Ops, aconteceu algo.", "Erro ao executar comando Sip.", "error", 10000);
                     }
                 }, error => {
-                    this.callToasty("Ops, aconteceu algo.", "Sistema não está conseguindo realizar comando.", "error", 10000);
+                    this.callToasty("Ops, aconteceu algo.", error.mError, "error", 10000);
                 });
         }
     }

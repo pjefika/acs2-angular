@@ -49,7 +49,7 @@ export class DetalheComponent implements OnInit {
                 }
             }, error => {
                 this.searching = false;
-                this.callToasty("Ops, aconteceu algo.", "Erro ao buscar equipamento por favor verifique.", "error", 10000);
+                this.callToasty("Ops, aconteceu algo.", error.mError, "error", 10000);
             });
     }
 

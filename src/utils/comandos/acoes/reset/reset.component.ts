@@ -39,7 +39,7 @@ export class ResetComponent implements OnInit {
                         this.callToasty("Ops, aconteceu algo.", "O modem não pode ser reiniciado.", "error", 0);
                     }
                 }, error => {
-                    this.callToasty("Ops, aconteceu algo.", "Sistema não conseguiu realizar ação no modem", "error", 0);
+                    this.callToasty("Ops, aconteceu algo.", error.mError, "error", 0);
                 });
         }
     }

@@ -36,7 +36,7 @@ export class WanComponent implements OnInit {
                 this.searching = false;
             }, error => {
                 this.searching = false;
-                this.callToasty("Ops, aconteceu algo.", "Erro ao buscar Wan Infos.", "error", 10000);
+                this.callToasty("Ops, aconteceu algo.", error.mError, "error", 10000);
             })
     }
 

@@ -40,7 +40,7 @@ export class ServiceClassComponent implements OnInit {
             }, error => {
                 this.searching = false;
                 this.btnServiceClass = false;
-                this.callToasty("Ops, aconteceu algo.", "Erro ao buscar Service Class.", "error", 10000);
+                this.callToasty("Ops, aconteceu algo.", error.mError, "error", 10000);
             });
     }
 
@@ -57,7 +57,7 @@ export class ServiceClassComponent implements OnInit {
                     this.btnServiceClass = false;
                 }, error => {
                     this.nomeBtn = "Modificar";
-                    this.callToasty("Ops, aconteceu algo.", "Erro ao modificar Service Class.", "error", 10000);
+                    this.callToasty("Ops, aconteceu algo.", error.mError, "error", 10000);
                     this.btnServiceClass = false;
                 });
         }

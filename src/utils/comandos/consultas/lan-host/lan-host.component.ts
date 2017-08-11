@@ -35,7 +35,7 @@ export class LanHostComponent implements OnInit {
                 this.searching = false;
             }, error => {
                 this.searching = false;
-                this.callToasty("Ops, aconteceu algo.", "Erro ao buscar tabela de Hosts.", "error", 10000);
+                this.callToasty("Ops, aconteceu algo.", error.mError, "error", 10000);
             });
     }
 
