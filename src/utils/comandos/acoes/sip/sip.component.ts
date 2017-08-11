@@ -47,10 +47,11 @@ export class SipSetComponent implements OnInit {
     }
 
     mountSipObject() {
+
         this.sipIn = {
             DirectoryNumber: this.sip.directoryNumber,
             AuthUserName: this.sip.authUserName,
-            AuthPassword: this.sip.authPassword,
+            AuthPassword: this.splitAuthPassword(this.sip.directoryNumber),
             ProxyServer: this.sip.proxyServer,
             RegistrarServer: this.sip.registrarServer,
             UserAgentDomain: this.sip.userAgentDomain,
@@ -88,5 +89,11 @@ export class SipSetComponent implements OnInit {
             timeout: timeout
         }
         this.toastyComponent.addToasty();
+    }
+
+    splitAuthPassword(directorynumber): string {
+        let splited: string;
+        splited = directorynumber.substring(7, 13);
+        return splited;
     }
 }

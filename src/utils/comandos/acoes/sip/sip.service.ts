@@ -27,7 +27,6 @@ export class SipService {
 
     public setSipActivation(device: Equipamento, sipIn: SipIn): Promise<Boolean> {
         let usr = JSON.parse(sessionStorage.getItem('user'));
-        const url = `${this.urlService.url}` + "device/setSipActivation";
         let _data: { device: Equipamento, sip: SipIn, executor: string };
         _data = { device: device, sip: sipIn, executor: usr.usr }
         return this.urlService.httpPostRequest(_data, "device/setSipActivation")

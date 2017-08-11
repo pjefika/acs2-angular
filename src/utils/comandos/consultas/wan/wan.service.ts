@@ -12,7 +12,6 @@ export class WanService {
 
     public getWanInfo(device: Equipamento): Promise<Wan> {
         let usr = JSON.parse(sessionStorage.getItem('user'));
-        const url = `${this.urlService.url}` + "device/getWanInfo";
         let _data: { device: Equipamento, executor: string };
         _data = { device: device, executor: usr.usr }
         return this.urlService.httpPostRequest(_data, "device/getWanInfo")

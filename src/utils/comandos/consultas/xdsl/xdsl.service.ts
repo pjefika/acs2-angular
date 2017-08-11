@@ -12,7 +12,6 @@ export class XdslService {
 
     public getXdslDiagnostic(device: Equipamento): Promise<Xdsl> {
         let usr = JSON.parse(sessionStorage.getItem('user'));
-        const url = `${this.urlService.url}` + "device/getXdslDiagnostic";
         let _data: { device: Equipamento, executor: string };
         _data = { device: device, executor: usr.usr }
         return this.urlService.httpPostRequest(_data, "device/getXdslDiagnostic")
