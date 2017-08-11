@@ -2,8 +2,8 @@
     <li class="list-group-item" [ngClass]="holderService.checkOnline ? 'list-group-item-success': 'list-group-item-danger'">
         <div class="row">
             <div class="col-sm-9">
-                <span *ngIf="actived">Status: Ativo</span>
-                <span *ngIf="!actived">Status: Inativo</span>
+                <span *ngIf="holderService.checkOnline">Status: Ativo</span>
+                <span *ngIf="!holderService.checkOnline">Status: Inativo</span>
             </div>
             <div class="col-sm-3">
                 <button class="btn btn-secondary btn-sm" (click)="busca()">Atualizar</button>
