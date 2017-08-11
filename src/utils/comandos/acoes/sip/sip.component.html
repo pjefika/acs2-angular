@@ -5,93 +5,63 @@
       </button>
 </div>
 <div class="modal-body">
-    <div class="form-group">
-        <label>phyref</label>
-        <input type="text" class="form-control" [(ngModel)]="phyref">
+    <loading-component [searchWhat]="'Buscando Configurações Sip'" [searching]="searching"></loading-component>
+    <div *ngIf="sipIn">
+        <table class="table table-bordered table-sm centraliza">
+            <tbody>
+                <tr>
+                    <th>DirectoryNumber</th>
+                    <td>
+                        <input type="text" [(ngModel)]="sipIn.DirectoryNumber" name="DirectoryNumber" class="form-control">
+                    </td>
+                </tr>
+                <tr>
+                    <th>AuthUserName</th>
+                    <td>
+                        <input type="text" [(ngModel)]="sipIn.AuthUserName" name="AuthUserName" class="form-control">
+                    </td>
+                </tr>
+                <tr>
+                    <th>AuthPassword</th>
+                    <td>
+                        <input type="text" [(ngModel)]="sipIn.AuthPassword" name="AuthPassword" class="form-control">
+                    </td>
+                </tr>
+                <tr>
+                    <th>ProxyServer</th>
+                    <td>
+                        <input type="text" [(ngModel)]="sipIn.ProxyServer" name="ProxyServer" class="form-control">
+                    </td>
+                </tr>
+                <tr>
+                    <th>RegistrarServer</th>
+                    <td>
+                        <input type="text" [(ngModel)]="sipIn.RegistrarServer" name="RegistrarServer" class="form-control">
+                    </td>
+                </tr>
+                <tr>
+                    <th>UserAgentDomain</th>
+                    <td>
+                        <input type="text" [(ngModel)]="sipIn.UserAgentDomain" name="UserAgentDomain" class="form-control">
+                    </td>
+                </tr>
+                <tr>
+                    <th>OutboundProxy</th>
+                    <td>
+                        <input type="text" [(ngModel)]="sipIn.OutboundProxy" name="OutboundProxy" class="form-control">
+                    </td>
+                </tr>
+                <tr>
+                    <th>OutboundProxy</th>
+                    <td>
+                        <input type="text" [(ngModel)]="sipIn.phyReferenceList" name="phyReferenceList" class="form-control">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </div>
-    <table class="table table-bordered table-sm centraliza" *ngIf="sip">
-        <tbody>
-            <tr>
-                <th>uri</th>
-                <td>{{sip.uri}}</td>
-            </tr>
-            <tr>
-                <th>status</th>
-                <td>{{sip.status}}</td>
-            </tr>
-            <tr>
-                <th>codec</th>
-                <td>{{sip.codec}}</td>
-            </tr>
-            <tr>
-                <th>enable</th>
-                <td>{{sip.enable}}</td>
-            </tr>
-            <tr>
-                <th>outboundProxy</th>
-                <td>{{sip.outboundProxy}}</td>
-            </tr>
-            <tr>
-                <th>proxyServer</th>
-                <td>{{sip.proxyServer}}</td>
-            </tr>
-            <tr>
-                <th>authPassword</th>
-                <td>{{sip.authPassword}}</td>
-            </tr>
-            <tr>
-                <th>profileEnable</th>
-                <td>{{sip.profileEnable}}</td>
-            </tr>
-            <tr>
-                <th>dtmfmethod</th>
-                <td>{{sip.dtmfmethod}}</td>
-            </tr>
-            <tr>
-                <th>lineEnable</th>
-                <td>{{sip.lineEnable}}</td>
-            </tr>
-            <tr>
-                <th>callState</th>
-                <td>{{sip.callState}}</td>
-            </tr>
-            <tr>
-                <th>authUserName</th>
-                <td>{{sip.authUserName}}</td>
-            </tr>
-            <tr>
-                <th>t38Enable</th>
-                <td>{{sip.t38Enable}}</td>
-            </tr>
-            <tr>
-                <th>packetsLost</th>
-                <td>{{sip.packetsLost}}</td>
-            </tr>
-            <tr>
-                <th>directoryNumber</th>
-                <td>{{sip.directoryNumber}}</td>
-            </tr>
-            <tr>
-                <th>conferenceCallURI</th>
-                <td>{{sip.conferenceCallURI}}</td>
-            </tr>
-            <tr>
-                <th>userAgentDomain</th>
-                <td>{{sip.userAgentDomain}}</td>
-            </tr>
-            <tr>
-                <th>registrarServer</th>
-                <td>{{sip.registrarServer}}</td>
-            </tr>
-            <tr>
-                <th>proxyServerPort</th>
-                <td>{{sip.proxyServerPort}}</td>
-            </tr>
-        </tbody>
-    </table>
 </div>
 <div class="modal-footer">
-    <button type="button" class="btn btn-primary" (click)="getSipDiagnostics()" [class.disabled]="btnSip">Consultar</button>
     <button type="button" class="btn btn-warning" (click)="setSipDiagnostics()" [class.disabled]="btnSipModificar">{{btnNome}}</button>
     <button type="button" class="btn btn-secondary" (click)="activeModal.close('Close click')">Fechar</button>
 </div>

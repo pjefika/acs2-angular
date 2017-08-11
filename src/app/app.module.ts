@@ -4,7 +4,7 @@ import { UrlService } from './../utils/url-service/url.service';
 import { CheckOnlineComponent } from './../utils/comandos/consultas/check-online/check-online.component';
 import { HistoriaComponent } from './../utils/comandos/consultas/historia/historia.component';
 import { DmzComponent } from './../utils/comandos/consultas/dmz/dmz.component';
-import { SipConsultaComponent } from './../utils/comandos/consultas/sip/sip.component';
+import { SipGetComponent } from './../utils/comandos/consultas/sip/sip.component';
 import { PortMappingComponent } from './../utils/comandos/consultas/port-mapping/port-mapping.component';
 import { XdslComponent } from './../utils/comandos/consultas/xdsl/xdsl.component';
 import { LanHostComponent } from './../utils/comandos/consultas/lan-host/lan-host.component';
@@ -12,7 +12,7 @@ import { InterfaceStaticsComponent } from './../utils/comandos/consultas/interfa
 import { WanComponent } from './../utils/comandos/consultas/wan/wan.component';
 import { DhcpComponent } from './../utils/comandos/acoes/dhcp/dhcp.component';
 import { ServiceClassComponent } from './../utils/comandos/acoes/service-class/service-class.component';
-import { SipComponent } from './../utils/comandos/acoes/sip/sip.component';
+import { SipSetComponent } from './../utils/comandos/acoes/sip/sip.component';
 import { AuthPPPoEComponent } from './../utils/comandos/acoes/auth-pppoe/auth-pppoe.component';
 import { WifiComponent } from './../utils/comandos/acoes/wifi/wifi.component';
 import { PingComponent } from './../utils/comandos/acoes/ping/ping.component';
@@ -75,7 +75,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     PingComponent,
     WifiComponent,
     AuthPPPoEComponent,
-    SipComponent,
     ServiceClassComponent,
     DhcpComponent,
     WanComponent,
@@ -83,11 +82,12 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     LanHostComponent,
     XdslComponent,
     PortMappingComponent,
-    SipConsultaComponent,
     DmzComponent,
     HistoriaComponent,
     CheckOnlineComponent,
-    ToastyComponent
+    ToastyComponent,
+    SipSetComponent,
+    SipGetComponent
   ],
   imports: [
     BrowserModule,
@@ -117,7 +117,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     PingComponent,
     WifiComponent,
     AuthPPPoEComponent,
-    SipComponent,
     ServiceClassComponent,
     DhcpComponent,
     WanComponent,
@@ -125,10 +124,11 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     LanHostComponent,
     XdslComponent,
     PortMappingComponent,
-    SipConsultaComponent,
     DmzComponent,
     HistoriaComponent,
-    CheckOnlineComponent
+    CheckOnlineComponent,
+    SipSetComponent,
+    SipGetComponent
   ]
 })
 export class AppModule { }

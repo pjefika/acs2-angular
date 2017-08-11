@@ -1,3 +1,4 @@
+import { SipIn } from './../../../../viewmodel/sip/sipin';
 import { Sip } from './../../../../viewmodel/sip/sip';
 import { Equipamento } from './../../../../viewmodel/equipamento/equipamento';
 import { UrlService } from './../../../url-service/url.service';
@@ -24,6 +25,20 @@ export class SipService {
             .toPromise()
             .then(response => {
                 return response.json() as Sip
+            })
+            .catch(this.handleError);
+    }
+
+    public setSipActivation(device: Equipamento, sipIn: SipIn): Promise<Boolean> {
+        let usr = JSON.parse(sessionStorage.getItem('user'));
+        const url = `${this.urlService.url}` + "device/setSipActivation";
+        let _data: { device: Equipamento, sip: SipIn, executor: string };
+        _data = { device: device, sip: sipIn, executor: usr.usr }
+        return this.http.post(url, JSON.stringify(_data), this.urlService.options)
+            .timeout(120000)
+            .toPromise()
+            .then(response => {
+                return response.json() as Boolean
             })
             .catch(this.handleError);
     }

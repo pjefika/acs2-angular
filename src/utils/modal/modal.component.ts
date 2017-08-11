@@ -1,7 +1,8 @@
+import { SipGetComponent } from './../comandos/consultas/sip/sip.component';
+import { SipSetComponent } from './../comandos/acoes/sip/sip.component';
 import { HolderService } from './../holder/holder.service';
 import { HistoriaComponent } from './../comandos/consultas/historia/historia.component';
 import { DmzComponent } from './../comandos/consultas/dmz/dmz.component';
-import { SipConsultaComponent } from './../comandos/consultas/sip/sip.component';
 import { PortMappingComponent } from './../comandos/consultas/port-mapping/port-mapping.component';
 import { XdslComponent } from './../comandos/consultas/xdsl/xdsl.component';
 import { LanHostComponent } from './../comandos/consultas/lan-host/lan-host.component';
@@ -9,7 +10,6 @@ import { InterfaceStaticsComponent } from './../comandos/consultas/interface-sta
 import { WanComponent } from './../comandos/consultas/wan/wan.component';
 import { DhcpComponent } from './../comandos/acoes/dhcp/dhcp.component';
 import { ServiceClassComponent } from './../comandos/acoes/service-class/service-class.component';
-import { SipComponent } from './../comandos/acoes/sip/sip.component';
 import { AuthPPPoEComponent } from './../comandos/acoes/auth-pppoe/auth-pppoe.component';
 import { WifiComponent } from './../comandos/acoes/wifi/wifi.component';
 import { PingComponent } from './../comandos/acoes/ping/ping.component';
@@ -65,8 +65,8 @@ export class ModalComponent implements OnInit {
                 this.component = AuthPPPoEComponent
                 this.setModalOptions("static");
                 break;
-            case "sip-componen":
-                this.component = SipComponent
+            case "sip-set-component":
+                this.component = SipSetComponent
                 break;
             case "service-class-component":
                 this.component = ServiceClassComponent
@@ -99,8 +99,8 @@ export class ModalComponent implements OnInit {
             case "port-mapping-component":
                 this.component = PortMappingComponent
                 break;
-            case "sip-consulta-component":
-                this.component = SipConsultaComponent
+            case "sip-get-component":
+                this.component = SipGetComponent
                 break;
             case "dmz-component":
                 this.component = DmzComponent
