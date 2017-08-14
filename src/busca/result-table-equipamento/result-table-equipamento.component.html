@@ -2,11 +2,11 @@
     <div class="full-width" *ngIf="mountedList">
         <data-table headerTitle="Equipamentos" [items]="mountedList" [itemCount]="listCount" (rowClick)="rowClick($event)" (reload)="reloadEqp($event)"
             [limit]="limit" [sortBy]="'rating'" [indexColumn]="false" [translations]="translations">
-            <data-table-column [property]="'subscriber'" [header]="'Subscriber'" [sortable]="true"></data-table-column>
-            <data-table-column [property]="'serial'" [header]="'Serial'" [sortable]="true"></data-table-column>
-            <data-table-column [property]="'ip'" [header]="'IP'" [sortable]="true"></data-table-column>
-            <data-table-column [property]="'mac'" [header]="'MAC'" [sortable]="true"></data-table-column>
-            <data-table-column [property]="'fabricante'" [header]="'Fabricante'" [sortable]="true"></data-table-column>
+            <data-table-column [resizable]="true" [property]="'subscriber'" [header]="'Subscriber'" [sortable]="true"></data-table-column>
+            <data-table-column [resizable]="true" [property]="'serial'" [header]="'Serial'" [sortable]="true"></data-table-column>
+            <data-table-column [resizable]="true" [property]="'ip'" [header]="'IP'" [sortable]="true"></data-table-column>
+            <data-table-column [resizable]="true" [property]="'mac'" [header]="'MAC'" [sortable]="true"></data-table-column>
+            <data-table-column [resizable]="true" [property]="'fabricante'" [header]="'Fabricante'" [sortable]="true"></data-table-column>
         </data-table>
     </div>
 </div>
