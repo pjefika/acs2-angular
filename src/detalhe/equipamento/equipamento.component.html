@@ -29,7 +29,7 @@
          <span><span class="negrito">IP: </span> {{equipamento.IPAddress}} </span>
     </li>
     <li class="list-group-item ">
-        <span class="negrito">Data Autenticação: </span> {{ ((equipamento.lastActivationTime / 1000) | amFromUnix) | amDateFormat:
-        'DD/MM/YYYY HH:mm:ss'}}
+        <span><span class="negrito">Data Autenticação: </span> {{ ((equipamento.lastActivationTime / 1000) | amFromUnix) | amDateFormat:
+        'DD/MM/YYYY HH:mm:ss'}}</span>
     </li>
 </ul>
