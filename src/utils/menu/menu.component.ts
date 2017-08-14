@@ -1,5 +1,5 @@
+import { HolderService } from './../holder/holder.service';
 import { TemplateComponent } from './../../template/template.component';
-import { HolderService } from './../../../../FulltestNode/src/util/holder/holder.service';
 import { MockListMenu } from './../../template/mock/mocklistmenu';
 import { Menu } from './../../viewmodel/mock/template/menu';
 import { Component, OnInit } from '@angular/core';
@@ -39,7 +39,7 @@ export class MenuComponent implements OnInit {
     activeMenu(l): Boolean {
         //console.log(l);
         let active = false;
-        if (l.component === this.holderService.whoSubNavIsActive) {
+        if (l.component === this.holderService.whoMenuIsActive) {
             active = true;
         }
         return active;
