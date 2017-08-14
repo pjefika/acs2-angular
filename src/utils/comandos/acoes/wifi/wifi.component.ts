@@ -51,16 +51,14 @@ export class WifiComponent implements OnInit {
             this.nomeBtn = "Aguarde";
             this.wifiService.setWifi(this.holderService.equipamento, this.wifi)
                 .then(data => {
-                    if (data) {
-                        this.callToasty("Successo", "Alterações realizadas com sucesso.", "success", 10000);
-                        this.activeModal.close();
-                    } else {
-                        this.nomeBtn = "Modificar";
-                        this.callToasty("Ops, aconteceu algo.", "Erro ao realizar alterações.", "error", 10000);
-                    }
+                    this.wifi = data;
+                    this.callToasty("Successo", "Alterações realizadas com sucesso.", "success", 10000);
+                    this.nomeBtn = "Modificar";
+                    this.btnSetWifi = false;
                 }, error => {
                     this.nomeBtn = "Modificar";
                     this.callToasty("Ops, aconteceu algo.", error.mError, "error", 10000);
+                    this.btnSetWifi = false;
                 });
         }
     }

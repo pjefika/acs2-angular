@@ -24,13 +24,13 @@ export class WifiService {
             .catch(this.handleError);
     }
 
-    public setWifi(device: Equipamento, wifi: Wifi): Promise<Boolean> {
+    public setWifi(device: Equipamento, wifi: Wifi): Promise<Wifi> {
         let usr = JSON.parse(sessionStorage.getItem('user'));
         let _data: { device: Equipamento, wifi: Wifi, executor: string };
         _data = { device: device, wifi: wifi, executor: usr.usr }
         return this.urlService.httpPostRequest(_data, "device/setWifiInfo")
             .then(data => {
-                return data as Boolean
+                return data as Wifi
             })
             .catch(this.handleError);
     }
