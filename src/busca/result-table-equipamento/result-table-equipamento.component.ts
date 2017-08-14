@@ -4,7 +4,7 @@ import { TemplateComponent } from './../../template/template.component';
 import { ListEqp } from './../../template/mock/mocklisteqp';
 import { Equipamento } from './../../viewmodel/equipamento/equipamento';
 import { Component, OnInit, OnChanges, Input, SimpleChanges } from '@angular/core';
-import { DataTable, DataTableTranslations, DataTableResource } from 'angular-2-data-table';
+import { DataTable, DataTableTranslations, DataTableResource } from 'angular-4-data-table-bootstrap-4';
 
 @Component({
     selector: 'result-table-equipamento',

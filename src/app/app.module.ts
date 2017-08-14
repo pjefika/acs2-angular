@@ -43,7 +43,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { LoginComponent } from './../login/login.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { DataTableModule } from 'angular-2-data-table';
+import { DataTableModule } from 'angular-4-data-table-bootstrap-4';
 import { MomentModule } from 'angular2-moment';
 
 
