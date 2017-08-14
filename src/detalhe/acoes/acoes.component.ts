@@ -3,7 +3,8 @@ import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
     selector: 'acoes-component',
-    templateUrl: 'acoes.component.html'
+    templateUrl: 'acoes.component.html',
+    styleUrls: ['acoes.component.css']
 })
 
 export class AcoesComponent implements OnInit {
