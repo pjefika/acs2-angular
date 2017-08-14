@@ -83,6 +83,7 @@ export class ModalComponent implements OnInit {
         switch (this.component) {
             case "wan-component":
                 this.component = WanComponent
+                this.setModalOptions("static");
                 break;
             case "interface-statics-component":
                 this.component = InterfaceStaticsComponent
@@ -98,6 +99,7 @@ export class ModalComponent implements OnInit {
                 break;
             case "port-mapping-component":
                 this.component = PortMappingComponent
+                this.setModalOptions("static", "lg")
                 break;
             case "sip-get-component":
                 this.component = SipGetComponent

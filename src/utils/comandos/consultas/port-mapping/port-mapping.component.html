@@ -5,8 +5,36 @@
       </button>
 </div>
 <div class="modal-body">
-    <p>Port Mapping Não Implementado</p>
-</div>
-<div class="modal-footer">
-    <button type="button" class="btn btn-secondary" (click)="activeModal.close('Close click')">Fechar</button>
-</div>
+    <loading-component [searchWhat]="'Buscando Port Mappings'" [searching]="searching"></loading-component>
+    <div *ngIf="portMaps">
+        <table class="table table-bordered table-sm table-responsive alinhar-text-center">
+            <thead>
+                <tr>
+                    <th>externalPort</th>
+                    <th>internalClient</th>
+                    <th>internalPort</th>
+                    <th>portMapName</th>
+                    <th>protocol</th>
+                    <th>remoteHost</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let port of portMaps">
+                    <td>{{port.externalPort}}</td>
+                    <td>{{port.internalClient}}</td>
+                    <td>{{port.internalPort}}</td>
+                    <td>{{port.portMapName}}</td>
+                    <td>{{port.protocol}}</td>
+                    <td>{{port.remoteHost}}</td>
+                    <td>
+                        <span *ngIf="port.enable">Ativo</span>
+                        <span *ngIf="!port.enable">Inativo</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="activeModal.close('Close click')">Fechar</button>
+    </div>
