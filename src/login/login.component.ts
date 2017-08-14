@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
             .isLogado()
             .then((result: boolean) => {
                 if (result) {
-                    this.router.navigate(['./acs2/']);
+                    this.router.navigate(['./']);
                 }
             })
     }
@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit {
                         .then(data => {
                             this.usuario = data;
                             sessionStorage.setItem('user', JSON.stringify({ usr: this.usuario.login, nivel: this.usuario.nivel }));
-                            this.router.navigate(['./acs2/']);
+                            this.router.navigate(['./']);
                         }, error => {
                             this.callAlert(error, 'dander');
                         })

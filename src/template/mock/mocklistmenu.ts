@@ -4,8 +4,8 @@ export const MockListMenu: Menu[] = [
         nome: "Busca",
         component: "busca-component"
     },
-    {
-        nome: "Logs",
-        component: "logs-component"
-    }
+    // {
+    //     nome: "Logs",
+    //     component: "logs-component"
+    // }
 ]

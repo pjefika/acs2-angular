@@ -25,7 +25,7 @@ export class TemplateComponent implements OnInit {
         this.validLoginService.isLogado()
             .then((result: boolean) => {
                 if (!result) {
-                    this.router.navigate(['./acs2/entrar']);
+                    this.router.navigate(['./entrar']);
                 }
             });
         this.buscaEquipamento();
@@ -63,7 +63,7 @@ export class TemplateComponent implements OnInit {
 
     sair() {
         sessionStorage.clear();
-        this.router.navigate(['acs2/entrar']);
+        this.router.navigate(['entrar']);
     }
 
 }
