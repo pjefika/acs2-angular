@@ -39,13 +39,14 @@ export class BuscaComponent implements OnInit {
         public holderService: HolderService,
         public toastyComponent: ToastyComponent) {
         this.initConditions();
-    }
-
-    ngOnInit() {
-        this.resetHolder();
         if (this.holderService.lstEquipamentos) {
             this.showTableResult = true;
         }
+        this.resetHolder();
+    }
+
+    ngOnInit() {
+
     }
 
     buscar() {
@@ -70,7 +71,7 @@ export class BuscaComponent implements OnInit {
                     this.nomeBtn = "Buscar";
                 }, error => {
                     this.searching = false;
-                    this.callToasty("Ops, aconteceu algo.", error.mError, "error", 0);
+                    this.callToasty("Ops, aconteceu algo.", error.mError, "error", 25000);
                     this.nomeBtn = "Buscar";
                 });
         }

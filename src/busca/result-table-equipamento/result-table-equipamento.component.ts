@@ -36,11 +36,17 @@ export class ResulTableEquipamentoComponent implements OnInit, OnChanges {
     }
 
     ngOnChanges(changes: SimpleChanges) {
+        // console.log("Previous: " + changes.listEqp.previousValue)
+        // console.log("Current: " + changes.listEqp.currentValue)
         if (changes.listEqp.currentValue != changes.listEqp.previousValue) {
             this.listEqp = changes.listEqp.currentValue;
             if (this.listEqp) {
                 this.mountList(changes.listEqp.currentValue);
+            } else {
+                this.mountedList = null;
             }
+        } else {
+            this.mountedList = null;
         }
     }
 
