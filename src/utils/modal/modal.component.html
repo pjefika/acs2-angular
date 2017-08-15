@@ -1,1 +1,3 @@
-<button type="button" [class]="styleBtn" [class.disabled]="!holderService.checkOnline" (click)="open()">{{nomeDoBtn}}</button>
+<!-- <button type="button" class="cursor-pointer" [class]="styleBtn" [class.disabled]="!holderService.checkOnline" (click)="open()">{{nomeDoBtn}}</button> -->
+
+<a role="button" [class]="styleBtn" [class.disabled]="!holderService.checkOnline" (click)="open()">{{nomeDoBtn}}</a>

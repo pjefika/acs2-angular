@@ -20,7 +20,8 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
     selector: 'modal-component',
-    templateUrl: 'modal.component.html'
+    templateUrl: 'modal.component.html',
+    styleUrls: ['modal.component.css']
 })
 
 export class ModalComponent implements OnInit {
