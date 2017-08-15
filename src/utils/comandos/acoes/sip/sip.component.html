@@ -1,11 +1,11 @@
 <div class="modal-header">
-    <h4 class="modal-title">Configurar Sip</h4>
+    <h4 class="modal-title">Configurar SIP</h4>
     <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
         <span aria-hidden="true">&times;</span>
       </button>
 </div>
 <div class="modal-body">
-    <loading-component [searchWhat]="'Buscando Configurações Sip'" [searching]="searching"></loading-component>
+    <loading-component [searchWhat]="'Buscando Configurações SIP'" [searching]="searching"></loading-component>
     <div *ngIf="sipIn">
         <table class="table table-bordered table-sm alinhar-text-center">
             <tbody>

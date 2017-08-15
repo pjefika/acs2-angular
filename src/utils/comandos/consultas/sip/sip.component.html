@@ -1,5 +1,5 @@
 <div class="modal-header">
-    <h4 class="modal-title">Consultar Sip</h4>
+    <h4 class="modal-title">Consultar SIP</h4>
     <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
         <span aria-hidden="true">&times;</span>
       </button>
@@ -9,6 +9,7 @@
         <label>phyref</label>
         <input type="text" class="form-control" [(ngModel)]="phyref">
     </div>
+    <loading-component [searchWhat]="'Buscando Configurações SIP'" [searching]="searching"></loading-component>
     <table class="table table-bordered table-sm alinhar-text-center" *ngIf="sip">
         <tbody>
             <tr>
