@@ -1,3 +1,4 @@
+import { ToastyComponent } from './../utils/toasty/toasty.component';
 import { Usuario } from './../viewmodel/usuario/usuario';
 import { ValidLoginService } from './../utils/login/valid-login.service';
 import { Router } from '@angular/router';
@@ -8,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
     selector: 'login-component',
     templateUrl: 'login.component.html',
     styleUrls: ['login.component.css'],
-    providers: [LoginService]
+    providers: [LoginService, ToastyComponent]
 })
 
 export class LoginComponent implements OnInit {
@@ -24,7 +25,8 @@ export class LoginComponent implements OnInit {
     constructor(
         private loginService: LoginService,
         private router: Router,
-        private validLoginService: ValidLoginService) { }
+        private validLoginService: ValidLoginService,
+        public toastyComponent: ToastyComponent) { }
 
     ngOnInit() {
         this.validLoginService
@@ -40,6 +42,7 @@ export class LoginComponent implements OnInit {
         this.loginService
             .autentica(this.usuario)
             .then(data => {
+                //console.log(data);
                 if (data) {
                     this.loginService
                         .getUsuario(this.usuario)
@@ -52,11 +55,22 @@ export class LoginComponent implements OnInit {
                         })
                 } else {
                     this.callAlert("Usuário ou senha incorretos, por favor verifique.", 'danger');
+                    //this.callToasty("Ops, aconteceu algo.", "Usuário ou senha incorretos, por favor verifique.", "danger", 0);
                 }
             }, error => {
                 this.usuario = new Usuario;
                 this.callAlert(error, 'dander');
             })
+    }
+
+    callToasty(titulo: string, msg: string, theme: string, timeout?: number) {
+        this.toastyComponent.toastyInfo = {
+            titulo: titulo,
+            msg: msg,
+            theme: theme,
+            timeout: timeout
+        }
+        this.toastyComponent.addToasty();
     }
 
     callAlert(msg: string, type: string) {

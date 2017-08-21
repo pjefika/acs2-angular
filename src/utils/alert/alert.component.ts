@@ -8,6 +8,13 @@ import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/cor
 
 export class AlertComponent implements OnInit, OnChanges {
 
+    @Input() alertOn: boolean = false;
+
+    @Input() public alertInfo: {
+        alertType: string;
+        alertMsg: string;
+    }
+    
     constructor(
         public holderService: HolderService) { }
 
@@ -16,6 +23,6 @@ export class AlertComponent implements OnInit, OnChanges {
     }
 
     ngOnChanges(changes: SimpleChanges) {
-        
+
     }
 }
