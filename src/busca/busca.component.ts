@@ -80,16 +80,16 @@ export class BuscaComponent implements OnInit {
     seeWhatIsSearching() {
         if (this.searchCond.designador) {
             this.whatIsSearching = "SUBSCRIBER";
-            this.whatIsSearchingInput = this.searchCond.designador;
+            this.whatIsSearchingInput = this.searchCond.designador.trim();
         } else if (this.searchCond.ip) {
             this.whatIsSearching = "IP";
-            this.whatIsSearchingInput = this.searchCond.ip;
+            this.whatIsSearchingInput = this.searchCond.ip.trim();
         } else if (this.searchCond.mac) {
             this.whatIsSearching = "MAC";
-            this.whatIsSearchingInput = this.searchCond.mac;
+            this.whatIsSearchingInput = this.searchCond.mac.trim();
         } else if (this.searchCond.serial) {
             this.whatIsSearching = "SERIAL";
-            this.whatIsSearchingInput = this.searchCond.serial;
+            this.whatIsSearchingInput = this.searchCond.serial.trim();
         }
     }
 

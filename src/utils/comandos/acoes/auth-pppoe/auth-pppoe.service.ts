@@ -24,6 +24,17 @@ export class AuthPPPoEService {
             .catch(this.handleError);
     }
 
+    public setPPPoECredentials(device: Equipamento, credentials: PPPoECredentials): Promise<Boolean> {
+        let usr = JSON.parse(sessionStorage.getItem('user'));
+        let _data: { device: Equipamento, credentials: PPPoECredentials, executor: string };
+        _data = { device: device, credentials: credentials, executor: usr.usr }
+        return this.urlService.httpPostRequest(_data, "device/setPPPoECredentials")
+            .then(data => {
+                return data as Boolean
+            })
+            .catch(this.handleError);
+    }
+
     private handleError(error: any): Promise<any> {
         return Promise.reject(error);
     }

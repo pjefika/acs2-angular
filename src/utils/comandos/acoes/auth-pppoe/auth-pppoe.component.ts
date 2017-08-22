@@ -16,6 +16,8 @@ export class AuthPPPoEComponent implements OnInit {
 
     public pppoecred: PPPoECredentials;
     public searching: boolean = false;
+    public btnName: string = "Modificar";
+    public btnDisabled: boolean = false;
 
     constructor(
         public activeModal: NgbActiveModal,
@@ -35,13 +37,28 @@ export class AuthPPPoEComponent implements OnInit {
                 this.searching = false;
             }, error => {
                 this.searching = false;
-                this.callToasty("Ops, aconteceu algo.", error.mError, "error", 0);
+                this.callToasty("Ops, aconteceu algo.", error.mError, "error", 10000);
             })
     }
 
-    modificar() {
-        if (this.pppoecred) {
-            console.log("Modificando Fake");
+    setPPPoECredentials() {
+        if (this.pppoecred && !this.btnDisabled) {
+            this.btnName = "Aguarde";
+            this.btnDisabled = true;
+            this.authPPPoEService.setPPPoECredentials(this.holderService.equipamento, this.pppoecred)
+                .then(data => {
+                    this.btnName = "Modificar";
+                    this.btnDisabled = false;
+                    if (data) {
+                        this.callToasty("Sucesso.", "Modificado com sucesso.", "success", 10000);
+                    } else {
+                        this.callToasty("Ops, aconteceu algo.", "Comando voltou negativo, não modificado.", "error", 10000);
+                    }
+                }, error => {
+                    this.btnName = "Modificar";
+                    this.btnDisabled = false;
+                    this.callToasty("Ops, aconteceu algo.", error.mError, "error", 10000);
+                });
         }
     }
 

@@ -4,12 +4,13 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class UrlService {
 
-    private urlIp = "10.200.35.66"; // Produção / 10.200.35.67
-    //private urlIp = "localhost"; // Dev 
+    //private urlIp = "10.200.35.67:80"; // Produção
+    //private urlIp = "localhost:8080"; // Dev 
+    private urlIp = "10.40.195.81:8080"; // Qa
 
     private headersAppJson = new Headers({ 'Content-Type': 'application/json' });
     public options = new RequestOptions({ headers: this.headersAppJson });
-    public url = "http://" + this.urlIp + ":8080/acs/";
+    public url = "http://" + this.urlIp + "/acs/";
 
     constructor(private http: Http) { }
 

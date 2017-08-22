@@ -18,6 +18,6 @@
     </div>
 </div>
 <div class="modal-footer">
-    <button type="button" class="btn btn-primary" (click)="modificar()" [class.disabled]="!pppoecred">Modificar</button>
+    <button type="button" class="btn btn-primary" (click)="setPPPoECredentials()" [class.disabled]="btnDisabled">{{btnName}}</button>
     <button type="button" class="btn btn-secondary" (click)="activeModal.close('Close click')">Fechar</button>
 </div>
