@@ -7,25 +7,75 @@
 <div class="modal-body">
     <loading-component [searchWhat]="'Buscando Interface Statics'" [searching]="searching"></loading-component>
     <div *ngIf="intStatic">
-        <table class="table table-bordered table-sm table-responsive alinhar-text-center">
-            <thead>
-                <tr>
-                    <th>adminStatus</th>
-                    <th>bytesRecv</th>
-                    <th>bytesSent</th>
-                    <th>ipAddress</th>
-                    <th>macAddress</th>
-                    <th>operStatus</th>
-                </tr>
-            </thead>
+        <table class="table table-bordered table-sm table-responsive alinhar-text-center font-size">
             <tbody>
-                <tr *ngFor="let interface of intStatic">
-                    <td>{{interface.adminStatus}}</td>
-                    <td>{{interface.bytesRecv}}</td>
-                    <td>{{interface.bytesSent}}</td>
-                    <td>{{interface.ipAddress}}</td>
-                    <td>{{interface.macAddress}}</td>
-                    <td>{{interface.operStatus}}</td>
+                <tr>
+                    <th>Tipo de Interface</th>
+                    <td *ngFor="let interface of intStatic">{{interface.ifType}}</td>
+                </tr>
+                <tr>
+                    <th>Admin Status</th>
+                    <td *ngFor="let interface of intStatic">{{interface.adminStatus}}</td>
+                </tr>
+                <tr>
+                    <th>Status Operacional</th>
+                    <td *ngFor="let interface of intStatic">{{interface.operStatus}}</td>
+                </tr>
+                <tr>
+                    <th>Nome da Interface</th>
+                    <td *ngFor="let interface of intStatic">{{interface.ifName}}</td>
+                </tr>
+                <tr>
+                    <th>Endereço de IP</th>
+                    <td *ngFor="let interface of intStatic">{{interface.ipAddress}}</td>
+                </tr>
+                <tr>
+                    <th>Tipo de Endereço de Ip</th>
+                    <td *ngFor="let interface of intStatic">{{interface.ipAddrType}}</td>
+                </tr>
+                <tr>
+                    <th>MAC</th>
+                    <td *ngFor="let interface of intStatic">{{interface.macAddress}}</td>
+                </tr>
+                <tr>
+                    <th>Bytes Enviados</th>
+                    <td *ngFor="let interface of intStatic">{{interface.bytesSent}}</td>
+                </tr>
+                <tr>
+                    <th>Bytes Recebidos</th>
+                    <td *ngFor="let interface of intStatic">{{interface.bytesRecv}}</td>
+                </tr>
+                <tr>
+                    <th>Erros Enviados</th>
+                    <td *ngFor="let interface of intStatic">{{interface.errSent}}</td>
+                </tr>
+                <tr>
+                    <th>Erros Recebidos</th>
+                    <td *ngFor="let interface of intStatic">{{interface.errRecv}}</td>
+                </tr>
+                <tr>
+                    <th>Pacotes Enviados</th>
+                    <td *ngFor="let interface of intStatic">{{interface.pctSent}}</td>
+                </tr>
+                <tr>
+                    <th>Pacotes Recebidos</th>
+                    <td *ngFor="let interface of intStatic">{{interface.pctRecv}}</td>
+                </tr>
+                <tr>
+                    <th>Multicast Enviados</th>
+                    <td *ngFor="let interface of intStatic">{{interface.mcSent}}</td>
+                </tr>
+                <tr>
+                    <th>Multicast Recebidos</th>
+                    <td *ngFor="let interface of intStatic">{{interface.mcRecv}}</td>
+                </tr>
+                <tr>
+                    <th>Broadcast Enviados</th>
+                    <td *ngFor="let interface of intStatic">{{interface.bcSent}}</td>
+                </tr>
+                <tr>
+                    <th>Broadcast Recebidos</th>
+                    <td *ngFor="let interface of intStatic">{{interface.bcRecv}}</td>
                 </tr>
             </tbody>
         </table>
