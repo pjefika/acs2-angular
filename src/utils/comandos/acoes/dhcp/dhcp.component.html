@@ -8,15 +8,15 @@
     <loading-component [searchWhat]="'Buscando DHCP'" [searching]="searching"></loading-component>
     <div *ngIf="dhcp">
         <div class="form-group">
-            <label>dhcpserverEnable</label>
+            <label>Ativo</label>
             <input type="text" class="form-control" [(ngModel)]="dhcp.dhcpserverEnable">
         </div>
         <div class="form-group">
-            <label>minAddress</label>
+            <label>Endereço Minimo</label>
             <input type="text" class="form-control" [(ngModel)]="dhcp.minAddress">
         </div>
         <div class="form-group">
-            <label>maxAddress</label>
+            <label>Endereço Maximo</label>
             <input type="text" class="form-control" [(ngModel)]="dhcp.maxAddress">
         </div>
     </div>
