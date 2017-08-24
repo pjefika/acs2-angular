@@ -7,16 +7,16 @@
 <div class="modal-body">
     <loading-component [searchWhat]="'Buscando Lan Hosts'" [searching]="searching"></loading-component>
     <div *ngIf="lanHost">
-        <table class="table table-bordered table-sm table-responsive alinhar-text-center">
+        <table class="table table-bordered table-sm table-responsive alinhar-text-center font-size-sm">
             <thead>
                 <tr>
                     <th>IP</th>
-                    <th>Source</th>
-                    <th>Time Remaining</th>
+                    <th>Fonte de Endereço</th>
+                    <th>Tempo Restante</th>
                     <th>MAC</th>
-                    <th>Host</th>
-                    <th>Type</th>
-                    <th>Ativo</th>
+                    <th>Endereço Host</th>
+                    <th>Tipo</th>
+                    <th>Status</th>
                 </tr>
             </thead>
             <tbody>
@@ -27,7 +27,10 @@
                     <td>{{host.macAddress}}</td>
                     <td>{{host.hostName}}</td>
                     <td>{{host.interfaceType}}</td>
-                    <td>{{host.ativo}}</td>
+                    <td>
+                        <span *ngIf="host.ativo">Ativo</span>
+                        <span *ngIf="!host.ativo">Inativo</span>
+                    </td>
                 </tr>
             </tbody>
         </table>
