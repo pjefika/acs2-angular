@@ -7,79 +7,63 @@
 <div class="modal-body">
     <loading-component [searchWhat]="'Buscando xDSL'" [searching]="searching"></loading-component>
     <div *ngIf="xdsl">
-        <table class="table table-bordered table-sm">
+        <table class="table table-bordered table-sm align-center">
             <tbody>
                 <tr>
-                    <th>downstreamCurrRate</th>
-                    <td>{{xdsl.downstreamCurrRate}}</td>
+                    <th>Tempo Ativo</th>
+                    <td>{{xdsl.showtimeStart}}</td>
                 </tr>
                 <tr>
-                    <th>upstreamCurrRate</th>
-                    <td>{{xdsl.upstreamCurrRate}}</td>
-                </tr>
-                <tr>
-                    <th>downstreamMaxRate</th>
-                    <td>{{xdsl.downstreamMaxRate}}</td>
-                </tr>
-                <tr>
-                    <th>upstreamMaxRate</th>
-                    <td>{{xdsl.upstreamMaxRate}}</td>
-                </tr>
-                <tr>
-                    <th>modulationType</th>
+                    <th>Modulação</th>
                     <td>{{xdsl.modulationType}}</td>
                 </tr>
                 <tr>
-                    <th>downstreamPower</th>
-                    <td>{{xdsl.downstreamPower}}</td>
+                    <th>Erros em Segundos</th>
+                    <td>{{xdsl.severelyErroredSecs}}</td>
                 </tr>
                 <tr>
-                    <th>upstreamPower</th>
-                    <td>{{xdsl.upstreamPower}}</td>
+                    <th>Perda de Quadros</th>
+                    <td>{{xdsl.lossOfFraming}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-bordered table-sm align-center">
+            <tbody>
+                <tr>
+                    <th>Parâmetro</th>
+                    <th>Downstream</th>
+                    <th>Upstream</th>
                 </tr>
                 <tr>
-                    <th>downstreamAttenuation</th>
-                    <td>{{xdsl.downstreamAttenuation}}</td>
-                </tr>
-                <tr>
-                    <th>downstreamAttenuation</th>
-                    <td>{{xdsl.downstreamAttenuation}}</td>
-                </tr>
-                <tr>
-                    <th>upstreamAttenuation</th>
-                    <td>{{xdsl.upstreamAttenuation}}</td>
-                </tr>
-                <tr>
-                    <th>upstreamAttenuation</th>
-                    <td>{{xdsl.upstreamAttenuation}}</td>
-                </tr>
-                <tr>
-                    <th>downstreamNoiseMargin</th>
-                    <td>{{xdsl.downstreamNoiseMargin}}</td>
-                </tr>
-                <tr>
-                    <th>upstreamNoiseMargin</th>
-                    <td>{{xdsl.upstreamNoiseMargin}}</td>
-                </tr>
-
-                <tr>
-                    <th>crcerrors</th>
+                    <th>Erros CRC</th>
                     <td>{{xdsl.crcerrors}}</td>
+                    <td>{{xdsl.atuccrcerrors}}</td>
                 </tr>
                 <tr>
-                    <th>fecerrors</th>
+                    <th>Erros FEC</th>
                     <td>{{xdsl.fecerrors}}</td>
+                    <td>{{xdsl.atucfecerrors}}</td>
                 </tr>
                 <tr>
-                    <th>hecerrors</th>
+                    <th>Erros HEC</th>
+                    <td>{{xdsl.atuchecerrors}}</td>
                     <td>{{xdsl.hecerrors}}</td>
                 </tr>
-
                 <tr>
-                    <th>showtimeStart</th>
-                    <td>{{xdsl.showtimeStart}}</td>
+                    <th>Velocidade Sincronizada</th>
+                    <td>{{xdsl.downstreamCurrRate}}</td>
+                    <td>{{xdsl.upstreamCurrRate}}</td>
                 </tr>
-
+                <tr>
+                    <th>Atenuação</th>
+                    <td>{{xdsl.downstreamAttenuation}}</td>
+                    <td>{{xdsl.upstreamAttenuation}}</td>
+                </tr>
+                <tr>
+                    <th>Ruido</th>
+                    <td>{{xdsl.downstreamNoiseMargin}}</td>
+                    <td>{{xdsl.upstreamNoiseMargin}}</td>
+                </tr>
             </tbody>
         </table>
     </div>
