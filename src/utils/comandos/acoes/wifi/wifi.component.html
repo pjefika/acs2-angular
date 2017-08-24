@@ -8,22 +8,22 @@
     <loading-component [searchWhat]="'Buscando Wifi'" [searching]="searching"></loading-component>
     <div *ngIf="wifi">
         <div class="form-group">
-            <label>operStatus</label>
+            <label>Status de Operação</label>
             <select class="form-control" [(ngModel)]="wifi.operStatus">
                 <option value="Up">Up</option>
                 <option value="Down">Down</option>
             </select>
         </div>
         <div class="form-group">
-            <label>ssid</label>
+            <label>Usuário</label>
             <input type="text" class="form-control" [(ngModel)]="wifi.ssid">
         </div>
         <div class="form-group">
-            <label>channel</label>
+            <label>Canal</label>
             <input type="number" class="form-control" [(ngModel)]="wifi.channel">
         </div>
         <div class="form-group">
-            <label>Password</label>
+            <label>Senha</label>
             <input type="text" class="form-control">
         </div>
     </div>
