@@ -6,33 +6,33 @@
 </div>
 <div class="modal-body">
     <div class="form-group">
-        <label>Host</label>
+        <label>Endereço</label>
         <input type="text" class="form-control" [(ngModel)]="host">
     </div>
     <table class="table table-bordered table-sm centraliza" *ngIf="ping">
         <tbody>
             <tr>
-                <th>status</th>
+                <th>Status</th>
                 <td>{{ping.status}}</td>
             </tr>
             <tr>
-                <th>avgRespTime</th>
+                <th>Tempo</th>
                 <td>{{ping.avgRespTime}}</td>
             </tr>
             <tr>
-                <th>qtdSuccess</th>
+                <th>Quantidade Sucesso</th>
                 <td>{{ping.qtdSuccess}}</td>
             </tr>
             <tr>
-                <th>qtdFailures</th>
+                <th>Quantidade Erro</th>
                 <td>{{ping.qtdFailures}}</td>
             </tr>
             <tr>
-                <th>hostAddress</th>
+                <th>Endereço</th>
                 <td>{{ping.hostAddress}}</td>
             </tr>
             <tr>
-                <th>repetitions</th>
+                <th>Repetições</th>
                 <td>{{ping.repetitions}}</td>
             </tr>
             
