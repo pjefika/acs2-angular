@@ -14,22 +14,22 @@
         <span><span class="negrito">Serial: </span> {{equipamento.deviceId.serialNumber}}</span>
     </li>
     <li class="list-group-item ">
-        <span><span class="negrito">Subscriber Id: </span> {{equipamento.subscriberID}}</span>
+        <span><span class="negrito">Designador: </span> {{equipamento.subscriberID}}</span>
     </li>
     <li class="list-group-item ">
         <span><span class="negrito">Firmware: </span> {{equipamento.softwareVersion}}</span>
     </li>
     <li class="list-group-item ">
-         <span><span class="negrito">Nome do Modelo: </span> {{equipamento.modelName}}</span>
+        <span><span class="negrito">Nome do Modelo: </span> {{equipamento.modelName}}</span>
     </li>
     <li class="list-group-item ">
-         <span><span class="negrito">Fabricante: </span> {{equipamento.manufacturer}} </span>
+        <span><span class="negrito">Fabricante: </span> {{equipamento.manufacturer}} </span>
     </li>
     <li class="list-group-item ">
-         <span><span class="negrito">IP: </span> {{equipamento.IPAddress}} </span>
+        <span><span class="negrito">IP: </span> {{equipamento.IPAddress}} </span>
     </li>
     <li class="list-group-item ">
-        <span><span class="negrito">Data Autenticação: </span> {{ ((equipamento.lastActivationTime / 1000) | amFromUnix) | amDateFormat:
-        'DD/MM/YYYY HH:mm:ss'}}</span>
+        <span><span class="negrito">Data Autenticação: </span> {{ ((equipamento.lastActivationTime / 1000) | amFromUnix)
+        | amDateFormat: 'DD/MM/YYYY HH:mm:ss'}}</span>
     </li>
 </ul>
