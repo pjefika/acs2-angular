@@ -31,7 +31,7 @@ export class SipGetComponent implements OnInit {
     ngOnInit() {
     }
 
-    getSipDiagnostics() {
+    public getSipDiagnostics() {
         this.searching = true;
         this.btnSip = true;
         this.nomeBtn = "Aguarde";
@@ -50,7 +50,7 @@ export class SipGetComponent implements OnInit {
             });
     }
 
-    callToasty(titulo: string, msg: string, theme: string, timeout?: number) {
+    private callToasty(titulo: string, msg: string, theme: string, timeout?: number) {
         this.toastyComponent.toastyInfo = {
             titulo: titulo,
             msg: msg,

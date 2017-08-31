@@ -27,7 +27,7 @@ export class InterfaceStaticsComponent implements OnInit {
         this.getInterfaceStatistics();
     }
 
-    getInterfaceStatistics() {
+    public getInterfaceStatistics() {
         this.searching = true;
         this.interfaceStaticsService.getInterfaceStatistics(this.holderService.equipamento)
             .then(data => {
@@ -39,7 +39,7 @@ export class InterfaceStaticsComponent implements OnInit {
             });
     }
 
-    callToasty(titulo: string, msg: string, theme: string, timeout?: number) {
+    private callToasty(titulo: string, msg: string, theme: string, timeout?: number) {
         this.toastyComponent.toastyInfo = {
             titulo: titulo,
             msg: msg,

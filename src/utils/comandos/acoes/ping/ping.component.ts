@@ -27,7 +27,7 @@ export class PingComponent implements OnInit {
 
     ngOnInit() { }
 
-    pingDiagnostic() {
+    public pingDiagnostic() {
         this.btnPing = true;
         this.nomeBtn = "Aguarde";
         this.pingService.pingDiagnostic(this.holderService.equipamento, this.host)
@@ -43,7 +43,7 @@ export class PingComponent implements OnInit {
             })
     }
 
-    callToasty(titulo: string, msg: string, theme: string, timeout?: number) {
+    public callToasty(titulo: string, msg: string, theme: string, timeout?: number) {
         this.toastyComponent.toastyInfo = {
             titulo: titulo,
             msg: msg,

@@ -29,7 +29,7 @@ export class ServiceClassComponent implements OnInit {
         this.getServiceClass();
     }
 
-    getServiceClass() {
+    public getServiceClass() {
         this.searching = true;
         this.btnServiceClass = true;
         this.serviceClassService.getServiceClass(this.holderService.equipamento)
@@ -40,11 +40,12 @@ export class ServiceClassComponent implements OnInit {
             }, error => {
                 this.searching = false;
                 this.btnServiceClass = false;
+                this.activeModal.close();
                 this.callToasty("Ops, aconteceu algo.", error.mError, "error", 10000);
             });
     }
 
-    setServiceClass() {
+    public setServiceClass() {
         if (this.serviceClass) {
             this.btnServiceClass = true;
             this.nomeBtn = "Aguarde";
@@ -63,7 +64,7 @@ export class ServiceClassComponent implements OnInit {
         }
     }
 
-    callToasty(titulo: string, msg: string, theme: string, timeout?: number) {
+    private callToasty(titulo: string, msg: string, theme: string, timeout?: number) {
         this.toastyComponent.toastyInfo = {
             titulo: titulo,
             msg: msg,

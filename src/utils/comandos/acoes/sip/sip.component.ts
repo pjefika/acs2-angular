@@ -32,7 +32,7 @@ export class SipSetComponent implements OnInit {
         this.getSipDiagnostics();
     }
 
-    getSipDiagnostics() {
+    public getSipDiagnostics() {
         this.searching = true;
         this.sipService.getSipDiagnostics(this.holderService.equipamento, Number(this.phyref))
             .then(data => {
@@ -42,12 +42,12 @@ export class SipSetComponent implements OnInit {
                 this.btnSipModificar = false;
             }, error => {
                 this.searching = false;
-                this.callToasty("Ops, aconteceu algo.", "Erro ao buscar Sip Diagnostics.", "error", 10000);
+                this.activeModal.close();
+                this.callToasty("Ops, aconteceu algo.", error.mError, "error", 10000);
             });
     }
 
-    mountSipObject() {
-
+    public mountSipObject() {
         this.sipIn = {
             DirectoryNumber: this.sip.directoryNumber,
             AuthUserName: this.sip.authUserName,
@@ -60,7 +60,7 @@ export class SipSetComponent implements OnInit {
         }
     }
 
-    setSipDiagnostics() {
+    public setSipDiagnostics() {
         if (this.sip) {
             this.btnSipModificar = true;
             this.btnNome = "Aguarde";
@@ -81,7 +81,7 @@ export class SipSetComponent implements OnInit {
         }
     }
 
-    callToasty(titulo: string, msg: string, theme: string, timeout?: number) {
+    private callToasty(titulo: string, msg: string, theme: string, timeout?: number) {
         this.toastyComponent.toastyInfo = {
             titulo: titulo,
             msg: msg,
@@ -91,7 +91,7 @@ export class SipSetComponent implements OnInit {
         this.toastyComponent.addToasty();
     }
 
-    splitAuthPassword(directorynumber): string {
+    private splitAuthPassword(directorynumber): string {
         let splited: string;
         splited = directorynumber.substring(7, 13);
         return splited;

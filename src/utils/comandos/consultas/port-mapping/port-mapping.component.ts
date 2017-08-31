@@ -39,7 +39,7 @@ export class PortMappingComponent implements OnInit {
             });
     }
 
-    callToasty(titulo: string, msg: string, theme: string, timeout?: number) {
+    private callToasty(titulo: string, msg: string, theme: string, timeout?: number) {
         this.toastyComponent.toastyInfo = {
             titulo: titulo,
             msg: msg,
