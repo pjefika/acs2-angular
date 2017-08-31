@@ -14,7 +14,7 @@ export class LanHostService {
         let usr = JSON.parse(sessionStorage.getItem('user'));
         let _data: { device: Equipamento, executor: string };
         _data = { device: device, executor: usr.usr }
-        return this.urlService.httpPostRequest(_data, "device/getLanHosts")
+        return this.urlService.request("post", this.urlService.pathAcs + "device/getLanHosts", _data)
             .then(data => {
                 return data as LanHost
             })

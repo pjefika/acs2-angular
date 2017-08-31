@@ -17,7 +17,7 @@ export class ServiceClassService {
         let usr = JSON.parse(sessionStorage.getItem('user'));
         let _data: { device: Equipamento, executor: string };
         _data = { device: device, executor: usr.usr }
-        return this.urlService.httpPostRequest(_data, "device/getServiceClass")
+        return this.urlService.request("post", this.urlService.pathAcs + "device/getServiceClass", _data)
             .then(data => {
                 return data as ServiceClass
             })
@@ -28,7 +28,7 @@ export class ServiceClassService {
         let usr = JSON.parse(sessionStorage.getItem('user'));
         let _data: { device: Equipamento, service: ServiceClass, executor: string };
         _data = { device: device, service: service, executor: usr.usr }
-        return this.urlService.httpPostRequest(_data, "device/setServiceClass")
+        return this.urlService.request("post", this.urlService.pathAcs + "device/setServiceClass", _data)
             .then(data => {
                 return data as Boolean
             })

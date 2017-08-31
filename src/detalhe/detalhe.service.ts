@@ -16,7 +16,7 @@ export class DetalheService {
         let usr = JSON.parse(sessionStorage.getItem('user'));
         let _data: { guid: number, executor: string };
         _data = { guid: id, executor: usr.usr }
-        return this.urlService.httpPostRequest(_data, "device/detail")
+        return this.urlService.request("post", this.urlService.pathAcs + "device/detail", _data)
             .then(data => {
                 return data as EquipamentoInfo
             })

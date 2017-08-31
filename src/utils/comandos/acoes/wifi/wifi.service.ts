@@ -17,7 +17,7 @@ export class WifiService {
         let usr = JSON.parse(sessionStorage.getItem('user'));
         let _data: { device: Equipamento, executor: string };
         _data = { device: device, executor: usr.usr }
-        return this.urlService.httpPostRequest(_data, "device/getWifiInfo")
+        return this.urlService.request("post", this.urlService.pathAcs + "device/getWifiInfo", _data)
             .then(data => {
                 return data as Wifi
             })
@@ -28,7 +28,7 @@ export class WifiService {
         let usr = JSON.parse(sessionStorage.getItem('user'));
         let _data: { device: Equipamento, wifi: Wifi, executor: string };
         _data = { device: device, wifi: wifi, executor: usr.usr }
-        return this.urlService.httpPostRequest(_data, "device/setWifiInfo")
+        return this.urlService.request("post", this.urlService.pathAcs + "device/setWifiInfo", _data)
             .then(data => {
                 return data as Wifi
             })
