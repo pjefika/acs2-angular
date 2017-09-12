@@ -14,7 +14,7 @@ import { Component, OnInit } from '@angular/core';
 
 export class InterfaceStaticsComponent implements OnInit {
 
-    public intStatic: InterfaceStatic;
+    public intStatic: InterfaceStatic[];
     public searching: boolean = false;
 
     constructor(

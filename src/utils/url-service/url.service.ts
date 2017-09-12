@@ -4,9 +4,9 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class UrlService {
 
-    //private urlIp = "10.200.35.67:80/"; // Produção
+    private urlIp = "10.200.35.67:80/"; // Produção
     //private urlIp = "localhost:8080"; // Dev 
-    private urlIp = "10.40.195.81:8080/"; // Qa
+    //private urlIp = "10.40.195.81:8080/"; // Qa
     //private urlIp = "dprcuradm0111:8080/"; // CREMO
 
     public pathAcs = "acs/";
