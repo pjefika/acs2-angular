@@ -9,7 +9,7 @@
         <label>phyref</label>
         <input type="text" class="form-control" [(ngModel)]="phyref">
         <br/>
-        <button class="btn btn-primary btn-block" (click)="editarTable()" *ngIf="sip">Editar Configurações</button>
+        <!-- <button class="btn btn-primary btn-block" (click)="editarTable()" *ngIf="sip">Editar Configurações</button> -->
     </div>
     <loading-component [searchWhat]="'Buscando Configurações SIP'" [searching]="searching"></loading-component>
     <table class="table table-bordered table-sm alinhar-text-center" *ngIf="sip">
@@ -119,7 +119,7 @@
     </table>
 </div>
 <div class="modal-footer">
-    <button type="button" class="btn btn-info" [class.disabled]="btnSipModificar">{{btnModificarNome}}</button>
+    <!-- <button type="button" class="btn btn-info" [class.disabled]="btnSipModificar">{{btnModificarNome}}</button> -->
     <button type="button" class="btn btn-primary" (click)="getSipDiagnostics()" [class.disabled]="btnSip">{{nomeBtn}}</button>
     <button type="button" class="btn btn-secondary" (click)="activeModal.close('Close click')">Fechar</button>
 </div>

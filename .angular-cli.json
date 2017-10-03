@@ -23,9 +23,14 @@
         "../node_modules/ng2-toasty/style.css",
         "../node_modules/ng2-toasty/style-material.css",
         "../node_modules/ng2-toasty/style-default.css",
-        "../node_modules/ng2-toasty/style-bootstrap.css"
+        "../node_modules/ng2-toasty/style-bootstrap.css",
+        "../node_modules/bootstrap/dist/css/bootstrap.min.css"
       ],
-      "scripts": [],
+      "scripts": [
+        "../node_modules/popper.js/dist/umd/popper.js",
+        "../node_modules/jquery/dist/jquery.min.js",
+        "../node_modules/bootstrap/dist/js/bootstrap.min.js"
+      ],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",

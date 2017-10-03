@@ -17,12 +17,12 @@ export class SipSetComponent implements OnInit {
 
     public phyref: string = "1";
     public sip: Sip;
-    public sipIn: SipIn;
+    public sipIn = new SipIn;
     public searching: boolean = false;
     public btnSip: boolean = false;
     public nomeBtn: string = "Consultar";
-    public isModificarSip: boolean = false;
-    public btnSipModificar: boolean = true;
+    public isModificarSip: boolean = true;
+    public btnSipModificar: boolean = false;
     public btnModificarNome: string = "Modificar";
 
     constructor(

@@ -4,11 +4,13 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class UrlService {
 
-    private urlIp = "10.200.35.67:80/"; // Produção
-    //private urlIp = "localhost:8080"; // Dev 
-    //private urlIp = "10.40.195.81:8080/"; // Qa
-    //private urlIp = "dprcuradm0111:8080/"; // CREMO
-
+    //Modificar IPs 
+    public urlIp = "10.200.35.67:80/";  // Produção e restante dos pjs para o path
+    // IPS: 
+    //  "http://10.40.195.81:8080/"; QA
+    //  "http://10.200.35.67:80/"; Produção
+    //  "http://dprcuradm0111:8080/"; CRM
+    
     public pathAcs = "acs/";
     public pathAuth = "efikaAuth/";
 
