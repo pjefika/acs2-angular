@@ -24,7 +24,7 @@
             <tr>
                 <th>AuthUserName</th>
                 <td>
-                    <span *ngIf="!isModificarSip">{{sip.AAAAAAAAA}}</span>
+                    <span *ngIf="!isModificarSip">{{sip.authUserName}}</span>
                     <input *ngIf="isModificarSip" type="text" [(ngModel)]="sip.authUserName" name="AuthUserName" class="form-control">
                 </td>
             </tr>
