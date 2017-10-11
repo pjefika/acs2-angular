@@ -28,6 +28,7 @@ export class InterfaceStaticsComponent implements OnInit {
     }
 
     public getInterfaceStatistics() {
+        this.intStatic = null;
         this.searching = true;
         this.interfaceStaticsService.getInterfaceStatistics(this.holderService.equipamento)
             .then(data => {
