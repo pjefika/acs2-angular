@@ -6,9 +6,9 @@
 /out-tsc
 
 # dependencies
-/node_modules
+/node_modules/*
 !/node_modules/angular2-moment/
-!/node_modules/angular2-moment/angular-4-data-table-bootstrap-4/
+!/node_modules/angular-4-data-table-bootstrap-4/
 !/node_modules/bootstrap/
 
 
