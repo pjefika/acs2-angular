@@ -2,7 +2,7 @@
     <h4 class="modal-title">Configurações de Wifi</h4>
     <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
         <span aria-hidden="true">&times;</span>
-      </button>
+    </button>
 </div>
 <div class="modal-body">
     <loading-component [searchWhat]="'Buscando Wifi'" [searching]="searching"></loading-component>
@@ -24,7 +24,7 @@
         </div>
         <div class="form-group">
             <label>Senha</label>
-            <input type="text" class="form-control">
+            <input type="text" class="form-control" [(ngModel)]="wifi.key">
         </div>
     </div>
 </div>
