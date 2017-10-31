@@ -16,7 +16,7 @@ export class FactoryResetService {
         let usr = JSON.parse(sessionStorage.getItem('user'));
         let _data: { device: Equipamento, executor: string };
         _data = { device: device, executor: usr.usr }
-        return this.urlService.httpPostRequest(_data, "device/factoryReset")
+        return this.urlService.request("post", this.urlService.pathAcs + "device/factoryReset", _data)
             .then(data => {
                 return data as Boolean
             })

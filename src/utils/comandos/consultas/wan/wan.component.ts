@@ -28,7 +28,7 @@ export class WanComponent implements OnInit {
         this.getWanInfo();
     }
 
-    getWanInfo() {
+    public getWanInfo() {
         this.searching = true;
         this.wanService.getWanInfo(this.holderService.equipamento)
             .then(data => {
@@ -40,7 +40,7 @@ export class WanComponent implements OnInit {
             })
     }
 
-    callToasty(titulo: string, msg: string, theme: string, timeout?: number) {
+    private callToasty(titulo: string, msg: string, theme: string, timeout?: number) {
         this.toastyComponent.toastyInfo = {
             titulo: titulo,
             msg: msg,

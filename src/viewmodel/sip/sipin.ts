@@ -1,10 +1,10 @@
 export class SipIn {
-    DirectoryNumber: string;
-    AuthUserName: string;
-    AuthPassword: string;
-    ProxyServer: string;
-    RegistrarServer: string;
-    UserAgentDomain: string;
-    OutboundProxy: string;
+    directoryNumber: string;
+    authUserName: string;
+    authPassword: string;
+    proxyServer: string;
+    registrarServer: string;
+    userAgentDomain: string;
+    outboundProxy: string;
     phyReferenceList: string
 }

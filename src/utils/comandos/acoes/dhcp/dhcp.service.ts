@@ -17,7 +17,7 @@ export class DhcpService {
         let usr = JSON.parse(sessionStorage.getItem('user'));
         let _data: { device: Equipamento, executor: string };
         _data = { device: device, executor: usr.usr }
-        return this.urlService.httpPostRequest(_data, "device/getDhcp")
+        return this.urlService.request("post", this.urlService.pathAcs + "device/getDhcp", _data)
             .then(data => {
                 return data as Dhcp
             })
@@ -29,7 +29,7 @@ export class DhcpService {
         let usr = JSON.parse(sessionStorage.getItem('user'));
         let _data: { device: Equipamento, dhcp: Dhcp, executor: string };
         _data = { device: device, dhcp: dhcp, executor: usr.usr }
-        return this.urlService.httpPostRequest(_data, "device/setDhcp")
+        return this.urlService.request("post", this.urlService.pathAcs + "device/setDhcp", _data)
             .then(data => {
                 return data as Dhcp
             })

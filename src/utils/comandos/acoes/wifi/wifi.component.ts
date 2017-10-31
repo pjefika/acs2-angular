@@ -29,7 +29,7 @@ export class WifiComponent implements OnInit {
         this.getWifi();
     }
 
-    getWifi() {
+    public getWifi() {
         this.searching = true;
         this.btnSetWifi = true;
         this.wifiService.getWifi(this.holderService.equipamento)
@@ -45,7 +45,7 @@ export class WifiComponent implements OnInit {
             });
     }
 
-    setWifi() {
+    public setWifi() {
         if (this.wifi) {
             this.btnSetWifi = true;
             this.nomeBtn = "Aguarde";
@@ -63,7 +63,7 @@ export class WifiComponent implements OnInit {
         }
     }
 
-    callAlert(msg, type) {
+    private callAlert(msg, type) {
         this.holderService.alertOn = true;
         this.holderService.alertInfo = {
             alertType: type,
@@ -71,7 +71,7 @@ export class WifiComponent implements OnInit {
         }
     }
 
-    callToasty(titulo: string, msg: string, theme: string, timeout?: number) {
+    private callToasty(titulo: string, msg: string, theme: string, timeout?: number) {
         this.toastyComponent.toastyInfo = {
             titulo: titulo,
             msg: msg,

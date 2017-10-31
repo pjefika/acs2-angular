@@ -13,7 +13,7 @@ export class ResetService {
         let usr = JSON.parse(sessionStorage.getItem('user'));
         let _data: { device: Equipamento, executor: string };
         _data = { device: device, executor: usr.usr }
-        return this.urlService.httpPostRequest(_data, "device/reboot")
+        return this.urlService.request("post", this.urlService.pathAcs + "device/reboot", _data)
             .then(data => {
                 return data as Boolean
             })

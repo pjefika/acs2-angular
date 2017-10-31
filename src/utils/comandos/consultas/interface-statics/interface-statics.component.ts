@@ -14,7 +14,7 @@ import { Component, OnInit } from '@angular/core';
 
 export class InterfaceStaticsComponent implements OnInit {
 
-    public intStatic: InterfaceStatic;
+    public intStatic: InterfaceStatic[];
     public searching: boolean = false;
 
     constructor(
@@ -27,7 +27,8 @@ export class InterfaceStaticsComponent implements OnInit {
         this.getInterfaceStatistics();
     }
 
-    getInterfaceStatistics() {
+    public getInterfaceStatistics() {
+        this.intStatic = null;
         this.searching = true;
         this.interfaceStaticsService.getInterfaceStatistics(this.holderService.equipamento)
             .then(data => {
@@ -39,7 +40,7 @@ export class InterfaceStaticsComponent implements OnInit {
             });
     }
 
-    callToasty(titulo: string, msg: string, theme: string, timeout?: number) {
+    private callToasty(titulo: string, msg: string, theme: string, timeout?: number) {
         this.toastyComponent.toastyInfo = {
             titulo: titulo,
             msg: msg,

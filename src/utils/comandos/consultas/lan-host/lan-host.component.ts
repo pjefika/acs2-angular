@@ -27,7 +27,7 @@ export class LanHostComponent implements OnInit {
         this.getLanHosts();
     }
 
-    getLanHosts() {
+    public getLanHosts() {
         this.searching = true;
         this.lanHostService.getLanHosts(this.holderService.equipamento)
             .then(data => {
@@ -39,7 +39,7 @@ export class LanHostComponent implements OnInit {
             });
     }
 
-    callToasty(titulo: string, msg: string, theme: string, timeout?: number) {
+    private callToasty(titulo: string, msg: string, theme: string, timeout?: number) {
         this.toastyComponent.toastyInfo = {
             titulo: titulo,
             msg: msg,

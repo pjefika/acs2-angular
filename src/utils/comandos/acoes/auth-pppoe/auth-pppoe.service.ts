@@ -17,7 +17,7 @@ export class AuthPPPoEService {
         let usr = JSON.parse(sessionStorage.getItem('user'));
         let _data: { device: Equipamento, executor: string };
         _data = { device: device, executor: usr.usr }
-        return this.urlService.httpPostRequest(_data, "device/getPPPoECredentials")
+        return this.urlService.request("post", this.urlService.pathAcs + "device/getPPPoECredentials", _data)
             .then(data => {
                 return data as PPPoECredentials
             })
@@ -28,7 +28,7 @@ export class AuthPPPoEService {
         let usr = JSON.parse(sessionStorage.getItem('user'));
         let _data: { device: Equipamento, credentials: PPPoECredentials, executor: string };
         _data = { device: device, credentials: credentials, executor: usr.usr }
-        return this.urlService.httpPostRequest(_data, "device/setPPPoECredentials")
+        return this.urlService.request("post", this.urlService.pathAcs + "device/setPPPoECredentials", _data)
             .then(data => {
                 return data as Boolean
             })

@@ -1,3 +1,4 @@
+import { SipIn } from './../../../../viewmodel/sip/sipin';
 import { Sip } from './../../../../viewmodel/sip/sip';
 import { ToastyComponent } from './../../../toasty/toasty.component';
 import { HolderService } from './../../../holder/holder.service';
@@ -14,13 +15,15 @@ import { Component, OnInit } from '@angular/core';
 
 export class SipGetComponent implements OnInit {
 
-    public phyref: number = 1;
+    public phyref: string = "1";
     public sip: Sip;
-    public btnSip: boolean = false;
-    public btnSipModificar: boolean = true;
-    public btnNome: string = "Modificar";
+    public sipIn: SipIn;
     public searching: boolean = false;
+    public btnSip: boolean = false;
     public nomeBtn: string = "Consultar";
+    public isModificarSip: boolean = false;
+    public btnSipModificar: boolean = true;
+    public btnModificarNome: string = "Modificar";
 
     constructor(
         public activeModal: NgbActiveModal,
@@ -31,7 +34,7 @@ export class SipGetComponent implements OnInit {
     ngOnInit() {
     }
 
-    getSipDiagnostics() {
+    public getSipDiagnostics() {
         this.searching = true;
         this.btnSip = true;
         this.nomeBtn = "Aguarde";
@@ -50,7 +53,51 @@ export class SipGetComponent implements OnInit {
             });
     }
 
-    callToasty(titulo: string, msg: string, theme: string, timeout?: number) {
+    public editarTable() {
+        this.isModificarSip = true;
+    }
+
+    public setSipDiagnostics() {
+        if (this.sip) {
+            this.btnSipModificar = true;
+            this.btnModificarNome = "Aguarde";
+            this.sipService.setSipActivation(this.holderService.equipamento, this.sipIn)
+                .then(data => {
+                    if (data) {
+                        this.btnModificarNome = "Modificar";
+                        this.btnSipModificar = false;
+                        this.callToasty("Sucesso.", "Sucesso ao executar o comando.", "success", 10000);
+                    } else {
+                        this.btnModificarNome = "Modificar";
+                        this.btnSipModificar = false;
+                        this.callToasty("Ops, aconteceu algo.", "Erro ao executar comando Sip.", "error", 10000);
+                    }
+                }, error => {
+                    this.callToasty("Ops, aconteceu algo.", error.mError, "error", 10000);
+                });
+        }
+    }
+
+    public mountSipObject() {
+        this.sipIn = {
+            directoryNumber: this.sip.directoryNumber,
+            authUserName: this.sip.authUserName,
+            authPassword: this.splitAuthPassword(this.sip.directoryNumber),
+            proxyServer: this.sip.proxyServer,
+            registrarServer: this.sip.registrarServer,
+            userAgentDomain: this.sip.userAgentDomain,
+            outboundProxy: this.sip.outboundProxy,
+            phyReferenceList: this.phyref
+        }
+    }
+
+    private splitAuthPassword(directorynumber): string {
+        let splited: string;
+        splited = directorynumber.substring(7, 13);
+        return splited;
+    }
+
+    private callToasty(titulo: string, msg: string, theme: string, timeout?: number) {
         this.toastyComponent.toastyInfo = {
             titulo: titulo,
             msg: msg,

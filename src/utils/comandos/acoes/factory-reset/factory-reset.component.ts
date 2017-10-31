@@ -24,7 +24,7 @@ export class FactoryResetComponent implements OnInit {
 
     ngOnInit() { }
 
-    factoryReset() {
+    public factoryReset() {
         if (!this.disableBtn) {
             this.disableBtn = true;
             this.nomeBtn = "Aguarde";
@@ -44,7 +44,7 @@ export class FactoryResetComponent implements OnInit {
         }
     }
 
-    callAlert(msg, type) {
+    private callAlert(msg, type) {
         this.holderService.alertOn = true;
         this.holderService.alertInfo = {
             alertType: type,
@@ -52,7 +52,7 @@ export class FactoryResetComponent implements OnInit {
         }
     }
 
-    callToasty(titulo: string, msg: string, theme: string, timeout?: number) {
+     private callToasty(titulo: string, msg: string, theme: string, timeout?: number) {
         this.toastyComponent.toastyInfo = {
             titulo: titulo,
             msg: msg,

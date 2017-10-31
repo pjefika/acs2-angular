@@ -2,8 +2,10 @@
     <li class="list-group-item" [ngClass]="holderService.checkOnline ? 'list-group-item-success': 'list-group-item-danger'">
         <div class="row">
             <div class="col-sm-10">
-                <span *ngIf="holderService.checkOnline"><span class="negrito">Status: </span> Ativo</span>
-                <span *ngIf="!holderService.checkOnline"><span class="negrito">Status: </span> Inativo</span>
+                <span *ngIf="holderService.checkOnline">
+                    <span class="negrito">Status: </span> Ativo</span>
+                <span *ngIf="!holderService.checkOnline">
+                    <span class="negrito">Status: </span> Inativo</span>
             </div>
             <div class="col-sm-2">
                 <a role="button" class="btn btn-secondary btn-sm font-black" (click)="busca()">Atualizar</a>
@@ -11,28 +13,43 @@
         </div>
     </li>
     <li class="list-group-item ">
-        <span><span class="negrito">Serial: </span> {{equipamento.deviceId.serialNumber}}</span>
+        <span>
+            <span class="negrito">Serial: </span> {{equipamento.deviceId.serialNumber}}</span>
     </li>
     <li class="list-group-item ">
-        <span><span class="negrito">MAC: </span> {{equipamento.macAddress}}</span>
+        <span>
+            <span class="negrito">MAC: </span> {{equipamento.macAddress}}</span>
     </li>
     <li class="list-group-item ">
-        <span><span class="negrito">Designador: </span> {{equipamento.subscriberID}}</span>
+        <span>
+            <span class="negrito">Designador: </span> {{equipamento.subscriberID}}</span>
     </li>
     <li class="list-group-item ">
-        <span><span class="negrito">Firmware: </span> {{equipamento.softwareVersion}}</span>
+        <span>
+            <span class="negrito">Firmware: </span> {{equipamento.softwareVersion}}</span>
     </li>
     <li class="list-group-item ">
-        <span><span class="negrito">Nome do Modelo: </span> {{equipamento.modelName}}</span>
+        <span>
+            <span class="negrito">Nome do Modelo: </span> {{equipamento.modelName}}</span>
     </li>
     <li class="list-group-item ">
-        <span><span class="negrito">Fabricante: </span> {{equipamento.manufacturer}} </span>
+        <span>
+            <span class="negrito">Fabricante: </span> {{equipamento.manufacturer}} </span>
     </li>
     <li class="list-group-item ">
-        <span><span class="negrito">IP: </span> {{equipamento.IPAddress}} </span>
+        <span>
+            <span class="negrito">IP: </span> {{equipamento.IPAddress}} </span>
     </li>
     <li class="list-group-item ">
-        <span><span class="negrito">Data Autenticação: </span> {{ ((equipamento.lastActivationTime / 1000) | amFromUnix)
-        | amDateFormat: 'DD/MM/YYYY HH:mm:ss'}}</span>
+        <span>
+            <span class="negrito">Data de Ativação: </span> {{ ((equipamento.lastActivationTime / 1000) | amFromUnix) | amDateFormat: 'DD/MM/YYYY
+            HH:mm:ss'}}
+        </span>
+    </li>
+    <li class="list-group-item ">
+        <span>
+            <span class="negrito">Data de Ultimo Contato: </span> {{ ((equipamento.lastContactTime / 1000) | amFromUnix) | amDateFormat: 'DD/MM/YYYY
+            HH:mm:ss'}}
+        </span>
     </li>
 </ul>

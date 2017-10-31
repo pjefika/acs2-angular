@@ -17,7 +17,7 @@ export class BuscaService {
         let usr = JSON.parse(sessionStorage.getItem('user'));
         let _data: { criterio: string, input: string, executor: string };
         _data = { criterio: criterio, input: input, executor: usr.usr };
-        return this.urlService.httpPostRequest(_data, "search/search")
+        return this.urlService.request("post", this.urlService.pathAcs + "search/search", _data)
             .then(data => {
                 return data as Equipamento[]
             })

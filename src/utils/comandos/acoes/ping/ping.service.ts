@@ -19,7 +19,7 @@ export class PingService {
         let usr = JSON.parse(sessionStorage.getItem('user'));
         let _data: { device: Equipamento, request, executor: string };
         _data = { device: device, request, executor: usr.usr }
-        return this.urlService.httpPostRequest(_data, "device/pingDiagnostic")
+        return this.urlService.request("post", this.urlService.pathAcs + "device/pingDiagnostic", _data)
             .then(data => {
                 return data as Ping
             })
