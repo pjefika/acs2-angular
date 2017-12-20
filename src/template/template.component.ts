@@ -18,7 +18,7 @@ export class TemplateComponent implements OnInit {
 
     constructor(
         private router: Router,
-        private validLoginService: ValidLoginService,
+        public validLoginService: ValidLoginService,
         public holderService: HolderService,
         public dynamicRouterHolderService: DynamicRouterHolderService) { }
 

@@ -45,11 +45,11 @@ export class BuscaComponent implements OnInit {
         this.resetHolder();
     }
 
-    ngOnInit() {
+    public ngOnInit() {
 
     }
 
-    buscar() {
+    public buscar() {
         if (!this.searching) {
             this.nomeBtn = "Aguarde";
             this.whatIsSearching = null;
@@ -77,7 +77,7 @@ export class BuscaComponent implements OnInit {
         }
     }
 
-    seeWhatIsSearching() {
+    public seeWhatIsSearching() {
         if (this.searchCond.designador) {
             this.whatIsSearching = "SUBSCRIBER";
             this.whatIsSearchingInput = this.searchCond.designador.trim();
@@ -93,7 +93,7 @@ export class BuscaComponent implements OnInit {
         }
     }
 
-    initConditions() {
+    public initConditions() {
         this.searchCond = {
             designador: "",
             serial: "",
@@ -102,7 +102,7 @@ export class BuscaComponent implements OnInit {
         }
     }
 
-    callAlert(msg, type) {
+    public callAlert(msg, type) {
         this.holderService.alertOn = true;
         this.holderService.alertInfo = {
             alertType: type,
@@ -110,7 +110,7 @@ export class BuscaComponent implements OnInit {
         }
     }
 
-    callToasty(titulo: string, msg: string, theme: string, timeout?: number) {
+    public callToasty(titulo: string, msg: string, theme: string, timeout?: number) {
         this.toastyComponent.toastyInfo = {
             titulo: titulo,
             msg: msg,
@@ -120,7 +120,7 @@ export class BuscaComponent implements OnInit {
         this.toastyComponent.addToasty();
     }
 
-    resetHolder() {
+    public resetHolder() {
         this.holderService.alertInfo = {
             alertMsg: "",
             alertType: ""

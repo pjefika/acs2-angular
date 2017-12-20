@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
             })
     }
 
-    entrar() {
+    private entrar() {
         this.loginService
             .autentica(this.usuario)
             .then(data => {

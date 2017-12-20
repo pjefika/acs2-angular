@@ -20,5 +20,7 @@ export class HolderService {
 
     public equipamentoResumo: EquipamentoResult;
 
+    public deviceId: number;
+
     constructor() { }
 }

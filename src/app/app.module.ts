@@ -51,6 +51,7 @@ import { AppComponent } from './app.component';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { DynamicRouterComponent } from 'utils/dynamic-router/dynamic-router.component';
+import { IdRouterComponent } from 'utils/id-router/id-router.component';
 
 @NgModule({
 	declarations: [
@@ -89,7 +90,8 @@ import { DynamicRouterComponent } from 'utils/dynamic-router/dynamic-router.comp
 		ToastyComponent,
 		SipSetComponent,
 		SipGetComponent,
-		DynamicRouterComponent
+		DynamicRouterComponent,
+		IdRouterComponent
 	],
 	imports: [
 		BrowserModule,
