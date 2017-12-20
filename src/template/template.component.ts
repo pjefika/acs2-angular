@@ -48,7 +48,7 @@ export class TemplateComponent implements OnInit {
     }
 
     sair() {
-        sessionStorage.clear();
+        localStorage.clear();
         this.router.navigate(['entrar']);
     }
 

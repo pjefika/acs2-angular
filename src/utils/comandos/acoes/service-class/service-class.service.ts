@@ -14,7 +14,7 @@ export class ServiceClassService {
         private urlService: UrlService) { }
 
     public getServiceClass(device: Equipamento): Promise<ServiceClass> {
-        let usr = JSON.parse(sessionStorage.getItem('user'));
+        let usr = JSON.parse(localStorage.getItem('user'));
         let _data: { device: Equipamento, executor: string };
         _data = { device: device, executor: usr.usr }
         return this.urlService.request("post", this.urlService.pathAcs + "device/getServiceClass", _data)
@@ -25,7 +25,7 @@ export class ServiceClassService {
     }
 
     public setServiceClass(device: Equipamento, service: ServiceClass): Promise<Boolean> {
-        let usr = JSON.parse(sessionStorage.getItem('user'));
+        let usr = JSON.parse(localStorage.getItem('user'));
         let _data: { device: Equipamento, service: ServiceClass, executor: string };
         _data = { device: device, service: service, executor: usr.usr }
         return this.urlService.request("post", this.urlService.pathAcs + "device/setServiceClass", _data)

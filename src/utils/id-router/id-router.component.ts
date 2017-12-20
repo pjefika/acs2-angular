@@ -83,7 +83,7 @@ export class IdRouterComponent implements OnInit, OnDestroy {
                         .getUsuario(this.usuario)
                         .then(data => {
                             this.usuario = data;
-                            sessionStorage.setItem('user', JSON.stringify({ usr: this.usuario.login, nivel: this.usuario.nivel }));
+                            localStorage.setItem('user', JSON.stringify({ usr: this.usuario.login, nivel: this.usuario.nivel }));
                             this.close(this.modallogin);
                             this.continaBuscandoDevice();
                         }, error => {

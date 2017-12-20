@@ -14,7 +14,7 @@ export class WifiService {
         private urlService: UrlService) { }
 
     public getWifi(device: Equipamento): Promise<Wifi> {
-        let usr = JSON.parse(sessionStorage.getItem('user'));
+        let usr = JSON.parse(localStorage.getItem('user'));
         let _data: { device: Equipamento, executor: string };
         _data = { device: device, executor: usr.usr }
         return this.urlService.request("post", this.urlService.pathAcs + "device/getWifiInfo", _data)
@@ -25,7 +25,7 @@ export class WifiService {
     }
 
     public setWifi(device: Equipamento, wifi: Wifi): Promise<Wifi> {
-        let usr = JSON.parse(sessionStorage.getItem('user'));
+        let usr = JSON.parse(localStorage.getItem('user'));
         let _data: { device: Equipamento, wifi: Wifi, executor: string };
         _data = { device: device, wifi: wifi, executor: usr.usr }
         return this.urlService.request("post", this.urlService.pathAcs + "device/setWifiInfo", _data)

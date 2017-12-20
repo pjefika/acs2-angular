@@ -14,7 +14,7 @@ export class AuthPPPoEService {
         private urlService: UrlService) { }
 
     public getPPPoECredentials(device: Equipamento): Promise<PPPoECredentials> {
-        let usr = JSON.parse(sessionStorage.getItem('user'));
+        let usr = JSON.parse(localStorage.getItem('user'));
         let _data: { device: Equipamento, executor: string };
         _data = { device: device, executor: usr.usr }
         return this.urlService.request("post", this.urlService.pathAcs + "device/getPPPoECredentials", _data)
@@ -25,7 +25,7 @@ export class AuthPPPoEService {
     }
 
     public setPPPoECredentials(device: Equipamento, credentials: PPPoECredentials): Promise<Boolean> {
-        let usr = JSON.parse(sessionStorage.getItem('user'));
+        let usr = JSON.parse(localStorage.getItem('user'));
         let _data: { device: Equipamento, credentials: PPPoECredentials, executor: string };
         _data = { device: device, credentials: credentials, executor: usr.usr }
         return this.urlService.request("post", this.urlService.pathAcs + "device/setPPPoECredentials", _data)

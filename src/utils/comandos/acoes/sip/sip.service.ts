@@ -15,7 +15,7 @@ export class SipService {
         private urlService: UrlService) { }
 
     public getSipDiagnostics(device: Equipamento, phyref: string): Promise<Sip> {
-        let usr = JSON.parse(sessionStorage.getItem('user'));
+        let usr = JSON.parse(localStorage.getItem('user'));
         let _data: { device: Equipamento, phyref: string, executor: string };
         _data = { device: device, phyref: phyref, executor: usr.usr }
         return this.urlService.request("post", this.urlService.pathAcs + "device/getSipDiagnostics", _data)
@@ -26,7 +26,7 @@ export class SipService {
     }
 
     public setSipActivation(device: Equipamento, sipIn: SipIn) {
-        let usr = JSON.parse(sessionStorage.getItem('user'));
+        let usr = JSON.parse(localStorage.getItem('user'));
         let _data: { device: Equipamento, sip: SipIn, executor: string };
         _data = { device: device, sip: sipIn, executor: usr.usr }
         return this.urlService.request("post", this.urlService.pathAcs + "device/setSipActivation", _data)
