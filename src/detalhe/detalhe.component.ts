@@ -4,7 +4,7 @@ import { EquipamentoResult } from './../viewmodel/equipamento/table-result/equip
 import { EquipamentoInfo } from './../viewmodel/equipamento/device';
 import { Equipamento } from './../viewmodel/equipamento/equipamento';
 import { DetalheService } from './detalhe.service';
-import { Component, OnInit, Injector } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
     selector: 'detalhe-component',
@@ -23,10 +23,9 @@ export class DetalheComponent implements OnInit {
 
     constructor(
         private detalheService: DetalheService,
-        private injector: Injector,
         private holderService: HolderService,
         private toastyComponent: ToastyComponent) {
-        this.eqp = this.injector.get("eqp");
+        this.eqp = this.holderService.equipamentoResumo;
     }
 
     ngOnInit() {
