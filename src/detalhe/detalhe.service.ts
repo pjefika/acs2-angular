@@ -13,7 +13,7 @@ export class DetalheService {
         private urlService: UrlService) { }
 
     public getDetalhes(id: number): Promise<EquipamentoInfo> {
-        let usr = JSON.parse(sessionStorage.getItem('user'));
+        let usr = JSON.parse(localStorage.getItem('user'));
         let _data: { guid: number, executor: string };
         _data = { guid: id, executor: usr.usr }
         return this.urlService.request("post", this.urlService.pathAcs + "device/detail", _data)

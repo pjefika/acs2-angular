@@ -14,8 +14,8 @@ import { DataTable, DataTableTranslations, DataTableResource } from 'angular-4-d
 
 export class ResulTableEquipamentoComponent implements OnInit, OnChanges {
 
-    @Input() listEqp: Equipamento[];
-    @Input() showTable: boolean = false;
+    @Input() public listEqp: Equipamento[];
+    @Input() public showTable: boolean = false;
 
     public mountedList: EquipamentoResult[];
     public listCount = 0;
@@ -28,14 +28,14 @@ export class ResulTableEquipamentoComponent implements OnInit, OnChanges {
         private templateComponent: TemplateComponent,
         private holderService: HolderService) { }
 
-    ngOnInit() {
+    public ngOnInit() {
         if (this.holderService.lstEquipamentos) {
             this.mountedList = this.holderService.lstEquipamentos;
             this.dataTableOptions();
         }
     }
 
-    ngOnChanges(changes: SimpleChanges) {
+    public ngOnChanges(changes: SimpleChanges) {
         // console.log("Previous: " + changes.listEqp.previousValue)
         // console.log("Current: " + changes.listEqp.currentValue)
         if (changes.listEqp.currentValue != changes.listEqp.previousValue) {
@@ -50,7 +50,7 @@ export class ResulTableEquipamentoComponent implements OnInit, OnChanges {
         }
     }
 
-    mountList(l) {
+    public mountList(l) {
         let lst: EquipamentoResult;
         let i = 0;
         l.forEach(eqp => {
@@ -73,15 +73,16 @@ export class ResulTableEquipamentoComponent implements OnInit, OnChanges {
         this.dataTableOptions();
     }
 
-    reloadEqp(params) {
+    public reloadEqp(params) {
         this.listEqpResource.query(params).then(item => this.mountedList = item);
     }
 
-    rowClick(rowEvent) {
-        this.templateComponent.createDetalhesEquipamento(rowEvent.row.item);
+    public rowClick(rowEvent) {
+        this.holderService.equipamentoResumo = rowEvent.row.item;
+        this.templateComponent.createDetalhesEquipamento();
     }
 
-    dataTableOptions() {
+    public dataTableOptions() {
         if (this.mountedList) {
             this.listEqpResource = new DataTableResource(this.mountedList);
             this.listEqpResource.count().then(count => {

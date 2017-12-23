@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
             })
     }
 
-    entrar() {
+    private entrar() {
         this.loginService
             .autentica(this.usuario)
             .then(data => {
@@ -48,7 +48,7 @@ export class LoginComponent implements OnInit {
                         .getUsuario(this.usuario)
                         .then(data => {
                             this.usuario = data;
-                            sessionStorage.setItem('user', JSON.stringify({ usr: this.usuario.login, nivel: this.usuario.nivel }));
+                            localStorage.setItem('user', JSON.stringify({ usr: this.usuario.login, nivel: this.usuario.nivel }));
                             this.router.navigate(['./']);
                         }, error => {
                             this.callAlert(error, 'dander');

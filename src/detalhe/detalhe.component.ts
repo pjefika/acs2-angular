@@ -4,7 +4,7 @@ import { EquipamentoResult } from './../viewmodel/equipamento/table-result/equip
 import { EquipamentoInfo } from './../viewmodel/equipamento/device';
 import { Equipamento } from './../viewmodel/equipamento/equipamento';
 import { DetalheService } from './detalhe.service';
-import { Component, OnInit, Injector } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
     selector: 'detalhe-component',
@@ -20,20 +20,26 @@ export class DetalheComponent implements OnInit {
     public searchWhat: string;
     public eqp: EquipamentoResult;
     public device: EquipamentoInfo;
+    @Input() public searchSolo: boolean = false;
 
     constructor(
         private detalheService: DetalheService,
-        private injector: Injector,
-        private holderService: HolderService,
+        public holderService: HolderService,
         private toastyComponent: ToastyComponent) {
-        this.eqp = this.injector.get("eqp");
     }
 
-    ngOnInit() {
+    public ngOnInit() {
+        if (this.searchSolo) {
+            this.eqp = new EquipamentoResult();
+            this.eqp.id = this.holderService.deviceId;
+        } else {
+            this.eqp = this.holderService.equipamentoResumo;
+        }
+
         this.buscaEqpInd();
     }
 
-    buscaEqpInd() {
+    public buscaEqpInd() {
         this.searching = true;
         this.eqpReady = false;
         this.searchWhat = "Carregando Equipamento";
@@ -53,7 +59,7 @@ export class DetalheComponent implements OnInit {
             });
     }
 
-    callAlert(msg, type) {
+    public callAlert(msg, type) {
         this.holderService.alertOn = true;
         this.holderService.alertInfo = {
             alertType: type,
@@ -61,7 +67,7 @@ export class DetalheComponent implements OnInit {
         }
     }
 
-    callToasty(titulo: string, msg: string, theme: string, timeout?: number) {
+    public callToasty(titulo: string, msg: string, theme: string, timeout?: number) {
         this.toastyComponent.toastyInfo = {
             titulo: titulo,
             msg: msg,
@@ -71,7 +77,7 @@ export class DetalheComponent implements OnInit {
         this.toastyComponent.addToasty();
     }
 
-    isModem() {
+    public isModem() {
         return this.device.device.type === 0;
     }
 }

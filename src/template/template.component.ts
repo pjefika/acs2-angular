@@ -5,23 +5,24 @@ import { HolderService } from './../utils/holder/holder.service';
 import { ValidLoginService } from './../utils/login/valid-login.service';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import { DynamicRouterHolderService } from 'utils/dynamic-router/dynamic-router-holder.service';
 
 @Component({
     selector: 'template-component',
     templateUrl: 'template.component.html',
-    styleUrls: ['template.component.css']
+    styleUrls: ['template.component.css'],
+    providers: [DynamicRouterHolderService]
 })
 
 export class TemplateComponent implements OnInit {
 
-    public componentData = null;
-
     constructor(
         private router: Router,
-        private validLoginService: ValidLoginService,
-        public holderService: HolderService) { }
+        public validLoginService: ValidLoginService,
+        public holderService: HolderService,
+        public dynamicRouterHolderService: DynamicRouterHolderService) { }
 
-    ngOnInit() {
+    public ngOnInit() {
         this.validLoginService.isLogado()
             .then((result: boolean) => {
                 if (!result) {
@@ -31,38 +32,23 @@ export class TemplateComponent implements OnInit {
         this.buscaEquipamento();
     }
 
-    buscaEquipamento() {
+    public buscaEquipamento() {
         this.holderService.whoMenuIsActive = "busca-component";
-        this.componentData = {
-            component: BuscaComponent,
-            inputs: {
-                nothing: null
-            }
-        }
+        this.dynamicRouterHolderService.component = BuscaComponent;
     }
 
-    createDetalhesEquipamento(eqp) {
+    public createDetalhesEquipamento() {
         this.holderService.whoMenuIsActive = "detalhe-component";
-        this.componentData = {
-            component: DetalheComponent,
-            inputs: {
-                eqp: eqp
-            }
-        }
+        this.dynamicRouterHolderService.component = DetalheComponent;
     }
 
-    createLogsComponent() {
+    public createLogsComponent() {
         this.holderService.whoMenuIsActive = "logs-component";
-        this.componentData = {
-            component: LogsComponent,
-            inputs: {
-                nothing: null
-            }
-        }
+        this.dynamicRouterHolderService.component = LogsComponent;
     }
 
     sair() {
-        sessionStorage.clear();
+        localStorage.clear();
         this.router.navigate(['entrar']);
     }
 

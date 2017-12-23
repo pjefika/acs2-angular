@@ -5,18 +5,22 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class HolderService {
 
-    whoMenuIsActive: string;
+    public whoMenuIsActive: string;
     //Alert
-    alertOn: boolean = false;
-    alertInfo: {
+    public alertOn: boolean = false;
+    public alertInfo: {
         alertType: string,
         alertMsg: string
     }
-    equipamento: Equipamento;
+    public equipamento: Equipamento;
 
-    checkOnline: boolean;
+    public checkOnline: boolean;
 
-    lstEquipamentos: EquipamentoResult[];
+    public lstEquipamentos: EquipamentoResult[];
+
+    public equipamentoResumo: EquipamentoResult;
+
+    public deviceId: number;
 
     constructor() { }
 }

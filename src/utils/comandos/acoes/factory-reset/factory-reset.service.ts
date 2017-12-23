@@ -13,7 +13,7 @@ export class FactoryResetService {
         private urlService: UrlService) { }
 
     public factoryReset(device: Equipamento): Promise<Boolean> {
-        let usr = JSON.parse(sessionStorage.getItem('user'));
+        let usr = JSON.parse(localStorage.getItem('user'));
         let _data: { device: Equipamento, executor: string };
         _data = { device: device, executor: usr.usr }
         return this.urlService.request("post", this.urlService.pathAcs + "device/factoryReset", _data)

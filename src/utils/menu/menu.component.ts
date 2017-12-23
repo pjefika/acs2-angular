@@ -3,6 +3,7 @@ import { TemplateComponent } from './../../template/template.component';
 import { MockListMenu } from './../../template/mock/mocklistmenu';
 import { Menu } from './../../viewmodel/mock/template/menu';
 import { Component, OnInit } from '@angular/core';
+import { DynamicRouterHolderService } from 'utils/dynamic-router/dynamic-router-holder.service';
 
 @Component({
     selector: 'menu-component',
@@ -17,19 +18,13 @@ export class MenuComponent implements OnInit {
 
     constructor(
         private holderService: HolderService,
-        private templateComponent: TemplateComponent) { }
+        private templateComponent: TemplateComponent,
+        public dynamicRouterHolderService: DynamicRouterHolderService) { }
 
-    ngOnInit() { }
+    public ngOnInit() { }
 
-    abreCompoent(l) {
-        switch (l.component) {
-            case "busca-component":
-                this.templateComponent.buscaEquipamento();
-                break;
-            case "logs-component":
-                this.templateComponent.createLogsComponent();
-                break;
-        }
+    private abreCompoent(l) {        
+        this.dynamicRouterHolderService.component = l.component;
     }
 
     sair() {
