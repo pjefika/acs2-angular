@@ -1,4 +1,3 @@
-import { UrlService } from './../utils/url-service/url.service';
 import { Equipamento } from './../viewmodel/equipamento/equipamento';
 import { Http, RequestOptions, Headers } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
@@ -6,25 +5,33 @@ import { Injectable } from '@angular/core';
 
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/Rx';
+import { UrlService } from 'util/urlservice/url.service';
+import { SuperService } from 'util/superservice/super.service';
 
 @Injectable()
-export class BuscaService {
+export class BuscaService extends SuperService {
 
     constructor(
-        private urlService: UrlService) { }
+        private urlService: UrlService) {
+        super();
+    }
 
     public getLista(criterio: string, input: string): Promise<Equipamento[]> {
         let usr = JSON.parse(localStorage.getItem('user'));
         let _data: { criterio: string, input: string, executor: string };
         _data = { criterio: criterio, input: input, executor: usr.usr };
-        return this.urlService.request("post", this.urlService.pathAcs + "search/search", _data)
+        this.infoResquest = {
+            rqst: "post",
+            command: "acs",
+            path: "search/search",
+            _data: _data,
+            timeout: 60000
+        }
+        return this.urlService
+            .request(this.infoResquest)
             .then(data => {
                 return data as Equipamento[]
             })
-            .catch(this.handleError);
-    }
-
-    private handleError(error: any): Promise<any> {
-        return Promise.reject(error);
+            .catch(super.handleError);
     }
 }

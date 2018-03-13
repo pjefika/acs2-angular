@@ -1,10 +1,10 @@
 <ul class="list-group">
-    <li class="list-group-item" [ngClass]="holderService.checkOnline ? 'list-group-item-success': 'list-group-item-danger'">
+    <li class="list-group-item" [ngClass]="variavelHolderService.checkOnline ? 'list-group-item-success': 'list-group-item-danger'">
         <div class="row">
             <div class="col-sm-10">
-                <span *ngIf="holderService.checkOnline">
+                <span *ngIf="variavelHolderService.checkOnline">
                     <span class="negrito">Status: </span> Ativo</span>
-                <span *ngIf="!holderService.checkOnline">
+                <span *ngIf="!variavelHolderService.checkOnline">
                     <span class="negrito">Status: </span> Inativo</span>
             </div>
             <div class="col-sm-2">

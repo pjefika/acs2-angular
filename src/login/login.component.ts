@@ -1,83 +1,76 @@
-import { ToastyComponent } from './../utils/toasty/toasty.component';
 import { Usuario } from './../viewmodel/usuario/usuario';
-import { ValidLoginService } from './../utils/login/valid-login.service';
 import { Router } from '@angular/router';
 import { LoginService } from './login.service';
 import { Component, OnInit } from '@angular/core';
+import { UtilService } from 'util/util.service';
+import { SystemHolderService } from 'util/holder/system-holder.service';
+import { AlertService } from 'util/alert/alert.service';
+import { ToastyComponent } from 'utilcomponents/toasty/toasty.component';
+import { Md5 } from 'ts-md5/dist/md5';
 
 @Component({
     selector: 'login-component',
     templateUrl: 'login.component.html',
     styleUrls: ['login.component.css'],
-    providers: [LoginService, ToastyComponent]
+    providers: [LoginService]
 })
 
-export class LoginComponent implements OnInit {
+export class LoginComponent extends AlertService implements OnInit {
 
-    usuario = new Usuario;
+    private usuario = new Usuario();
 
-    alertOn: boolean = false;
-    alertInfo: {
-        alertType: string,
-        alertMsg: string
+    constructor(public util: UtilService,
+        private loginService: LoginService,
+        public toastyComponent: ToastyComponent,
+        public systemHolderService: SystemHolderService) {
+        super(toastyComponent);
     }
 
-    constructor(
-        private loginService: LoginService,
-        private router: Router,
-        private validLoginService: ValidLoginService,
-        public toastyComponent: ToastyComponent) { }
+    public ngOnInit() {
+        this.util.isLogado().then((result: boolean) => {
+            if (result) {
+                this.util.navigate('./');
+            }
+        });
+    }
 
-    ngOnInit() {
-        this.validLoginService
-            .isLogado()
-            .then((result: boolean) => {
-                if (result) {
-                    this.router.navigate(['./']);
-                }
-            })
+    private doEntrar() {
+        if (this.systemHolderService.ableMock) {
+            this.entrarMock();
+        } else {
+            this.entrar();
+        }
     }
 
     private entrar() {
         this.loginService
             .autentica(this.usuario)
             .then(data => {
-                //console.log(data);
                 if (data) {
                     this.loginService
                         .getUsuario(this.usuario)
                         .then(data => {
                             this.usuario = data;
-                            localStorage.setItem('user', JSON.stringify({ usr: this.usuario.login, nivel: this.usuario.nivel }));
-                            this.router.navigate(['./']);
-                        }, error => {
-                            this.callAlert(error, 'dander');
-                        })
+                            sessionStorage.setItem('user', JSON.stringify({ user: this.usuario.login, nv: this.usuario.nivel, token: Md5.hashStr("fulltest-app") }));
+                            this.util.navigate('./');
+                        });
                 } else {
-                    this.callAlert("Usuário ou senha incorretos, por favor verifique.", 'danger');
-                    //this.callToasty("Ops, aconteceu algo.", "Usuário ou senha incorretos, por favor verifique.", "danger", 0);
+                    //type: "warning", msg: "Usuário ou senha incorretos, por favor verifique."
+                    super.callAlert("warning", "Usuário ou senha incorretos, por favor verifique.");
+                    this.usuario.senha = "";
                 }
             }, error => {
-                this.usuario = new Usuario;
-                this.callAlert(error, 'dander');
-            })
+                this.usuario.login = "";
+                this.usuario.senha = "";
+                super.callAlert("error", "Usuário ou senha incorretos, por favor verifique.");
+            });
     }
 
-    callToasty(titulo: string, msg: string, theme: string, timeout?: number) {
-        this.toastyComponent.toastyInfo = {
-            titulo: titulo,
-            msg: msg,
-            theme: theme,
-            timeout: timeout
-        }
-        this.toastyComponent.addToasty();
-    }
-
-    callAlert(msg: string, type: string) {
-        this.alertInfo = {
-            alertType: type,
-            alertMsg: msg
-        }
-        this.alertOn = true;
+    private entrarMock() {
+        setTimeout(() => {
+            this.usuario = this.loginService.getUsuarioMock();
+            sessionStorage.setItem('user', JSON.stringify({ user: this.usuario.login, nv: this.usuario.nivel, token: Md5.hashStr("fulltest-app") }));
+            this.util.navigate('./');
+        }, 1000);
     }
 }

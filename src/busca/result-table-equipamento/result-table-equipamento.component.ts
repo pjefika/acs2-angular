@@ -1,10 +1,11 @@
-import { HolderService } from './../../utils/holder/holder.service';
 import { EquipamentoResult } from './../../viewmodel/equipamento/table-result/equipmento-result';
 import { TemplateComponent } from './../../template/template.component';
 import { ListEqp } from './../../template/mock/mocklisteqp';
 import { Equipamento } from './../../viewmodel/equipamento/equipamento';
 import { Component, OnInit, OnChanges, Input, SimpleChanges } from '@angular/core';
 import { DataTable, DataTableTranslations, DataTableResource } from 'angular-4-data-table-bootstrap-4';
+import { VariavelHolderService } from 'util/holder/variavel-holder.service';
+import { SystemHolderService } from 'util/holder/system-holder.service';
 
 @Component({
     selector: 'result-table-equipamento',
@@ -26,18 +27,17 @@ export class ResulTableEquipamentoComponent implements OnInit, OnChanges {
 
     constructor(
         private templateComponent: TemplateComponent,
-        private holderService: HolderService) { }
+        public variavelHolderService: VariavelHolderService,
+        public systemHolderService: SystemHolderService) { }
 
     public ngOnInit() {
-        if (this.holderService.lstEquipamentos) {
-            this.mountedList = this.holderService.lstEquipamentos;
+        if (this.variavelHolderService.lstEquipamentos) {
+            this.mountedList = this.variavelHolderService.lstEquipamentos;
             this.dataTableOptions();
         }
     }
 
     public ngOnChanges(changes: SimpleChanges) {
-        // console.log("Previous: " + changes.listEqp.previousValue)
-        // console.log("Current: " + changes.listEqp.currentValue)
         if (changes.listEqp.currentValue != changes.listEqp.previousValue) {
             this.listEqp = changes.listEqp.currentValue;
             if (this.listEqp) {
@@ -69,7 +69,7 @@ export class ResulTableEquipamentoComponent implements OnInit, OnChanges {
             }
             i = 1;
         });
-        this.holderService.lstEquipamentos = this.mountedList;
+        this.variavelHolderService.lstEquipamentos = this.mountedList;
         this.dataTableOptions();
     }
 
@@ -78,7 +78,7 @@ export class ResulTableEquipamentoComponent implements OnInit, OnChanges {
     }
 
     public rowClick(rowEvent) {
-        this.holderService.equipamentoResumo = rowEvent.row.item;
+        this.variavelHolderService.equipamentoResumo = rowEvent.row.item;
         this.templateComponent.createDetalhesEquipamento();
     }
 

@@ -1,34 +1,49 @@
-import { UrlService } from './../utils/url-service/url.service';
 import { Usuario } from './../viewmodel/usuario/usuario';
 import { Injectable } from '@angular/core';
 
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/Rx';
+import { SuperService } from 'util/superservice/super.service';
+import { UrlService } from 'util/urlservice/url.service';
 
 @Injectable()
-export class LoginService {
+export class LoginService extends SuperService {
 
-    constructor(
-        private urlService: UrlService) { }
+    constructor(private urlService: UrlService) { super(); }
 
-    autentica(usuario: Usuario): Promise<Boolean> {
-        return this.urlService.request("post", this.urlService.pathAuth + "autentica/verificarCredencial", usuario, "10.200.35.67:80/")
+    public autentica(usuario: Usuario): Promise<Boolean> {
+        this.infoResquest = {
+            rqst: "post",
+            command: "authAPI",
+            path: "autentica/verificarCredencial",
+            _data: usuario,
+            timeout: 60000
+        }
+        return this.urlService.request(this.infoResquest)
             .then(data => {
                 return data as Boolean
             })
-            .catch(this.handleError);
+            .catch(super.handleError);
     }
 
-    getUsuario(usuario: Usuario): Promise<Usuario> {
-        return this.urlService.request("get", this.urlService.pathAuth + "autentica/consultar/", usuario.login, "10.200.35.67:80/")
+    public getUsuario(usuario: Usuario): Promise<Usuario> {
+
+        this.infoResquest = {
+            rqst: "get",
+            command: "authAPI",
+            path: "autentica/consultar/",
+            _data: usuario.login,
+            timeout: 60000
+        }
+        return this.urlService.request(this.infoResquest)
             .then(data => {
                 return data as Usuario
             })
-            .catch(this.handleError);
+            .catch(super.handleError);
     }
 
-    private handleError(error: any): Promise<any> {
-        return Promise.reject(error);
+    public getUsuarioMock(): Usuario {
+        return JSON.parse('{"login":"G0034481","nivel":10}');
     }
 
 }

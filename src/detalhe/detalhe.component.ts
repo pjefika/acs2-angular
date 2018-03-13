@@ -1,19 +1,21 @@
-import { ToastyComponent } from './../utils/toasty/toasty.component';
-import { HolderService } from './../utils/holder/holder.service';
 import { EquipamentoResult } from './../viewmodel/equipamento/table-result/equipmento-result';
 import { EquipamentoInfo } from './../viewmodel/equipamento/device';
 import { Equipamento } from './../viewmodel/equipamento/equipamento';
 import { DetalheService } from './detalhe.service';
 import { Component, OnInit, Input } from '@angular/core';
+import { ToastyComponent } from 'utilcomponents/toasty/toasty.component';
+import { SuperComponentService } from 'util/supercomponent/super-component.service';
+import { VariavelHolderService } from 'util/holder/variavel-holder.service';
+import { SystemHolderService } from 'util/holder/system-holder.service';
 
 @Component({
     selector: 'detalhe-component',
     templateUrl: 'detalhe.component.html',
     styleUrls: ['detalhe.component.css'],
-    providers: [DetalheService, ToastyComponent]
+    providers: [DetalheService]
 })
 
-export class DetalheComponent implements OnInit {
+export class DetalheComponent extends SuperComponentService implements OnInit {
 
     public eqpReady: boolean = false;
     public searching: boolean = false;
@@ -24,18 +26,19 @@ export class DetalheComponent implements OnInit {
 
     constructor(
         private detalheService: DetalheService,
-        public holderService: HolderService,
-        private toastyComponent: ToastyComponent) {
+        public toastyComponent: ToastyComponent,
+        public variavelHolderService: VariavelHolderService,
+        public systemHolderService: SystemHolderService) {
+        super(toastyComponent);
     }
 
     public ngOnInit() {
         if (this.searchSolo) {
             this.eqp = new EquipamentoResult();
-            this.eqp.id = this.holderService.deviceId;
+            this.eqp.id = this.variavelHolderService.deviceId;
         } else {
-            this.eqp = this.holderService.equipamentoResumo;
+            this.eqp = this.variavelHolderService.equipamentoResumo;
         }
-
         this.buscaEqpInd();
     }
 
@@ -46,8 +49,8 @@ export class DetalheComponent implements OnInit {
         this.detalheService.getDetalhes(this.eqp.id)
             .then(data => {
                 this.device = data;
-                this.holderService.equipamento = this.device.device;
-                this.holderService.checkOnline = this.device.online;
+                this.variavelHolderService.equipamento = this.device.device;
+                this.variavelHolderService.checkOnline = this.device.online;
                 this.eqpReady = true;
                 this.searching = false;
                 if (!this.device.online) {
@@ -57,24 +60,6 @@ export class DetalheComponent implements OnInit {
                 this.searching = false;
                 this.callToasty("Ops, aconteceu algo.", error.mError, "error", 10000);
             });
-    }
-
-    public callAlert(msg, type) {
-        this.holderService.alertOn = true;
-        this.holderService.alertInfo = {
-            alertType: type,
-            alertMsg: msg
-        }
-    }
-
-    public callToasty(titulo: string, msg: string, theme: string, timeout?: number) {
-        this.toastyComponent.toastyInfo = {
-            titulo: titulo,
-            msg: msg,
-            theme: theme,
-            timeout: timeout
-        }
-        this.toastyComponent.addToasty();
     }
 
     public isModem() {

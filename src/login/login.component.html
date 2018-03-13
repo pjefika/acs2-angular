@@ -5,7 +5,7 @@
         Utilize seu login e senha para entrar
     </div>
     <br>
-    <form (keyup.enter)="entrar()">
+    <form (keyup.enter)="doEntrar()">
         <div class="form-group">
             <input type="text" class="form-control" placeholder="Insira seu login" [(ngModel)]="usuario.login" name="login" />
         </div>
@@ -13,12 +13,12 @@
             <input type="password" class="form-control" placeholder="Insira sua Senha" [(ngModel)]="usuario.senha" name="senha" />
         </div>
 
-        <button type="button" class="btn btn-primary btn-lg btn-block" (click)="entrar()">Entrar</button>
+        <button type="button" class="btn btn-primary btn-lg btn-block" (click)="doEntrar()">Entrar</button>
 
     </form>
 
     <br>
 
-    <alert-component [alertInfo]="alertInfo" [alertOn]="alertOn"></alert-component>
+    <alert-component [mensagem]="mensagem" [alertOn]="ativo"></alert-component>
 
 </div>

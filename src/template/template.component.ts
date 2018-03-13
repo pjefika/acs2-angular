@@ -1,55 +1,61 @@
 import { LogsComponent } from './../logs/logs.component';
 import { DetalheComponent } from './../detalhe/detalhe.component';
 import { BuscaComponent } from './../busca/busca.component';
-import { HolderService } from './../utils/holder/holder.service';
-import { ValidLoginService } from './../utils/login/valid-login.service';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { DynamicRouterHolderService } from 'utils/dynamic-router/dynamic-router-holder.service';
+import { SystemHolderService } from 'util/holder/system-holder.service';
+import { VariavelHolderService } from 'util/holder/variavel-holder.service';
+import { UtilService } from 'util/util.service';
+import { DynamicRouterService } from 'utilcomponents/dynamicrouter/dynamic-router.service';
 
 @Component({
     selector: 'template-component',
     templateUrl: 'template.component.html',
-    styleUrls: ['template.component.css'],
-    providers: [DynamicRouterHolderService]
+    styleUrls: ['template.component.css']
 })
 
 export class TemplateComponent implements OnInit {
 
-    constructor(
-        private router: Router,
-        public validLoginService: ValidLoginService,
-        public holderService: HolderService,
-        public dynamicRouterHolderService: DynamicRouterHolderService) { }
+    constructor(public variavelHolderService: VariavelHolderService,
+        public systemHolderService: SystemHolderService,
+        public util: UtilService,
+        public dynamicRouterService: DynamicRouterService) { }
 
     public ngOnInit() {
-        this.validLoginService.isLogado()
+        this.util.isLogado()
             .then((result: boolean) => {
                 if (!result) {
-                    this.router.navigate(['./entrar']);
+                    this.util.navigate('./entrar');
                 }
             });
         this.buscaEquipamento();
     }
 
     public buscaEquipamento() {
-        this.holderService.whoMenuIsActive = "busca-component";
-        this.dynamicRouterHolderService.component = BuscaComponent;
+        this.systemHolderService.whoMenuIsActive = "busca-component";
+        this.setToDynamicComponent(BuscaComponent);
     }
 
     public createDetalhesEquipamento() {
-        this.holderService.whoMenuIsActive = "detalhe-component";
-        this.dynamicRouterHolderService.component = DetalheComponent;
+        this.systemHolderService.whoMenuIsActive = "detalhe-component";
+        this.setToDynamicComponent(DetalheComponent);
     }
 
     public createLogsComponent() {
-        this.holderService.whoMenuIsActive = "logs-component";
-        this.dynamicRouterHolderService.component = LogsComponent;
+        this.systemHolderService.whoMenuIsActive = "logs-component";
+        this.setToDynamicComponent(LogsComponent);
     }
 
-    sair() {
-        localStorage.clear();
-        this.router.navigate(['entrar']);
+    public setToDynamicComponent(component: any) {
+        this.dynamicRouterService.component = null;
+        setTimeout(() => {            
+            this.dynamicRouterService.component = component;
+        }, 1);
+    }
+
+    public sair() {
+        sessionStorage.clear();
+        this.util.navigate('./entrar');
     }
 
 }
