@@ -45,6 +45,6 @@ export class PingComponent extends SuperComponentService implements OnInit {
                 this.btnPing = false;
                 this.nomeBtn = "Pingar";
                 super.callToasty("Ops, aconteceu algo.", error.mError, "error", 10000);
-            })
+            });
     }
 }

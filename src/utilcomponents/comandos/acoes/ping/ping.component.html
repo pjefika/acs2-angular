@@ -40,6 +40,6 @@
     </table>
 </div>
 <div class="modal-footer">
-    <button type="button" class="btn btn-primary" (click)="pingDiagnostic()" [class.disabled]="btnPing">{{nomeBtn}}</button>
+    <button type="button" class="btn btn-primary" (click)="pingDiagnostic()" [disabled]="btnPing">{{nomeBtn}}</button>
     <button type="button" class="btn btn-secondary" (click)="activeModal.close('Close click')">Fechar</button>
 </div>
