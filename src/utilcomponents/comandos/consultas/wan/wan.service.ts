@@ -14,9 +14,9 @@ export class WanService extends SuperService {
     }
 
     public getWanInfo(device: Equipamento): Promise<Wan> {
-        let usr = JSON.parse(localStorage.getItem('user'));
+        let usr = JSON.parse(sessionStorage.getItem('user'));
         let _data: { device: Equipamento, executor: string };
-        _data = { device: device, executor: usr.usr }
+        _data = { device: device, executor: usr.user }
         this.infoResquest = {
             rqst: "post",
             command: "acs",

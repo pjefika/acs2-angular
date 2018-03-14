@@ -16,9 +16,9 @@ export class DetalheService extends SuperService {
     }
 
     public getDetalhes(id: number): Promise<EquipamentoInfo> {
-        let usr = JSON.parse(localStorage.getItem('user'));
+        let usr = JSON.parse(sessionStorage.getItem('user'));
         let _data: { guid: number, executor: string };
-        _data = { guid: id, executor: usr.usr }
+        _data = { guid: id, executor: usr.user }
         this.infoResquest = {
             rqst: "post",
             command: "acs",

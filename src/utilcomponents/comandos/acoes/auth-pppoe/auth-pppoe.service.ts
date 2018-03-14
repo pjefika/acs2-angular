@@ -15,9 +15,9 @@ export class AuthPPPoEService extends SuperService {
     }
 
     public getPPPoECredentials(device: Equipamento): Promise<PPPoECredentials> {
-        let usr = JSON.parse(localStorage.getItem('user'));
+        let usr = JSON.parse(sessionStorage.getItem('user'));
         let _data: { device: Equipamento, executor: string };
-        _data = { device: device, executor: usr.usr }
+        _data = { device: device, executor: usr.user }
         this.infoResquest = {
             rqst: "post",
             command: "acs",
@@ -34,9 +34,9 @@ export class AuthPPPoEService extends SuperService {
     }
 
     public setPPPoECredentials(device: Equipamento, credentials: PPPoECredentials): Promise<Boolean> {
-        let usr = JSON.parse(localStorage.getItem('user'));
+        let usr = JSON.parse(sessionStorage.getItem('user'));
         let _data: { device: Equipamento, credentials: PPPoECredentials, executor: string };
-        _data = { device: device, credentials: credentials, executor: usr.usr }
+        _data = { device: device, credentials: credentials, executor: usr.user }
         this.infoResquest = {
             rqst: "post",
             command: "acs",

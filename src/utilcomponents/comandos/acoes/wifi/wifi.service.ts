@@ -17,9 +17,9 @@ export class WifiService extends SuperService {
     }
 
     public getWifi(device: Equipamento): Promise<Wifi> {
-        let usr = JSON.parse(localStorage.getItem('user'));
+        let usr = JSON.parse(sessionStorage.getItem('user'));
         let _data: { device: Equipamento, executor: string };
-        _data = { device: device, executor: usr.usr }
+        _data = { device: device, executor: usr.user }
         this.infoResquest = {
             rqst: "post",
             command: "acs",
@@ -36,9 +36,9 @@ export class WifiService extends SuperService {
     }
 
     public setWifi(device: Equipamento, wifi: Wifi): Promise<Wifi> {
-        let usr = JSON.parse(localStorage.getItem('user'));
+        let usr = JSON.parse(sessionStorage.getItem('user'));
         let _data: { device: Equipamento, wifi: Wifi, executor: string };
-        _data = { device: device, wifi: wifi, executor: usr.usr }
+        _data = { device: device, wifi: wifi, executor: usr.user }
         this.infoResquest = {
             rqst: "post",
             command: "acs",

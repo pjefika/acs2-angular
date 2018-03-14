@@ -18,9 +18,9 @@ export class SipService extends SuperService {
     }
 
     public getSipDiagnostics(device: Equipamento, phyref: string): Promise<Sip> {
-        let usr = JSON.parse(localStorage.getItem('user'));
+        let usr = JSON.parse(sessionStorage.getItem('user'));
         let _data: { device: Equipamento, phyref: string, executor: string };
-        _data = { device: device, phyref: phyref, executor: usr.usr }
+        _data = { device: device, phyref: phyref, executor: usr.user }
         this.infoResquest = {
             rqst: "post",
             command: "acs",
@@ -37,9 +37,9 @@ export class SipService extends SuperService {
     }
 
     public setSipActivation(device: Equipamento, sipIn: SipIn) {
-        let usr = JSON.parse(localStorage.getItem('user'));
+        let usr = JSON.parse(sessionStorage.getItem('user'));
         let _data: { device: Equipamento, sip: SipIn, executor: string };
-        _data = { device: device, sip: sipIn, executor: usr.usr }
+        _data = { device: device, sip: sipIn, executor: usr.user }
         this.infoResquest = {
             rqst: "post",
             command: "acs",

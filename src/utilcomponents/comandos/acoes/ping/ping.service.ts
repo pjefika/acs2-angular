@@ -19,9 +19,9 @@ export class PingService extends SuperService {
     public pingDiagnostic(device: Equipamento, host: string): Promise<Ping> {
         let request: { destAddress: string }
         request = { destAddress: host }
-        let usr = JSON.parse(localStorage.getItem('user'));
+        let usr = JSON.parse(sessionStorage.getItem('user'));
         let _data: { device: Equipamento, request, executor: string };
-        _data = { device: device, request, executor: usr.usr }
+        _data = { device: device, request, executor: usr.user }
 
         this.infoResquest = {
             rqst: "post",
