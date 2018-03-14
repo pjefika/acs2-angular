@@ -62,7 +62,7 @@ export class DetalheComponent extends SuperComponentService implements OnInit {
             });
     }
 
-    public isModem() {
-        return this.device.device.type === 0;
+    public isModemOrAta() {
+        return this.device.device.type === 0 || this.device.device.type === 1;
     }
 }

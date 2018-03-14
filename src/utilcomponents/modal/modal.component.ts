@@ -129,4 +129,24 @@ export class ModalComponent implements OnInit {
         }
     }
 
+    private validComponent() {
+        let valid: boolean = false;
+        if (this.variavelHolderService.checkOnline) {
+            console.log("isOnline");
+            if (this.variavelHolderService.equipamento.type === 1) {                
+                if (this.nomeDoBtn === "Consultar SIP" || this.nomeDoBtn === "Configurar SIP") {
+                    console.log(this.nomeDoBtn);
+                    valid = false;
+                } else {
+                    valid = true;
+                }
+            } else {
+                valid = true;
+            }
+        } else {
+            valid = true;
+        }
+        return valid;
+    }
+
 }

@@ -1,1 +1,3 @@
-<a role="button" [class]="styleBtn" [class.disabled]="!variavelHolderService.checkOnline" (click)="open()">{{nomeDoBtn}}</a>
+<!-- <a role="button" [class]="styleBtn" [class.disabled]="validComponent()" (click)="open()">{{nomeDoBtn}}</a> -->
+
+<button type="button" [class]="styleBtn" (click)="open()" [disabled]="validComponent()">{{nomeDoBtn}}</button>
