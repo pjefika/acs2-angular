@@ -40,7 +40,7 @@ export class AuthPPPoEService extends SuperService {
         this.infoResquest = {
             rqst: "post",
             command: "acs",
-            path: "device/getPPPoECredentials",
+            path: "device/setPPPoECredentials",
             _data: _data,
             timeout: 60000
         }

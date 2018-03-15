@@ -51,7 +51,8 @@ export class AuthPPPoEComponent extends SuperComponentService implements OnInit 
         if (this.pppoecred && !this.btnDisabled) {
             this.btnName = "Aguarde";
             this.btnDisabled = true;
-            this.authPPPoEService.setPPPoECredentials(this.variavelHolderService.equipamento, this.pppoecred)
+            this.authPPPoEService
+                .setPPPoECredentials(this.variavelHolderService.equipamento, this.pppoecred)
                 .then(data => {
                     this.btnName = "Modificar";
                     this.btnDisabled = false;
