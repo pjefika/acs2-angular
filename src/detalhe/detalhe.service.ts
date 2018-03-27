@@ -24,7 +24,7 @@ export class DetalheService extends SuperService {
             command: "acs",
             path: "device/detail",
             _data: _data,
-            timeout: 60000
+            timeout: 180000
         }
         return this.urlService
             .request(this.infoResquest)
