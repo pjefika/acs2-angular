@@ -132,7 +132,7 @@ export class ModalComponent implements OnInit {
     private validComponent() {
         let valid: boolean = false;
         if (this.variavelHolderService.checkOnline) {
-            console.log("isOnline");
+            // console.log("isOnline");
             if (this.variavelHolderService.equipamento.type === 1) {
                 if (this.nomeDoBtn === "Consultar SIP" || this.nomeDoBtn === "Configurar SIP") {
                     valid = false;
