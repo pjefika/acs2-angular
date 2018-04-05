@@ -16,7 +16,7 @@ export class WifiService extends SuperService {
         super();
     }
 
-    public getWifi(device: Equipamento): Promise<Wifi> {
+    public getWifi(device: Equipamento): Promise<Wifi[]> {
         let usr = JSON.parse(sessionStorage.getItem('user'));
         let _data: { device: Equipamento, executor: string };
         _data = { device: device, executor: usr.user }
@@ -30,7 +30,7 @@ export class WifiService extends SuperService {
         return this.urlService
             .request(this.infoResquest)
             .then(data => {
-                return data as Wifi
+                return data as Wifi[]
             })
             .catch(super.handleError);
     }

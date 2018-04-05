@@ -16,7 +16,7 @@ import { SuperComponentService } from 'util/supercomponent/super-component.servi
 
 export class WifiComponent extends SuperComponentService implements OnInit {
 
-    public wifi: Wifi;
+    public wifi: Wifi[];
     public searching: boolean = false;
     public btnSetWifi: boolean = false;
     public nomeBtn: string = "Modificar";
@@ -54,9 +54,9 @@ export class WifiComponent extends SuperComponentService implements OnInit {
         if (this.wifi) {
             this.btnSetWifi = true;
             this.nomeBtn = "Aguarde";
-            this.wifiService.setWifi(this.variavelHolderService.equipamento, this.wifi)
+            this.wifiService.setWifi(this.variavelHolderService.equipamento, this.wifi[0])
                 .then(data => {
-                    this.wifi = data;
+                    this.wifi[0] = data;
                     this.callToasty("Successo", "Alterações realizadas com sucesso.", "success", 10000);
                     this.nomeBtn = "Modificar";
                     this.btnSetWifi = false;
