@@ -25,7 +25,7 @@ export class BuscaService extends SuperService {
             command: "acs",
             path: "search/search",
             _data: _data,
-            timeout: 60000
+            timeout: 80000 // 1m:20s
         }
         return this.urlService
             .request(this.infoResquest)
