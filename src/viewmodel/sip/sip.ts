@@ -20,4 +20,5 @@ export class Sip {
     userAgentDomain: string;
     registrarServer: string;
     proxyServerPort: string
+    ipaddress: string;
 }
