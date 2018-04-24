@@ -50,8 +50,8 @@ export class DetalheComponent extends SuperComponentService implements OnInit {
             .then(data => {
                 this.device = data;
                 this.variavelHolderService.equipamento = this.device.device;
-                this.variavelHolderService.checkOnline = this.device.online;
-                // this.variavelHolderService.checkOnline = true;
+                // this.variavelHolderService.checkOnline = this.device.online;
+                this.variavelHolderService.checkOnline = true;
                 this.eqpReady = true;
                 this.searching = false;
                 if (!this.device.online) {

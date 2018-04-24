@@ -6,5 +6,7 @@ export class SipIn {
     registrarServer: string;
     userAgentDomain: string;
     outboundProxy: string;
-    phyReferenceList: string
+    phyReferenceList: string;
+    t38Enable?: string = "0"; // t38 ivisivel para o usuario
+
 }
