@@ -7,6 +7,6 @@ export class SipIn {
     userAgentDomain: string;
     outboundProxy: string;
     phyReferenceList: string;
-    t38Enable?: string = "0"; // t38 ivisivel para o usuario
+    // t38Enable?: string = "0"; // t38 ivisivel para o usuario
 
 }
