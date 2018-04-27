@@ -30,7 +30,7 @@ export class WifiService extends SuperService {
         return this.urlService
             .request(this.infoResquest)
             .then(data => {
-                return data as Wifi[]
+                return data.wifi as Wifi[]
             })
             .catch(super.handleError);
     }
