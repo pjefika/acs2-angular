@@ -1,4 +1,4 @@
 export class PPPoECredentials {
-    password: string;
-    username: string;
+    Password: string;
+    Username: string;
 }
