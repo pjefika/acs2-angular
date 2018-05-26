@@ -1,22 +1,19 @@
 <div *ngIf="eqpReady">
     <div>
         <h1>Detalhes do Equipamento:
-            <span> {{eqp.serial}}</span>
+            <span> {{eqp.deviceId.serialNumber}}</span>
         </h1>
     </div>
     <hr>
     <div class="row">
         <div class="col-md-4">
-            <equipamento-component [equipamento]="device.device"></equipamento-component>
+            <equipamento-component [equipamento]="eqp"></equipamento-component>
         </div>
         <div class="col-md-4">
-            <consultas-component [actived]="device.online" [isModem]="isModemOrAta()"></consultas-component>
+            <consultas-component [actived]="variavelHolderService.checkOnline" [isModem]="isModemOrAta()"></consultas-component>
         </div>
         <div class="col-md-4">
-            <acoes-component [actived]="device.online" [isModem]="isModemOrAta()"></acoes-component>
+            <acoes-component [actived]="variavelHolderService.checkOnline" [isModem]="isModemOrAta()"></acoes-component>
         </div>
     </div>
-</div>
-<div class="loading-margin-top">
-    <loading-component [searchWhat]="searchWhat" [searching]="searching"></loading-component>
 </div>

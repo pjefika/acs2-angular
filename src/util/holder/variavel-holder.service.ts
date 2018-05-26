@@ -7,13 +7,13 @@ export class VariavelHolderService {
 
     public equipamento: Equipamento;
 
-    public lstEquipamentos: EquipamentoResult[];
-
-    public equipamentoResumo: EquipamentoResult;
+    public lstEquipamentos: Equipamento[];
 
     public deviceId: number;
 
     public checkOnline: boolean;
+
+    
 
     constructor() { }
 }

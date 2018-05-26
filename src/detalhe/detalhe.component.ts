@@ -2,7 +2,7 @@ import { EquipamentoResult } from './../viewmodel/equipamento/table-result/equip
 import { EquipamentoInfo } from './../viewmodel/equipamento/device';
 import { Equipamento } from './../viewmodel/equipamento/equipamento';
 import { DetalheService } from './detalhe.service';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ToastyComponent } from 'utilcomponents/toasty/toasty.component';
 import { SuperComponentService } from 'util/supercomponent/super-component.service';
 import { VariavelHolderService } from 'util/holder/variavel-holder.service';
@@ -18,11 +18,7 @@ import { SystemHolderService } from 'util/holder/system-holder.service';
 export class DetalheComponent extends SuperComponentService implements OnInit {
 
     public eqpReady: boolean = false;
-    public searching: boolean = false;
-    public searchWhat: string;
-    public eqp: EquipamentoResult;
-    public device: EquipamentoInfo;
-    @Input() public searchSolo: boolean = false;
+    public eqp: Equipamento;
 
     constructor(
         private detalheService: DetalheService,
@@ -33,37 +29,99 @@ export class DetalheComponent extends SuperComponentService implements OnInit {
     }
 
     public ngOnInit() {
-        if (this.searchSolo) {
-            this.eqp = new EquipamentoResult();
-            this.eqp.id = this.variavelHolderService.deviceId;
-        } else {
-            this.eqp = this.variavelHolderService.equipamentoResumo;
-        }
-        this.buscaEqpInd();
+        this.especificEqp();
     }
 
-    public buscaEqpInd() {
-        this.searching = true;
-        this.eqpReady = false;
-        this.searchWhat = "Carregando Equipamento";
-        this.detalheService.getDetalhes(this.eqp.id)
-            .then(data => {
-                this.device = data;
-                this.variavelHolderService.equipamento = this.device.device;
-                this.variavelHolderService.checkOnline = this.device.online;
-                // this.variavelHolderService.checkOnline = true;
-                this.eqpReady = true;
-                this.searching = false;
-                if (!this.device.online) {
-                    this.callToasty("Ops, aconteceu algo.", "Equipamento inativo.", "error", 10000);
+    private especificEqp() {
+        this.eqp = this.variavelHolderService.equipamento;
+        setTimeout(() => {
+            this.eqpReady = true;
+        }, 100);
+    }
+
+    public dovalidipequal() {
+        if (this.systemHolderService.ableMock) {
+            this.validIpIsEqualMock();
+        } else {
+            this.validIpIsEqual();
+        }
+    }
+
+    private validIpIsEqualMock() {
+        this.systemHolderService.isSearchingIp = true;
+        setTimeout(() => {
+            this.detalheService
+                .validIpIsEqualMock(this.eqp.subscriberID)
+                .then(resposta => {
+                    this.systemHolderService.isSearchingIp = false;
+                    if (this.eqp.IPAddress === resposta.ip_address_v4) {
+                        this.checkOnlineIssue();
+                    } else {
+                        this.callToasty("Informativo.", "O IP do modem está diferente da autenticação por favor realize um Reboot no modem.", "warning", 25000);
+                    }
+                }, error => {
+                    // Informa erro de nao conseguir executar a ação.
+                    this.callToasty("Ops, aconteceu algo.", error.mError, "error", 25000);
+                    // this.callToasty("Ops, aconteceu algo.", "Realize um Reboot no modem", "error", 25000);
+                });
+        }, 5000);
+    }
+
+    private validIpIsEqual() {
+        this.systemHolderService.isSearchingIp = true;
+        this.detalheService
+            .validIpIsEqual(this.eqp.subscriberID)
+            .then(resposta => {
+                this.systemHolderService.isSearchingIp = false;
+                if (this.eqp.IPAddress === resposta.ip_address_v4) {
+                    this.checkOnlineIssue();
+                } else {
+                    this.callToasty("Informativo.", "O IP do modem está diferente da autenticação por favor realize um Reboot no modem.", "warning", 25000);
                 }
             }, error => {
-                this.searching = false;
-                this.callToasty("Ops, aconteceu algo.", error.mError, "error", 10000);
+                // Informa erro de nao conseguir executar a ação.
+                this.callToasty("Ops, aconteceu algo.", error.mError, "error", 25000);
+                // this.callToasty("Ops, aconteceu algo.", "Realize um Reboot no modem", "error", 25000);
+            });
+    }
+
+    public docheckonline() {
+        if (this.systemHolderService.ableMock) {
+            this.checkOnlineIssueMock();
+        } else {
+            this.checkOnlineIssue();
+        }
+    }
+
+    private checkOnlineIssueMock() {
+        this.systemHolderService.isSearchingCheckOnline = true;
+        setTimeout(() => {
+            this.detalheService
+                .checkOnlineIssueMock(this.eqp.deviceGUID)
+                .then(resposta => {
+                    this.variavelHolderService.checkOnline = resposta;
+                    this.systemHolderService.ablestatusmodem = true;
+                })
+                .then(() => {
+                    this.systemHolderService.isSearchingCheckOnline = false;
+                });
+        }, 5000);
+    }
+
+    private checkOnlineIssue() {
+        this.systemHolderService.isSearchingCheckOnline = true;
+        this.detalheService
+            .checkOnlineIssue(this.eqp)
+            .then(resposta => {
+                this.variavelHolderService.checkOnline = resposta;
+                this.systemHolderService.ablestatusmodem = true;
+            })
+            .then(() => {
+                this.systemHolderService.isSearchingCheckOnline = false;
             });
     }
 
     public isModemOrAta() {
-        return this.device.device.type === 0 || this.device.device.type === 1;
+        return this.eqp.type === 0 || this.eqp.type === 1;
     }
 }

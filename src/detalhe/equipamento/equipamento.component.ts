@@ -20,10 +20,16 @@ export class EquipamentoComponent implements OnInit {
         public variavelHolderService: VariavelHolderService,
         public systemHolderService: SystemHolderService) { }
 
-    public ngOnInit() { }
+    public ngOnInit() {
+        this.validip();
+    }
 
-    public busca() {
-        this.detalheComponent.buscaEqpInd();
+    private validip() {
+        this.detalheComponent.dovalidipequal();
+    }
+
+    private checkonline() {
+        this.detalheComponent.docheckonline();
     }
 
 }

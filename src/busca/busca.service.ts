@@ -8,6 +8,8 @@ import 'rxjs/Rx';
 import { UrlService } from 'util/urlservice/url.service';
 import { SuperService } from 'util/superservice/super.service';
 
+declare var require: any
+
 @Injectable()
 export class BuscaService extends SuperService {
 
@@ -33,5 +35,10 @@ export class BuscaService extends SuperService {
                 return data as Equipamento[]
             })
             .catch(super.handleError);
+    }
+
+    public getListaMock(): Equipamento[] {
+        let eqp: Equipamento[] = require('../assets/mock/listeqp.json');
+        return eqp;
     }
 }

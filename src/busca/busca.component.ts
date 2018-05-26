@@ -52,6 +52,34 @@ export class BuscaComponent extends SuperComponentService implements OnInit {
         this.resetHolder();
     }
 
+    private doBuscar() {
+        if (this.systemHolderService.ableMock) {
+            this.buscarMock();
+        } else {
+            this.buscar();
+        }
+    }
+
+    private buscarMock() {
+        if (!this.searching) {
+            this.nomeBtn = "Aguarde";
+            this.whatIsSearching = null;
+            this.whatIsSearchingInput = null;
+            this.seeWhatIsSearching();
+            this.listEqp = null;
+            this.searchWhat = "Buscando Equipamentos"
+            this.searching = true;
+            this.showTableResult = false;
+            setTimeout(() => {
+                this.listEqp = this.buscaService.getListaMock();
+                this.searching = false;
+                this.showTableResult = true;
+                this.searching = false;
+                this.nomeBtn = "Buscar";
+            }, 1000);
+        }
+    }
+
     public buscar() {
         if (!this.searching) {
             this.nomeBtn = "Aguarde";
@@ -76,7 +104,7 @@ export class BuscaComponent extends SuperComponentService implements OnInit {
                 .then(() => {
                     this.searching = false;
                     this.nomeBtn = "Buscar";
-                })
+                });
         }
     }
 

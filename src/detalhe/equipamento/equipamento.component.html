@@ -1,5 +1,25 @@
 <ul class="list-group">
-    <li class="list-group-item" [ngClass]="variavelHolderService.checkOnline ? 'list-group-item-success': 'list-group-item-danger'">
+
+    <!-- Aparece somente quando check online está sendo executado. -->
+    <li class="list-group-item list-group-item-secondary" *ngIf="systemHolderService.isSearchingCheckOnline">
+        <div class="col-sm-12">
+            <span>
+                <span class="negrito">Validando Modem, aguarde...</span>
+            </span>
+        </div>
+    </li>
+
+    <!-- Aparece somente quando check online está sendo executado. -->
+    <li class="list-group-item list-group-item-secondary" *ngIf="systemHolderService.isSearchingIp">
+        <div class="col-sm-12">
+            <span>
+                <span class="negrito">Validando IP, aguarde...</span>
+            </span>
+        </div>
+    </li>
+
+    <!-- Aparece somente quando check online e validação de ip não estão sendo executadas -->
+    <li class="list-group-item" *ngIf="!systemHolderService.isSearchingCheckOnline && !systemHolderService.isSearchingIp" [ngClass]="variavelHolderService.checkOnline ? 'list-group-item-success' : 'list-group-item-danger'">
         <div class="row">
             <div class="col-sm-10">
                 <span *ngIf="variavelHolderService.checkOnline">
@@ -8,10 +28,11 @@
                     <span class="negrito">Status: </span> Inativo</span>
             </div>
             <div class="col-sm-2">
-                <a role="button" class="btn btn-secondary btn-sm font-black" (click)="busca()">Atualizar</a>
+                <a role="button" class="btn btn-secondary btn-sm font-black" (click)="checkonline()">Atualizar</a>
             </div>
         </div>
     </li>
+
     <li class="list-group-item ">
         <span>
             <span class="negrito">Serial: </span> {{equipamento.deviceId.serialNumber}}</span>

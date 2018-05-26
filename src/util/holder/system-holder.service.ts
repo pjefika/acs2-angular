@@ -7,6 +7,12 @@ export class SystemHolderService {
 
     public whoMenuIsActive: string;
 
+    public isSearchingCheckOnline: boolean = false;
+
+    public isSearchingIp: boolean = false;
+
+    public ablestatusmodem: boolean = false;
+
     constructor() { }
 
 }

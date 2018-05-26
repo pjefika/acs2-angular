@@ -18,7 +18,7 @@ export class ResulTableEquipamentoComponent implements OnInit, OnChanges {
     @Input() public listEqp: Equipamento[];
     @Input() public showTable: boolean = false;
 
-    public mountedList: EquipamentoResult[];
+    public mountedList: Equipamento[];
     public listCount = 0;
 
     public listEqpResource;
@@ -51,21 +51,12 @@ export class ResulTableEquipamentoComponent implements OnInit, OnChanges {
     }
 
     public mountList(l) {
-        let lst: EquipamentoResult;
         let i = 0;
         l.forEach(eqp => {
-            lst = {
-                fabricante: eqp.manufacturer,
-                ip: eqp.IPAddress,
-                mac: eqp.macAddress,
-                serial: eqp.deviceId.serialNumber,
-                subscriber: eqp.subscriberID,
-                id: eqp.deviceGUID
-            }
             if (i === 0) {
-                this.mountedList = [lst];
+                this.mountedList = [eqp];
             } else {
-                this.mountedList.push(lst);
+                this.mountedList.push(eqp);
             }
             i = 1;
         });
@@ -78,7 +69,7 @@ export class ResulTableEquipamentoComponent implements OnInit, OnChanges {
     }
 
     public rowClick(rowEvent) {
-        this.variavelHolderService.equipamentoResumo = rowEvent.row.item;
+        this.variavelHolderService.equipamento = rowEvent.row.item;
         this.templateComponent.createDetalhesEquipamento();
     }
 
