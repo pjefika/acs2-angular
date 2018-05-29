@@ -8,6 +8,8 @@ import 'rxjs/Rx';
 import { SuperService } from 'util/superservice/super.service';
 import { UrlService } from 'util/urlservice/url.service';
 
+declare var require: any
+
 @Injectable()
 export class WifiService extends SuperService {
 
@@ -52,6 +54,32 @@ export class WifiService extends SuperService {
                 return data as Wifi
             })
             .catch(super.handleError);
+    }
+
+
+    public setWifiLista(device: Equipamento, wifi: Wifi[]): Promise<Wifi> {
+        let usr = JSON.parse(sessionStorage.getItem('user'));
+        let _data: { device: Equipamento, wifi: Wifi[], executor: string };
+        _data = { device: device, wifi: wifi, executor: usr.user }
+        this.infoResquest = {
+            rqst: "post",
+            command: "acs",
+            path: "device/setWifiInfo",
+            _data: _data,
+            timeout: 60000
+        }
+        return this.urlService
+            .request(this.infoResquest)
+            .then(data => {
+                return data as Wifi
+            })
+            .catch(super.handleError);
+    }
+
+    public getWifiMock(): Promise<Wifi[]> {
+        let w = require('../../../../assets/mock/wifi.json');
+        let wifi: Wifi[] = w.wifi;
+        return Promise.resolve(wifi);
     }
 
 }

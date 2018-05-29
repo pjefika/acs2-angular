@@ -16,10 +16,12 @@ import { SuperComponentService } from 'util/supercomponent/super-component.servi
 
 export class WifiComponent extends SuperComponentService implements OnInit {
 
-    public wifi: Wifi[];
-    public searching: boolean = false;
-    public btnSetWifi: boolean = false;
-    public nomeBtn: string = "Modificar";
+    private wifi: Wifi[];
+    private searching: boolean = false;
+    private btnSetWifi: boolean = false;
+    private nomeBtn: string = "Modificar";
+
+    private wifichoose: Wifi;
 
     constructor(
         public activeModal: NgbActiveModal,
@@ -31,10 +33,22 @@ export class WifiComponent extends SuperComponentService implements OnInit {
     }
 
     public ngOnInit() {
-        this.getWifi();
+        this.dogetwifi();
     }
 
-    public getWifi() {
+    private clickchoosewifi(w: Wifi) {
+        this.wifichoose = w;
+    }
+
+    public dogetwifi() {
+        if (this.systemHolderService.ableMock) {
+            this.getWifiMock();
+        } else {
+            this.getWifi();
+        }
+    }
+
+    private getWifi() {
         this.searching = true;
         this.btnSetWifi = true;
         this.wifiService.getWifi(this.variavelHolderService.equipamento)
@@ -47,7 +61,31 @@ export class WifiComponent extends SuperComponentService implements OnInit {
                 this.btnSetWifi = false;
                 this.activeModal.close();
                 this.callToasty("Ops, aconteceu algo.", error.mError, "error", 10000);
+            })
+            .then(() => {
+                this.clickchoosewifi(this.wifi[0]);
             });
+    }
+
+    private getWifiMock() {
+        this.searching = true;
+        this.btnSetWifi = true;
+        setTimeout(() => {
+            this.wifiService.getWifiMock()
+                .then(resposta => {
+                    this.wifi = resposta;
+                    this.searching = false;
+                    this.btnSetWifi = false;
+                }, error => {
+                    this.searching = false;
+                    this.btnSetWifi = false;
+                    this.activeModal.close();
+                    this.callToasty("Ops, aconteceu algo.", error.mError, "error", 10000);
+                })
+                .then(() => {
+                    this.clickchoosewifi(this.wifi[0]);
+                });
+        }, 1000);
     }
 
     public setWifi() {
@@ -55,6 +93,26 @@ export class WifiComponent extends SuperComponentService implements OnInit {
             this.btnSetWifi = true;
             this.nomeBtn = "Aguarde";
             this.wifiService.setWifi(this.variavelHolderService.equipamento, this.wifi[0])
+                .then(data => {
+                    this.wifi[0] = data;
+                    this.callToasty("Successo", "Alterações realizadas com sucesso.", "success", 10000);
+                    this.nomeBtn = "Modificar";
+                    this.btnSetWifi = false;
+                }, error => {
+                    this.nomeBtn = "Modificar";
+                    this.callToasty("Ops, aconteceu algo.", error.mError, "error", 10000);
+                    this.btnSetWifi = false;
+                });
+        }
+    }
+
+
+    public setWifiLista() {
+        if (this.wifichoose) {
+            let wl: Wifi[] = [this.wifichoose];
+            this.btnSetWifi = true;
+            this.nomeBtn = "Aguarde";
+            this.wifiService.setWifiLista(this.variavelHolderService.equipamento, wl)
                 .then(data => {
                     this.wifi[0] = data;
                     this.callToasty("Successo", "Alterações realizadas com sucesso.", "success", 10000);

@@ -23,4 +23,5 @@ export class Wifi {
     pctRecv: string;
     errSent: string;
     errRecv: string;
+    alias: string;
 }

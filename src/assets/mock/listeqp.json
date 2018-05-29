@@ -1,154 +1,76 @@
 [
     {
-        "activated":true,
-        "alarmsEnabled":true,
-        "captured":false,
-        "commonUniqueIdentifier":null,
-        "community":null,
-        "connectionRequestPassword":"c33c99bbdfd00dfa0c5c8c4a0cb530ad",
-        "connectionRequestURL":"http://186.212.219.213:7547/uoOAn0lfHw8xdzHr",
-        "connectionRequestUsername":"LU1532103002393-FAST5317GV-8C10D4",
-        "currentTime":1527331819000,
-        "customAttribute1":"8C:10:D4:DA:15:50",
-        "customAttribute10":null,
-        "customAttribute2":null,
-        "customAttribute3":null,
-        "customAttribute4":null,
-        "customAttribute5":null,
-        "customAttribute6":null,
-        "customAttribute7":null,
-        "customAttribute8":null,
-        "customAttribute9":null,
-        "deleted":false,
-        "deviceClass":null,
-        "deviceGUID":34478019,
-        "deviceId":{
-            "OUI":"8C10D4",
-            "productClass":"FAST5317GV",
-            "protocol":"DEVICE_PROTOCOL_DSLFTR069v1",
-            "serialNumber":"LU1532103002393"
+        "activated": true,
+        "alarmsEnabled": true,
+        "captured": false,
+        "commonUniqueIdentifier": null,
+        "community": null,
+        "connectionRequestPassword": "53fd97eaa8f2a2584fcd05624cbc4797",
+        "connectionRequestURL": "http://186.215.34.38:7547/05bfe98e",
+        "connectionRequestUsername": "190000016647927-V5471-28C87A",
+        "currentTime": 1527621194000,
+        "customAttribute1": "28:c8:7a:19:67:18",
+        "customAttribute10": null,
+        "customAttribute2": null,
+        "customAttribute3": null,
+        "customAttribute4": null,
+        "customAttribute5": null,
+        "customAttribute6": null,
+        "customAttribute7": null,
+        "customAttribute8": null,
+        "customAttribute9": null,
+        "deleted": false,
+        "deviceClass": null,
+        "deviceGUID": 28265797,
+        "deviceId": {
+            "OUI": "28C87A",
+            "productClass": "V5471",
+            "protocol": "DEVICE_PROTOCOL_DSLFTR069v1",
+            "serialNumber": "190000016647927"
         },
-        "dynamicVariables":[
+        "dynamicVariables": [
             {
-                "encrypt":false,
-                "name":"inform.itoss.activation.msg",
-                "sensitive":false,
-                "value":"{'operation':'PROVISIONING','mac':'8C:10:D4:DA:15:50','pclass':'FAST5317GV','guid':'34478019','serialNumber':'LU1532103002393','subscriberId':'NO_SUBSCRIBER_IT','parentId':'','parentMac':'','parentIp':'null','timestamp':'2018-05-26T07:50:14.911-03:00'}"
+                "encrypt": false,
+                "name": "inform.itoss.activation.msg",
+                "sensitive": false,
+                "value": "{'operation':'PROVISIONING','mac':'28:c8:7a:19:67:18','pclass':'V5471','guid':'28265797','serialNumber':'190000016647927','subscriberId':'NO_SUBSCRIBER_IT','parentId':'','parentMac':'','parentIp':'null','timestamp':'2018-05-29T10:04:09.949-03:00'}"
             }
         ],
-        "firstContactTime":1527331796858,
-        "HTTPPublicPassword":"1527331799520a",
-        "HTTPPublicUsername":"1527331799520u",
-        "IPAddress":"186.212.219.213",
-        "lastActivationTime":1527331812827,
-        "lastCapturedBy":null,
-        "lastCapturedTime":null,
-        "lastContactTime":1527331819411,
-        "macAddress":"8C:10:D4:DA:15:50",
-        "managed":true,
-        "manufacturer":"SAGEMCOM",
-        "model":"Device:2",
-        "modelName":"FAST5317GV",
-        "PPPPassword":null,
-        "PPPUsername":null,
-        "port":0,
-        "portMappingRetryCount":0,
-        "serviceTagArray":[
+        "firstContactTime": 1519870929086,
+        "HTTPPublicPassword": "1527598661664a",
+        "HTTPPublicUsername": "1527598661664u",
+        "IPAddress": "186.215.34.38",
+        "lastActivationTime": 1527599047468,
+        "lastCapturedBy": null,
+        "lastCapturedTime": null,
+        "lastContactTime": 1527621194694,
+        "macAddress": "28:c8:7a:19:67:18",
+        "managed": true,
+        "manufacturer": "PACE",
+        "model": "Device:1",
+        "modelName": "V5471",
+        "PPPPassword": null,
+        "PPPUsername": null,
+        "port": 0,
+        "portMappingRetryCount": 0,
+        "serviceTagArray": [
             {
-                "copyOnFactoryReset":false,
-                "factoryResetValue":null,
-                "name":"inform.itoss.activation.status",
-                "value":"final_notification_sent_at[2018-05-26T07:50:14.953-03:00]_status[OK]"
+                "copyOnFactoryReset": false,
+                "factoryResetValue": null,
+                "name": "inform.itoss.activation.status",
+                "value": "final_notification_sent_at[2018-05-29T10:04:10.005-03:00]_status[OK]"
             },
             {
-                "copyOnFactoryReset":false,
-                "factoryResetValue":null,
-                "name":"notifyIT",
-                "value":"true"
+                "copyOnFactoryReset": false,
+                "factoryResetValue": null,
+                "name": "notifyIT",
+                "value": "true"
             }
         ],
-        "softwareVersion":"SG79006510046",
-        "subscriberID":"CTA-81E2J3HSS-013",
-        "type":0,
-        "userTagArray":[
-
-        ],
-        "domainName":null
-    },
-    {
-        "activated":true,
-        "alarmsEnabled":true,
-        "captured":false,
-        "commonUniqueIdentifier":null,
-        "community":null,
-        "connectionRequestPassword":"2731209ffb6d2fa3bd465b130d9765ef",
-        "connectionRequestURL":"http://186.214.43.198:7547/05bfe98e",
-        "connectionRequestUsername":"190000016647927-V5471-28C87A",
-        "currentTime":1527266972000,
-        "customAttribute1":"28:c8:7a:19:67:18",
-        "customAttribute10":null,
-        "customAttribute2":null,
-        "customAttribute3":null,
-        "customAttribute4":null,
-        "customAttribute5":null,
-        "customAttribute6":null,
-        "customAttribute7":null,
-        "customAttribute8":null,
-        "customAttribute9":null,
-        "deleted":false,
-        "deviceClass":null,
-        "deviceGUID":28265797,
-        "deviceId":{
-            "OUI":"28C87A",
-            "productClass":"V5471",
-            "protocol":"DEVICE_PROTOCOL_DSLFTR069v1",
-            "serialNumber":"190000016647927"
-        },
-        "dynamicVariables":[
-            {
-                "encrypt":false,
-                "name":"inform.itoss.activation.msg",
-                "sensitive":false,
-                "value":"{'operation':'PROVISIONING','mac':'28:c8:7a:19:67:18','pclass':'V5471','guid':'28265797','serialNumber':'190000016647927','subscriberId':'NO_SUBSCRIBER_IT','parentId':'','parentMac':'','parentIp':'null','timestamp':'2018-03-01T05:05:24.706-03:00'}"
-            }
-        ],
-        "firstContactTime":1519870929086,
-        "HTTPPublicPassword":"1519891503551a",
-        "HTTPPublicUsername":"1519891503551u",
-        "IPAddress":"186.214.43.198",
-        "lastActivationTime":1519891522648,
-        "lastCapturedBy":null,
-        "lastCapturedTime":null,
-        "lastContactTime":1527266982522,
-        "macAddress":"28:c8:7a:19:67:18",
-        "managed":true,
-        "manufacturer":"PACE",
-        "model":"Device:1",
-        "modelName":"V5471",
-        "PPPPassword":null,
-        "PPPUsername":null,
-        "port":0,
-        "portMappingRetryCount":0,
-        "serviceTagArray":[
-            {
-                "copyOnFactoryReset":false,
-                "factoryResetValue":null,
-                "name":"inform.itoss.activation.status",
-                "value":"final_notification_sent_at[2018-03-01T05:05:24.757-03:00]_status[OK]"
-            },
-            {
-                "copyOnFactoryReset":false,
-                "factoryResetValue":null,
-                "name":"notifyIT",
-                "value":"true"
-            }
-        ],
-        "softwareVersion":"B14103-GVT-RC2-103961",
-        "subscriberID":"CTA-81E2J3HSS-013",
-        "type":0,
-        "userTagArray":[
-
-        ],
-        "domainName":null
+        "softwareVersion": "B14103-GVT-RC2-103961",
+        "subscriberID": "CTA-81E2J3HSS-013",
+        "type": 0,
+        "userTagArray": [],
+        "domainName": null
     }
 ]

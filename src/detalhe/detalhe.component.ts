@@ -63,7 +63,7 @@ export class DetalheComponent extends SuperComponentService implements OnInit {
                         this.callToasty("Informativo.", "Não foi possivel validar a autenticação do modem.", "warning", 8000);
                         this.waserrorip = true;
                     } else if (this.eqp.IPAddress === resposta.ip_address_v4) {
-                        this.checkOnlineIssue();
+                        this.docheckonline();
                     } else {
                         this.callToasty("Informativo.", "O IP do modem está diferente da autenticação por favor realize um Reboot no modem.", "warning", 8000);
                         this.waserrorip = true;
@@ -73,7 +73,7 @@ export class DetalheComponent extends SuperComponentService implements OnInit {
                     this.callToasty("Ops, aconteceu algo.", error.mError, "error", 25000);
                     // this.callToasty("Ops, aconteceu algo.", "Realize um Reboot no modem", "error", 25000);
                 });
-        }, 5000);
+        }, 1000);
     }
 
     private validIpIsEqual() {
@@ -87,7 +87,7 @@ export class DetalheComponent extends SuperComponentService implements OnInit {
                     this.callToasty("Informativo.", "Não foi possivel validar a autenticação do modem.", "warning", 8000);
                     this.waserrorip = true;
                 } else if (this.eqp.IPAddress === resposta.ip_address_v4) {
-                    this.checkOnlineIssue();
+                    this.docheckonline();
                 } else {
                     this.waserrorip = true;
                     this.callToasty("Informativo.", "O IP do modem está diferente da autenticação por favor realize um Reboot no modem.", "warning", 25000);
@@ -142,7 +142,7 @@ export class DetalheComponent extends SuperComponentService implements OnInit {
                 .then(() => {
                     this.systemHolderService.isSearchingCheckOnline = false;
                 });
-        }, 5000);
+        }, 1000);
     }
 
     private checkOnlineIssue() {

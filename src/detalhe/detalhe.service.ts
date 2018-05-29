@@ -81,7 +81,6 @@ export class DetalheService extends SuperService {
     }
 
     public checkOnlineIssueMock(id: number): Promise<boolean> {
-        console.log("entrou check online mock");
         return Promise.resolve(true);
     }
 
