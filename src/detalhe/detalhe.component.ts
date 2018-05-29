@@ -7,12 +7,13 @@ import { ToastyComponent } from 'utilcomponents/toasty/toasty.component';
 import { SuperComponentService } from 'util/supercomponent/super-component.service';
 import { VariavelHolderService } from 'util/holder/variavel-holder.service';
 import { SystemHolderService } from 'util/holder/system-holder.service';
+import { BuscaService } from 'busca/busca.service';
 
 @Component({
     selector: 'detalhe-component',
     templateUrl: 'detalhe.component.html',
     styleUrls: ['detalhe.component.css'],
-    providers: [DetalheService]
+    providers: [DetalheService, BuscaService]
 })
 
 export class DetalheComponent extends SuperComponentService implements OnInit {
@@ -20,11 +21,14 @@ export class DetalheComponent extends SuperComponentService implements OnInit {
     public eqpReady: boolean = false;
     public eqp: Equipamento;
 
+    private waserrorip: boolean = false;
+
     constructor(
         private detalheService: DetalheService,
         public toastyComponent: ToastyComponent,
         public variavelHolderService: VariavelHolderService,
-        public systemHolderService: SystemHolderService) {
+        public systemHolderService: SystemHolderService,
+        private buscaService: BuscaService) {
         super(toastyComponent);
     }
 
@@ -49,6 +53,7 @@ export class DetalheComponent extends SuperComponentService implements OnInit {
 
     private validIpIsEqualMock() {
         this.systemHolderService.isSearchingIp = true;
+        this.systemHolderService.boxnameseewhatissearching = "Validando IP, aguarde...";
         setTimeout(() => {
             this.detalheService
                 .validIpIsEqualMock(this.eqp.subscriberID)
@@ -56,10 +61,12 @@ export class DetalheComponent extends SuperComponentService implements OnInit {
                     this.systemHolderService.isSearchingIp = false;
                     if (resposta.ip_address_v4 == null || resposta.ip_address_v4 == undefined) {
                         this.callToasty("Informativo.", "Não foi possivel validar a autenticação do modem.", "warning", 8000);
+                        this.waserrorip = true;
                     } else if (this.eqp.IPAddress === resposta.ip_address_v4) {
                         this.checkOnlineIssue();
                     } else {
                         this.callToasty("Informativo.", "O IP do modem está diferente da autenticação por favor realize um Reboot no modem.", "warning", 8000);
+                        this.waserrorip = true;
                     }
                 }, error => {
                     // Informa erro de nao conseguir executar a ação.
@@ -71,15 +78,18 @@ export class DetalheComponent extends SuperComponentService implements OnInit {
 
     private validIpIsEqual() {
         this.systemHolderService.isSearchingIp = true;
+        this.systemHolderService.boxnameseewhatissearching = "Validando IP, aguarde...";
         this.detalheService
             .validIpIsEqual(this.eqp.macAddress)
             .then(resposta => {
                 this.systemHolderService.isSearchingIp = false;
                 if (resposta.ip_address_v4 == null || resposta.ip_address_v4 == undefined) {
                     this.callToasty("Informativo.", "Não foi possivel validar a autenticação do modem.", "warning", 8000);
+                    this.waserrorip = true;
                 } else if (this.eqp.IPAddress === resposta.ip_address_v4) {
                     this.checkOnlineIssue();
                 } else {
+                    this.waserrorip = true;
                     this.callToasty("Informativo.", "O IP do modem está diferente da autenticação por favor realize um Reboot no modem.", "warning", 25000);
                 }
             }, error => {
@@ -87,6 +97,28 @@ export class DetalheComponent extends SuperComponentService implements OnInit {
                 this.callToasty("Ops, aconteceu algo.", error.mError, "error", 25000);
                 // this.callToasty("Ops, aconteceu algo.", "Realize um Reboot no modem", "error", 25000);
             });
+    }
+
+    public searchinfodevice() {
+        if (this.waserrorip) {
+            this.systemHolderService.isSearchingIp = true;
+            this.systemHolderService.boxnameseewhatissearching = "Buscando informações do modem...";
+            this.buscaService
+                .getLista("SERIAL", this.variavelHolderService.equipamento.deviceId.serialNumber)
+                .then(resposta => {
+                    if (resposta.length === 0) {
+                        this.callToasty("Ops, aconteceu algo.", "Modem não esta mais ativo na plataforma por favor reconsulte.", "error", 15000);
+                    } else {
+                        this.variavelHolderService.equipamento = resposta[0];
+                        this.waserrorip = false;
+                        this.dovalidipequal();
+                    }
+                }, error => {
+                    this.callToasty("Ops, aconteceu algo.", error.mError, "error", 25000);
+                });
+        } else {
+            this.dovalidipequal();
+        }
     }
 
     public docheckonline() {
@@ -99,6 +131,7 @@ export class DetalheComponent extends SuperComponentService implements OnInit {
 
     private checkOnlineIssueMock() {
         this.systemHolderService.isSearchingCheckOnline = true;
+        this.systemHolderService.boxnameseewhatissearching = "Validando Modem, aguarde...";
         setTimeout(() => {
             this.detalheService
                 .checkOnlineIssueMock(this.eqp.deviceGUID)
@@ -114,11 +147,15 @@ export class DetalheComponent extends SuperComponentService implements OnInit {
 
     private checkOnlineIssue() {
         this.systemHolderService.isSearchingCheckOnline = true;
+        this.systemHolderService.boxnameseewhatissearching = "Validando Modem, aguarde...";
         this.detalheService
             .checkOnlineIssue(this.eqp)
             .then(resposta => {
                 this.variavelHolderService.checkOnline = resposta;
                 this.systemHolderService.ablestatusmodem = true;
+                if (!this.variavelHolderService.checkOnline) {
+                    this.callToasty("Ops, aconteceu algo", "Modem não está ativo", "error", 8000);
+                }
             })
             .then(() => {
                 this.systemHolderService.isSearchingCheckOnline = false;

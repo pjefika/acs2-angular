@@ -1,22 +1,23 @@
 <ul class="list-group">
 
     <!-- Aparece somente quando check online está sendo executado. -->
-    <li class="list-group-item list-group-item-secondary" *ngIf="systemHolderService.isSearchingCheckOnline">
+    <li class="list-group-item list-group-item-secondary" *ngIf="systemHolderService.isSearchingCheckOnline || systemHolderService.isSearchingIp">
         <div class="col-sm-12">
             <span>
-                <span class="negrito">Validando Modem, aguarde...</span>
+                <!-- <span class="negrito">Validando Modem, aguarde...</span> -->
+                <span class="negrito">{{systemHolderService.boxnameseewhatissearching}}</span>
             </span>
         </div>
     </li>
 
     <!-- Aparece somente quando check online está sendo executado. -->
-    <li class="list-group-item list-group-item-secondary" *ngIf="systemHolderService.isSearchingIp">
+    <!-- <li class="list-group-item list-group-item-secondary" *ngIf="systemHolderService.isSearchingIp">
         <div class="col-sm-12">
             <span>
                 <span class="negrito">Validando IP, aguarde...</span>
             </span>
         </div>
-    </li>
+    </li> -->
 
     <!-- Aparece somente quando check online e validação de ip não estão sendo executadas -->
     <li class="list-group-item" *ngIf="!systemHolderService.isSearchingCheckOnline && !systemHolderService.isSearchingIp" [ngClass]="variavelHolderService.checkOnline ? 'list-group-item-success' : 'list-group-item-danger'">

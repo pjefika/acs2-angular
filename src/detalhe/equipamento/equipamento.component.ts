@@ -29,8 +29,7 @@ export class EquipamentoComponent implements OnInit {
     }
 
     private checkonline() {
-        // this.detalheComponent.docheckonline();
-        this.detalheComponent.dovalidipequal();
+        this.detalheComponent.searchinfodevice();
     }
 
 }

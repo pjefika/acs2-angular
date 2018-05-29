@@ -13,6 +13,8 @@ export class SystemHolderService {
 
     public ablestatusmodem: boolean = false;
 
+    public boxnameseewhatissearching: string;
+
     constructor() { }
 
 }
