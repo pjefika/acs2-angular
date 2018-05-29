@@ -54,10 +54,12 @@ export class DetalheComponent extends SuperComponentService implements OnInit {
                 .validIpIsEqualMock(this.eqp.subscriberID)
                 .then(resposta => {
                     this.systemHolderService.isSearchingIp = false;
-                    if (this.eqp.IPAddress === resposta.ip_address_v4) {
+                    if (resposta.ip_address_v4 == null || resposta.ip_address_v4 == undefined) {
+                        this.callToasty("Informativo.", "Não foi possivel validar a autenticação do modem.", "warning", 8000);
+                    } else if (this.eqp.IPAddress === resposta.ip_address_v4) {
                         this.checkOnlineIssue();
                     } else {
-                        this.callToasty("Informativo.", "O IP do modem está diferente da autenticação por favor realize um Reboot no modem.", "warning", 25000);
+                        this.callToasty("Informativo.", "O IP do modem está diferente da autenticação por favor realize um Reboot no modem.", "warning", 8000);
                     }
                 }, error => {
                     // Informa erro de nao conseguir executar a ação.
@@ -70,10 +72,12 @@ export class DetalheComponent extends SuperComponentService implements OnInit {
     private validIpIsEqual() {
         this.systemHolderService.isSearchingIp = true;
         this.detalheService
-            .validIpIsEqual(this.eqp.subscriberID)
+            .validIpIsEqual(this.eqp.macAddress)
             .then(resposta => {
                 this.systemHolderService.isSearchingIp = false;
-                if (this.eqp.IPAddress === resposta.ip_address_v4) {
+                if (resposta.ip_address_v4 == null || resposta.ip_address_v4 == undefined) {
+                    this.callToasty("Informativo.", "Não foi possivel validar a autenticação do modem.", "warning", 8000);
+                } else if (this.eqp.IPAddress === resposta.ip_address_v4) {
                     this.checkOnlineIssue();
                 } else {
                     this.callToasty("Informativo.", "O IP do modem está diferente da autenticação por favor realize um Reboot no modem.", "warning", 25000);

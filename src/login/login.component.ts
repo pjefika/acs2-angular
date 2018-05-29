@@ -57,11 +57,13 @@ export class LoginComponent extends AlertService implements OnInit {
                 } else {
                     //type: "warning", msg: "Usuário ou senha incorretos, por favor verifique."
                     super.callAlert("warning", "Usuário ou senha incorretos, por favor verifique.");
+                    this.callToasty("Informativo.", "Usuário ou senha incorretos, por favor verifique.", "warning", 8000);
                     this.usuario.senha = "";
                 }
             }, error => {
                 this.usuario.login = "";
                 this.usuario.senha = "";
+                this.callToasty("Informativo.", "Usuário ou senha incorretos, por favor verifique.", "warning", 8000);
                 super.callAlert("error", "Usuário ou senha incorretos, por favor verifique.");
             });
     }
