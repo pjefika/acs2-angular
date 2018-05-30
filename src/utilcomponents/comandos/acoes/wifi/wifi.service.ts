@@ -57,10 +57,10 @@ export class WifiService extends SuperService {
     }
 
 
-    public setWifiLista(device: Equipamento, wifi: Wifi[]): Promise<Wifi> {
+    public setWifiLista(device: Equipamento, wifi: Wifi[]) {
         let usr = JSON.parse(sessionStorage.getItem('user'));
-        let _data: { device: Equipamento, wifi: Wifi[], executor: string };
-        _data = { device: device, wifi: wifi, executor: usr.user }
+        let _data: { device: Equipamento, wifi: { wifi: Wifi[] }, executor: string };
+        _data = { device: device, wifi: { wifi: wifi }, executor: usr.user };
         this.infoResquest = {
             rqst: "post",
             command: "acs",
