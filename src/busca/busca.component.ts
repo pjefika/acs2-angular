@@ -61,6 +61,7 @@ export class BuscaComponent extends SuperComponentService implements OnInit {
     }
 
     private buscarMock() {
+        // if (this.validEmptySearch()) {
         if (!this.searching) {
             this.nomeBtn = "Aguarde";
             this.whatIsSearching = null;
@@ -78,33 +79,40 @@ export class BuscaComponent extends SuperComponentService implements OnInit {
                 this.nomeBtn = "Buscar";
             }, 1000);
         }
+        // } else {
+        //     this.callToasty("Informativo", "Por favor preencha um dos campos de busca.", "warning", 5000);
+        // }
     }
 
     public buscar() {
-        if (!this.searching) {
-            this.nomeBtn = "Aguarde";
-            this.whatIsSearching = null;
-            this.whatIsSearchingInput = null;
-            this.seeWhatIsSearching();
-            this.listEqp = null;
-            this.searchWhat = "Buscando Equipamentos"
-            this.searching = true;
-            this.showTableResult = false;
-            this.buscaService.getLista(this.whatIsSearching, this.whatIsSearchingInput)
-                .then(data => {
-                    this.listEqp = data;
-                    this.searching = false;
-                    this.showTableResult = true;
-                    if (data.length === 0) {
-                        this.callToasty("Ops, aconteceu algo.", "A busca não obteve resultados.", "error", 15000);
-                    }
-                }, error => {
-                    this.callToasty("Ops, aconteceu algo.", error.mError, "error", 25000);
-                })
-                .then(() => {
-                    this.searching = false;
-                    this.nomeBtn = "Buscar";
-                });
+        if (this.validEmptySearch()) {
+            if (!this.searching) {
+                this.nomeBtn = "Aguarde";
+                this.whatIsSearching = null;
+                this.whatIsSearchingInput = null;
+                this.seeWhatIsSearching();
+                this.listEqp = null;
+                this.searchWhat = "Buscando Equipamentos"
+                this.searching = true;
+                this.showTableResult = false;
+                this.buscaService.getLista(this.whatIsSearching, this.whatIsSearchingInput)
+                    .then(data => {
+                        this.listEqp = data;
+                        this.searching = false;
+                        this.showTableResult = true;
+                        if (data.length === 0) {
+                            this.callToasty("Ops, aconteceu algo.", "A busca não obteve resultados.", "error", 15000);
+                        }
+                    }, error => {
+                        this.callToasty("Ops, aconteceu algo.", error.mError, "error", 25000);
+                    })
+                    .then(() => {
+                        this.searching = false;
+                        this.nomeBtn = "Buscar";
+                    });
+            }
+        } else {
+            this.callToasty("Informativo", "Por favor preencha um dos campos de busca.", "warning", 5000);
         }
     }
 
@@ -122,6 +130,14 @@ export class BuscaComponent extends SuperComponentService implements OnInit {
             this.whatIsSearching = "SERIAL";
             this.whatIsSearchingInput = this.searchCond.serial.trim();
         }
+    }
+
+    private validEmptySearch(): boolean {
+        let valid: boolean = true;
+        if (this.whatIsSearching === undefined || this.whatIsSearchingInput === undefined) {
+            valid = false;
+        }
+        return valid;
     }
 
     public initConditions() {
