@@ -10,15 +10,6 @@
         </div>
     </li>
 
-    <!-- Aparece somente quando check online está sendo executado. -->
-    <!-- <li class="list-group-item list-group-item-secondary" *ngIf="systemHolderService.isSearchingIp">
-        <div class="col-sm-12">
-            <span>
-                <span class="negrito">Validando IP, aguarde...</span>
-            </span>
-        </div>
-    </li> -->
-
     <!-- Aparece somente quando check online e validação de ip não estão sendo executadas -->
     <li class="list-group-item" *ngIf="!systemHolderService.isSearchingCheckOnline && !systemHolderService.isSearchingIp" [ngClass]="variavelHolderService.checkOnline ? 'list-group-item-success' : 'list-group-item-danger'">
         <div class="row">
@@ -29,7 +20,7 @@
                     <span class="negrito">Status: </span> Inativo</span>
             </div>
             <div class="col-sm-2">
-                <a role="button" class="btn btn-secondary btn-sm font-black" (click)="checkonline()">Atualizar</a>
+                <a role="button" class="btn btn-secondary btn-sm font-black" (click)="searchinfodevice()">Atualizar</a>
             </div>
         </div>
     </li>

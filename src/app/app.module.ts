@@ -58,6 +58,7 @@ import { MenuComponent } from 'utilcomponents/menu/menu.component';
 import { ModalComponent } from 'utilcomponents/modal/modal.component';
 import { IdRouterComponent } from 'utilcomponents/id-router/id-router.component';
 import { DynamicRouterComponent } from 'utilcomponents/dynamicrouter/dynamic-router.component';
+import { ValidaTipoRedeComponent } from 'busca/valida-tipo-rede/valida-tipo-rede.component';
 
 @NgModule({
 	declarations: [
@@ -97,7 +98,8 @@ import { DynamicRouterComponent } from 'utilcomponents/dynamicrouter/dynamic-rou
 		SipGetComponent,
 		IdRouterComponent,
 		AlertComponent,
-		ToastyComponent
+		ToastyComponent,
+		ValidaTipoRedeComponent
 	],
 	imports: [
 		BrowserModule,
@@ -121,7 +123,8 @@ import { DynamicRouterComponent } from 'utilcomponents/dynamicrouter/dynamic-rou
 		AlertService,
 		SuperComponentService,
 		ToastyComponent,
-		DynamicRouterService
+		DynamicRouterService,
+		TemplateComponent
 	],
 	bootstrap: [AppComponent],
 	schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -147,7 +150,8 @@ import { DynamicRouterComponent } from 'utilcomponents/dynamicrouter/dynamic-rou
 		SipSetComponent,
 		SipGetComponent,
 		AlertComponent,
-		ToastyComponent
+		ToastyComponent,
+		ValidaTipoRedeComponent
 	]
 })
 export class AppModule { }

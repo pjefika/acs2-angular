@@ -3,6 +3,7 @@ import { Equipamento } from './../../viewmodel/equipamento/equipamento';
 import { Component, OnInit, Input } from '@angular/core';
 import { VariavelHolderService } from 'util/holder/variavel-holder.service';
 import { SystemHolderService } from 'util/holder/system-holder.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
     selector: 'equipamento-component',
@@ -21,14 +22,22 @@ export class EquipamentoComponent implements OnInit {
         public systemHolderService: SystemHolderService) { }
 
     public ngOnInit() {
-        this.validip();
+        if (this.systemHolderService.isvivoone) {
+            this.checkondeline();
+        } else {
+            this.validip();
+        }
     }
 
     private validip() {
         this.detalheComponent.dovalidipequal();
     }
 
-    private checkonline() {
+    private checkondeline() {
+        this.detalheComponent.docheckonline();
+    }
+
+    private searchinfodevice() {
         this.detalheComponent.searchinfodevice();
     }
 

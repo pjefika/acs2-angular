@@ -6,6 +6,8 @@ import { Component, OnInit, OnChanges, Input, SimpleChanges } from '@angular/cor
 import { DataTable, DataTableTranslations, DataTableResource } from 'angular-4-data-table-bootstrap-4';
 import { VariavelHolderService } from 'util/holder/variavel-holder.service';
 import { SystemHolderService } from 'util/holder/system-holder.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ValidaTipoRedeComponent } from '../valida-tipo-rede/valida-tipo-rede.component';
 
 @Component({
     selector: 'result-table-equipamento',
@@ -28,7 +30,8 @@ export class ResulTableEquipamentoComponent implements OnInit, OnChanges {
     constructor(
         private templateComponent: TemplateComponent,
         public variavelHolderService: VariavelHolderService,
-        public systemHolderService: SystemHolderService) { }
+        public systemHolderService: SystemHolderService,
+        private modalService: NgbModal) { }
 
     public ngOnInit() {
         if (this.variavelHolderService.lstEquipamentos) {
@@ -69,7 +72,11 @@ export class ResulTableEquipamentoComponent implements OnInit, OnChanges {
     }
 
     public rowClick(rowEvent) {
+        this.modalService.open(ValidaTipoRedeComponent);
         this.variavelHolderService.equipamento = rowEvent.row.item;
+    }
+
+    public createTemplateDetalhes() {
         this.templateComponent.createDetalhesEquipamento();
     }
 
