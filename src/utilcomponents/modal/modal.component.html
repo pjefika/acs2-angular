@@ -1,3 +1,9 @@
-<!-- <a role="button" [class]="styleBtn" [class.disabled]="validComponent()" (click)="open()">{{nomeDoBtn}}</a> -->
-
-<button type="button" [class]="styleBtn" (click)="open()" [disabled]="validComponent()">{{nomeDoBtn}}</button>
+<clr-modal [(clrModalOpen)]="openmodalsearchandactions">
+    <h3 class="modal-title">{{title}}</h3>
+    <div class="modal-body">
+        <div #dynamicComponentContainer></div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline" (click)="systemHolderService.openmodalsearchandactions = false">Fechar</button>
+    </div>
+</clr-modal>

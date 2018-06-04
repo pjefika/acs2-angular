@@ -1,19 +1,9 @@
-<div class="modal-header">
-    <h4 class="modal-title">Configurar Service Class</h4>
-    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
-        <span aria-hidden="true">&times;</span>
-      </button>
-</div>
-<div class="modal-body">
-    <loading-component [searchWhat]="'Buscando Service Class'" [searching]="searching"></loading-component>
+<loading-component [searchWhat]="'Buscando Service Class'" [searching]="searching"></loading-component>
     <div *ngIf="serviceClass">
         <div class="form-group">
             <label>Classe de Serviço</label>
             <input type="text" class="form-control" [(ngModel)]="serviceClass.classOfService">
         </div>
     </div>
-</div>
-<div class="modal-footer">
-    <button type="button" class="btn btn-primary" (click)="setServiceClass()" [class.disabled]="btnServiceClass">{{nomeBtn}}</button>
-    <button type="button" class="btn btn-secondary" (click)="activeModal.close('Close click')">Fechar</button>
-</div>
+
+<button type="button" class="btn btn-primary" (click)="setServiceClass()" [class.disabled]="btnServiceClass">{{nomeBtn}}</button>

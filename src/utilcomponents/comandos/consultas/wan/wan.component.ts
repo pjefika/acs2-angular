@@ -1,6 +1,5 @@
 import { Wan } from './../../../../viewmodel/wan/wan';
 import { ToastyComponent } from './../../../toasty/toasty.component';
-// import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { WanService } from './wan.service';
 import { Component, OnInit } from '@angular/core';
 import { VariavelHolderService } from 'util/holder/variavel-holder.service';
@@ -21,7 +20,6 @@ export class WanComponent extends SuperComponentService implements OnInit {
     public searching: boolean = false;
 
     constructor(
-        // public activeModal: NgbActiveModal,
         private wanService: WanService,
         public variavelHolderService: VariavelHolderService,
         public systemHolderService: SystemHolderService,

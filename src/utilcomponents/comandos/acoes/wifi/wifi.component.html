@@ -1,40 +1,30 @@
-<div class="modal-header">
-    <h4 class="modal-title">Configurações de Wifi</h4>
-    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
-        <span aria-hidden="true">&times;</span>
-    </button>
-</div>
-<div class="modal-body">
-    <loading-component [searchWhat]="'Buscando Wifi'" [searching]="searching"></loading-component>
-    <div *ngIf="wifi" style="text-align: center;">
-        <div class="btn-group" role="group" aria-label="Configurações de rede Wifi">
-            <button type="button" class="btn btn-secondary" (click)="clickchoosewifi(wifi[0])">Rede 2.4GHz</button>
-            <button type="button" class="btn btn-secondary" (click)="clickchoosewifi(wifi[1])">Rede 5GHz</button>
+<loading-component [searchWhat]="'Buscando Wifi'" [searching]="searching"></loading-component>
+<div *ngIf="wifi" style="text-align: center;">
+    <div class="btn-group" role="group" aria-label="Configurações de rede Wifi">
+        <button type="button" class="btn btn-secondary" (click)="clickchoosewifi(wifi[0])">Rede 2.4GHz</button>
+        <button type="button" class="btn btn-secondary" (click)="clickchoosewifi(wifi[1])">Rede 5GHz</button>
+    </div>
+    <div *ngIf="wifichoose" class="form-margin-top">
+        <div class="form-group">
+            <label>Status de Operação</label>
+            <select class="form-control" [(ngModel)]="wifichoose.operStatus">
+                <option value="Up">Up</option>
+                <option value="Disabled">Down</option>
+            </select>
         </div>
-        <div *ngIf="wifichoose" class="form-margin-top">
-            <div class="form-group">
-                <label>Status de Operação</label>
-                <select class="form-control" [(ngModel)]="wifichoose.operStatus">
-                    <option value="Up">Up</option>
-                    <option value="Disabled">Down</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label>SSID</label>
-                <input type="text" class="form-control" [(ngModel)]="wifichoose.ssid">
-            </div>
-            <div class="form-group">
-                <label>Canal</label>
-                <input type="number" class="form-control" [(ngModel)]="wifichoose.channel">
-            </div>
-            <div class="form-group">
-                <label>Senha</label>
-                <input type="text" class="form-control" [(ngModel)]="wifichoose.key">
-            </div>
+        <div class="form-group">
+            <label>SSID</label>
+            <input type="text" class="form-control" [(ngModel)]="wifichoose.ssid">
+        </div>
+        <div class="form-group">
+            <label>Canal</label>
+            <input type="number" class="form-control" [(ngModel)]="wifichoose.channel">
+        </div>
+        <div class="form-group">
+            <label>Senha</label>
+            <input type="text" class="form-control" [(ngModel)]="wifichoose.key">
         </div>
     </div>
 </div>
-<div class="modal-footer">
-    <button type="button" class="btn btn-primary" (click)="setWifiLista()" [class.disabled]="btnSetWifi">{{nomeBtn}}</button>
-    <button type="button" class="btn btn-secondary" (click)="activeModal.close('Close click')">Fechar</button>
-</div>
+
+<button type="button" class="btn btn-primary" (click)="setWifiLista()" [class.disabled]="btnSetWifi">{{nomeBtn}}</button>

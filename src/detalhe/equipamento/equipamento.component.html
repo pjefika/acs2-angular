@@ -66,8 +66,7 @@
             </ul>
         </div>
     </div>
-    <div class="card-footer">
-        <button class="btn btn-sm btn-link" (click)="searchinfodevice()" *ngIf="!systemHolderService.isSearchingCheckOnline && !systemHolderService.isSearchingIp">Atualizar</button>
-        <!-- <button class="btn btn-sm btn-link">Footer Action 2</button> -->
+    <div class="card-footer" *ngIf="!systemHolderService.isSearchingCheckOnline && !systemHolderService.isSearchingIp">
+        <button class="btn btn-sm btn-link" (click)="searchinfodevice()">Atualizar</button>
     </div>
 </div>

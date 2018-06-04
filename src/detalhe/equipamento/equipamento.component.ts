@@ -22,11 +22,7 @@ export class EquipamentoComponent implements OnInit {
         public systemHolderService: SystemHolderService) { }
 
     public ngOnInit() {
-        if (this.systemHolderService.isvivoone) {
-            this.checkondeline();
-        } else {
-            this.validip();
-        }
+        this.checkondeline();
     }
 
     private validip() {

@@ -1,40 +1,30 @@
-<div class="modal-header">
-    <h4 class="modal-title">Consulta Port Mapping</h4>
-    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
-        <span aria-hidden="true">&times;</span>
-      </button>
+<loading-component [searchWhat]="'Buscando Port Mappings'" [searching]="searching"></loading-component>
+<div *ngIf="portMaps">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Porta Externa</th>
+                <th>Porta Interna</th>
+                <th>Cliente Interno</th>
+                <th>Nome da Porta (Map)</th>
+                <th>Protocolo</th>
+                <th>Host Remoto</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let port of portMaps">
+                <td>{{port.externalPort}}</td>
+                <td>{{port.internalPort}}</td>
+                <td>{{port.internalClient}}</td>
+                <td>{{port.portMapName}}</td>
+                <td>{{port.protocol}}</td>
+                <td>{{port.remoteHost}}</td>
+                <td>
+                    <span *ngIf="port.enable">Ativo</span>
+                    <span *ngIf="!port.enable">Inativo</span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </div>
-<div class="modal-body">
-    <loading-component [searchWhat]="'Buscando Port Mappings'" [searching]="searching"></loading-component>
-    <div *ngIf="portMaps">
-        <table class="table table-bordered table-sm table-responsive alinhar-text-center">
-            <thead>
-                <tr>
-                    <th>Porta Externa</th>
-                    <th>Porta Interna</th>
-                    <th>Cliente Interno</th>                    
-                    <th>Nome da Porta (Map)</th>
-                    <th>Protocolo</th>
-                    <th>Host Remoto</th>
-                    <th>Status</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let port of portMaps">
-                    <td>{{port.externalPort}}</td>
-                    <td>{{port.internalPort}}</td>
-                    <td>{{port.internalClient}}</td>                    
-                    <td>{{port.portMapName}}</td>
-                    <td>{{port.protocol}}</td>
-                    <td>{{port.remoteHost}}</td>
-                    <td>
-                        <span *ngIf="port.enable">Ativo</span>
-                        <span *ngIf="!port.enable">Inativo</span>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-    <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" (click)="activeModal.close('Close click')">Fechar</button>
-    </div>

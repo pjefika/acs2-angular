@@ -1,65 +1,55 @@
-<div class="modal-header">
-    <h4 class="modal-title">Configurar SIP</h4>
-    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
-            <span aria-hidden="true">&times;</span>
-          </button>
-</div>
-<div class="modal-body">
-    <table class="table table-bordered table-sm alinhar-text-center">
-        <tbody>
-            <tr>
-                <th>DirectoryNumber</th>
-                <td>
-                    <input type="text" [(ngModel)]="sipIn.directoryNumber" name="DirectoryNumber" class="form-control">
-                </td>
-            </tr>
-            <tr>
-                <th>AuthUserName</th>
-                <td>
-                    <input type="text" [(ngModel)]="sipIn.authUserName" name="AuthUserName" class="form-control">
-                </td>
-            </tr>
-            <tr>
-                <th>AuthPassword</th>
-                <td>
-                    <input type="text" [(ngModel)]="sipIn.authPassword" name="AuthPassword" class="form-control">
-                </td>
-            </tr>
-            <tr>
-                <th>ProxyServer</th>
-                <td>
-                    <input type="text" [(ngModel)]="sipIn.proxyServer" name="ProxyServer" class="form-control">
-                </td>
-            </tr>
-            <tr>
-                <th>RegistrarServer</th>
-                <td>
-                    <input type="text" [(ngModel)]="sipIn.registrarServer" name="RegistrarServer" class="form-control">
-                </td>
-            </tr>
-            <tr>
-                <th>UserAgentDomain</th>
-                <td>
-                    <input type="text" [(ngModel)]="sipIn.userAgentDomain" name="UserAgentDomain" class="form-control">
-                </td>
-            </tr>
-            <tr>
-                <th>OutboundProxy</th>
-                <td>
-                    <input type="text" [(ngModel)]="sipIn.outboundProxy" name="OutboundProxy" class="form-control">
-                </td>
-            </tr>
-            <tr>
-                <th>PhyReferenceList</th>
-                <td>
-                    <input type="text" [(ngModel)]="sipIn.phyReferenceList" name="PhyReferenceList" class="form-control">
-                </td>
-            </tr>
+<table class="table table-vertical">
+    <tbody>
+        <tr>
+            <th>DirectoryNumber</th>
+            <td>
+                <input type="text" [(ngModel)]="sipIn.directoryNumber" name="DirectoryNumber" class="form-control">
+            </td>
+        </tr>
+        <tr>
+            <th>AuthUserName</th>
+            <td>
+                <input type="text" [(ngModel)]="sipIn.authUserName" name="AuthUserName" class="form-control">
+            </td>
+        </tr>
+        <tr>
+            <th>AuthPassword</th>
+            <td>
+                <input type="text" [(ngModel)]="sipIn.authPassword" name="AuthPassword" class="form-control">
+            </td>
+        </tr>
+        <tr>
+            <th>ProxyServer</th>
+            <td>
+                <input type="text" [(ngModel)]="sipIn.proxyServer" name="ProxyServer" class="form-control">
+            </td>
+        </tr>
+        <tr>
+            <th>RegistrarServer</th>
+            <td>
+                <input type="text" [(ngModel)]="sipIn.registrarServer" name="RegistrarServer" class="form-control">
+            </td>
+        </tr>
+        <tr>
+            <th>UserAgentDomain</th>
+            <td>
+                <input type="text" [(ngModel)]="sipIn.userAgentDomain" name="UserAgentDomain" class="form-control">
+            </td>
+        </tr>
+        <tr>
+            <th>OutboundProxy</th>
+            <td>
+                <input type="text" [(ngModel)]="sipIn.outboundProxy" name="OutboundProxy" class="form-control">
+            </td>
+        </tr>
+        <tr>
+            <th>PhyReferenceList</th>
+            <td>
+                <input type="text" [(ngModel)]="sipIn.phyReferenceList" name="PhyReferenceList" class="form-control">
+            </td>
+        </tr>
 
-        </tbody>
-    </table>
-</div>
-<div class="modal-footer">
-    <button type="button" class="btn btn-info" [class.disabled]="btnSipModificar" (click)="setSipDiagnostics()">{{btnModificarNome}}</button>
-    <button type="button" class="btn btn-secondary" (click)="activeModal.close('Close click')">Fechar</button>
-</div>
+    </tbody>
+</table>
+
+<button type="button" class="btn btn-primary" [class.disabled]="btnSipModificar" (click)="setSipDiagnostics()">{{btnModificarNome}}</button>

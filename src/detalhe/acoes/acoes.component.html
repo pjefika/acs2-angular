@@ -1,11 +1,45 @@
-<div class="list-group" *ngIf="isModem">
-    <label class="list-group-item negrito">Ações</label>
-    <modal-component [nomeDoBtn]="'Reiniciar'" [styleBtn]="'list-group-item list-group-item-action'" [component]="'reset-component'"></modal-component>
-    <modal-component [nomeDoBtn]="'Reset de Fábrica'" [styleBtn]="'list-group-item list-group-item-action'" [component]="'factory-reset-component'"></modal-component>
-    <modal-component [nomeDoBtn]="'Efetuar Ping'" [styleBtn]="'list-group-item list-group-item-action'" [component]="'ping-component'"></modal-component>
-    <modal-component [nomeDoBtn]="'Configurar Wifi'" [styleBtn]="'list-group-item list-group-item-action'" [component]="'wifi-component'"></modal-component>
-    <modal-component [nomeDoBtn]="'Configurar Autenticação PPPoE'" [styleBtn]="'list-group-item list-group-item-action'" [component]="'auth-pppoe-component'"></modal-component>
-    <modal-component [nomeDoBtn]="'Configurar SIP'" [styleBtn]="'list-group-item list-group-item-action'" [component]="'sip-set-component'"></modal-component>
-    <modal-component [nomeDoBtn]="'Configurar ServiceClass'" [styleBtn]="'list-group-item list-group-item-action'" [component]="'service-class-component'"></modal-component>
-    <modal-component [nomeDoBtn]="'Configurar DHCP'" [styleBtn]="'list-group-item list-group-item-action'" [component]="'dhcp-component'"></modal-component>
+<modal-component [componentData]="component" [title]="title" [openmodalsearchandactions]="openmodalsearchandactions"></modal-component>
+<div class="card" *ngIf="isModem">
+    <div class="card-header">
+        Consultas
+    </div>
+    <div class="card-block">
+        <div class="card-title">
+            <ul class="list-unstyled">
+                <li>
+                    <button class="btn btn-outline btn-block padding-btn" (click)="domount('reset-component','Reiniciar')" [disabled]="this.systemHolderService.isSearchingCheckOnline || this.systemHolderService.isSearchingIp">Reiniciar</button>
+                </li>
+                <li>
+                    <button class="btn btn-outline btn-block padding-btn" (click)="domount('factory-reset-component','Reset de Fábrica')" [disabled]="this.systemHolderService.isSearchingCheckOnline || this.systemHolderService.isSearchingIp">Reset de Fábrica</button>
+                </li>
+                <li>
+                    <button class="btn btn-outline btn-block padding-btn" (click)="domount('ping-component','Efetuar Ping')" [disabled]="this.systemHolderService.isSearchingCheckOnline || this.systemHolderService.isSearchingIp">Efetuar Ping</button>
+                </li>
+                <li>
+                    <button class="btn btn-outline btn-block padding-btn" (click)="domount('wifi-component','Configurar Wifi')" [disabled]="this.systemHolderService.isSearchingCheckOnline || this.systemHolderService.isSearchingIp">Configurar Wifi</button>
+                </li>
+                <li>
+                    <button class="btn btn-outline btn-block padding-btn" (click)="domount('auth-pppoe-component','Configurar Autenticação PPPoE')"
+                        [disabled]="this.systemHolderService.isSearchingCheckOnline || this.systemHolderService.isSearchingIp">Configurar Autenticação PPPoE</button>
+                </li>
+                <li>
+                    <button class="btn btn-outline btn-block padding-btn" (click)="domount('sip-set-component','Configurar SIP')" [disabled]="this.systemHolderService.isSearchingCheckOnline || this.systemHolderService.isSearchingIp">Configurar SIP</button>
+                </li>
+                <li>
+                    <button class="btn btn-outline btn-block padding-btn" (click)="domount('service-class-component','Configurar ServiceClass')"
+                        [disabled]="this.systemHolderService.isSearchingCheckOnline || this.systemHolderService.isSearchingIp">Configurar ServiceClass</button>
+                </li>
+                <li>
+                    <button class="btn btn-outline btn-block padding-btn" (click)="domount('dhcp-component','Configurar DHCP')" [disabled]="this.systemHolderService.isSearchingCheckOnline || this.systemHolderService.isSearchingIp">Configurar DHCP</button>
+                </li>
+            </ul>
+        </div>
+        <div class="card-text">
+
+        </div>
+    </div>
+    <!-- <div class="card-footer">
+        <button class="btn btn-sm btn-link">Footer Action 1</button>
+        <button class="btn btn-sm btn-link">Footer Action 2</button>
+    </div> -->
 </div>

@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class SystemHolderService {
 
-    public ableMock: boolean = true;
+    public ableMock: boolean = false;
 
     public whoMenuIsActive: string;
 
@@ -11,11 +11,9 @@ export class SystemHolderService {
 
     public isSearchingIp: boolean = false;
 
-    public ablestatusmodem: boolean = false;
-
     public boxnameseewhatissearching: string;
 
-    public isvivoone: boolean = false;
+    public isvivoone: boolean = false;    
 
     constructor() { }
 

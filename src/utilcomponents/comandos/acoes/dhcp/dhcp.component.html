@@ -1,30 +1,20 @@
-<div class="modal-header">
-    <h4 class="modal-title">Configurar DHCP</h4>
-    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
-        <span aria-hidden="true">&times;</span>
-      </button>
-</div>
-<div class="modal-body">
-    <loading-component [searchWhat]="'Buscando DHCP'" [searching]="searching"></loading-component>
-    <div *ngIf="dhcp">
-        <div class="form-group">
-            <label>Ativo</label>
-            <select class="form-control" [(ngModel)]="dhcp.dhcpserverEnable">
-                <option value="1">Ativo</option>
-                <option value="0">Inativo</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label>Endereço Minimo</label>
-            <input type="text" class="form-control" [(ngModel)]="dhcp.minAddress">
-        </div>
-        <div class="form-group">
-            <label>Endereço Maximo</label>
-            <input type="text" class="form-control" [(ngModel)]="dhcp.maxAddress">
-        </div>
+<loading-component [searchWhat]="'Buscando DHCP'" [searching]="searching"></loading-component>
+<div *ngIf="dhcp">
+    <div class="form-group">
+        <label>Ativo</label>
+        <select class="form-control" [(ngModel)]="dhcp.dhcpserverEnable">
+            <option value="1">Ativo</option>
+            <option value="0">Inativo</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label>Endereço Minimo</label>
+        <input type="text" class="form-control" [(ngModel)]="dhcp.minAddress">
+    </div>
+    <div class="form-group">
+        <label>Endereço Maximo</label>
+        <input type="text" class="form-control" [(ngModel)]="dhcp.maxAddress">
     </div>
 </div>
-<div class="modal-footer">
-    <button type="button" class="btn btn-primary" (click)="setDhcp()" [class.disabled]="btnSetDhcp">Configurar</button>
-    <button type="button" class="btn btn-secondary" (click)="activeModal.close('Close click')">Fechar</button>
-</div>
+
+<button type="button" class="btn btn-primary" (click)="setDhcp()" [class.disabled]="btnSetDhcp">Configurar</button>

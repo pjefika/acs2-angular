@@ -1,50 +1,40 @@
-<div class="modal-header">
-    <h4 class="modal-title">Consultar WAN</h4>
-    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
-        <span aria-hidden="true">&times;</span>
-      </button>
-</div>
-<div class="modal-body">
-    <loading-component [searchWhat]="'Buscando Wan Infos'" [searching]="searching"></loading-component>
-    <div *ngIf="wan">
-        <table class="table table-bordered table-sm alinhar-text-center">
-            <tbody>
-                <tr>
-                    <th>Bytes Recebidos</th>
-                    <td>{{wan.bytesReceived}}</td>
-                </tr>
-                <tr>
-                    <th>Bytes Enviados</th>
-                    <td>{{wan.bytesSent}}</td>
-                </tr>
-                <tr>
-                    <th>Pacotes Recebidos Descartados</th>
-                    <td>{{wan.discardPacketsReceived}}</td>
-                </tr>
-                <tr>
-                    <th>Pacotes Enviados Descartados</th>
-                    <td>{{wan.discardPacketsSent}}</td>
-                </tr>
-                <tr>
-                    <th>Erros Recebidos</th>
-                    <td>{{wan.errorsReceived}}</td>
-                </tr>
-                <tr>
-                    <th>Erros Enviados</th>
-                    <td>{{wan.errorsSent}}</td>
-                </tr>
-                <tr>
-                    <th>Pacotes Recebidos</th>
-                    <td>{{wan.packetsReceived}}</td>
-                </tr>
-                <tr>
-                    <th>Pacotes Enviados</th>
-                    <td>{{wan.packetsSent}}</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-</div>
-<div class="modal-footer">
-    <button type="button" class="btn btn-secondary" (click)="activeModal.close('Close click')">Fechar</button>
+<loading-component [searchWhat]="'Buscando Wan Infos'" [searching]="searching"></loading-component>
+<div *ngIf="wan">
+    <h4>Tabela WAN</h4>
+    <table class="table table-vertical">
+        <tbody>
+            <tr>
+                <th>Bytes Recebidos</th>
+                <td>{{wan.bytesReceived}}</td>
+            </tr>
+            <tr>
+                <th>Bytes Enviados</th>
+                <td>{{wan.bytesSent}}</td>
+            </tr>
+            <tr>
+                <th>Pacotes Recebidos Descartados</th>
+                <td>{{wan.discardPacketsReceived}}</td>
+            </tr>
+            <tr>
+                <th>Pacotes Enviados Descartados</th>
+                <td>{{wan.discardPacketsSent}}</td>
+            </tr>
+            <tr>
+                <th>Erros Recebidos</th>
+                <td>{{wan.errorsReceived}}</td>
+            </tr>
+            <tr>
+                <th>Erros Enviados</th>
+                <td>{{wan.errorsSent}}</td>
+            </tr>
+            <tr>
+                <th>Pacotes Recebidos</th>
+                <td>{{wan.packetsReceived}}</td>
+            </tr>
+            <tr>
+                <th>Pacotes Enviados</th>
+                <td>{{wan.packetsSent}}</td>
+            </tr>
+        </tbody>
+    </table>
 </div>

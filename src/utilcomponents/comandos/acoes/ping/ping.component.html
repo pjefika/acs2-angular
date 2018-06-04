@@ -1,45 +1,34 @@
-<div class="modal-header">
-    <h4 class="modal-title">Ping</h4>
-    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
-        <span aria-hidden="true">&times;</span>
-      </button>
+<div class="form-group">
+    <label>Endereço</label>
+    <input type="text" class="form-control" [(ngModel)]="host">
 </div>
-<div class="modal-body">
-    <div class="form-group">
-        <label>Endereço</label>
-        <input type="text" class="form-control" [(ngModel)]="host">
-    </div>
-    <table class="table table-bordered table-sm centraliza" *ngIf="ping">
-        <tbody>
-            <tr>
-                <th>Status</th>
-                <td>{{ping.status}}</td>
-            </tr>
-            <tr>
-                <th>Tempo</th>
-                <td>{{ping.avgRespTime}}</td>
-            </tr>
-            <tr>
-                <th>Quantidade Sucesso</th>
-                <td>{{ping.qtdSuccess}}</td>
-            </tr>
-            <tr>
-                <th>Quantidade Erro</th>
-                <td>{{ping.qtdFailures}}</td>
-            </tr>
-            <tr>
-                <th>Endereço</th>
-                <td>{{ping.hostAddress}}</td>
-            </tr>
-            <tr>
-                <th>Repetições</th>
-                <td>{{ping.repetitions}}</td>
-            </tr>
-            
-        </tbody>
-    </table>
-</div>
-<div class="modal-footer">
-    <button type="button" class="btn btn-primary" (click)="pingDiagnostic()" [disabled]="btnPing">{{nomeBtn}}</button>
-    <button type="button" class="btn btn-secondary" (click)="activeModal.close('Close click')">Fechar</button>
-</div>
+<table class="table table-vertical" *ngIf="ping">
+    <tbody>
+        <tr>
+            <th>Status</th>
+            <td>{{ping.status}}</td>
+        </tr>
+        <tr>
+            <th>Tempo</th>
+            <td>{{ping.avgRespTime}}</td>
+        </tr>
+        <tr>
+            <th>Quantidade Sucesso</th>
+            <td>{{ping.qtdSuccess}}</td>
+        </tr>
+        <tr>
+            <th>Quantidade Erro</th>
+            <td>{{ping.qtdFailures}}</td>
+        </tr>
+        <tr>
+            <th>Endereço</th>
+            <td>{{ping.hostAddress}}</td>
+        </tr>
+        <tr>
+            <th>Repetições</th>
+            <td>{{ping.repetitions}}</td>
+        </tr>
+
+    </tbody>
+</table>
+<button type="button" class="btn btn-primary" (click)="pingDiagnostic()" [disabled]="btnPing">{{nomeBtn}}</button>
