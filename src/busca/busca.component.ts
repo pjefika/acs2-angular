@@ -85,12 +85,13 @@ export class BuscaComponent extends SuperComponentService implements OnInit {
     }
 
     public buscar() {
-        if (this.validEmptySearch()) {
-            if (!this.searching) {
-                this.nomeBtn = "Aguarde";
-                this.whatIsSearching = null;
-                this.whatIsSearchingInput = null;
-                this.seeWhatIsSearching();
+
+        if (!this.searching) {
+            this.nomeBtn = "Aguarde";
+            this.whatIsSearching = null;
+            this.whatIsSearchingInput = null;
+            this.seeWhatIsSearching();
+            if (this.validEmptySearch()) {
                 this.listEqp = null;
                 this.searchWhat = "Buscando Equipamentos"
                 this.searching = true;
@@ -110,9 +111,9 @@ export class BuscaComponent extends SuperComponentService implements OnInit {
                         this.searching = false;
                         this.nomeBtn = "Buscar";
                     });
+            } else {
+                this.callToasty("Informativo", "Por favor preencha um dos campos de busca.", "warning", 5000);
             }
-        } else {
-            this.callToasty("Informativo", "Por favor preencha um dos campos de busca.", "warning", 5000);
         }
     }
 
@@ -132,9 +133,9 @@ export class BuscaComponent extends SuperComponentService implements OnInit {
         }
     }
 
-    private validEmptySearch(): boolean {
+    private validEmptySearch(): boolean {        
         let valid: boolean = true;
-        if (this.whatIsSearching === undefined || this.whatIsSearchingInput === undefined) {
+        if (this.whatIsSearching === undefined || this.whatIsSearchingInput === undefined || this.whatIsSearching === null || this.whatIsSearchingInput === null) {
             valid = false;
         }
         return valid;
