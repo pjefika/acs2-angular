@@ -1,6 +1,6 @@
-<div *ngIf="searching" class="koala-loading">
-    <div class="loading-md">
-        <span class="loading-spinner loading-spinner-options"></span>        
-    </div>
+<!--Loading-->
+<div id="loading-spinner" *ngIf="searching">
+    <span class="spinner spinner-md">Loading...</span>
+    <br/>
     <span>{{searchWhat}}</span>
 </div>

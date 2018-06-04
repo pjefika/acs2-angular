@@ -3,7 +3,7 @@ import { Equipamento } from './../../viewmodel/equipamento/equipamento';
 import { Component, OnInit, Input } from '@angular/core';
 import { VariavelHolderService } from 'util/holder/variavel-holder.service';
 import { SystemHolderService } from 'util/holder/system-holder.service';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+// import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
     selector: 'equipamento-component',

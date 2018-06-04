@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SuperComponentService } from 'util/supercomponent/super-component.service';
 import { ToastyComponent } from 'utilcomponents/toasty/toasty.component';
-import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+// import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { SystemHolderService } from 'util/holder/system-holder.service';
 import { TemplateComponent } from 'template/template.component';
 
@@ -13,7 +13,7 @@ import { TemplateComponent } from 'template/template.component';
 export class ValidaTipoRedeComponent extends SuperComponentService implements OnInit {
 
     constructor(public toastyComponent: ToastyComponent,
-        public activeModal: NgbActiveModal,
+        // public activeModal: NgbActiveModal,
         public systemHolderService: SystemHolderService,
         public templateComponent: TemplateComponent) {
         super(toastyComponent);

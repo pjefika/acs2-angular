@@ -1,6 +1,6 @@
 import { PortMapping } from './../../../../viewmodel/portMapping/portmapping';
 import { ToastyComponent } from './../../../toasty/toasty.component';
-import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+// import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { PortMappingService } from './port-mapping.service';
 import { Component, OnInit } from '@angular/core';
 import { VariavelHolderService } from 'util/holder/variavel-holder.service';
@@ -20,7 +20,7 @@ export class PortMappingComponent extends SuperComponentService implements OnIni
     public searching: boolean = false;
 
     constructor(
-        public activeModal: NgbActiveModal,
+        // public activeModal: NgbActiveModal,
         private portMappingService: PortMappingService,
         public variavelHolderService: VariavelHolderService,
         public systemHolderService: SystemHolderService,

@@ -18,8 +18,9 @@ import { Md5 } from 'ts-md5/dist/md5';
 export class LoginComponent extends AlertService implements OnInit {
 
     private usuario = new Usuario();
+    private logando: boolean = false;
 
-    constructor(public util: UtilService,
+    constructor(public utilService: UtilService,
         private loginService: LoginService,
         public toastyComponent: ToastyComponent,
         public systemHolderService: SystemHolderService) {
@@ -27,9 +28,9 @@ export class LoginComponent extends AlertService implements OnInit {
     }
 
     public ngOnInit() {
-        this.util.isLogado().then((result: boolean) => {
+        this.utilService.isLogado().then((result: boolean) => {
             if (result) {
-                this.util.navigate('./');
+                this.utilService.navigate('./');
             }
         });
     }
@@ -43,6 +44,7 @@ export class LoginComponent extends AlertService implements OnInit {
     }
 
     private entrar() {
+        this.logando = true;
         this.loginService
             .autentica(this.usuario)
             .then(data => {
@@ -50,29 +52,36 @@ export class LoginComponent extends AlertService implements OnInit {
                     this.loginService
                         .getUsuario(this.usuario)
                         .then(data => {
-                            this.usuario = data;
-                            sessionStorage.setItem('user', JSON.stringify({ user: this.usuario.login, nv: this.usuario.nivel, token: Md5.hashStr("fulltest-app") }));
-                            this.util.navigate('./');
+                            if (data.nivel > 7) {
+                                this.usuario = data;
+                                sessionStorage.setItem('user', JSON.stringify({ user: this.usuario.login, nv: this.usuario.nivel, token: Md5.hashStr("fulltest-app") }));
+                                this.utilService.navigate('./');
+                            } else {
+                                super.callAlert("warning", "Usuário não possui permissão para acessar este sistema.");
+                                this.usuario.senha = "";
+                            }
                         });
                 } else {
                     //type: "warning", msg: "Usuário ou senha incorretos, por favor verifique."
                     super.callAlert("warning", "Usuário ou senha incorretos, por favor verifique.");
-                    this.callToasty("Informativo.", "Usuário ou senha incorretos, por favor verifique.", "warning", 8000);
                     this.usuario.senha = "";
                 }
+                this.logando = false;
             }, error => {
                 this.usuario.login = "";
                 this.usuario.senha = "";
-                this.callToasty("Informativo.", "Usuário ou senha incorretos, por favor verifique.", "warning", 8000);
                 super.callAlert("error", "Usuário ou senha incorretos, por favor verifique.");
+                this.logando = false;
             });
     }
 
     private entrarMock() {
+        this.logando = true;
         setTimeout(() => {
             this.usuario = this.loginService.getUsuarioMock();
             sessionStorage.setItem('user', JSON.stringify({ user: this.usuario.login, nv: this.usuario.nivel, token: Md5.hashStr("fulltest-app") }));
-            this.util.navigate('./');
+            this.utilService.navigate('./');
+            this.logando = false;
         }, 1000);
     }
 }

@@ -2,7 +2,7 @@ import { ToastyComponent } from './../../../toasty/toasty.component';
 import { Equipamento } from './../../../../viewmodel/equipamento/equipamento';
 import { ResetService } from './reset.service';
 import { Component, OnInit, Input } from '@angular/core';
-import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+// import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { VariavelHolderService } from 'util/holder/variavel-holder.service';
 import { SystemHolderService } from 'util/holder/system-holder.service';
 import { SuperComponentService } from 'util/supercomponent/super-component.service';
@@ -20,7 +20,7 @@ export class ResetComponent extends SuperComponentService implements OnInit {
     public disableBtn: boolean = false;
 
     constructor(
-        public activeModal: NgbActiveModal,
+        // public activeModal: NgbActiveModal,
         private resetService: ResetService,
         public variavelHolderService: VariavelHolderService,
         public systemHolderService: SystemHolderService,
@@ -38,7 +38,7 @@ export class ResetComponent extends SuperComponentService implements OnInit {
                 .then(data => {
                     if (data) {
                         this.callToasty("Sucesso", "Modem Reiniciado com sucesso, aguarde o mesmo sincronizar.", "success", 0);
-                        this.activeModal.close()
+                        // this.activeModal.close()
                         this.variavelHolderService.checkOnline = false;
                     } else {
                         this.callToasty("Ops, aconteceu algo.", "O modem não pode ser reiniciado.", "error", 0);

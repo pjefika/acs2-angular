@@ -1,6 +1,6 @@
 import { ToastyComponent } from './../../../toasty/toasty.component';
 import { PPPoECredentials } from './../../../../viewmodel/pppoecredentials/pppoecredentials';
-import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+// import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { AuthPPPoEService } from './auth-pppoe.service';
 import { Component, OnInit } from '@angular/core';
 import { SystemHolderService } from 'util/holder/system-holder.service';
@@ -22,7 +22,7 @@ export class AuthPPPoEComponent extends SuperComponentService implements OnInit 
     public btnDisabled: boolean = false;
 
     constructor(
-        public activeModal: NgbActiveModal,
+        // public activeModal: NgbActiveModal,
         private authPPPoEService: AuthPPPoEService,
         public variavelHolderService: VariavelHolderService,
         public systemHolderService: SystemHolderService,
@@ -42,7 +42,7 @@ export class AuthPPPoEComponent extends SuperComponentService implements OnInit 
                 this.searching = false;
             }, error => {
                 this.searching = false;
-                this.activeModal.close();
+                // this.activeModal.close();
                 this.callToasty("Ops, aconteceu algo.", error.mError, "error", 10000);
             })
     }

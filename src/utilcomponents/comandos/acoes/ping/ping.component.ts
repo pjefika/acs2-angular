@@ -1,6 +1,6 @@
 import { ToastyComponent } from './../../../toasty/toasty.component';
 import { Ping } from './../../../../viewmodel/ping/ping';
-import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+// import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { PingService } from './ping.service';
 import { Component, OnInit } from '@angular/core';
 import { VariavelHolderService } from 'util/holder/variavel-holder.service';
@@ -22,7 +22,7 @@ export class PingComponent extends SuperComponentService implements OnInit {
     public nomeBtn: string = "Pingar";
 
     constructor(
-        public activeModal: NgbActiveModal,
+        // public activeModal: NgbActiveModal,
         private pingService: PingService,
         public variavelHolderService: VariavelHolderService,
         public systemHolderService: SystemHolderService,

@@ -1,7 +1,7 @@
 import { ToastyComponent } from './../../../toasty/toasty.component';
 import { Wifi } from './../../../../viewmodel/wifi/wifi';
 import { WifiService } from './wifi.service';
-import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+// import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { Component, OnInit } from '@angular/core';
 import { VariavelHolderService } from 'util/holder/variavel-holder.service';
 import { SystemHolderService } from 'util/holder/system-holder.service';
@@ -24,7 +24,7 @@ export class WifiComponent extends SuperComponentService implements OnInit {
     private wifichoose: Wifi;
 
     constructor(
-        public activeModal: NgbActiveModal,
+        // public activeModal: NgbActiveModal,
         private wifiService: WifiService,
         public variavelHolderService: VariavelHolderService,
         public systemHolderService: SystemHolderService,
@@ -59,7 +59,7 @@ export class WifiComponent extends SuperComponentService implements OnInit {
             }, error => {
                 this.searching = false;
                 this.btnSetWifi = false;
-                this.activeModal.close();
+                // this.activeModal.close();
                 this.callToasty("Ops, aconteceu algo.", error.mError, "error", 10000);
             })
             .then(() => {
@@ -79,7 +79,7 @@ export class WifiComponent extends SuperComponentService implements OnInit {
                 }, error => {
                     this.searching = false;
                     this.btnSetWifi = false;
-                    this.activeModal.close();
+                    // this.activeModal.close();
                     this.callToasty("Ops, aconteceu algo.", error.mError, "error", 10000);
                 })
                 .then(() => {

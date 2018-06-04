@@ -2,13 +2,13 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DetalheComponent } from 'detalhe/detalhe.component';
 import { Router } from '@angular/router';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap/modal/modal';
+// import { NgbModal } from '@ng-bootstrap/ng-bootstrap/modal/modal';
 
 import { ViewChild } from '@angular/core';
 import { ElementRef } from '@angular/core';
 import { LoginService } from 'login/login.service';
 import { Usuario } from 'viewmodel/usuario/usuario';
-import { NgbModalRef } from '@ng-bootstrap/ng-bootstrap/modal/modal-ref';
+// import { NgbModalRef } from '@ng-bootstrap/ng-bootstrap/modal/modal-ref';
 import { VariavelHolderService } from 'util/holder/variavel-holder.service';
 import { SystemHolderService } from 'util/holder/system-holder.service';
 import { DynamicRouterService } from 'utilcomponents/dynamicrouter/dynamic-router.service';
@@ -32,7 +32,7 @@ export class IdRouterComponent extends AlertService implements OnInit, OnDestroy
 
     private sub: any;
 
-    public modalRef: NgbModalRef;
+    // public modalRef: NgbModalRef;
 
     private alertOn: boolean = false;
     private alertInfo: {
@@ -44,7 +44,7 @@ export class IdRouterComponent extends AlertService implements OnInit, OnDestroy
         public variavelHolderService: VariavelHolderService,
         public systemHolderService: SystemHolderService,
         public dynamicRouterService: DynamicRouterService,
-        private modalService: NgbModal,
+        // private modalService: NgbModal,
         private loginService: LoginService,
         public util: UtilService,
         private router: Router,
@@ -64,11 +64,11 @@ export class IdRouterComponent extends AlertService implements OnInit, OnDestroy
     }
 
     private open(content) {
-        this.modalRef = this.modalService.open(content, { backdrop: 'static', keyboard: false });
+        // this.modalRef = this.modalService.open(content, { backdrop: 'static', keyboard: false });
     }
 
     private close(content) {
-        this.modalRef.close();
+        // this.modalRef.close();
     }
 
     private continaBuscandoDevice() {

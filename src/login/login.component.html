@@ -1,4 +1,4 @@
-<div class="container fullmarge">
+<!-- <div class="container fullmarge">
     <div class="page-header">
         <h4>Bem-vindo ao </h4>
         <h1>Efika ACS Motive</h1>
@@ -21,4 +21,22 @@
 
     <alert-component [mensagem]="mensagem" [alertOn]="ativo"></alert-component>
 
+</div> -->
+
+<div class="login-wrapper" (keyup.enter)="doEntrar()">
+    <form class="login" (ngSubmit)="doEntrar()">
+        <label class="title">
+            <h3 class="welcome">Bem-Vindo ao</h3>
+            Efika ACS Motive
+            <h5 class="hint">Utilize seu login e senha para entrar</h5>
+        </label>
+        <div class="login-group">
+            <input [(ngModel)]="usuario.login" class="username" type="text" id="login_username" placeholder="Usuário" name="login">
+            <input [(ngModel)]="usuario.senha" class="password" type="password" id="login_password" placeholder="Senha" name="senha">
+            <div class="error active" *ngIf="ativo">
+                {{mensagem.msg}}
+            </div>
+            <button type="submit" class="btn btn-primary" [clrLoading]="logando" [disabled]="logando">Entrar</button>
+        </div>
+    </form>
 </div>

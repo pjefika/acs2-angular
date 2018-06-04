@@ -17,13 +17,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { LoginComponent } from './../login/login.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { DataTableModule } from 'angular-4-data-table-bootstrap-4';
+// import { DataTableModule } from 'angular-4-data-table-bootstrap-4';
 import { MomentModule } from 'angular2-moment';
 
 
 import { AppComponent } from './app.component';
 
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AlertComponent } from 'utilcomponents/alert/alert.component';
 import { ToastyComponent } from 'utilcomponents/toasty/toasty.component';
 import { HolderResetService } from 'util/holder/holderreset.service';
@@ -59,6 +58,8 @@ import { ModalComponent } from 'utilcomponents/modal/modal.component';
 import { IdRouterComponent } from 'utilcomponents/id-router/id-router.component';
 import { DynamicRouterComponent } from 'utilcomponents/dynamicrouter/dynamic-router.component';
 import { ValidaTipoRedeComponent } from 'busca/valida-tipo-rede/valida-tipo-rede.component';
+
+import { ClarityModule } from "@clr/angular";
 
 @NgModule({
 	declarations: [
@@ -103,14 +104,13 @@ import { ValidaTipoRedeComponent } from 'busca/valida-tipo-rede/valida-tipo-rede
 	],
 	imports: [
 		BrowserModule,
-		NgbModule.forRoot(),
 		AppRoutingModule,
 		FormsModule,
 		HttpModule,
 		BrowserAnimationsModule,
-		DataTableModule,
 		MomentModule,
-		ToastyModule.forRoot()
+		ToastyModule.forRoot(),
+		ClarityModule
 	],
 	providers: [
 		BuscaService,

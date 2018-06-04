@@ -1,6 +1,6 @@
 import { ToastyComponent } from './../../../toasty/toasty.component';
 import { InterfaceStatic } from './../../../../viewmodel/interfacestatic/interfacestatic';
-import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+// import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { InterfaceStaticsService } from './interface-static.service';
 import { Component, OnInit } from '@angular/core';
 import { VariavelHolderService } from 'util/holder/variavel-holder.service';
@@ -20,7 +20,7 @@ export class InterfaceStaticsComponent extends SuperComponentService implements 
     public searching: boolean = false;
 
     constructor(
-        public activeModal: NgbActiveModal,
+        // public activeModal: NgbActiveModal,
         private interfaceStaticsService: InterfaceStaticsService,
         public variavelHolderService: VariavelHolderService,
         public systemHolderService: SystemHolderService,

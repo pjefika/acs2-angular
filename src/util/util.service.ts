@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { SystemHolderService } from './holder/system-holder.service';
 import { Md5 } from 'ts-md5/dist/md5';
 
+declare var require: any;
+
 @Injectable()
 export class UtilService {
 
@@ -31,6 +33,12 @@ export class UtilService {
     // Navega para menu passado por parametro.
     public navigate(route: string) {
         this.router.navigate([route]);
+    }
+
+    public getVersion(): string {
+        const { version: appVersion } = require('../../package.json'); // Versão da aplicação na package.json
+        let version: string = appVersion;
+        return version;
     }
 
 }

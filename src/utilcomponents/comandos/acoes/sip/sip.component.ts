@@ -2,7 +2,7 @@ import { SipIn } from './../../../../viewmodel/sip/sipin';
 import { Sip } from './../../../../viewmodel/sip/sip';
 import { ToastyComponent } from './../../../toasty/toasty.component';
 import { SipService } from './sip.service';
-import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+// import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { Component, OnInit } from '@angular/core';
 import { SystemHolderService } from 'util/holder/system-holder.service';
 import { VariavelHolderService } from 'util/holder/variavel-holder.service';
@@ -28,7 +28,7 @@ export class SipSetComponent extends SuperComponentService implements OnInit {
     public btnModificarNome: string = "Modificar";
 
     constructor(
-        public activeModal: NgbActiveModal,
+        // public activeModal: NgbActiveModal,
         private sipService: SipService,
         public variavelHolderService: VariavelHolderService,
         public systemHolderService: SystemHolderService,
@@ -72,7 +72,7 @@ export class SipSetComponent extends SuperComponentService implements OnInit {
                         this.btnModificarNome = "Modificar";
                         this.btnSipModificar = false;
                         this.callToasty("Sucesso.", "Sucesso ao executar o comando.", "success", 10000);
-                        this.activeModal.close();
+                        // this.activeModal.close();
                     } else {
                         this.btnModificarNome = "Modificar";
                         this.btnSipModificar = false;

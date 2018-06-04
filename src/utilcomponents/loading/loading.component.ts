@@ -9,8 +9,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class LoadingComponent implements OnInit {
 
     @Input() searchWhat: string;
-    @Input() searching: boolean = false;
-
+    @Input() searching: boolean;
 
     constructor() { }
 

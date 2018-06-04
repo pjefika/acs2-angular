@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+// import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { VariavelHolderService } from 'util/holder/variavel-holder.service';
 import { SystemHolderService } from 'util/holder/system-holder.service';
 import { ResetComponent } from 'utilcomponents/comandos/acoes/reset/reset.component';
@@ -37,7 +37,7 @@ export class ModalComponent implements OnInit {
     }
 
     constructor(
-        private modalService: NgbModal,
+        // private modalService: NgbModal,
         public variavelHolderService: VariavelHolderService,
         public systemHolderService: SystemHolderService) { }
 
@@ -125,7 +125,7 @@ export class ModalComponent implements OnInit {
 
     public open() {
         if (this.variavelHolderService.checkOnline) {
-            this.modalService.open(this.component, this.modalOptions)
+            // this.modalService.open(this.component, this.modalOptions)
         }
     }
 

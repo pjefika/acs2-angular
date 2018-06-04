@@ -1,6 +1,6 @@
 import { ServiceClass } from './../../../../viewmodel/serviceclass/serviceclass';
 import { ToastyComponent } from './../../../toasty/toasty.component';
-import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+// import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { ServiceClassService } from './service-class.service';
 import { Component, OnInit } from '@angular/core';
 import { SuperComponentService } from 'util/supercomponent/super-component.service';
@@ -22,7 +22,7 @@ export class ServiceClassComponent extends SuperComponentService implements OnIn
     public nomeBtn: string = "Modificar";
 
     constructor(
-        public activeModal: NgbActiveModal,
+        // public activeModal: NgbActiveModal,
         private serviceClassService: ServiceClassService,
         public variavelHolderService: VariavelHolderService,
         public systemHolderService: SystemHolderService,
@@ -45,7 +45,7 @@ export class ServiceClassComponent extends SuperComponentService implements OnIn
             }, error => {
                 this.searching = false;
                 this.btnServiceClass = false;
-                this.activeModal.close();
+                // this.activeModal.close();
                 this.callToasty("Ops, aconteceu algo.", error.mError, "error", 10000);
             });
     }

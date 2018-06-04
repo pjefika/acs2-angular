@@ -1,6 +1,6 @@
 import { ToastyComponent } from './../../../toasty/toasty.component';
 import { Dhcp } from './../../../../viewmodel/dhcp/dhcp';
-import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+// import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { DhcpService } from './dhcp.service';
 import { Component, OnInit } from '@angular/core';
 import { VariavelHolderService } from 'util/holder/variavel-holder.service';
@@ -21,7 +21,7 @@ export class DhcpComponent extends SuperComponentService implements OnInit {
     public btnSetDhcp: boolean = false;
 
     constructor(
-        public activeModal: NgbActiveModal,
+        // public activeModal: NgbActiveModal,
         private dhcpService: DhcpService,
         public variavelHolderService: VariavelHolderService,
         public systemHolderService: SystemHolderService,
@@ -43,7 +43,7 @@ export class DhcpComponent extends SuperComponentService implements OnInit {
                 this.btnSetDhcp = false;
             }, error => {
                 this.btnSetDhcp = false;
-                this.activeModal.close();
+                // this.activeModal.close();
                 this.callToasty("Ops, aconteceu algo.", error.mError, "error", 10000);
             });
     }

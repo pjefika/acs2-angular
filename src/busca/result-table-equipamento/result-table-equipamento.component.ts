@@ -3,10 +3,8 @@ import { TemplateComponent } from './../../template/template.component';
 import { ListEqp } from './../../template/mock/mocklisteqp';
 import { Equipamento } from './../../viewmodel/equipamento/equipamento';
 import { Component, OnInit, OnChanges, Input, SimpleChanges } from '@angular/core';
-import { DataTable, DataTableTranslations, DataTableResource } from 'angular-4-data-table-bootstrap-4';
 import { VariavelHolderService } from 'util/holder/variavel-holder.service';
 import { SystemHolderService } from 'util/holder/system-holder.service';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ValidaTipoRedeComponent } from '../valida-tipo-rede/valida-tipo-rede.component';
 
 @Component({
@@ -31,7 +29,8 @@ export class ResulTableEquipamentoComponent implements OnInit, OnChanges {
         private templateComponent: TemplateComponent,
         public variavelHolderService: VariavelHolderService,
         public systemHolderService: SystemHolderService,
-        private modalService: NgbModal) { }
+        // private modalService: NgbModal
+    ) { }
 
     public ngOnInit() {
         if (this.variavelHolderService.lstEquipamentos) {
@@ -72,7 +71,7 @@ export class ResulTableEquipamentoComponent implements OnInit, OnChanges {
     }
 
     public rowClick(rowEvent) {
-        this.modalService.open(ValidaTipoRedeComponent);
+        // this.modalService.open(ValidaTipoRedeComponent);
         this.variavelHolderService.equipamento = rowEvent.row.item;
     }
 
@@ -81,21 +80,21 @@ export class ResulTableEquipamentoComponent implements OnInit, OnChanges {
     }
 
     public dataTableOptions() {
-        if (this.mountedList) {
-            this.listEqpResource = new DataTableResource(this.mountedList);
-            this.listEqpResource.count().then(count => {
-                this.listCount = count
-                if (count > 10) {
-                    this.limit = 5;
-                } else {
-                    this.limit = count
-                }
-            });
-            this.translations = <DataTableTranslations>{
-                paginationLimit: 'Total por página',
-                paginationRange: 'Resultados'
-            };
-        }
+        // if (this.mountedList) {
+        //     this.listEqpResource = new DataTableResource(this.mountedList);
+        //     this.listEqpResource.count().then(count => {
+        //         this.listCount = count
+        //         if (count > 10) {
+        //             this.limit = 5;
+        //         } else {
+        //             this.limit = count
+        //         }
+        //     });
+        //     this.translations = <DataTableTranslations>{
+        //         paginationLimit: 'Total por página',
+        //         paginationRange: 'Resultados'
+        //     };
+        // }
     }
 
 

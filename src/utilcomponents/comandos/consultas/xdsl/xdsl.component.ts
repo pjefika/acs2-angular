@@ -1,6 +1,6 @@
 import { Xdsl } from './../../../../viewmodel/xdsl/xdsl';
 import { ToastyComponent } from './../../../toasty/toasty.component';
-import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+// import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { XdslService } from './xdsl.service';
 import { Component, OnInit } from '@angular/core';
 import { SuperComponentService } from 'util/supercomponent/super-component.service';
@@ -20,7 +20,7 @@ export class XdslComponent extends SuperComponentService implements OnInit {
     public searching: boolean = false;
 
     constructor(
-        public activeModal: NgbActiveModal,
+        // public activeModal: NgbActiveModal,
         private xdslService: XdslService,
         public variavelHolderService: VariavelHolderService,
         public systemHolderService: SystemHolderService,

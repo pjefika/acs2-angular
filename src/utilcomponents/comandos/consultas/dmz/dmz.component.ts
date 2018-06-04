@@ -1,4 +1,4 @@
-import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+// import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { DmzService } from './dmz.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -12,7 +12,8 @@ import { Component, OnInit } from '@angular/core';
 export class DmzComponent implements OnInit {
     
     constructor(
-        public activeModal: NgbActiveModal) { }
+        // public activeModal: NgbActiveModal
+    ) { }
 
     ngOnInit() { }
 }

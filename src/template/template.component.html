@@ -1,6 +1,39 @@
-<menu-component></menu-component>
+<!-- <menu-component></menu-component>
 <div class="margem-header">
     <toasty-component></toasty-component>
     <alert-component></alert-component>
     <dynamic-router-component [component]="dynamicRouterService.component"></dynamic-router-component>
-</div>
+</div> -->
+
+<clr-main-container>
+    <clr-header class="header-4">
+        <div class="branding">
+            <a class="nav-link">
+                <clr-icon shape="terminal" class="is-inverse"></clr-icon>
+                <span class="title" id="tituloprincipal">ACS Motive</span>
+            </a>
+        </div>
+        <div class="header-nav">
+            <a class="active nav-link">
+                <span class="nav-text" (click)="buscaEquipamento();">Início</span>
+            </a>
+        </div>
+        <div class="header-actions">
+            <clr-dropdown>
+                <button class="nav-icon" clrDropdownTrigger>
+                    <clr-icon shape="user"></clr-icon>
+                    <clr-icon shape="caret down"></clr-icon>
+                </button>
+                <clr-dropdown-menu *clrIfOpen clrPosition="bottom-right">
+                    <a clrDropdownItem (click)="sair()">Sair</a>
+                </clr-dropdown-menu>
+            </clr-dropdown>
+        </div>
+    </clr-header>
+    <div class="content-container">
+        <div class="content-area">
+            <toasty-component></toasty-component>
+            <dynamic-router-component [component]="dynamicRouterService.component"></dynamic-router-component>
+        </div>
+    </div>
+</clr-main-container>
