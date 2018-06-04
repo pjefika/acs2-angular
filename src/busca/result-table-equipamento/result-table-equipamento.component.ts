@@ -18,84 +18,35 @@ export class ResulTableEquipamentoComponent implements OnInit, OnChanges {
     @Input() public listEqp: Equipamento[];
     @Input() public showTable: boolean = false;
 
-    public mountedList: Equipamento[];
-    public listCount = 0;
-
-    public listEqpResource;
-    public translations;
-    public limit;
+    private modalopen: boolean = false;
 
     constructor(
         private templateComponent: TemplateComponent,
         public variavelHolderService: VariavelHolderService,
-        public systemHolderService: SystemHolderService,
-        // private modalService: NgbModal
-    ) { }
+        public systemHolderService: SystemHolderService) { }
 
     public ngOnInit() {
         if (this.variavelHolderService.lstEquipamentos) {
-            this.mountedList = this.variavelHolderService.lstEquipamentos;
-            this.dataTableOptions();
+
         }
     }
 
     public ngOnChanges(changes: SimpleChanges) {
-        if (changes.listEqp.currentValue != changes.listEqp.previousValue) {
-            this.listEqp = changes.listEqp.currentValue;
-            if (this.listEqp) {
-                this.mountList(changes.listEqp.currentValue);
-            } else {
-                this.mountedList = null;
-            }
-        } else {
-            this.mountedList = null;
-        }
+
     }
 
-    public mountList(l) {
-        let i = 0;
-        l.forEach(eqp => {
-            if (i === 0) {
-                this.mountedList = [eqp];
-            } else {
-                this.mountedList.push(eqp);
-            }
-            i = 1;
-        });
-        this.variavelHolderService.lstEquipamentos = this.mountedList;
-        this.dataTableOptions();
-    }
-
-    public reloadEqp(params) {
-        this.listEqpResource.query(params).then(item => this.mountedList = item);
-    }
-
-    public rowClick(rowEvent) {
-        // this.modalService.open(ValidaTipoRedeComponent);
-        this.variavelHolderService.equipamento = rowEvent.row.item;
+    public entraeqp(eqp: Equipamento) {
+        this.modalopen = true;
+        this.variavelHolderService.equipamento = eqp;
     }
 
     public createTemplateDetalhes() {
         this.templateComponent.createDetalhesEquipamento();
     }
 
-    public dataTableOptions() {
-        // if (this.mountedList) {
-        //     this.listEqpResource = new DataTableResource(this.mountedList);
-        //     this.listEqpResource.count().then(count => {
-        //         this.listCount = count
-        //         if (count > 10) {
-        //             this.limit = 5;
-        //         } else {
-        //             this.limit = count
-        //         }
-        //     });
-        //     this.translations = <DataTableTranslations>{
-        //         paginationLimit: 'Total por página',
-        //         paginationRange: 'Resultados'
-        //     };
-        // }
+    private escolharede(typer: boolean) {
+        this.systemHolderService.isvivoone = typer;
+        this.templateComponent.createDetalhesEquipamento();
     }
-
 
 }

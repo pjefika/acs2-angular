@@ -1,11 +1,6 @@
-<div *ngIf="eqpReady">
-    <div>
-        <h1>Detalhes do Equipamento:
-            <span> {{eqp.deviceId.serialNumber}}</span>
-        </h1>
-    </div>
-    <hr>
-    <div class="row">
+<div class="margin-comp">
+    <h3>Buscar Equipamentos</h3>
+    <div *ngIf="eqpReady" class="row">
         <div class="col-md-4">
             <equipamento-component [equipamento]="eqp"></equipamento-component>
         </div>

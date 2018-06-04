@@ -1,5 +1,3 @@
-.loading-margin-top {
-    position: fixed; /* or absolute */
-    top: 30%;
-    left: 50%;
+.margin-comp {
+    margin-top: -25px;
 }

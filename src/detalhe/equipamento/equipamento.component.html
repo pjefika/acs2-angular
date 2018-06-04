@@ -1,68 +1,73 @@
-<ul class="list-group">
-
-    <!-- Aparece somente quando check online está sendo executado. -->
-    <li class="list-group-item list-group-item-secondary" *ngIf="systemHolderService.isSearchingCheckOnline || systemHolderService.isSearchingIp">
-        <div class="col-sm-12">
-            <span>
-                <!-- <span class="negrito">Validando Modem, aguarde...</span> -->
-                <span class="negrito">{{systemHolderService.boxnameseewhatissearching}}</span>
-            </span>
+<div class="card">
+    <div class="card-header">
+        <div *ngIf="systemHolderService.isSearchingCheckOnline || systemHolderService.isSearchingIp">
+            {{systemHolderService.boxnameseewhatissearching}}
         </div>
-    </li>
-
-    <!-- Aparece somente quando check online e validação de ip não estão sendo executadas -->
-    <li class="list-group-item" *ngIf="!systemHolderService.isSearchingCheckOnline && !systemHolderService.isSearchingIp" [ngClass]="variavelHolderService.checkOnline ? 'list-group-item-success' : 'list-group-item-danger'">
-        <div class="row">
-            <div class="col-sm-10">
-                <span *ngIf="variavelHolderService.checkOnline">
-                    <span class="negrito">Status: </span> Ativo</span>
-                <span *ngIf="!variavelHolderService.checkOnline">
-                    <span class="negrito">Status: </span> Inativo</span>
-            </div>
-            <div class="col-sm-2">
-                <a role="button" class="btn btn-secondary btn-sm font-black" (click)="searchinfodevice()">Atualizar</a>
-            </div>
+        <div *ngIf="!systemHolderService.isSearchingCheckOnline && !systemHolderService.isSearchingIp">
+            <span *ngIf="variavelHolderService.checkOnline">
+                <span class="negrito">Status: </span> Ativo</span>
+            <span *ngIf="!variavelHolderService.checkOnline">
+                <span class="negrito">Status: </span> Inativo</span>
         </div>
-    </li>
-
-    <li class="list-group-item ">
-        <span>
-            <span class="negrito">Serial: </span> {{equipamento.deviceId.serialNumber}}</span>
-    </li>
-    <li class="list-group-item ">
-        <span>
-            <span class="negrito">MAC: </span> {{equipamento.macAddress}}</span>
-    </li>
-    <li class="list-group-item ">
-        <span>
-            <span class="negrito">Designador: </span> {{equipamento.subscriberID}}</span>
-    </li>
-    <li class="list-group-item ">
-        <span>
-            <span class="negrito">Firmware: </span> {{equipamento.softwareVersion}}</span>
-    </li>
-    <li class="list-group-item ">
-        <span>
-            <span class="negrito">Nome do Modelo: </span> {{equipamento.modelName}}</span>
-    </li>
-    <li class="list-group-item ">
-        <span>
-            <span class="negrito">Fabricante: </span> {{equipamento.manufacturer}} </span>
-    </li>
-    <li class="list-group-item ">
-        <span>
-            <span class="negrito">IP: </span> {{equipamento.IPAddress}} </span>
-    </li>
-    <li class="list-group-item ">
-        <span>
-            <span class="negrito">Data de Ativação: </span> {{ ((equipamento.lastActivationTime / 1000) | amFromUnix) | amDateFormat: 'DD/MM/YYYY
-            HH:mm:ss'}}
-        </span>
-    </li>
-    <li class="list-group-item ">
-        <span>
-            <span class="negrito">Data de Ultimo Contato: </span> {{ ((equipamento.lastContactTime / 1000) | amFromUnix) | amDateFormat: 'DD/MM/YYYY
-            HH:mm:ss'}}
-        </span>
-    </li>
-</ul>
+    </div>
+    <div class="card-block">
+        <div class="card-title">
+            <!-- Serial: {{equipamento.deviceId.serialNumber}} -->
+        </div>
+        <div class="card-text">
+            <ul class="list-unstyled">
+                <li>
+                    <span>
+                        <span class="negrito">Serial: </span> {{equipamento.deviceId.serialNumber}}
+                    </span>
+                </li>
+                <li>
+                    <span>
+                        <span class="negrito">MAC: </span> {{equipamento.macAddress}}
+                    </span>
+                </li>
+                <li>
+                    <span>
+                        <span class="negrito">Designador: </span> {{equipamento.subscriberID}}
+                    </span>
+                </li>
+                <li>
+                    <span>
+                        <span class="negrito">Firmware: </span> {{equipamento.softwareVersion}}
+                    </span>
+                </li>
+                <li>
+                    <span>
+                        <span class="negrito">Nome do Modelo: </span> {{equipamento.modelName}}
+                    </span>
+                </li>
+                <li>
+                    <span>
+                        <span class="negrito">Fabricante: </span> {{equipamento.manufacturer}}
+                    </span>
+                </li>
+                <li>
+                    <span>
+                        <span class="negrito">IP: </span> {{equipamento.IPAddress}}
+                    </span>
+                </li>
+                <li>
+                    <span>
+                        <span class="negrito">Data de Ativação: </span> {{ ((equipamento.lastActivationTime / 1000) | amFromUnix) | amDateFormat:
+                        'DD/MM/YYYY HH:mm:ss'}}
+                    </span>
+                </li>
+                <li>
+                    <span>
+                        <span class="negrito">Data de Ultimo Contato: </span> {{ ((equipamento.lastContactTime / 1000) | amFromUnix) | amDateFormat:
+                        'DD/MM/YYYY HH:mm:ss'}}
+                    </span>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="card-footer">
+        <button class="btn btn-sm btn-link" (click)="searchinfodevice()" *ngIf="!systemHolderService.isSearchingCheckOnline && !systemHolderService.isSearchingIp">Atualizar</button>
+        <!-- <button class="btn btn-sm btn-link">Footer Action 2</button> -->
+    </div>
+</div>
