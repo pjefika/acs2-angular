@@ -17,9 +17,9 @@ import { DhcpComponent } from 'utilcomponents/comandos/acoes/dhcp/dhcp.component
 })
 
 export class AcoesComponent implements OnInit {
-    
+
     public openmodalsearchandactions: boolean = false;
-    
+
     @Input() isModem: boolean;
 
     private component: any;
@@ -32,6 +32,7 @@ export class AcoesComponent implements OnInit {
 
     private domount(c: string, title: string) {
         this.title = title;
+        this.systemHolderService.modaltitle = this.title;
         this.whatComponentAction(c);
     }
 
@@ -42,6 +43,8 @@ export class AcoesComponent implements OnInit {
                 nothing: null
             }
         }
+        this.systemHolderService.modalcomponent = this.component;
+        this.systemHolderService.modalactionserachopen = true;
     }
 
     public whatComponentAction(what: string) {
@@ -71,7 +74,6 @@ export class AcoesComponent implements OnInit {
                 this.domountcomp(DhcpComponent);
                 break;
         }
-        this.openmodalsearchandactions = true;
     }
 
 }

@@ -141,16 +141,15 @@ export class DetalheComponent extends SuperComponentService implements OnInit {
         setTimeout(() => {
             this.detalheService
                 .checkOnlineIssueMock(this.eqp.deviceGUID)
-                .then(resposta => {                    
+                .then(resposta => {
                     this.variavelHolderService.checkOnline = resposta;
                 })
                 .then(() => {
-                    if (this.variavelHolderService.checkOnline) {
+                    if (!this.variavelHolderService.checkOnline) {
+                        this.callToasty("Ops, aconteceu algo", "Modem não está ativo", "error", 8000);
                         if (!this.systemHolderService.isvivoone) {
                             this.dovalidipequal();
                         }
-                    } else {
-                        this.callToasty("Ops, aconteceu algo", "Modem não está ativo", "error", 8000);
                     }
                     this.systemHolderService.isSearchingCheckOnline = false;
                 });
@@ -166,12 +165,11 @@ export class DetalheComponent extends SuperComponentService implements OnInit {
                 this.variavelHolderService.checkOnline = resposta;
             })
             .then(() => {
-                if (this.variavelHolderService.checkOnline) {
+                if (!this.variavelHolderService.checkOnline) {
+                    this.callToasty("Ops, aconteceu algo", "Modem não está ativo", "error", 8000);
                     if (!this.systemHolderService.isvivoone) {
                         this.dovalidipequal();
                     }
-                } else {
-                    this.callToasty("Ops, aconteceu algo", "Modem não está ativo", "error", 8000);
                 }
                 this.systemHolderService.isSearchingCheckOnline = false;
             });

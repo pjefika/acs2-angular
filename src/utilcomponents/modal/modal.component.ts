@@ -10,7 +10,7 @@ import { SystemHolderService } from 'util/holder/system-holder.service';
 
 export class ModalComponent implements OnInit {
 
-    @Input() public openmodalsearchandactions: boolean = false;
+    @Input() public openmodal: boolean;
 
     @Input() public title: any;
 
@@ -21,6 +21,7 @@ export class ModalComponent implements OnInit {
     @ViewChild('dynamicComponentContainer', { read: ViewContainerRef }) dynamicComponentContainer: ViewContainerRef;
 
     @Input() set componentData(data: { component: any, inputs: any }) {
+        // console.log(this.openmodal);
         if (!data || !data.component || data.component === undefined || data.component === null) {
             return;
         }

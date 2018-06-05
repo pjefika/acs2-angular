@@ -52,7 +52,7 @@ export class LoginComponent extends AlertService implements OnInit {
                     this.loginService
                         .getUsuario(this.usuario)
                         .then(data => {
-                            if (data.nivel > 7) {
+                            if (data.nivel > 0) {
                                 this.usuario = data;
                                 sessionStorage.setItem('user', JSON.stringify({ user: this.usuario.login, nv: this.usuario.nivel, token: Md5.hashStr("fulltest-app") }));
                                 this.utilService.navigate('./');

@@ -37,6 +37,7 @@ export class ConsultasComponent implements OnInit, OnChanges {
 
     private domount(c: string, title: string) {
         this.title = title;
+        this.systemHolderService.modaltitle = this.title;
         this.whatComponentSearch(c);
     }
 
@@ -47,6 +48,8 @@ export class ConsultasComponent implements OnInit, OnChanges {
                 nothing: null
             }
         }
+        this.systemHolderService.modalcomponent = this.component;
+        this.systemHolderService.modalactionserachopen = true;
     }
 
     public whatComponentSearch(what: string) {
@@ -76,7 +79,6 @@ export class ConsultasComponent implements OnInit, OnChanges {
                 this.domountcomp(HistoriaComponent);
                 break;
         }
-        this.openmodalsearchandactions = true;
     }
 
 }

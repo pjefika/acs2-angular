@@ -13,7 +13,12 @@ export class SystemHolderService {
 
     public boxnameseewhatissearching: string;
 
-    public isvivoone: boolean = false;    
+    public isvivoone: boolean = false;
+
+    public modalactionserachopen: boolean = false;
+
+    public modalcomponent: any;
+    public modaltitle: string;
 
     constructor() { }
 
