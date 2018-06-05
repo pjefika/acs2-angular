@@ -1,0 +1,20 @@
+<loading-component [searchWhat]="'Buscando DHCP'" [searching]="searching"></loading-component>
+<div *ngIf="dhcp">
+    <div class="form-group">
+        <label>Ativo</label>
+        <select class="form-control" [(ngModel)]="dhcp.dhcpserverEnable">
+            <option value="1">Ativo</option>
+            <option value="0">Inativo</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label>Endereço Minimo</label>
+        <input type="text" class="form-control" [(ngModel)]="dhcp.minAddress">
+    </div>
+    <div class="form-group">
+        <label>Endereço Maximo</label>
+        <input type="text" class="form-control" [(ngModel)]="dhcp.maxAddress">
+    </div>
+</div>
+
+<button type="button" class="btn btn-primary" (click)="setDhcp()" [class.disabled]="btnSetDhcp">Configurar</button>

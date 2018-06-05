@@ -1,19 +1,21 @@
-import { ToastyComponent } from './../utils/toasty/toasty.component';
-import { HolderService } from './../utils/holder/holder.service';
 import { ResulTableEquipamentoComponent } from './result-table-equipamento/result-table-equipamento.component';
 import { Equipamento } from './../viewmodel/equipamento/equipamento';
 import { ListEqp } from './../template/mock/mocklisteqp';
 import { BuscaService } from './busca.service';
 import { Component, OnInit } from '@angular/core';
+import { SuperComponentService } from 'util/supercomponent/super-component.service';
+import { ToastyComponent } from 'utilcomponents/toasty/toasty.component';
+import { VariavelHolderService } from 'util/holder/variavel-holder.service';
+import { SystemHolderService } from 'util/holder/system-holder.service';
 
 @Component({
     selector: 'busca-component',
     templateUrl: 'busca.component.html',
     styleUrls: ['busca.component.css'],
-    providers: [BuscaService, ToastyComponent]
+    providers: [BuscaService]
 })
 
-export class BuscaComponent implements OnInit {
+export class BuscaComponent extends SuperComponentService implements OnInit {
 
     public listEqp: Equipamento[];
 
@@ -36,20 +38,30 @@ export class BuscaComponent implements OnInit {
 
     constructor(
         private buscaService: BuscaService,
-        public holderService: HolderService,
-        public toastyComponent: ToastyComponent) {
+        public toastyComponent: ToastyComponent,
+        public variavelHolderService: VariavelHolderService,
+        public systemHolderService: SystemHolderService) {
+        super(toastyComponent);
+    }
+
+    public ngOnInit() {
         this.initConditions();
-        if (this.holderService.lstEquipamentos) {
+        if (this.variavelHolderService.lstEquipamentos) {
             this.showTableResult = true;
         }
         this.resetHolder();
     }
 
-    public ngOnInit() {
-
+    private doBuscar() {
+        if (this.systemHolderService.ableMock) {
+            this.buscarMock();
+        } else {
+            this.buscar();
+        }
     }
 
-    public buscar() {
+    private buscarMock() {
+        // if (this.validEmptySearch()) {
         if (!this.searching) {
             this.nomeBtn = "Aguarde";
             this.whatIsSearching = null;
@@ -59,21 +71,49 @@ export class BuscaComponent implements OnInit {
             this.searchWhat = "Buscando Equipamentos"
             this.searching = true;
             this.showTableResult = false;
-            this.buscaService.getLista(this.whatIsSearching, this.whatIsSearchingInput)
-                .then(data => {
-                    this.listEqp = data;
-                    this.searching = false;
-                    this.holderService.alertOn = false;
-                    this.showTableResult = true;
-                    if (data.length === 0) {
-                        this.callToasty("Ops, aconteceu algo.", "A busca não obteve resultados.", "error", 15000);
-                    }
-                    this.nomeBtn = "Buscar";
-                }, error => {
-                    this.searching = false;
-                    this.callToasty("Ops, aconteceu algo.", error.mError, "error", 25000);
-                    this.nomeBtn = "Buscar";
-                });
+            setTimeout(() => {
+                this.listEqp = this.buscaService.getListaMock();
+                this.searching = false;
+                this.showTableResult = true;
+                this.searching = false;
+                this.nomeBtn = "Buscar";
+            }, 1000);
+        }
+        // } else {
+        //     this.callToasty("Informativo", "Por favor preencha um dos campos de busca.", "warning", 5000);
+        // }
+    }
+
+    public buscar() {
+
+        if (!this.searching) {
+            this.nomeBtn = "Aguarde";
+            this.whatIsSearching = null;
+            this.whatIsSearchingInput = null;
+            this.seeWhatIsSearching();
+            if (this.validEmptySearch()) {
+                this.listEqp = null;
+                this.searchWhat = "Buscando Equipamentos"
+                this.searching = true;
+                this.showTableResult = false;
+                this.buscaService.getLista(this.whatIsSearching, this.whatIsSearchingInput)
+                    .then(data => {
+                        this.listEqp = data;
+                        this.searching = false;
+                        this.showTableResult = true;
+                        if (data.length === 0) {
+                            this.callToasty("Ops, aconteceu algo.", "A busca não obteve resultados.", "error", 15000);
+                        }
+                    }, error => {
+                        this.callToasty("Ops, aconteceu algo.", error.mError, "error", 25000);
+                    })
+                    .then(() => {
+                        this.searching = false;
+                        this.nomeBtn = "Buscar";
+                    });
+            } else {
+                this.callToasty("Informativo", "Por favor preencha um dos campos de busca.", "warning", 5000);
+            }
         }
     }
 
@@ -93,6 +133,14 @@ export class BuscaComponent implements OnInit {
         }
     }
 
+    private validEmptySearch(): boolean {        
+        let valid: boolean = true;
+        if (this.whatIsSearching === undefined || this.whatIsSearchingInput === undefined || this.whatIsSearching === null || this.whatIsSearchingInput === null) {
+            valid = false;
+        }
+        return valid;
+    }
+
     public initConditions() {
         this.searchCond = {
             designador: "",
@@ -102,33 +150,10 @@ export class BuscaComponent implements OnInit {
         }
     }
 
-    public callAlert(msg, type) {
-        this.holderService.alertOn = true;
-        this.holderService.alertInfo = {
-            alertType: type,
-            alertMsg: msg
-        }
-    }
-
-    public callToasty(titulo: string, msg: string, theme: string, timeout?: number) {
-        this.toastyComponent.toastyInfo = {
-            titulo: titulo,
-            msg: msg,
-            theme: theme,
-            timeout: timeout
-        }
-        this.toastyComponent.addToasty();
-    }
-
     public resetHolder() {
-        this.holderService.alertInfo = {
-            alertMsg: "",
-            alertType: ""
-        }
-        this.holderService.alertOn = false;
-        this.holderService.checkOnline = false;
-        this.holderService.whoMenuIsActive = "";
-        this.holderService.equipamento = new Equipamento;
+        this.variavelHolderService.checkOnline = false;
+        this.systemHolderService.whoMenuIsActive = "";
+        this.variavelHolderService.equipamento = new Equipamento;
     }
 
 }

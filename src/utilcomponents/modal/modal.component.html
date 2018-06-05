@@ -1,0 +1,9 @@
+<clr-modal [(clrModalOpen)]="systemHolderService.modalactionserachopen" [clrModalStaticBackdrop]="true" [clrModalClosable]="false">
+    <h3 class="modal-title">{{title}}</h3>
+    <div class="modal-body">
+        <div #dynamicComponentContainer></div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline" (click)="systemHolderService.modalactionserachopen = false">Fechar</button>
+    </div>
+</clr-modal>

@@ -1,4 +1,4 @@
-<div>
+<!-- <div>
     <div>
         <h1>Buscar Equipamentos</h1>
     </div>
@@ -24,7 +24,7 @@
                 </div>
                 <div class="row">
                     <div class="col-md-6">
-                        <button type="button" class="btn btn-primary btn-block" (click)="buscar()" [class.disabled]="searching">{{nomeBtn}}</button>
+                        <button type="button" class="btn btn-primary btn-block" (click)="doBuscar()" [disabled]="searching">{{nomeBtn}}</button>
                     </div>
                     <div class="col-md-6">
                         <button type="button" class="btn btn-default btn-block" (click)="initConditions()">Limpar</button>
@@ -33,9 +33,49 @@
             </form>
         </div>
         <div class="col-md-8">
-            <!-- <table-test></table-test> -->
             <result-table-equipamento [listEqp]="listEqp" [showTable]="showTableResult"></result-table-equipamento>
             <loading-component [searchWhat]="searchWhat" [searching]="searching"></loading-component>
         </div>
     </div>
+</div> -->
+
+
+<div class="margin-comp">
+    <h3>Buscar Equipamentos</h3>
+
+    <div class="row">
+        <div class="col-md-6">
+            <form>
+                <div class="form-group">
+                    <label for="iform_1">Designador</label>
+                    <input id="iform_1" class="form-control" type="text" placeholder="Busca por Designador..." name="designador" [(ngModel)]="searchCond.designador">
+                </div>
+                <div class="form-group">
+                    <label for="iform_2">Serial</label>
+                    <input id="iform_2" class="form-control" type="text" placeholder="Busca por Serial..." name="serial" [(ngModel)]="searchCond.serial">
+                </div>
+                <div class="form-group">
+                    <label for="iform_3">MAC</label>
+                    <input id="iform_3" class="form-control" type="text" placeholder="Busca por MAC..." name="mac" [(ngModel)]="searchCond.mac">
+                </div>
+                <div class="form-group">
+                    <label for="iform_4">IP</label>
+                    <input id="iform_4" class="form-control" type="text" placeholder="Busca por IP..." name="ip" [(ngModel)]="searchCond.ip">
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <button type="button" class="btn btn-primary btn-block" (click)="doBuscar()" [disabled]="searching">{{nomeBtn}}</button>
+                    </div>
+                    <div class="col-md-6">
+                        <button type="button" class="btn btn-default btn-block" (click)="initConditions()">Limpar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-6">
+            <loading-component [searchWhat]="searchWhat" [searching]="searching"></loading-component>
+            <result-table-equipamento [listEqp]="listEqp" [showTable]="showTableResult"></result-table-equipamento>
+        </div>
+    </div>
+
 </div>

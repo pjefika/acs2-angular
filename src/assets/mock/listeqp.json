@@ -1,0 +1,76 @@
+[
+    {
+        "activated": true,
+        "alarmsEnabled": true,
+        "captured": false,
+        "commonUniqueIdentifier": null,
+        "community": null,
+        "connectionRequestPassword": "53fd97eaa8f2a2584fcd05624cbc4797",
+        "connectionRequestURL": "http://186.215.34.38:7547/05bfe98e",
+        "connectionRequestUsername": "190000016647927-V5471-28C87A",
+        "currentTime": 1527621194000,
+        "customAttribute1": "28:c8:7a:19:67:18",
+        "customAttribute10": null,
+        "customAttribute2": null,
+        "customAttribute3": null,
+        "customAttribute4": null,
+        "customAttribute5": null,
+        "customAttribute6": null,
+        "customAttribute7": null,
+        "customAttribute8": null,
+        "customAttribute9": null,
+        "deleted": false,
+        "deviceClass": null,
+        "deviceGUID": 28265797,
+        "deviceId": {
+            "OUI": "28C87A",
+            "productClass": "V5471",
+            "protocol": "DEVICE_PROTOCOL_DSLFTR069v1",
+            "serialNumber": "190000016647927"
+        },
+        "dynamicVariables": [
+            {
+                "encrypt": false,
+                "name": "inform.itoss.activation.msg",
+                "sensitive": false,
+                "value": "{'operation':'PROVISIONING','mac':'28:c8:7a:19:67:18','pclass':'V5471','guid':'28265797','serialNumber':'190000016647927','subscriberId':'NO_SUBSCRIBER_IT','parentId':'','parentMac':'','parentIp':'null','timestamp':'2018-05-29T10:04:09.949-03:00'}"
+            }
+        ],
+        "firstContactTime": 1519870929086,
+        "HTTPPublicPassword": "1527598661664a",
+        "HTTPPublicUsername": "1527598661664u",
+        "IPAddress": "186.215.34.38",
+        "lastActivationTime": 1527599047468,
+        "lastCapturedBy": null,
+        "lastCapturedTime": null,
+        "lastContactTime": 1527621194694,
+        "macAddress": "28:c8:7a:19:67:18",
+        "managed": true,
+        "manufacturer": "PACE",
+        "model": "Device:1",
+        "modelName": "V5471",
+        "PPPPassword": null,
+        "PPPUsername": null,
+        "port": 0,
+        "portMappingRetryCount": 0,
+        "serviceTagArray": [
+            {
+                "copyOnFactoryReset": false,
+                "factoryResetValue": null,
+                "name": "inform.itoss.activation.status",
+                "value": "final_notification_sent_at[2018-05-29T10:04:10.005-03:00]_status[OK]"
+            },
+            {
+                "copyOnFactoryReset": false,
+                "factoryResetValue": null,
+                "name": "notifyIT",
+                "value": "true"
+            }
+        ],
+        "softwareVersion": "B14103-GVT-RC2-103961",
+        "subscriberID": "CTA-81E2J3HSS-013",
+        "type": 0,
+        "userTagArray": [],
+        "domainName": null
+    }
+]

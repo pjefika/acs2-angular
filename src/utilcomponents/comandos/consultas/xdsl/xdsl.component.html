@@ -1,0 +1,62 @@
+<loading-component [searchWhat]="'Buscando xDSL'" [searching]="searching"></loading-component>
+<div *ngIf="xdsl">
+    <table class="table table-vertical">
+        <tbody>
+            <tr>
+                <th>Tempo Ativo</th>
+                <td>{{xdsl.showtimeStart}}</td>
+            </tr>
+            <tr>
+                <th>Modulação</th>
+                <td>{{xdsl.modulationType}}</td>
+            </tr>
+            <tr>
+                <th>Erros em Segundos</th>
+                <td>{{xdsl.severelyErroredSecs}}</td>
+            </tr>
+            <tr>
+                <th>Perda de Quadros</th>
+                <td>{{xdsl.lossOfFraming}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-vertical">
+        <tbody>
+            <tr>
+                <th>Parâmetro</th>
+                <th>Download</th>
+                <th>Upload</th>
+            </tr>
+            <tr>
+                <th>Erros CRC</th>
+                <td>{{xdsl.crcerrors}}</td>
+                <td>{{xdsl.atuccrcerrors}}</td>
+            </tr>
+            <tr>
+                <th>Erros FEC</th>
+                <td>{{xdsl.fecerrors}}</td>
+                <td>{{xdsl.atucfecerrors}}</td>
+            </tr>
+            <tr>
+                <th>Erros HEC</th>
+                <td>{{xdsl.atuchecerrors}}</td>
+                <td>{{xdsl.hecerrors}}</td>
+            </tr>
+            <tr>
+                <th>Velocidade Sincronizada</th>
+                <td>{{xdsl.downstreamCurrRate}}</td>
+                <td>{{xdsl.upstreamCurrRate}}</td>
+            </tr>
+            <tr>
+                <th>Atenuação</th>
+                <td>{{xdsl.downstreamAttenuation}}</td>
+                <td>{{xdsl.upstreamAttenuation}}</td>
+            </tr>
+            <tr>
+                <th>Ruido</th>
+                <td>{{xdsl.downstreamNoiseMargin}}</td>
+                <td>{{xdsl.upstreamNoiseMargin}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

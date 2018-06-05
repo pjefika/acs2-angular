@@ -1,12 +1,47 @@
-<div *ngIf="showTable">
+<!-- <div *ngIf="showTable">
     <div class="full-width" *ngIf="mountedList">
         <data-table headerTitle="Equipamentos" [items]="mountedList" [itemCount]="listCount" (rowClick)="rowClick($event)" (reload)="reloadEqp($event)"
             [limit]="limit" [sortBy]="'rating'" [indexColumn]="false" [translations]="translations">
-            <data-table-column [resizable]="true" [property]="'subscriber'" [header]="'Subscriber'" [sortable]="true"></data-table-column>
-            <data-table-column [resizable]="true" [property]="'serial'" [header]="'Serial'" [sortable]="true"></data-table-column>
-            <data-table-column [resizable]="true" [property]="'ip'" [header]="'IP'" [sortable]="true"></data-table-column>
-            <data-table-column [resizable]="true" [property]="'mac'" [header]="'MAC'" [sortable]="true"></data-table-column>
-            <data-table-column [resizable]="true" [property]="'fabricante'" [header]="'Fabricante'" [sortable]="true"></data-table-column>
+            <data-table-column [resizable]="true" [property]="'subscriberID'" [header]="'Subscriber'" [sortable]="true"></data-table-column>
+            <data-table-column [resizable]="true" [property]="'deviceId.serialNumber'" [header]="'Serial'" [sortable]="true"></data-table-column>
+            <data-table-column [resizable]="true" [property]="'IPAddress'" [header]="'IP'" [sortable]="true"></data-table-column>
+            <data-table-column [resizable]="true" [property]="'macAddress'" [header]="'MAC'" [sortable]="true"></data-table-column>
+            <data-table-column [resizable]="true" [property]="'manufacturer'" [header]="'Fabricante'" [sortable]="true"></data-table-column>
         </data-table>
     </div>
+</div> -->
+
+
+<div *ngIf="showTable">
+    <div class="full-width" *ngIf="listEqp">
+        <clr-datagrid>
+            <clr-dg-column>Subscriber</clr-dg-column>
+            <clr-dg-column>Serial</clr-dg-column>
+            <clr-dg-column>IP</clr-dg-column>
+            <clr-dg-column>MAC</clr-dg-column>
+            <clr-dg-column>Fabricante</clr-dg-column>
+
+            <clr-dg-row *ngFor="let eqp of listEqp" (click)="entraeqp(eqp)">
+                <clr-dg-cell>{{eqp.subscriberID}}</clr-dg-cell>
+                <clr-dg-cell>{{eqp.deviceId.serialNumber}}</clr-dg-cell>
+                <clr-dg-cell>{{eqp.IPAddress}}</clr-dg-cell>
+                <clr-dg-cell>{{eqp.macAddress}}</clr-dg-cell>
+                <clr-dg-cell>{{eqp.manufacturer}}</clr-dg-cell>
+            </clr-dg-row>
+
+            <clr-dg-footer>{{listEqp.length}} {{ listEqp.length > 1 ? "Equipamentos encontrados" : "Equipamento encontrado" }} </clr-dg-footer>
+
+        </clr-datagrid>
+    </div>
 </div>
+
+<clr-modal [(clrModalOpen)]="modalopen" [clrModalClosable]="false">
+    <h3 class="modal-title">Validar tipo de rede</h3>
+    <div class="modal-body">
+        <p>Informe qual o tipo de rede do cliente?</p>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="escolharede(true); modalopen = false; createTemplateDetalhes();">Rede VIVO 1</button>
+        <button type="button" class="btn btn-primary" (click)="escolharede(false); modalopen = false; createTemplateDetalhes();">Rede VIVO 2</button>
+    </div>
+</clr-modal>

@@ -1,0 +1,30 @@
+<loading-component [searchWhat]="'Buscando Lan Hosts'" [searching]="searching"></loading-component>
+<div *ngIf="lanHost">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>IP</th>
+                <th>Fonte de Endereço</th>
+                <th>Tempo Restante</th>
+                <th>MAC</th>
+                <th>Endereço Host</th>
+                <th>Tipo</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let host of lanHost">
+                <td>{{host.ipAddress}}</td>
+                <td>{{host.addressSource}}</td>
+                <td>{{host.leaseTimeRemaining}}</td>
+                <td>{{host.macAddress}}</td>
+                <td>{{host.hostName}}</td>
+                <td>{{host.interfaceType}}</td>
+                <td>
+                    <span *ngIf="host.ativo">Ativo</span>
+                    <span *ngIf="!host.ativo">Inativo</span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

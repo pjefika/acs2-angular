@@ -1,0 +1,47 @@
+<loading-component [searchWhat]="'Buscando Interface Statics'" [searching]="searching"></loading-component>
+<div *ngIf="intStatic">
+    <h4>Estatísticas de Interface</h4>
+    <clr-datagrid class="datagrid-compact">
+        <clr-dg-column>Tipo de Interface</clr-dg-column>
+        <clr-dg-column>Admin Status</clr-dg-column>
+        <clr-dg-column>Status Operacional</clr-dg-column>
+        <clr-dg-column>Nome da Interface</clr-dg-column>
+        <clr-dg-column>Endereço de IP</clr-dg-column>
+        <clr-dg-column>Tipo de Endereço de Ip</clr-dg-column>
+        <clr-dg-column>MAC</clr-dg-column>
+        <clr-dg-column>Bytes Enviados</clr-dg-column>
+        <clr-dg-column>Bytes Recebidos</clr-dg-column>
+        <clr-dg-column>Erros Enviados</clr-dg-column>
+        <clr-dg-column>Erros Recebidos</clr-dg-column>
+        <clr-dg-column>Pacotes Enviados</clr-dg-column>
+        <clr-dg-column>Pacotes Recebidos</clr-dg-column>
+        <clr-dg-column>Multicast Enviados</clr-dg-column>
+        <clr-dg-column>Multicast Recebidos</clr-dg-column>
+        <clr-dg-column>Broadcast Enviados</clr-dg-column>
+        <clr-dg-column>Broadcast Recebidos</clr-dg-column>
+
+        <clr-dg-row *ngFor="let static of intStatic">
+            <clr-dg-cell>{{static.ifType}}</clr-dg-cell>
+            <clr-dg-cell>{{static.adminStatus}}</clr-dg-cell>
+            <clr-dg-cell>{{static.operStatus}}</clr-dg-cell>
+            <clr-dg-cell>{{static.ifName}}</clr-dg-cell>
+            <clr-dg-cell>{{static.ipAddress}}</clr-dg-cell>
+            <clr-dg-cell>{{static.ipAddrType}}</clr-dg-cell>
+            <clr-dg-cell>{{static.macAddress}}</clr-dg-cell>
+            <clr-dg-cell>{{static.bytesSent}}</clr-dg-cell>
+            <clr-dg-cell>{{static.bytesRecv}}</clr-dg-cell>
+            <clr-dg-cell>{{static.errSent}}</clr-dg-cell>
+            <clr-dg-cell>{{static.errRecv}}</clr-dg-cell>
+            <clr-dg-cell>{{static.pctSent}}</clr-dg-cell>
+            <clr-dg-cell>{{static.pctRecv}}</clr-dg-cell>
+            <clr-dg-cell>{{static.mcSent}}</clr-dg-cell>
+            <clr-dg-cell>{{static.mcRecv}}</clr-dg-cell>
+            <clr-dg-cell>{{static.bcSent}}</clr-dg-cell>
+            <clr-dg-cell>{{static.bcRecv}}</clr-dg-cell>
+        </clr-dg-row>
+
+        <clr-dg-footer>
+            <clr-dg-pagination #pagination [clrDgPageSize]="10"> </clr-dg-pagination>
+        </clr-dg-footer>
+    </clr-datagrid>
+</div>

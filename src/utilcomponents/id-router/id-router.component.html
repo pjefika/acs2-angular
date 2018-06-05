@@ -1,0 +1,24 @@
+<div *ngIf="variavelHolderService.deviceId" class="margin-geral">
+    <button type="button" class="btn btn-secondary  btn-sm ir-para-direita" (click)="irParaIndex()">Início</button>
+    <detalhe-component [searchSolo]="true"></detalhe-component>
+</div>
+<!-- Modal -->
+<ng-template #modallogin let-c="close" let-d="dismiss">
+    <div class="modal-body">
+        <h4>Bem-vindo ao </h4>
+        <h2>Efika ACS Motive</h2>
+        <p>Utilize seu login e senha para entrar</p>
+        <form (keyup.enter)="doEntrar()">
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Insira seu login" [(ngModel)]="usuario.login" name="login" />
+            </div>
+            <div class="form-group">
+                <input type="password" class="form-control" placeholder="Insira sua Senha" [(ngModel)]="usuario.senha" name="senha" />
+            </div>
+        </form>
+        <alert-component [alertInfo]="alertInfo" [alertOn]="alertOn"></alert-component>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-primary btn-lg btn-block" (click)="doEntrar()">Entrar</button>
+    </div>
+</ng-template>

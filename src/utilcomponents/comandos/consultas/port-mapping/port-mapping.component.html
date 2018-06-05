@@ -1,0 +1,30 @@
+<loading-component [searchWhat]="'Buscando Port Mappings'" [searching]="searching"></loading-component>
+<div *ngIf="portMaps">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Porta Externa</th>
+                <th>Porta Interna</th>
+                <th>Cliente Interno</th>
+                <th>Nome da Porta (Map)</th>
+                <th>Protocolo</th>
+                <th>Host Remoto</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let port of portMaps">
+                <td>{{port.externalPort}}</td>
+                <td>{{port.internalPort}}</td>
+                <td>{{port.internalClient}}</td>
+                <td>{{port.portMapName}}</td>
+                <td>{{port.protocol}}</td>
+                <td>{{port.remoteHost}}</td>
+                <td>
+                    <span *ngIf="port.enable">Ativo</span>
+                    <span *ngIf="!port.enable">Inativo</span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

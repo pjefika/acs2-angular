@@ -1,11 +1,40 @@
-<div class="list-group" *ngIf="isModem">
-    <label class="list-group-item negrito">Consultas</label>
-    <modal-component [nomeDoBtn]="'Consultar WAN'" [styleBtn]="'list-group-item list-group-item-action'" [component]="'wan-component'"></modal-component>
-    <modal-component [nomeDoBtn]="'Consultar Interface Statistics'" [styleBtn]="'list-group-item list-group-item-action'" [component]="'interface-statics-component'"></modal-component>
-    <modal-component [nomeDoBtn]="'Consultar LAN Host'" [styleBtn]="'list-group-item list-group-item-action'" [component]="'lan-host-component'"></modal-component>
-    <modal-component [nomeDoBtn]="'Consultar xDSL'" [styleBtn]="'list-group-item list-group-item-action'" [component]="'xdsl-component'"></modal-component>
-    <modal-component [nomeDoBtn]="'Consultar Port Mapping'" [styleBtn]="'list-group-item list-group-item-action'" [component]="'port-mapping-component'"></modal-component>
-    <modal-component [nomeDoBtn]="'Consultar SIP'" [styleBtn]="'list-group-item list-group-item-action'" [component]="'sip-get-component'"></modal-component>
-    <modal-component [nomeDoBtn]="'Consultar DMZ'" [styleBtn]="'list-group-item list-group-item-action'" [component]="'dmz-component'"></modal-component>
-    <modal-component [nomeDoBtn]="'Historia'" [styleBtn]="'list-group-item list-group-item-action'" [component]="'historia-component'"></modal-component>
+<div class="card" *ngIf="isModem">
+    <div class="card-header">
+        Consultas
+    </div>
+    <div class="card-block">
+        <div class="card-title">
+            <ul class="list-unstyled">
+                <li>
+                    <button class="btn btn-outline btn-block padding-btn" (click)="domount('wan-component','Consultar WAN')" [disabled]="this.systemHolderService.isSearchingCheckOnline || this.systemHolderService.isSearchingIp">Consultar WAN</button>
+                </li>
+                <li>
+                    <button class="btn btn-outline btn-block padding-btn" (click)="domount('interface-statics-component','Consultar Interface Statistics')"
+                        [disabled]="this.systemHolderService.isSearchingCheckOnline || this.systemHolderService.isSearchingIp">Consultar Interface Statistics</button>
+                </li>
+                <li>
+                    <button class="btn btn-outline btn-block padding-btn" (click)="domount('lan-host-component','Consultar LAN Host')" [disabled]="this.systemHolderService.isSearchingCheckOnline || this.systemHolderService.isSearchingIp">Consultar LAN Host</button>
+                </li>
+                <li>
+                    <button class="btn btn-outline btn-block padding-btn" (click)="domount('xdsl-component','Consultar xDSL')" [disabled]="this.systemHolderService.isSearchingCheckOnline || this.systemHolderService.isSearchingIp">Consultar xDSL</button>
+                </li>
+                <li>
+                    <button class="btn btn-outline btn-block padding-btn" (click)="domount('port-mapping-component','Consultar Port Mapping')"
+                        [disabled]="this.systemHolderService.isSearchingCheckOnline || this.systemHolderService.isSearchingIp">Consultar Port Mapping</button>
+                </li>
+                <li>
+                    <button class="btn btn-outline btn-block padding-btn" (click)="domount('sip-get-component','Consultar SIP')" [disabled]="this.systemHolderService.isSearchingCheckOnline || this.systemHolderService.isSearchingIp">Consultar SIP</button>
+                </li>
+                <li>
+                    <button class="btn btn-outline btn-block padding-btn" (click)="domount('dmz-component','Consultar DMZ')" [disabled]="this.systemHolderService.isSearchingCheckOnline || this.systemHolderService.isSearchingIp">Consultar DMZ</button>
+                </li>
+                <li>
+                    <button class="btn btn-outline btn-block padding-btn" (click)="domount('historia-component','Historia')" [disabled]="this.systemHolderService.isSearchingCheckOnline || this.systemHolderService.isSearchingIp">Historia</button>
+                </li>
+            </ul>
+        </div>
+        <div class="card-text">
+
+        </div>
+    </div>
 </div>

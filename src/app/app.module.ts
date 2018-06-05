@@ -1,67 +1,75 @@
-import { ToastyComponent } from './../utils/toasty/toasty.component';
 import { ToastyModule } from 'ng2-toasty';
-import { UrlService } from './../utils/url-service/url.service';
-import { CheckOnlineComponent } from './../utils/comandos/consultas/check-online/check-online.component';
-import { HistoriaComponent } from './../utils/comandos/consultas/historia/historia.component';
-import { DmzComponent } from './../utils/comandos/consultas/dmz/dmz.component';
-import { SipGetComponent } from './../utils/comandos/consultas/sip/sip.component';
-import { PortMappingComponent } from './../utils/comandos/consultas/port-mapping/port-mapping.component';
-import { XdslComponent } from './../utils/comandos/consultas/xdsl/xdsl.component';
-import { LanHostComponent } from './../utils/comandos/consultas/lan-host/lan-host.component';
-import { InterfaceStaticsComponent } from './../utils/comandos/consultas/interface-statics/interface-statics.component';
-import { WanComponent } from './../utils/comandos/consultas/wan/wan.component';
-import { DhcpComponent } from './../utils/comandos/acoes/dhcp/dhcp.component';
-import { ServiceClassComponent } from './../utils/comandos/acoes/service-class/service-class.component';
-import { SipSetComponent } from './../utils/comandos/acoes/sip/sip.component';
-import { AuthPPPoEComponent } from './../utils/comandos/acoes/auth-pppoe/auth-pppoe.component';
-import { WifiComponent } from './../utils/comandos/acoes/wifi/wifi.component';
-import { PingComponent } from './../utils/comandos/acoes/ping/ping.component';
-import { FactoryResetComponent } from './../utils/comandos/acoes/factory-reset/factory-reset.component';
-import { ResetComponent } from './../utils/comandos/acoes/reset/reset.component';
 import { ResulTableEquipamentoComponent } from './../busca/result-table-equipamento/result-table-equipamento.component';
 import { DetalheLogModalComponent } from './../logs/detalhe-log-modal/detalhe-log-modal.component';
-import { ModalComponent } from './../utils/modal/modal.component';
 import { ResultLogsTableComponent } from './../logs/result-table/result-logs-table.component';
 import { LogsComponent } from './../logs/logs.component';
 import { AcoesComponent } from './../detalhe/acoes/acoes.component';
 import { ConsultasComponent } from './../detalhe/consultas/consultas.component';
 import { EquipamentoComponent } from './../detalhe/equipamento/equipamento.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { LoadingComponent } from './../utils/loading/loading.component';
 import { DetalheComponent } from './../detalhe/detalhe.component';
-import { DynamicComponent } from './../dynamiccomponent/dynamic.component';
 import { BuscaComponent } from './../busca/busca.component';
 import { BuscaService } from './../busca/busca.service';
-import { HolderService } from './../utils/holder/holder.service';
-import { MenuComponent } from './../utils/menu/menu.component';
-import { AlertComponent } from './../utils/alert/alert.component';
 import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
-import { ValidLoginService } from './../utils/login/valid-login.service';
 import { TemplateComponent } from './../template/template.component';
 import { AppRoutingModule } from './app-routing.module';
 import { LoginComponent } from './../login/login.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { DataTableModule } from 'angular-4-data-table-bootstrap-4';
+// import { DataTableModule } from 'angular-4-data-table-bootstrap-4';
 import { MomentModule } from 'angular2-moment';
 
 
 import { AppComponent } from './app.component';
 
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { DynamicRouterComponent } from 'utils/dynamic-router/dynamic-router.component';
-import { IdRouterComponent } from 'utils/id-router/id-router.component';
+import { AlertComponent } from 'utilcomponents/alert/alert.component';
+import { ToastyComponent } from 'utilcomponents/toasty/toasty.component';
+import { HolderResetService } from 'util/holder/holderreset.service';
+import { VariavelHolderService } from 'util/holder/variavel-holder.service';
+import { SystemHolderService } from 'util/holder/system-holder.service';
+import { UtilService } from 'util/util.service';
+import { UrlService } from 'util/urlservice/url.service';
+import { SuperService } from 'util/superservice/super.service';
+import { AlertService } from 'util/alert/alert.service';
+import { SuperComponentService } from 'util/supercomponent/super-component.service';
+import { DynamicRouterService } from 'utilcomponents/dynamicrouter/dynamic-router.service';
+import { DynamicComponent } from 'utilcomponents/dynamiccomponent/dynamic.component';
+import { LoadingComponent } from 'utilcomponents/loading/loading.component';
+import { ResetComponent } from 'utilcomponents/comandos/acoes/reset/reset.component';
+import { FactoryResetComponent } from 'utilcomponents/comandos/acoes/factory-reset/factory-reset.component';
+import { PingComponent } from 'utilcomponents/comandos/acoes/ping/ping.component';
+import { WifiComponent } from 'utilcomponents/comandos/acoes/wifi/wifi.component';
+import { AuthPPPoEComponent } from 'utilcomponents/comandos/acoes/auth-pppoe/auth-pppoe.component';
+import { ServiceClassComponent } from 'utilcomponents/comandos/acoes/service-class/service-class.component';
+import { DhcpComponent } from 'utilcomponents/comandos/acoes/dhcp/dhcp.component';
+import { WanComponent } from 'utilcomponents/comandos/consultas/wan/wan.component';
+import { InterfaceStaticsComponent } from 'utilcomponents/comandos/consultas/interface-statics/interface-statics.component';
+import { LanHostComponent } from 'utilcomponents/comandos/consultas/lan-host/lan-host.component';
+import { XdslComponent } from 'utilcomponents/comandos/consultas/xdsl/xdsl.component';
+import { PortMappingComponent } from 'utilcomponents/comandos/consultas/port-mapping/port-mapping.component';
+import { DmzComponent } from 'utilcomponents/comandos/consultas/dmz/dmz.component';
+import { HistoriaComponent } from 'utilcomponents/comandos/consultas/historia/historia.component';
+import { CheckOnlineComponent } from 'utilcomponents/comandos/consultas/check-online/check-online.component';
+import { SipSetComponent } from 'utilcomponents/comandos/acoes/sip/sip.component';
+import { SipGetComponent } from 'utilcomponents/comandos/consultas/sip/sip.component';
+import { MenuComponent } from 'utilcomponents/menu/menu.component';
+import { ModalComponent } from 'utilcomponents/modal/modal.component';
+import { IdRouterComponent } from 'utilcomponents/id-router/id-router.component';
+import { DynamicRouterComponent } from 'utilcomponents/dynamicrouter/dynamic-router.component';
+import { ValidaTipoRedeComponent } from 'busca/valida-tipo-rede/valida-tipo-rede.component';
+
+import { ClarityModule } from "@clr/angular";
 
 @NgModule({
 	declarations: [
 		AppComponent,
 		LoginComponent,
 		TemplateComponent,
-		AlertComponent,
 		MenuComponent,
 		BuscaComponent,
 		DynamicComponent,
+		DynamicRouterComponent,
 		DetalheComponent,
 		LoadingComponent,
 		EquipamentoComponent,
@@ -87,28 +95,36 @@ import { IdRouterComponent } from 'utils/id-router/id-router.component';
 		DmzComponent,
 		HistoriaComponent,
 		CheckOnlineComponent,
-		ToastyComponent,
 		SipSetComponent,
 		SipGetComponent,
-		DynamicRouterComponent,
-		IdRouterComponent
+		IdRouterComponent,
+		AlertComponent,
+		ToastyComponent,
+		ValidaTipoRedeComponent
 	],
 	imports: [
 		BrowserModule,
-		NgbModule.forRoot(),
 		AppRoutingModule,
 		FormsModule,
 		HttpModule,
 		BrowserAnimationsModule,
-		DataTableModule,
 		MomentModule,
-		ToastyModule.forRoot()
+		ToastyModule.forRoot(),
+		ClarityModule
 	],
 	providers: [
-		ValidLoginService,
-		HolderService,
 		BuscaService,
-		UrlService
+		UrlService,
+		HolderResetService,
+		VariavelHolderService,
+		SystemHolderService,
+		UtilService,
+		SuperService,
+		AlertService,
+		SuperComponentService,
+		ToastyComponent,
+		DynamicRouterService,
+		TemplateComponent
 	],
 	bootstrap: [AppComponent],
 	schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -132,7 +148,10 @@ import { IdRouterComponent } from 'utils/id-router/id-router.component';
 		HistoriaComponent,
 		CheckOnlineComponent,
 		SipSetComponent,
-		SipGetComponent
+		SipGetComponent,
+		AlertComponent,
+		ToastyComponent,
+		ValidaTipoRedeComponent
 	]
 })
 export class AppModule { }
