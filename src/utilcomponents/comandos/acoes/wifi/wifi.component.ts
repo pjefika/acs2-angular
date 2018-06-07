@@ -134,8 +134,6 @@ export class WifiComponent extends SuperComponentService implements OnInit {
             .getCanaisPossiveis()
             .then(resposta => {
                 this.canaispossiveis = resposta;
-                console.log(this.canaispossiveis);
-
             });
     }
 }
