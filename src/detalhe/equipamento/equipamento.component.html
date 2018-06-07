@@ -4,9 +4,9 @@
             {{systemHolderService.boxnameseewhatissearching}}
         </div>
         <div *ngIf="!systemHolderService.isSearchingCheckOnline && !systemHolderService.isSearchingIp">
-            <span *ngIf="variavelHolderService.checkOnline">
+            <span *ngIf="variavelHolderService.checkOnline" class="backgroud-green">
                 <span class="negrito">Status: </span> Ativo</span>
-            <span *ngIf="!variavelHolderService.checkOnline">
+            <span *ngIf="!variavelHolderService.checkOnline" class="backgroud-red">
                 <span class="negrito">Status: </span> Inativo</span>
         </div>
     </div>

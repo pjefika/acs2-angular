@@ -52,8 +52,6 @@ export class DetalheComponent extends SuperComponentService implements OnInit {
     }
 
     public dovalidipequal() {
-        console.log("entrou dovalidipequal");
-
         if (this.systemHolderService.ableMock) {
             this.validIpIsEqualMock();
         } else {
@@ -73,7 +71,7 @@ export class DetalheComponent extends SuperComponentService implements OnInit {
                         this.callToasty("Informativo.", "Não foi possivel validar a autenticação do modem.", "warning", 8000);
                         this.waserrorip = true;
                     } else if (this.eqp.IPAddress === resposta.ip_address_v4) {
-                        // this.docheckonline();
+                        this.callToasty("Informativo", "Validado IP do modem, está igual, realize um Reboot no modem.", "success", 4000);
                     } else {
                         this.callToasty("Informativo.", "O IP do modem está diferente da autenticação por favor realize um Reboot no modem.", "warning", 8000);
                         this.waserrorip = true;
@@ -95,7 +93,7 @@ export class DetalheComponent extends SuperComponentService implements OnInit {
                     this.callToasty("Informativo.", "Não foi possivel validar a autenticação do modem.", "warning", 8000);
                     this.waserrorip = true;
                 } else if (this.eqp.IPAddress === resposta.ip_address_v4) {
-                    this.callToasty("Informativo", "Validado IP do modem, está igual.", "success", 4000);
+                    this.callToasty("Informativo", "Validado IP do modem, está igual, realize um Reboot no modem.", "success", 4000);
                 } else {
                     this.waserrorip = true;
                     this.callToasty("Informativo.", "O IP do modem está diferente da autenticação por favor realize um Reboot no modem.", "warning", 25000);

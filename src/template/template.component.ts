@@ -33,6 +33,7 @@ export class TemplateComponent implements OnInit {
 
     public buscaEquipamento() {
         this.systemHolderService.whoMenuIsActive = "busca-component";
+        this.clearHolders();
         this.setToDynamicComponent(BuscaComponent);
     }
 
@@ -48,7 +49,7 @@ export class TemplateComponent implements OnInit {
 
     public setToDynamicComponent(component: any) {
         this.dynamicRouterService.component = null;
-        setTimeout(() => {            
+        setTimeout(() => {
             this.dynamicRouterService.component = component;
         }, 1);
     }
@@ -56,6 +57,13 @@ export class TemplateComponent implements OnInit {
     public sair() {
         sessionStorage.clear();
         this.util.navigate('./entrar');
+    }
+
+    private clearHolders() {
+        this.variavelHolderService.checkOnline = false;
+        this.variavelHolderService.equipamento = null;
+        // this.variavelHolderService.lstEquipamentos = null;
+        this.variavelHolderService.numerodeserie = null;
     }
 
 }
