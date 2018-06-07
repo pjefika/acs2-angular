@@ -80,7 +80,7 @@ export class DetalheService extends SuperService {
             .catch(super.handleErrorKing);
     }
 
-    public checkOnlineIssueMock(id: number): Promise<boolean> {
+    public checkOnlineIssueMock(): Promise<boolean> {
         return Promise.resolve(true);
     }
 

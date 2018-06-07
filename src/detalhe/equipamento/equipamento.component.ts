@@ -22,7 +22,9 @@ export class EquipamentoComponent implements OnInit {
         public systemHolderService: SystemHolderService) { }
 
     public ngOnInit() {
-        this.checkondeline();
+        if (!this.variavelHolderService.numerodeserie) {
+            this.checkondeline();
+        }
     }
 
     private validip() {

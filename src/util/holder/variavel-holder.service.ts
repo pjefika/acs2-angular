@@ -9,7 +9,7 @@ export class VariavelHolderService {
 
     public lstEquipamentos: Equipamento[];
 
-    public deviceId: number;
+    public numerodeserie: string;
 
     public checkOnline: boolean;
 

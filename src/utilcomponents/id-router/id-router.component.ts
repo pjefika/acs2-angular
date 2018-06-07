@@ -2,13 +2,11 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DetalheComponent } from 'detalhe/detalhe.component';
 import { Router } from '@angular/router';
-// import { NgbModal } from '@ng-bootstrap/ng-bootstrap/modal/modal';
 
 import { ViewChild } from '@angular/core';
 import { ElementRef } from '@angular/core';
 import { LoginService } from 'login/login.service';
 import { Usuario } from 'viewmodel/usuario/usuario';
-// import { NgbModalRef } from '@ng-bootstrap/ng-bootstrap/modal/modal-ref';
 import { VariavelHolderService } from 'util/holder/variavel-holder.service';
 import { SystemHolderService } from 'util/holder/system-holder.service';
 import { DynamicRouterService } from 'utilcomponents/dynamicrouter/dynamic-router.service';
@@ -28,11 +26,7 @@ export class IdRouterComponent extends AlertService implements OnInit, OnDestroy
 
     private usuario = new Usuario;
 
-    @ViewChild('modallogin') public modallogin: ElementRef;
-
     private sub: any;
-
-    // public modalRef: NgbModalRef;
 
     private alertOn: boolean = false;
     private alertInfo: {
@@ -40,11 +34,14 @@ export class IdRouterComponent extends AlertService implements OnInit, OnDestroy
         alertMsg: string
     }
 
+    private showloginpage: boolean = false;
+
+    private showmodalvalidvivoone: boolean = false;
+
     constructor(private route: ActivatedRoute,
         public variavelHolderService: VariavelHolderService,
         public systemHolderService: SystemHolderService,
         public dynamicRouterService: DynamicRouterService,
-        // private modalService: NgbModal,
         private loginService: LoginService,
         public util: UtilService,
         private router: Router,
@@ -56,31 +53,20 @@ export class IdRouterComponent extends AlertService implements OnInit, OnDestroy
         this.util.isLogado()
             .then((result: boolean) => {
                 if (!result) {
-                    this.open(this.modallogin);
+                    this.showloginpage = true;
                 } else {
-                    this.continaBuscandoDevice();
+                    this.modalopen();
                 }
             });
     }
 
-    private open(content) {
-        // this.modalRef = this.modalService.open(content, { backdrop: 'static', keyboard: false });
-    }
-
-    private close(content) {
-        // this.modalRef.close();
-    }
-
     private continaBuscandoDevice() {
         this.sub = this.route.params.subscribe(params => {
-            this.variavelHolderService.deviceId = +params['id'];
+            this.variavelHolderService.numerodeserie = params['id'];
         });
     }
 
-    public ngOnDestroy() {
-        //this.sub.unsubscribe();
-    }   
-
+    public ngOnDestroy() { }
 
     private doEntrar() {
         if (this.systemHolderService.ableMock) {
@@ -100,11 +86,10 @@ export class IdRouterComponent extends AlertService implements OnInit, OnDestroy
                         .then(data => {
                             this.usuario = data;
                             sessionStorage.setItem('user', JSON.stringify({ user: this.usuario.login, nv: this.usuario.nivel, token: Md5.hashStr("fulltest-app") }));
-                            this.close(this.modallogin);
-                            this.continaBuscandoDevice();
+                            this.showloginpage = false;
+                            this.modalopen();
                         });
                 } else {
-                    //type: "warning", msg: "Usuário ou senha incorretos, por favor verifique."
                     super.callAlert("warning", "Usuário ou senha incorretos, por favor verifique.");
                     this.usuario.senha = "";
                 }
@@ -119,13 +104,22 @@ export class IdRouterComponent extends AlertService implements OnInit, OnDestroy
         setTimeout(() => {
             this.usuario = this.loginService.getUsuarioMock();
             sessionStorage.setItem('user', JSON.stringify({ user: this.usuario.login, nv: this.usuario.nivel, token: Md5.hashStr("fulltest-app") }));
-            this.util.navigate('./');
+            this.showloginpage = false;
+            this.modalopen();
         }, 1000);
     }
 
-
     private irParaIndex() {
         this.router.navigate(['./']);
+    }
+
+    private modalopen() {
+        this.showmodalvalidvivoone = true;
+    }
+
+    private escolharede(typer: boolean) {
+        this.systemHolderService.isvivoone = typer;
+        this.continaBuscandoDevice();
     }
 
 }
