@@ -77,7 +77,7 @@ export class BuscaComponent extends SuperComponentService implements OnInit {
                 this.showTableResult = true;
                 this.searching = false;
                 this.nomeBtn = "Buscar";
-            }, 1000);
+            }, 100);
         }
         // } else {
         //     this.callToasty("Informativo", "Por favor preencha um dos campos de busca.", "warning", 5000);

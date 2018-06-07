@@ -1,28 +1,3 @@
-<!-- <div class="container fullmarge">
-    <div class="page-header">
-        <h4>Bem-vindo ao </h4>
-        <h1>Efika ACS Motive</h1>
-        Utilize seu login e senha para entrar
-    </div>
-    <br>
-    <form (keyup.enter)="doEntrar()">
-        <div class="form-group">
-            <input type="text" class="form-control" placeholder="Insira seu login" [(ngModel)]="usuario.login" name="login" />
-        </div>
-        <div class="form-group">
-            <input type="password" class="form-control" placeholder="Insira sua Senha" [(ngModel)]="usuario.senha" name="senha" />
-        </div>
-
-        <button type="button" class="btn btn-primary btn-lg btn-block" (click)="doEntrar()">Entrar</button>
-
-    </form>
-
-    <br>
-
-    <alert-component [mensagem]="mensagem" [alertOn]="ativo"></alert-component>
-
-</div> -->
-
 <div class="login-wrapper" (keyup.enter)="doEntrar()">
     <form class="login" (ngSubmit)="doEntrar()">
         <label class="title">

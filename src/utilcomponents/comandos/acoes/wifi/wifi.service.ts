@@ -7,6 +7,7 @@ import 'rxjs/add/operator/toPromise';
 import 'rxjs/Rx';
 import { SuperService } from 'util/superservice/super.service';
 import { UrlService } from 'util/urlservice/url.service';
+import { CanaisPossiveis } from 'viewmodel/wifi/canaispossiveis';
 
 declare var require: any
 
@@ -80,6 +81,11 @@ export class WifiService extends SuperService {
         let w = require('../../../../assets/mock/wifi.json');
         let wifi: Wifi[] = w.wifi;
         return Promise.resolve(wifi);
+    }
+
+    public getCanaisPossiveis(): Promise<CanaisPossiveis[]> {
+        let canaisPossiveis: CanaisPossiveis[] = require('../../../../assets/mock/wifichannel.json');
+        return Promise.resolve(canaisPossiveis);
     }
 
 }

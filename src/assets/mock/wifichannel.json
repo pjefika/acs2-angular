@@ -1,0 +1,180 @@
+[
+    {
+        "rede": 2,
+        "canais": [
+            {
+                "canal": 1
+            },
+            {
+                "canal": 2
+            },
+            {
+                "canal": 3
+            },
+            {
+                "canal": 4
+            },
+            {
+                "canal": 5
+            },
+            {
+                "canal": 6
+            },
+            {
+                "canal": 7
+            },
+            {
+                "canal": 8
+            },
+            {
+                "canal": 9
+            },
+            {
+                "canal": 10
+            },
+            {
+                "canal": 11
+            },
+            {
+                "canal": 12
+            },
+            {
+                "canal": 13
+            },
+            {
+                "canal": 14
+            }
+        ]
+    },
+    {
+        "rede": 5,
+        "canais": [
+            {
+                "canal": 7
+            },
+            {
+                "canal": 8
+            },
+            {
+                "canal": 9
+            },
+            {
+                "canal": 11
+            },
+            {
+                "canal": 12
+            },
+            {
+                "canal": 16
+            },
+            {
+                "canal": 34
+            },
+            {
+                "canal": 36
+            },
+            {
+                "canal": 38
+            },
+            {
+                "canal": 40
+            },
+            {
+                "canal": 42
+            },
+            {
+                "canal": 44
+            },
+            {
+                "canal": 46
+            },
+            {
+                "canal": 48
+            },
+            {
+                "canal": 52
+            },
+            {
+                "canal": 56
+            },
+            {
+                "canal": 60
+            },
+            {
+                "canal": 64
+            },
+            {
+                "canal": 100
+            },
+            {
+                "canal": 104
+            },
+            {
+                "canal": 108
+            },
+            {
+                "canal": 112
+            },
+            {
+                "canal": 116
+            },
+            {
+                "canal": 120
+            },
+            {
+                "canal": 124
+            },
+            {
+                "canal": 128
+            },
+            {
+                "canal": 132
+            },
+            {
+                "canal": 136
+            },
+            {
+                "canal": 140
+            },
+            {
+                "canal": 149
+            },
+            {
+                "canal": 153
+            },
+            {
+                "canal": 157
+            },
+            {
+                "canal": 161
+            },
+            {
+                "canal": 165
+            },
+            {
+                "canal": 183
+            },
+            {
+                "canal": 184
+            },
+            {
+                "canal": 185
+            },
+            {
+                "canal": 187
+            },
+            {
+                "canal": 188
+            },
+            {
+                "canal": 189
+            },
+            {
+                "canal": 192
+            },
+            {
+                "canal": 196
+            }
+        ]
+    }
+]

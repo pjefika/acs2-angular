@@ -74,7 +74,7 @@ export class DetalheComponent extends SuperComponentService implements OnInit {
                 }, error => {
                     this.callToasty("Ops, aconteceu algo.", error.mError, "error", 25000);
                 });
-        }, 1000);
+        }, 100);
     }
 
     private validIpIsEqual() {
@@ -153,7 +153,7 @@ export class DetalheComponent extends SuperComponentService implements OnInit {
                     }
                     this.systemHolderService.isSearchingCheckOnline = false;
                 });
-        }, 1000);
+        }, 100);
     }
 
     private checkOnlineIssue() {
