@@ -7,9 +7,11 @@ export class SystemHolderService {
 
     public whoMenuIsActive: string;
 
-    public isSearchingCheckOnline: boolean = false;
+    public isSearchingCheckOnline: boolean = false; // está validando check online
 
-    public isSearchingIp: boolean = false;
+    public isSearchingIp: boolean = false; // esta validando ip
+
+    public issearchingmodem: boolean = false; // esta buscando modem
 
     public boxnameseewhatissearching: string;
 
@@ -17,8 +19,8 @@ export class SystemHolderService {
 
     public modalactionserachopen: boolean = false;
 
-    public modalcomponent: any;
-    public modaltitle: string;
+    public modalcomponent: any;    
+    public modaltitle: string;    
 
     constructor() { }
 

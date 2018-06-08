@@ -11,9 +11,8 @@ export class VariavelHolderService {
 
     public numerodeserie: string;
 
-    public checkOnline: boolean;
-
-    
+    public checkOnline: boolean = false;    
 
     constructor() { }
+
 }

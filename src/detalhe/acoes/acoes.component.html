@@ -6,30 +6,30 @@
         <div class="card-title">
             <ul class="list-unstyled">
                 <li>
-                    <button class="btn btn-outline btn-block padding-btn" (click)="domount('reset-component','Reiniciar')" [disabled]="this.systemHolderService.isSearchingCheckOnline || this.systemHolderService.isSearchingIp">Reiniciar</button>
+                    <button class="btn btn-outline btn-block padding-btn" (click)="domount('reset-component','Reiniciar')" [disabled]="!variavelHolderService.checkOnline">Reiniciar</button>
                 </li>
                 <li>
-                    <button class="btn btn-outline btn-block padding-btn" (click)="domount('factory-reset-component','Reset de Fábrica')" [disabled]="this.systemHolderService.isSearchingCheckOnline || this.systemHolderService.isSearchingIp">Reset de Fábrica</button>
+                    <button class="btn btn-outline btn-block padding-btn" (click)="domount('factory-reset-component','Reset de Fábrica')" [disabled]="!variavelHolderService.checkOnline">Reset de Fábrica</button>
                 </li>
                 <li>
-                    <button class="btn btn-outline btn-block padding-btn" (click)="domount('ping-component','Efetuar Ping')" [disabled]="this.systemHolderService.isSearchingCheckOnline || this.systemHolderService.isSearchingIp">Efetuar Ping</button>
+                    <button class="btn btn-outline btn-block padding-btn" (click)="domount('ping-component','Efetuar Ping')" [disabled]="!variavelHolderService.checkOnline">Efetuar Ping</button>
                 </li>
                 <li>
-                    <button class="btn btn-outline btn-block padding-btn" (click)="domount('wifi-component','Configurar Wifi')" [disabled]="this.systemHolderService.isSearchingCheckOnline || this.systemHolderService.isSearchingIp">Configurar Wifi</button>
+                    <button class="btn btn-outline btn-block padding-btn" (click)="domount('wifi-component','Configurar Wifi')" [disabled]="!variavelHolderService.checkOnline">Configurar Wifi</button>
                 </li>
                 <li>
                     <button class="btn btn-outline btn-block padding-btn" (click)="domount('auth-pppoe-component','Configurar Autenticação PPPoE')"
-                        [disabled]="this.systemHolderService.isSearchingCheckOnline || this.systemHolderService.isSearchingIp">Configurar Autenticação PPPoE</button>
+                        [disabled]="!variavelHolderService.checkOnline">Configurar Autenticação PPPoE</button>
                 </li>
                 <li>
-                    <button class="btn btn-outline btn-block padding-btn" (click)="domount('sip-set-component','Configurar SIP')" [disabled]="this.systemHolderService.isSearchingCheckOnline || this.systemHolderService.isSearchingIp">Configurar SIP</button>
+                    <button class="btn btn-outline btn-block padding-btn" (click)="domount('sip-set-component','Configurar SIP')" [disabled]="!variavelHolderService.checkOnline">Configurar SIP</button>
                 </li>
                 <li>
                     <button class="btn btn-outline btn-block padding-btn" (click)="domount('service-class-component','Configurar ServiceClass')"
-                        [disabled]="this.systemHolderService.isSearchingCheckOnline || this.systemHolderService.isSearchingIp">Configurar ServiceClass</button>
+                        [disabled]="!variavelHolderService.checkOnline">Configurar ServiceClass</button>
                 </li>
                 <li>
-                    <button class="btn btn-outline btn-block padding-btn" (click)="domount('dhcp-component','Configurar DHCP')" [disabled]="this.systemHolderService.isSearchingCheckOnline || this.systemHolderService.isSearchingIp">Configurar DHCP</button>
+                    <button class="btn btn-outline btn-block padding-btn" (click)="domount('dhcp-component','Configurar DHCP')" [disabled]="!variavelHolderService.checkOnline">Configurar DHCP</button>
                 </li>
             </ul>
         </div>
