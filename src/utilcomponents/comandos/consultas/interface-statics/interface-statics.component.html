@@ -20,7 +20,7 @@
         <clr-dg-column>Broadcast Enviados</clr-dg-column>
         <clr-dg-column>Broadcast Recebidos</clr-dg-column>
 
-        <clr-dg-row *ngFor="let static of intStatic">
+        <clr-dg-row *clrDgItems="let static of intStatic">
             <clr-dg-cell>{{static.ifType}}</clr-dg-cell>
             <clr-dg-cell>{{static.adminStatus}}</clr-dg-cell>
             <clr-dg-cell>{{static.operStatus}}</clr-dg-cell>

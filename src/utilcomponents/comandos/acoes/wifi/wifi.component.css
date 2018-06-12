@@ -6,3 +6,11 @@
 .select-w {
     width: 100px;
 }
+
+.label-mg-left {
+    text-align: left;
+}
+
+.select-width {
+    width: 50%;
+}

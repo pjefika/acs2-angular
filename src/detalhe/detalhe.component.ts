@@ -88,7 +88,6 @@ export class DetalheComponent extends SuperComponentService implements OnInit {
         this.detalheService
             .validIpIsEqual(this.eqp.macAddress)
             .then(resposta => {
-                // this.systemHolderService.isSearchingIp = false;
                 if (resposta.ip_address_v4 == null || resposta.ip_address_v4 == undefined) {
                     this.callToasty("Informativo.", "Não foi possivel validar a autenticação do modem.", "warning", 8000);
                     this.waserrorip = true;

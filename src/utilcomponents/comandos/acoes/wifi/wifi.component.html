@@ -6,7 +6,43 @@
     </div>
     <div *ngIf="wifichoose" class="form-margin-top">
 
-        <section class="form-block">
+        <form class="compact">
+            <section class="form-block">
+                <div class="form-group">
+                    <label for="aForm_1" class="label-mg-left">Status de Operação</label>
+                    <div class="select">
+                        <select id="aForm_1" [(ngModel)]="wifichoose.operStatus" name="operStatus">
+                            <option value="Up">Up</option>
+                            <option value="Disabled">Down</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="aForm_2" class="label-mg-left">SSID</label>
+                    <input type="text" id="aForm_2" placeholder="SSID" size="45" [(ngModel)]="wifichoose.ssid" name="ssid">
+                </div>
+                <div class="form-group">
+                    <label class="label-mg-left" for="aForm_4">Senha</label>
+                    <input type="text" id="aForm_4" placeholder="Senha" size="45" name="key" [(ngModel)]="wifichoose.key">
+                </div>
+                <div class="form-group" *ngFor="let cp of canaispossiveis; let i = index">
+                    <label class="label-mg-left" for="aForm_3" *ngIf="i === 0">Canal</label>
+                    <div class="select" *ngIf="cp.rede === redetypechoosed && cp.rede === 2">
+                        <select id="aForm_3" name="cpossivel" [(ngModel)]="wifichoose.channel">
+                            <option *ngFor="let c of cp.canais" [value]="c.canal">{{c.canal}}</option>
+                        </select>
+                    </div>
+                    <div class="select" *ngIf="cp.rede === redetypechoosed && cp.rede === 5">
+                        <select id="aForm_3" name="cpossivel" [(ngModel)]="wifichoose.channel">
+                            <option *ngFor="let c of cp.canais" [value]="c.canal">{{c.canal}}</option>
+                        </select>
+                    </div>
+                </div>
+                <button type="button" class="btn btn-primary btn-block" (click)="setWifiLista()" [class.disabled]="btnSetWifi">{{nomeBtn}}</button>
+            </section>
+        </form>
+
+        <!-- <section class="form-block">
             <div class="form-group">
                 <label>Status de Operação</label>
                 <select class="form-control" [(ngModel)]="wifichoose.operStatus">
@@ -29,24 +65,12 @@
                     <option *ngFor="let c of cp.canais" [value]="c.canal">{{c.canal}}</option>
                 </select>
 
-                <!-- <div *ngIf="cp.rede === redetypechoosed && cp.rede === 2">
-                    <select name="cpossivel" [(ngModel)]="wifichoose.channel">
-                        <option *ngFor="let c of cp.canais" [value]="c.canal">{{c.canal}}</option>
-                    </select>
-                </div> -->
-                <!-- <div *ngIf="cp.rede === redetypechoosed && cp.rede === 5">
-                    <select name="cpossivel" [(ngModel)]="wifichoose.channel">
-                        <option *ngFor="let c of cp.canais" [value]="c.canal">{{c.canal}}</option>
-                    </select>
-                </div> -->
             </div>
             <div class="form-group">
                 <label>Senha</label>
                 <input type="text" class="form-control" [(ngModel)]="wifichoose.key">
             </div>
-        </section>
+        </section> -->
 
     </div>
 </div>
-
-<button type="button" class="btn btn-primary" (click)="setWifiLista()" [class.disabled]="btnSetWifi">{{nomeBtn}}</button>
