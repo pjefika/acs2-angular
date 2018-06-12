@@ -1,9 +1,9 @@
 export class LanHost {
-    ipAddress: string;
-    addressSource: string;
-    leaseTimeRemaining: string;
-    macAddress: string;
-    hostName: string;
-    interfaceType: string;
+    IPAddress: string;
+    AddressSource: string;
+    LeaseTimeRemaining: string;
+    MACAddress: string;
+    HostName: string;
+    InterfaceType: string;
     ativo: boolean;
 }

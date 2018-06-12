@@ -14,12 +14,12 @@
         </thead>
         <tbody>
             <tr *ngFor="let host of lanHost">
-                <td>{{host.ipAddress}}</td>
-                <td>{{host.addressSource}}</td>
-                <td>{{host.leaseTimeRemaining}}</td>
-                <td>{{host.macAddress}}</td>
-                <td>{{host.hostName}}</td>
-                <td>{{host.interfaceType}}</td>
+                <td>{{host.IPAddress}}</td>
+                <td>{{host.AddressSource}}</td>
+                <td>{{host.LeaseTimeRemaining}}</td>
+                <td>{{host.MACAddress}}</td>
+                <td>{{host.HostName}}</td>
+                <td>{{host.InterfaceType}}</td>
                 <td>
                     <span *ngIf="host.ativo">Ativo</span>
                     <span *ngIf="!host.ativo">Inativo</span>
