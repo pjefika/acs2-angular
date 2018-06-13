@@ -33,7 +33,7 @@ export class SipService extends SuperService {
             .then(data => {
                 return data as Sip
             })
-            .catch(super.handleError);
+            .catch(super.handleErrorKing);
     }
 
     public setSipActivation(device: Equipamento, sipIn: SipIn) {
@@ -52,7 +52,7 @@ export class SipService extends SuperService {
             .then(data => {
                 return data as Sip
             })
-            .catch(super.handleError);
+            .catch(super.handleErrorKing);
     }
 
 }

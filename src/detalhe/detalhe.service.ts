@@ -36,7 +36,7 @@ export class DetalheService extends SuperService {
             .then(data => {
                 return data as EquipamentoInfo
             })
-            .catch(super.handleError);
+            .catch(super.handleErrorKing);
     }
 
     public validIpIsEqual(mac: string): Promise<Autenticacao> {

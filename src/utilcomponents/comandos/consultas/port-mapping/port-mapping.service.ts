@@ -28,6 +28,6 @@ export class PortMappingService extends SuperService {
             .then(data => {
                 return data as PortMapping[]
             })
-            .catch(super.handleError);
+            .catch(super.handleErrorKing);
     }
 }

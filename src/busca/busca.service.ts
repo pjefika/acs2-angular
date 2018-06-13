@@ -34,7 +34,7 @@ export class BuscaService extends SuperService {
             .then(data => {
                 return data as Equipamento[]
             })
-            .catch(super.handleError);
+            .catch(super.handleErrorKing);
     }
 
     public getListaMock(): Equipamento[] {

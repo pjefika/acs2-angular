@@ -29,7 +29,7 @@ export class DhcpService extends SuperService {
             .then(data => {
                 return data as Dhcp
             })
-            .catch(super.handleError);
+            .catch(super.handleErrorKing);
     }
 
     public setDhcp(device: Equipamento, dhcp: Dhcp): Promise<Boolean> {
@@ -48,6 +48,6 @@ export class DhcpService extends SuperService {
             .then(data => {
                 return data as Dhcp
             })
-            .catch(super.handleError);
+            .catch(super.handleErrorKing);
     }
 }

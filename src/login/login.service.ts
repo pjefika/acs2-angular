@@ -23,7 +23,7 @@ export class LoginService extends SuperService {
             .then(data => {
                 return data as Boolean
             })
-            .catch(super.handleError);
+            .catch(super.handleErrorKing);
     }
 
     public getUsuario(usuario: Usuario): Promise<Usuario> {
@@ -39,7 +39,7 @@ export class LoginService extends SuperService {
             .then(data => {
                 return data as Usuario
             })
-            .catch(super.handleError);
+            .catch(super.handleErrorKing);
     }
 
     public getUsuarioMock(): Usuario {

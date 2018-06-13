@@ -29,6 +29,6 @@ export class XdslService extends SuperService {
             .then(data => {
                 return data as Xdsl
             })
-            .catch(super.handleError);
+            .catch(super.handleErrorKing);
     }
 }

@@ -35,7 +35,7 @@ export class PingService extends SuperService {
             .then(data => {
                 return data as Ping
             })
-            .catch(super.handleError);
+            .catch(super.handleErrorKing);
     }
 
 }

@@ -28,6 +28,6 @@ export class ResetService extends SuperService {
             .then(data => {
                 return data as Boolean
             })
-            .catch(super.handleError);
+            .catch(super.handleErrorKing);
     }
 }

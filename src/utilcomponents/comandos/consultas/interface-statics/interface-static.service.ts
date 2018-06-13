@@ -29,7 +29,7 @@ export class InterfaceStaticsService extends SuperService {
             .then(data => {
                 return data as InterfaceStatic[]
             })
-            .catch(super.handleError);
+            .catch(super.handleErrorKing);
     }
 
 }

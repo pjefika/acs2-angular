@@ -29,6 +29,6 @@ export class LanHostService extends SuperService {
             .then(data => {
                 return data as LanHost
             })
-            .catch(super.handleError);
+            .catch(super.handleErrorKing);
     }
 }

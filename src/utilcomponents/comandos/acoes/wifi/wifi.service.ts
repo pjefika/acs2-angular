@@ -35,7 +35,7 @@ export class WifiService extends SuperService {
             .then(data => {
                 return data.wifi as Wifi[]
             })
-            .catch(super.handleError);
+            .catch(super.handleErrorKing);
     }
 
     public setWifi(device: Equipamento, wifi: Wifi): Promise<Wifi> {
@@ -54,7 +54,7 @@ export class WifiService extends SuperService {
             .then(data => {
                 return data as Wifi
             })
-            .catch(super.handleError);
+            .catch(super.handleErrorKing);
     }
 
 
@@ -74,7 +74,7 @@ export class WifiService extends SuperService {
             .then(data => {
                 return data as Wifi
             })
-            .catch(super.handleError);
+            .catch(super.handleErrorKing);
     }
 
     public getWifiMock(): Promise<Wifi[]> {

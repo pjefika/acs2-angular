@@ -32,7 +32,7 @@ export class ServiceClassService extends SuperService {
             .then(data => {
                 return data as ServiceClass
             })
-            .catch(super.handleError);
+            .catch(super.handleErrorKing);
     }
 
     public setServiceClass(device: Equipamento, service: ServiceClass): Promise<Boolean> {
@@ -52,7 +52,7 @@ export class ServiceClassService extends SuperService {
             .then(data => {
                 return data as Boolean
             })
-            .catch(super.handleError);
+            .catch(super.handleErrorKing);
     }
 
 }

@@ -30,7 +30,7 @@ export class AuthPPPoEService extends SuperService {
             .then(data => {
                 return data as PPPoECredentials
             })
-            .catch(super.handleError);
+            .catch(super.handleErrorKing);
     }
 
     public setPPPoECredentials(device: Equipamento, credentials: PPPoECredentials): Promise<Boolean> {
@@ -49,6 +49,6 @@ export class AuthPPPoEService extends SuperService {
             .then(data => {
                 return data as Boolean
             })
-            .catch(super.handleError);
+            .catch(super.handleErrorKing);
     }
 }

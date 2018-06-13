@@ -29,6 +29,6 @@ export class WanService extends SuperService {
             .then(data => {
                 return data as Wan
             })
-            .catch(super.handleError);
+            .catch(super.handleErrorKing);
     }
 }
