@@ -39,13 +39,13 @@ export class DhcpComponent extends SuperComponentService implements OnInit {
         this.dhcpService.getDhcp(this.variavelHolderService.equipamento)
             .then(data => {
                 this.dhcp = data;
+            }, error => {
+                this.callToasty("Ops, aconteceu algo.", error.mError, "error", 10000);
+            })
+            .then(() => {
                 this.searching = false;
                 this.btnSetDhcp = false;
-            }, error => {
-                this.btnSetDhcp = false;
-                // this.activeModal.close();
-                this.callToasty("Ops, aconteceu algo.", error.mError, "error", 10000);
-            });
+            })
     }
 
     public setDhcp() {

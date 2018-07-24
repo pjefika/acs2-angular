@@ -1,5 +1,5 @@
 export class Dhcp {
-    dhcpserverEnable: string;
+    dhcpserverEnable: boolean;
     minAddress: string;
     maxAddress: string;
 }

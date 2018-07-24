@@ -95,7 +95,7 @@ export class UrlService extends LinkService {
             .then(response => {
                 return response.json()
             })
-            .catch(super.handleErrorKing);
+            .catch(super.handleError);
     }
 
     private get(infoResquest: InfoRequest) {
@@ -109,7 +109,7 @@ export class UrlService extends LinkService {
             .then(response => {
                 return response.json()
             })
-            .catch(super.handleErrorKing);
+            .catch(super.handleError);
     }
 
 }
