@@ -62,8 +62,10 @@ export class TemplateComponent implements OnInit {
     private clearHolders() {
         this.variavelHolderService.checkOnline = false;
         this.variavelHolderService.equipamento = null;
-        // this.variavelHolderService.lstEquipamentos = null;
+        // this.variavelHolderService.lstEquipamentos = null; // Limpa lista de equipamentos
         this.variavelHolderService.numerodeserie = null;
+        this.systemHolderService.modalcomponent = null;
+        this.systemHolderService.modaltitle = null;
     }
 
 }

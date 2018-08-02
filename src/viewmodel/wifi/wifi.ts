@@ -24,4 +24,10 @@ export class Wifi {
     errSent: string;
     errRecv: string;
     alias: string;
+    authentication: string;
+    encryptation: string;
+    frequency: string;
+    ssidPassword: string;
+    index: string;
+    broadcastEnabled: boolean;
 }
