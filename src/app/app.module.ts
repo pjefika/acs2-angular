@@ -60,6 +60,7 @@ import { DynamicRouterComponent } from 'utilcomponents/dynamicrouter/dynamic-rou
 import { ValidaTipoRedeComponent } from 'busca/valida-tipo-rede/valida-tipo-rede.component';
 
 import { ClarityModule } from "@clr/angular";
+import { FirmwareComponent } from 'utilcomponents/comandos/acoes/firmware/firmware.component';
 
 @NgModule({
 	declarations: [
@@ -100,7 +101,8 @@ import { ClarityModule } from "@clr/angular";
 		IdRouterComponent,
 		AlertComponent,
 		ToastyComponent,
-		ValidaTipoRedeComponent
+		ValidaTipoRedeComponent,
+		FirmwareComponent
 	],
 	imports: [
 		BrowserModule,
@@ -151,7 +153,8 @@ import { ClarityModule } from "@clr/angular";
 		SipGetComponent,
 		AlertComponent,
 		ToastyComponent,
-		ValidaTipoRedeComponent
+		ValidaTipoRedeComponent,
+		FirmwareComponent
 	]
 })
 export class AppModule { }

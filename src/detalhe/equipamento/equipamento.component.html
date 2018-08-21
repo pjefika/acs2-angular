@@ -53,20 +53,21 @@
                 </li>
                 <li>
                     <span>
-                        <span class="negrito">Data de Ativação: </span> {{ ((equipamento.lastActivationTime / 1000) | amFromUnix) | amDateFormat:
-                        'DD/MM/YYYY HH:mm:ss'}}
+                        <span class="negrito">Data de Ativação: </span> {{ ((equipamento.lastActivationTime / 1000) | amFromUnix)
+                        | amDateFormat: 'DD/MM/YYYY HH:mm:ss'}}
                     </span>
                 </li>
                 <li>
                     <span>
-                        <span class="negrito">Data de Ultimo Contato: </span> {{ ((equipamento.lastContactTime / 1000) | amFromUnix) | amDateFormat:
-                        'DD/MM/YYYY HH:mm:ss'}}
+                        <span class="negrito">Data de Ultimo Contato: </span> {{ ((equipamento.lastContactTime / 1000) |
+                        amFromUnix) | amDateFormat: 'DD/MM/YYYY HH:mm:ss'}}
                     </span>
                 </li>
             </ul>
         </div>
     </div>
     <div class="card-footer" *ngIf="!systemHolderService.isSearchingCheckOnline && !systemHolderService.isSearchingIp">
-        <button class="btn btn-sm btn-link" (click)="searchinfodevice()">Atualizar</button>
+        <button class="btn btn-sm btn-link" (click)="searchinfodevice()">Atualizar informações</button>
+        <firmware-component></firmware-component>
     </div>
 </div>

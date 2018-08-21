@@ -5,11 +5,11 @@
         "captured": false,
         "commonUniqueIdentifier": null,
         "community": null,
-        "connectionRequestPassword": "53fd97eaa8f2a2584fcd05624cbc4797",
-        "connectionRequestURL": "http://186.215.34.38:7547/05bfe98e",
-        "connectionRequestUsername": "190000016647927-V5471-28C87A",
-        "currentTime": 1527621194000,
-        "customAttribute1": "28:c8:7a:19:67:18",
+        "connectionRequestPassword": "425eee56bb5c055eeabd86b8f1fbdf7a",
+        "connectionRequestURL": "http://189.26.38.1:7547/",
+        "connectionRequestUsername": "FCB4E6DB7143-RTF3505VW-N2-009096",
+        "currentTime": 1534845175000,
+        "customAttribute1": "FC:B4:E6:DB:71:43",
         "customAttribute10": null,
         "customAttribute2": null,
         "customAttribute3": null,
@@ -21,34 +21,34 @@
         "customAttribute9": null,
         "deleted": false,
         "deviceClass": null,
-        "deviceGUID": 28265797,
+        "deviceGUID": 26102283,
         "deviceId": {
-            "OUI": "28C87A",
-            "productClass": "V5471",
+            "OUI": "009096",
+            "productClass": "RTF3505VW-N2",
             "protocol": "DEVICE_PROTOCOL_DSLFTR069v1",
-            "serialNumber": "190000016647927"
+            "serialNumber": "FCB4E6DB7143"
         },
         "dynamicVariables": [
             {
                 "encrypt": false,
                 "name": "inform.itoss.activation.msg",
                 "sensitive": false,
-                "value": "{'operation':'PROVISIONING','mac':'28:c8:7a:19:67:18','pclass':'V5471','guid':'28265797','serialNumber':'190000016647927','subscriberId':'NO_SUBSCRIBER_IT','parentId':'','parentMac':'','parentIp':'null','timestamp':'2018-05-29T10:04:09.949-03:00'}"
+                "value": "{'operation':'PROVISIONING','mac':'FC:B4:E6:DB:71:43','pclass':'RTF3505VW-N2','guid':'26102283','serialNumber':'FCB4E6DB7143','subscriberId':'NO_SUBSCRIBER_IT','parentId':'','parentMac':'','parentIp':'null','timestamp':'2018-06-07T10:03:16.604-03:00'}"
             }
         ],
-        "firstContactTime": 1519870929086,
-        "HTTPPublicPassword": "1527598661664a",
-        "HTTPPublicUsername": "1527598661664u",
-        "IPAddress": "186.215.34.38",
-        "lastActivationTime": 1527599047468,
+        "firstContactTime": 1516970690664,
+        "HTTPPublicPassword": "1528376592997a",
+        "HTTPPublicUsername": "1528376592997u",
+        "IPAddress": "189.26.38.1",
+        "lastActivationTime": 1528376594432,
         "lastCapturedBy": null,
         "lastCapturedTime": null,
-        "lastContactTime": 1527621194694,
-        "macAddress": "28:c8:7a:19:67:18",
+        "lastContactTime": 1534855974328,
+        "macAddress": "FC:B4:E6:DB:71:43",
         "managed": true,
-        "manufacturer": "PACE",
+        "manufacturer": "Askey",
         "model": "Device:1",
-        "modelName": "V5471",
+        "modelName": "RTF3505VW-N2",
         "PPPPassword": null,
         "PPPUsername": null,
         "port": 0,
@@ -58,7 +58,7 @@
                 "copyOnFactoryReset": false,
                 "factoryResetValue": null,
                 "name": "inform.itoss.activation.status",
-                "value": "final_notification_sent_at[2018-05-29T10:04:10.005-03:00]_status[OK]"
+                "value": "final_notification_sent_at[2018-06-07T10:03:16.638-03:00]_status[OK]"
             },
             {
                 "copyOnFactoryReset": false,
@@ -67,8 +67,8 @@
                 "value": "true"
             }
         ],
-        "softwareVersion": "B14103-GVT-RC2-103961",
-        "subscriberID": "CTA-81E2J3HSS-013",
+        "softwareVersion": "BR_SG_s00.00_g000_3505019",
+        "subscriberID": "CTA-813OAC5R3R-013-2",
         "type": 0,
         "userTagArray": [],
         "domainName": null

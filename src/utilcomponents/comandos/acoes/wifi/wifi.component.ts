@@ -105,27 +105,28 @@ export class WifiComponent extends SuperComponentService implements OnInit {
     }
 
     public setWifiLista() {
-        let wl: Wifi[] = this.wifi;
-        switch (this.redetypechoosed) {
-            case 2:
-                wl[0] = this.wifichoose;
-                break;
-            case 5:
-                wl[wl.length - 1] = this.wifichoose;
-                break;
-        }
+        // let wl: Wifi[] = this.wifi;
+        // switch (this.redetypechoosed) {
+        //     case 2:
+        //         wl[0] = this.wifichoose;
+        //         break;
+        //     case 5:
+        //         wl[wl.length - 1] = this.wifichoose;
+        //         break;
+        // }
 
-        for (let i = 0; i < wl.length; i++) {
-            delete wl[i].broadcastEnabled;
-        }
+        // for (let i = 0; i < wl.length; i++) {
+        //     delete wl[i].broadcastEnabled;
+        // }
         this.bloqbtnswitchrede = true;
         this.showbtnwifi5g = false;
         this.btnSetWifi = true;
         this.nomeBtn = "Aguarde";
         this.wifiService
-            .setWifiLista(this.variavelHolderService.equipamento, wl)
+            .setWifiLista(this.variavelHolderService.equipamento, this.wifichoose)
             .then(data => {
                 this.wifi = data;
+                this.clickchoosewifi(2);
                 this.callToasty("Successo", "Alterações realizadas com sucesso.", "success", 10000);
                 this.nomeBtn = "Modificar";
                 this.btnSetWifi = false;

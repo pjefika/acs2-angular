@@ -8,7 +8,7 @@ declare var require: any
 @Injectable()
 export class LinkService extends ExceptionService {
 
-    private islinkprod: boolean = true; // valida link produção.
+    private islinkprod: boolean = false; // valida link produção.
 
     constructor() {
         super();
