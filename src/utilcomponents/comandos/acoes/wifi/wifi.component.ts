@@ -6,6 +6,7 @@ import { VariavelHolderService } from 'util/holder/variavel-holder.service';
 import { SystemHolderService } from 'util/holder/system-holder.service';
 import { SuperComponentService } from 'util/supercomponent/super-component.service';
 import { CanaisPossiveis } from 'viewmodel/wifi/canaispossiveis';
+import * as _ from 'lodash';
 
 declare var require: any;
 
@@ -16,7 +17,13 @@ declare var require: any;
     providers: [WifiService]
 })
 
+
 export class WifiComponent extends SuperComponentService implements OnInit {
+
+    setFromGet(wifis: Wifi[]) {
+        const lw = wifis
+        return lw;
+    }
 
     private wifi: Wifi[];
     private searching: boolean = false;
@@ -25,6 +32,8 @@ export class WifiComponent extends SuperComponentService implements OnInit {
 
     private redetypechoosed: number;
     private wifichoose: Wifi;
+    private wifisToSet: Wifi[] = [new Wifi, new Wifi];
+    private wifiToSet: Wifi = new Wifi;
 
     private canaispossiveis: CanaisPossiveis[];
 
@@ -49,9 +58,11 @@ export class WifiComponent extends SuperComponentService implements OnInit {
         switch (rtc) {
             case 2:
                 this.wifichoose = this.wifi[0];
+                this.wifiToSet = this.wifisToSet[0]
                 break;
             case 5:
-                this.wifichoose = this.wifi[this.wifi.length - 1];
+                this.wifichoose = this.variavelHolderService.equipamento.modelName == "RTF3505VW-N2" ? this.wifi[4] : this.wifi[this.wifi.length - 1];
+                this.wifiToSet = this.wifisToSet[1]
                 break;
         }
         this.redetypechoosed = rtc;
@@ -82,6 +93,26 @@ export class WifiComponent extends SuperComponentService implements OnInit {
             .then(() => {
                 this.clickchoosewifi(2);
             });
+    }
+
+    addToSet(val, kindOf: Number) {
+        switch (kindOf) {
+            case 1:
+                this.wifiToSet.operStatus = val
+                break;
+            case 2:
+                this.wifiToSet.ssid = val
+                break;
+            case 3:
+                this.wifiToSet.key = val
+                break;
+            case 4:
+                this.wifiToSet.channel = val
+                break;
+            default:
+                break;
+        }
+        console.log(this.wifiToSet)
     }
 
     private getWifiMock() {
@@ -122,22 +153,31 @@ export class WifiComponent extends SuperComponentService implements OnInit {
         this.showbtnwifi5g = false;
         this.btnSetWifi = true;
         this.nomeBtn = "Aguarde";
-        this.wifiService
-            .setWifiLista(this.variavelHolderService.equipamento, this.wifichoose)
-            .then(data => {
-                this.wifi = data;
-                this.clickchoosewifi(2);
-                this.callToasty("Successo", "Alterações realizadas com sucesso.", "success", 10000);
-                this.nomeBtn = "Modificar";
-                this.btnSetWifi = false;
-            }, error => {
-                this.nomeBtn = "Modificar";
-                this.callToasty("Ops, aconteceu algo.", error.mError, "error", 10000);
-                this.btnSetWifi = false;
-            }).then(() => {
-                this.bloqbtnswitchrede = false;
-                this.validbtnwifi5();
-            })
+        if (!(this.wifiToSet.ssid == null && this.wifiToSet.key == null && this.wifiToSet.operStatus == null)) {
+            this.wifiService
+                .setWifiLista(this.variavelHolderService.equipamento, this.wifiToSet)
+                .then(data => {
+                    this.wifi = data;
+                    this.clickchoosewifi(2);
+                    this.callToasty("Successo", "Alterações realizadas com sucesso.", "success", 10000);
+                    this.nomeBtn = "Modificar";
+                    this.btnSetWifi = false;
+                }, error => {
+                    this.nomeBtn = "Modificar";
+                    this.callToasty("Ops, aconteceu algo.", error.mError, "error", 10000);
+                    this.btnSetWifi = false;
+                }).then(() => {
+                    this.bloqbtnswitchrede = false;
+                    this.validbtnwifi5();
+                })
+        } else {
+            this.callToasty("Não houve alteração.", "", "warning", 7000);
+            this.nomeBtn = "Modificar";
+            this.btnSetWifi = false;
+            this.bloqbtnswitchrede = false;
+            this.validbtnwifi5();
+        }
+
     }
 
     public getCanaisPossiveis() {
