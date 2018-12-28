@@ -65,6 +65,7 @@ export class WifiComponent extends SuperComponentService implements OnInit {
                 this.wifiToSet = this.wifisToSet[1]
                 break;
         }
+        this.wifiToSet.index = this.wifichoose.index
         this.redetypechoosed = rtc;
     }
 
@@ -153,7 +154,8 @@ export class WifiComponent extends SuperComponentService implements OnInit {
         this.showbtnwifi5g = false;
         this.btnSetWifi = true;
         this.nomeBtn = "Aguarde";
-        if (!(this.wifiToSet.ssid == null && this.wifiToSet.key == null && this.wifiToSet.operStatus == null)) {
+        if (!(this.wifiToSet.ssid == null && this.wifiToSet.key == null && this.wifiToSet.operStatus == null && this.wifiToSet.channel==null)) {
+
             this.wifiService
                 .setWifiLista(this.variavelHolderService.equipamento, this.wifiToSet)
                 .then(data => {
