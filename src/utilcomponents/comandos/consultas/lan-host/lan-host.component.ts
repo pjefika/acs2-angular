@@ -36,11 +36,13 @@ export class LanHostComponent extends SuperComponentService implements OnInit {
         this.searching = true;
         this.lanHostService.getLanHosts(this.variavelHolderService.equipamento)
             .then(data => {
-                this.lanHost = data;
-                this.searching = false;
+                this.lanHost = data;                
             }, error => {
-                this.searching = false;
+                // this.searching = false;
                 this.callToasty("Ops, aconteceu algo.", error.mError, "error", 10000);
+            })
+            .then(() => {
+                this.searching = false;
             });
     }
 
