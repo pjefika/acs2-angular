@@ -1,12 +1,13 @@
 import { LogsComponent } from './../logs/logs.component';
 import { DetalheComponent } from './../detalhe/detalhe.component';
 import { BuscaComponent } from './../busca/busca.component';
-import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { SystemHolderService } from 'util/holder/system-holder.service';
 import { VariavelHolderService } from 'util/holder/variavel-holder.service';
 import { UtilService } from 'util/util.service';
 import { DynamicRouterService } from 'utilcomponents/dynamicrouter/dynamic-router.service';
+
+declare var require: any
 
 @Component({
     selector: 'template-component',
@@ -15,6 +16,8 @@ import { DynamicRouterService } from 'utilcomponents/dynamicrouter/dynamic-route
 })
 
 export class TemplateComponent implements OnInit {
+
+    public version: string;
 
     constructor(public variavelHolderService: VariavelHolderService,
         public systemHolderService: SystemHolderService,
@@ -29,6 +32,7 @@ export class TemplateComponent implements OnInit {
                 }
             });
         this.buscaEquipamento();
+        this.version = this.util.getVersion();
     }
 
     public buscaEquipamento() {
@@ -67,5 +71,8 @@ export class TemplateComponent implements OnInit {
         this.systemHolderService.modalcomponent = null;
         this.systemHolderService.modaltitle = null;
     }
+
+
+
 
 }
