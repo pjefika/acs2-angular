@@ -61,7 +61,15 @@ export class WifiComponent extends SuperComponentService implements OnInit {
                 this.wifiToSet = this.wifisToSet[0]
                 break;
             case 5:
-                this.wifichoose = this.variavelHolderService.equipamento.modelName == "RTF3505VW-N2" ? this.wifi[4] : this.wifi[this.wifi.length - 1];
+                if (this.variavelHolderService.equipamento.modelName == "RTF3505VW-N2" ||
+                    (this.variavelHolderService.equipamento.modelName == "RTF3505VW-N1" &&
+                        (
+                            // this.variavelHolderService.equipamento.softwareVersion == "BR_SV_s00.00_g000_R3505VWN1001_s19" ||
+                        this.variavelHolderService.equipamento.softwareVersion == "BR_SV_g000_R3505VWN1001_s26"))) {
+                    this.wifichoose = this.wifi[4]
+                } else {
+                    this.wifichoose = this.wifi[this.wifi.length - 1];
+                }
                 this.wifiToSet = this.wifisToSet[1]
                 break;
         }
@@ -154,7 +162,7 @@ export class WifiComponent extends SuperComponentService implements OnInit {
         this.showbtnwifi5g = false;
         this.btnSetWifi = true;
         this.nomeBtn = "Aguarde";
-        if (!(this.wifiToSet.ssid == null && this.wifiToSet.key == null && this.wifiToSet.operStatus == null && this.wifiToSet.channel==null)) {
+        if (!(this.wifiToSet.ssid == null && this.wifiToSet.key == null && this.wifiToSet.operStatus == null && this.wifiToSet.channel == null)) {
 
             this.wifiService
                 .setWifiLista(this.variavelHolderService.equipamento, this.wifiToSet)
