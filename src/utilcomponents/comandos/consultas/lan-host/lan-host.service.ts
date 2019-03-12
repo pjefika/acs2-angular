@@ -13,7 +13,7 @@ export class LanHostService extends SuperService {
         super();
     }
 
-    public getLanHosts(device: Equipamento): Promise<LanHost> {
+    public getLanHosts(device: Equipamento): Promise<LanHost[]> {
         let usr = JSON.parse(sessionStorage.getItem('user'));
         let _data: { device: Equipamento, executor: string };
         _data = { device: device, executor: usr.user }
@@ -27,7 +27,7 @@ export class LanHostService extends SuperService {
         return this.urlService
             .request(this.infoResquest)
             .then(data => {
-                return data as LanHost
+                return data as LanHost[]
             })
             .catch(super.handleErrorKing);
     }

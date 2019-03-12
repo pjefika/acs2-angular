@@ -16,8 +16,9 @@ import { SuperComponentService } from 'util/supercomponent/super-component.servi
 
 export class LanHostComponent extends SuperComponentService implements OnInit {
 
-    public lanHost: LanHost;
+    public lanHost: LanHost[];
     public searching: boolean = false;
+    public pagSize: number = 5
 
     constructor(
         // public activeModal: NgbActiveModal,
@@ -36,7 +37,10 @@ export class LanHostComponent extends SuperComponentService implements OnInit {
         this.searching = true;
         this.lanHostService.getLanHosts(this.variavelHolderService.equipamento)
             .then(data => {
-                this.lanHost = data;                
+                this.lanHost = data;
+                this.lanHost.forEach(element => {
+                    element.status = element.Active == "true" || element.Active == "1" ? "Ativo" : "Inativo"
+                });
             }, error => {
                 // this.searching = false;
                 this.callToasty("Ops, aconteceu algo.", error.mError, "error", 10000);

@@ -1,30 +1,32 @@
 <loading-component [searchWhat]="'Buscando Lan Hosts'" [searching]="searching"></loading-component>
 <div *ngIf="lanHost">
-    <table class="table">
-        <thead>
-            <tr>
-                <th>IP</th>
-                <th>Fonte de Endereço</th>
-                <th>Tempo Restante</th>
-                <th>MAC</th>
-                <th>Endereço Host</th>
-                <th>Tipo</th>
-                <th>Status</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let host of lanHost">
-                <td>{{host.IPAddress}}</td>
-                <td>{{host.AddressSource}}</td>
-                <td>{{host.LeaseTimeRemaining}}</td>
-                <td>{{host.MACAddress}}</td>
-                <td>{{host.HostName}}</td>
-                <td>{{host.InterfaceType}}</td>
-                <td>
-                    <span *ngIf="host.Active">Ativo</span>
-                    <span *ngIf="!host.Active">Inativo</span>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+
+    <clr-datagrid>
+        <clr-dg-placeholder>Nada encontrado.</clr-dg-placeholder>
+
+        <clr-dg-column [clrDgField]="'IPAddress'">IP</clr-dg-column>
+        <clr-dg-column [clrDgField]="'AddressSource'">Fonte de Endereço</clr-dg-column>
+        <clr-dg-column [clrDgField]="'LeaseTimeRemaining'">Tempo Restante</clr-dg-column>
+        <clr-dg-column [clrDgField]="'MACAddress'">MAC</clr-dg-column>
+        <clr-dg-column [clrDgField]="'HostName'">Endereço Host</clr-dg-column>
+        <clr-dg-column [clrDgField]="'InterfaceType'">Tipo</clr-dg-column>
+        <clr-dg-column [clrDgField]="'status'">Status</clr-dg-column>
+
+        <clr-dg-row *clrDgItems="let host of lanHost">
+
+            <clr-dg-cell>{{host.IPAddress}}</clr-dg-cell>
+            <clr-dg-cell>{{host.AddressSource}}</clr-dg-cell>
+            <clr-dg-cell>{{host.LeaseTimeRemaining}}</clr-dg-cell>
+            <clr-dg-cell>{{host.MACAddress}}</clr-dg-cell>
+            <clr-dg-cell>{{host.HostName}}</clr-dg-cell>
+            <clr-dg-cell>{{host.InterfaceType}}</clr-dg-cell>
+            <clr-dg-cell> {{host.status}} </clr-dg-cell>
+
+        </clr-dg-row>
+
+        <clr-dg-footer>
+            Mostrando {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}} de {{pagination.totalItems}}
+            <clr-dg-pagination #pagination [clrDgPageSize]="10"></clr-dg-pagination>
+        </clr-dg-footer>
+    </clr-datagrid>
 </div>

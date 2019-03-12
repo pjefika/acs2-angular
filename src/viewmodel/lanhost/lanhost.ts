@@ -5,7 +5,8 @@ export class LanHost {
     MACAddress: string;
     HostName: string;
     InterfaceType: string;
-    Active: boolean;
+    Active: string;
+    status: string
 
     // IPv4Address.1.IPAddress: string;
     // IPv6Address.1.IPAddress:string;
