@@ -41,7 +41,8 @@ export class LinkService extends ExceptionService {
         if (this.islinkprod) {
             urls = require('../../assets/mock/links/link_prod.json'); //Mock Produção
         } else {
-            urls = require('../../assets/mock/links/link_qa.json'); //Mock QA
+            // urls = require('../../assets/mock/links/link_qa.json'); //Mock QA
+            urls = require('../../assets/mock/links/link_ext.json'); //Mock EXT
         }
         return urls;
     }
