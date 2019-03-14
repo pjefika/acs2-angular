@@ -29,6 +29,8 @@ export class WifiComponent extends SuperComponentService implements OnInit {
     private searching: boolean = false;
     private btnSetWifi: boolean = false;
     private nomeBtn: string = "Modificar";
+    private desabilitede: boolean = false;
+    private ativandoWifi: boolean = false
 
     private redetypechoosed: number;
     private wifichoose: Wifi;
@@ -65,7 +67,7 @@ export class WifiComponent extends SuperComponentService implements OnInit {
                     (this.variavelHolderService.equipamento.modelName == "RTF3505VW-N1" &&
                         (
                             // this.variavelHolderService.equipamento.softwareVersion == "BR_SV_s00.00_g000_R3505VWN1001_s19" ||
-                        this.variavelHolderService.equipamento.softwareVersion == "BR_SV_g000_R3505VWN1001_s26"))) {
+                            this.variavelHolderService.equipamento.softwareVersion == "BR_SV_g000_R3505VWN1001_s26"))) {
                     this.wifichoose = this.wifi[4]
                 } else {
                     this.wifichoose = this.wifi[this.wifi.length - 1];
@@ -97,6 +99,9 @@ export class WifiComponent extends SuperComponentService implements OnInit {
             }, error => {
                 this.searching = false;
                 this.btnSetWifi = false;
+                if (error.mError == "Nenhuma interface WiFi se encontra habilitada.") {
+                    this.desabilitede = true
+                }
                 this.callToasty("Ops, aconteceu algo.", error.mError, "error", 10000);
             })
             .then(() => {
@@ -133,6 +138,7 @@ export class WifiComponent extends SuperComponentService implements OnInit {
                     this.wifi = data;
                     this.searching = false;
                     this.btnSetWifi = false;
+                    this.desabilitede = false
                 }, error => {
                     this.searching = false;
                     this.btnSetWifi = false;
@@ -172,13 +178,18 @@ export class WifiComponent extends SuperComponentService implements OnInit {
                     this.callToasty("Successo", "Alterações realizadas com sucesso.", "success", 10000);
                     this.nomeBtn = "Modificar";
                     this.btnSetWifi = false;
+                    this.desabilitede = false
                 }, error => {
                     this.nomeBtn = "Modificar";
                     this.callToasty("Ops, aconteceu algo.", error.mError, "error", 10000);
                     this.btnSetWifi = false;
+                    if (error.mError == "Nenhuma interface WiFi se encontra habilitada.") {
+                        this.desabilitede = true
+                    }
                 }).then(() => {
                     this.bloqbtnswitchrede = false;
                     this.validbtnwifi5();
+                    this.ativandoWifi = false
                 })
         } else {
             this.callToasty("Não houve alteração.", "", "warning", 7000);
@@ -186,8 +197,19 @@ export class WifiComponent extends SuperComponentService implements OnInit {
             this.btnSetWifi = false;
             this.bloqbtnswitchrede = false;
             this.validbtnwifi5();
+            this.ativandoWifi = false
+
         }
 
+    }
+
+    public ativaInterface() {
+        this.ativandoWifi = true
+        this.wifiToSet = {
+            "operStatus": "Up",
+            "index": "1"
+        }
+        this.setWifiLista()
     }
 
     public getCanaisPossiveis() {

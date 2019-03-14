@@ -1,5 +1,5 @@
 <loading-component [searchWhat]="'Buscando Wifi'" [searching]="searching"></loading-component>
-<div *ngIf="wifi" style="text-align: center;">
+<div *ngIf="wifi && !desabilitede" style="text-align: center;">
     <div class="btn-group" role="group" aria-label="Configurações de rede Wifi">
         <button type="button" class="btn btn-secondary" (click)="clickchoosewifi(2)" [disabled]="bloqbtnswitchrede">Rede 2.4GHz</button>
         <button type="button" class="btn btn-secondary" (click)="clickchoosewifi(5)" [disabled]="!showbtnwifi5g && bloqbtnswitchrede">Rede 5GHz</button>
@@ -18,7 +18,8 @@
                 </div>
                 <div class="form-group">
                     <label for="aForm_2" class="label-mg-left">SSID</label>
-                    <input type="text" id="aForm_2" (ngModelChange)="addToSet($event, 2)" placeholder="SSID" size="45" [(ngModel)]="wifichoose.ssid" name="ssid">
+                    <input type="text" id="aForm_2" (ngModelChange)="addToSet($event, 2)" placeholder="SSID" size="45" [(ngModel)]="wifichoose.ssid"
+                        name="ssid">
                 </div>
                 <div class="form-group">
                     <label class="label-mg-left" for="aForm_4">Senha</label>
@@ -42,3 +43,9 @@
         </form>
     </div>
 </div>
+<div *ngIf="desabilitede && !ativandoWifi" style="text-align: center">
+    Identificado que a interface de WiFi está desabilitada.
+    <br>
+    <button class="btn btn-warning" (click)="ativaInterface()">Ativar Interface</button>
+</div>
+<loading-component [searchWhat]="'Ativando Interface'" [searching]="ativandoWifi"></loading-component>

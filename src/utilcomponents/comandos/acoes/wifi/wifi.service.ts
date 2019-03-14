@@ -28,7 +28,7 @@ export class WifiService extends SuperService {
             command: "acs",
             path: "device/getWifiInfo",
             _data: _data,
-            timeout: 60000
+            timeout: 300000
         }
         return this.urlService
             .request(this.infoResquest)
@@ -47,7 +47,7 @@ export class WifiService extends SuperService {
             command: "acs",
             path: "device/setWifiInfo",
             _data: _data,
-            timeout: 60000
+            timeout: 300000
         }
         return this.urlService
             .request(this.infoResquest)
@@ -66,7 +66,7 @@ export class WifiService extends SuperService {
             command: "acs",
             path: "device/setWifiInfo",
             _data: _data,
-            timeout: 60000
+            timeout: 300000
         }
         return this.urlService
             .request(this.infoResquest)
