@@ -26,7 +26,7 @@ export class SipService extends SuperService {
             command: "acs",
             path: "device/getSipDiagnostics",
             _data: _data,
-            timeout: 120000 // 2m
+            timeout: 300000 // 5m
         }
         return this.urlService
             .request(this.infoResquest)
