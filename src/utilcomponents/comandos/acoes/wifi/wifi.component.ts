@@ -67,8 +67,11 @@ export class WifiComponent extends SuperComponentService implements OnInit {
                     (this.variavelHolderService.equipamento.modelName == "RTF3505VW-N1" &&
                         (
                             // this.variavelHolderService.equipamento.softwareVersion == "BR_SV_s00.00_g000_R3505VWN1001_s19" ||
-                            this.variavelHolderService.equipamento.softwareVersion == "BR_SV_g000_R3505VWN1001_s26"))) {
+                            this.variavelHolderService.equipamento.softwareVersion == "BR_SV_g000_R3505VWN1001_s26")) ||
+                    this.wifi.length > 5) {
                     this.wifichoose = this.wifi[4]
+                } else if (this.variavelHolderService.equipamento.modelName == "SagemcomFast5340TFN") {
+                    this.wifichoose = this.wifi[1]
                 } else {
                     this.wifichoose = this.wifi[this.wifi.length - 1];
                 }
