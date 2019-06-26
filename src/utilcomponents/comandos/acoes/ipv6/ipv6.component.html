@@ -1,0 +1,13 @@
+<div>
+	<button type="button" class="btn btn-icon" aria-label="home" *ngIf="!isLoading && !ipv6Model"
+		(click)="getIPV6Status()">
+		<clr-icon shape="refresh"></clr-icon>
+	</button>
+	<loading-component [searchWhat]="loadingMenssage" [searching]="isLoading"></loading-component>
+	<div *ngIf="!isLoading && ipv6Model">
+		IPV6 Status: {{ipv6Model.enabled ? "Ativo" : "Inativo"}}
+		<br>
+		<button class="btn btn-primary"
+			(click)="setIPV6Status()">{{ipv6Model.enabled ? "Desativar LanIPV6" : "Ativar LanIPV6" }}</button>
+	</div>
+</div>

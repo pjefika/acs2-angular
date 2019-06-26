@@ -61,6 +61,9 @@ import { ValidaTipoRedeComponent } from 'busca/valida-tipo-rede/valida-tipo-rede
 
 import { ClarityModule } from "@clr/angular";
 import { FirmwareComponent } from 'utilcomponents/comandos/acoes/firmware/firmware.component';
+import { Ipv6Component } from 'utilcomponents/comandos/acoes/ipv6/ipv6.component';
+import { T38Component } from 'utilcomponents/comandos/acoes/t38/t38.component';
+
 
 @NgModule({
 	declarations: [
@@ -102,7 +105,9 @@ import { FirmwareComponent } from 'utilcomponents/comandos/acoes/firmware/firmwa
 		AlertComponent,
 		ToastyComponent,
 		ValidaTipoRedeComponent,
-		FirmwareComponent
+		FirmwareComponent,
+		Ipv6Component,
+		T38Component
 	],
 	imports: [
 		BrowserModule,
@@ -154,7 +159,9 @@ import { FirmwareComponent } from 'utilcomponents/comandos/acoes/firmware/firmwa
 		AlertComponent,
 		ToastyComponent,
 		ValidaTipoRedeComponent,
-		FirmwareComponent
+		FirmwareComponent,
+		Ipv6Component,
+		T38Component
 	]
 })
 export class AppModule { }

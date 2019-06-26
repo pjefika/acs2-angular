@@ -10,7 +10,7 @@ export class ExceptionService {
     }
 
     public handleErrorKing(error: any): Promise<any> {
-        console.log(error);
+        // console.log(error);
         
         let er: any;
         if (error.message === "Timeout has occurred") {

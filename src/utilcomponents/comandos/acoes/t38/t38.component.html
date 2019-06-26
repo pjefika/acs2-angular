@@ -1,0 +1,13 @@
+<div>
+	<button type="button" class="btn btn-icon" aria-label="home" *ngIf="!isLoading && !t38Model"
+		(click)="getT38Status()">
+		<clr-icon shape="refresh"></clr-icon>
+	</button>
+	<loading-component [searchWhat]="loadingMenssage" [searching]="isLoading"></loading-component>
+	<div *ngIf="!isLoading && t38Model">
+		T38 Status: {{t38Model.enabled ? "Ativo" : "Inativo"}}
+		<br>
+		<button class="btn btn-primary"
+			(click)="setT38Status()">{{t38Model.enabled ? "Desativar T38" : "Ativar T38" }}</button>
+	</div>
+</div>

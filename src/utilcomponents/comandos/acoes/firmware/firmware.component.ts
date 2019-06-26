@@ -41,7 +41,7 @@ export class FirmwareComponent extends SuperComponentService implements OnInit {
                 this.callToasty("Ops, aconteceu algo", error.mError, "error", 10000);
             })
             .then(() => {
-                if (this.firmware.updated) {
+                if (this.firmware && this.firmware.updated) {
                     this.btndisableupdatefirmware = true;
                     this.btnnameupdatefirmware = "Firmware Atualizado";
                 } else {

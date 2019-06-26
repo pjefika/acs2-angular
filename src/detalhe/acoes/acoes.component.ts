@@ -9,6 +9,8 @@ import { AuthPPPoEComponent } from 'utilcomponents/comandos/acoes/auth-pppoe/aut
 import { SipSetComponent } from 'utilcomponents/comandos/acoes/sip/sip.component';
 import { ServiceClassComponent } from 'utilcomponents/comandos/acoes/service-class/service-class.component';
 import { DhcpComponent } from 'utilcomponents/comandos/acoes/dhcp/dhcp.component';
+import { Ipv6Component } from 'utilcomponents/comandos/acoes/ipv6/ipv6.component';
+import { T38Component } from 'utilcomponents/comandos/acoes/t38/t38.component';
 
 @Component({
     selector: 'acoes-component',
@@ -30,7 +32,7 @@ export class AcoesComponent implements OnInit {
 
     public ngOnInit() { }
 
-    private domount(c: string, title: string) {
+    public domount(c: string, title: string) {
         this.title = title;
         this.systemHolderService.modaltitle = this.title;
         this.whatComponentAction(c);
@@ -72,6 +74,12 @@ export class AcoesComponent implements OnInit {
                 break;
             case "dhcp-component":
                 this.domountcomp(DhcpComponent);
+                break;
+            case "app-ipv6":
+                this.domountcomp(Ipv6Component);
+                break;
+            case "app-t38":
+                this.domountcomp(T38Component);
                 break;
         }
     }

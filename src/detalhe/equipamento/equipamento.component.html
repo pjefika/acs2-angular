@@ -68,6 +68,6 @@
     </div>
     <div class="card-footer" *ngIf="!systemHolderService.isSearchingCheckOnline && !systemHolderService.isSearchingIp">
         <button class="btn btn-sm btn-link" (click)="searchinfodevice()">Atualizar informações</button>
-        <firmware-component></firmware-component>
+        <firmware-component *ngIf="variavelHolderService.checkOnline"></firmware-component>
     </div>
 </div>

@@ -6,30 +6,54 @@
         <div class="card-title">
             <ul class="list-unstyled">
                 <li>
-                    <button class="btn btn-outline btn-block padding-btn" (click)="domount('reset-component','Reiniciar')" [disabled]="!variavelHolderService.checkOnline">Reiniciar</button>
+                    <button class="btn btn-outline btn-block padding-btn"
+                        (click)="domount('reset-component','Reiniciar')"
+                        [disabled]="!variavelHolderService.checkOnline">Reiniciar</button>
                 </li>
                 <li>
-                    <button class="btn btn-outline btn-block padding-btn" (click)="domount('factory-reset-component','Reset de Fábrica')" [disabled]="!variavelHolderService.checkOnline">Reset de Fábrica</button>
+                    <button class="btn btn-outline btn-block padding-btn"
+                        (click)="domount('factory-reset-component','Reset de Fábrica')"
+                        [disabled]="!variavelHolderService.checkOnline">Reset de Fábrica</button>
                 </li>
                 <li>
-                    <button class="btn btn-outline btn-block padding-btn" (click)="domount('ping-component','Efetuar Ping')" [disabled]="!variavelHolderService.checkOnline">Efetuar Ping</button>
+                    <button class="btn btn-outline btn-block padding-btn"
+                        (click)="domount('ping-component','Efetuar Ping')"
+                        [disabled]="!variavelHolderService.checkOnline">Efetuar Ping</button>
                 </li>
                 <li>
-                    <button class="btn btn-outline btn-block padding-btn" (click)="domount('wifi-component','Configurar Wifi')" [disabled]="!variavelHolderService.checkOnline">Configurar Wifi</button>
+                    <button class="btn btn-outline btn-block padding-btn"
+                        (click)="domount('wifi-component','Configurar Wifi')"
+                        [disabled]="!variavelHolderService.checkOnline">Configurar Wifi</button>
                 </li>
                 <li>
-                    <button class="btn btn-outline btn-block padding-btn" (click)="domount('auth-pppoe-component','Configurar Autenticação PPPoE')"
+                    <button class="btn btn-outline btn-block padding-btn"
+                        (click)="domount('auth-pppoe-component','Configurar Autenticação PPPoE')"
                         [disabled]="!variavelHolderService.checkOnline">Configurar Autenticação PPPoE</button>
                 </li>
                 <li>
-                    <button class="btn btn-outline btn-block padding-btn" (click)="domount('sip-set-component','Configurar SIP')" [disabled]="!variavelHolderService.checkOnline">Configurar SIP</button>
+                    <button class="btn btn-outline btn-block padding-btn"
+                        (click)="domount('sip-set-component','Configurar SIP')"
+                        [disabled]="!variavelHolderService.checkOnline">Configurar SIP</button>
                 </li>
                 <li>
-                    <button class="btn btn-outline btn-block padding-btn" (click)="domount('service-class-component','Configurar ServiceClass')"
+                    <button class="btn btn-outline btn-block padding-btn"
+                        (click)="domount('service-class-component','Configurar ServiceClass')"
                         [disabled]="!variavelHolderService.checkOnline">Configurar ServiceClass</button>
                 </li>
                 <li>
-                    <button class="btn btn-outline btn-block padding-btn" (click)="domount('dhcp-component','Configurar DHCP')" [disabled]="!variavelHolderService.checkOnline">Configurar DHCP</button>
+                    <button class="btn btn-outline btn-block padding-btn"
+                        (click)="domount('dhcp-component','Configurar DHCP')"
+                        [disabled]="!variavelHolderService.checkOnline">Configurar DHCP</button>
+                </li>
+                <li>
+                    <button class="btn btn-outline btn-block padding-btn"
+                        (click)="domount('app-ipv6','Ativar/Desativar LanIPV6')"
+                        [disabled]="!variavelHolderService.checkOnline">Ativar/Desativar LanIPV6</button>
+                </li>
+                <li>
+                    <button class="btn btn-outline btn-block padding-btn"
+                        (click)="domount('app-t38','Ativar/Desativar T38')"
+                        [disabled]="!variavelHolderService.checkOnline">Ativar/Desativar T38</button>
                 </li>
             </ul>
         </div>
