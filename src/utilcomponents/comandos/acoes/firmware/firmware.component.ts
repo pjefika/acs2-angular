@@ -37,10 +37,6 @@ export class FirmwareComponent extends SuperComponentService implements OnInit {
             .getInfoFirmware(this.variavelHolderService.equipamento.deviceGUID)
             .then(resposta => {
                 this.firmware = resposta;
-            }, error => {
-                this.callToasty("Ops, aconteceu algo", error.mError, "error", 10000);
-            })
-            .then(() => {
                 if (this.firmware && this.firmware.updated) {
                     this.btndisableupdatefirmware = true;
                     this.btnnameupdatefirmware = "Firmware Atualizado";
@@ -48,7 +44,12 @@ export class FirmwareComponent extends SuperComponentService implements OnInit {
                     this.btndisableupdatefirmware = false;
                     this.btnnameupdatefirmware = "Atualizar Firmware";
                 }
+            }, error => {
+                this.callToasty("Ops, aconteceu algo", error.mError, "error", 10000);
             })
+            // .then(() => {
+
+            // })
     }
 
     public setInfoFirmware() {

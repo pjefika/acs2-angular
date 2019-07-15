@@ -96,10 +96,11 @@ export class BuscaComponent extends SuperComponentService implements OnInit {
                 this.searchWhat = "Buscando Equipamentos"
                 this.searching = true;
                 this.showTableResult = false;
-                this.buscaService.getLista(this.whatIsSearching, this.whatIsSearchingInput)
+                this.buscaService
+                    .getLista(this.whatIsSearching, this.whatIsSearchingInput)
                     .then(data => {
                         this.listEqp = data;
-                        this.searching = false;
+                        // this.searching = false;
                         this.showTableResult = true;
                         if (data.length === 0) {
                             this.callToasty("Ops, aconteceu algo.", "A busca não obteve resultados.", "error", 15000);
@@ -133,7 +134,7 @@ export class BuscaComponent extends SuperComponentService implements OnInit {
         }
     }
 
-    private validEmptySearch(): boolean {        
+    private validEmptySearch(): boolean {
         let valid: boolean = true;
         if (this.whatIsSearching === undefined || this.whatIsSearchingInput === undefined || this.whatIsSearching === null || this.whatIsSearchingInput === null) {
             valid = false;
