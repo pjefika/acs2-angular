@@ -1,59 +1,67 @@
 <div class="form-group">
     <label>Phyref</label>
     <input type="text" class="form-control" [(ngModel)]="phyref">
-    <br/>
-    <button class="btn btn-primary btn-block" (click)="getSipDiagnostics()">Consultar SIP</button>
+    <br />
+    <button class="btn btn-primary btn-block" (click)="getSipDiagnostics()" [disabled]="searching">Consultar
+        SIP</button>
 </div>
-<loading-component [searchWhat]="'Buscando Configurações SIP'" [searching]="searching"></loading-component>
+<loading-component [searchWhat]="loadingMensagem" [searching]="searching"></loading-component>
 <table class="table table-vertical" *ngIf="sip">
     <tbody>
         <tr>
             <th>DirectoryNumber</th>
             <td>
                 <span *ngIf="!isModificarSip">{{sip.directoryNumber}}</span>
-                <input *ngIf="isModificarSip" type="text" [(ngModel)]="sip.directoryNumber" name="DirectoryNumber" class="form-control">
+                <input *ngIf="isModificarSip" type="text" [(ngModel)]="sip.directoryNumber" name="DirectoryNumber"
+                    class="form-control">
             </td>
         </tr>
         <tr>
             <th>AuthUserName</th>
             <td>
                 <span *ngIf="!isModificarSip">{{sip.authUserName}}</span>
-                <input *ngIf="isModificarSip" type="text" [(ngModel)]="sip.authUserName" name="AuthUserName" class="form-control">
+                <input *ngIf="isModificarSip" type="text" [(ngModel)]="sip.authUserName" name="AuthUserName"
+                    class="form-control">
             </td>
         </tr>
         <tr>
             <th>AuthPassword</th>
             <td>
                 <span *ngIf="!isModificarSip">{{sip.authPassword}}</span>
-                <input *ngIf="isModificarSip" type="text" [(ngModel)]="sip.authPassword" name="AuthPassword" class="form-control">
+                <input *ngIf="isModificarSip" type="text" [(ngModel)]="sip.authPassword" name="AuthPassword"
+                    class="form-control">
             </td>
         </tr>
         <tr>
             <th>ProxyServerPort</th>
             <td>
                 <span *ngIf="!isModificarSip">{{sip.proxyServer}}</span>
-                <input *ngIf="isModificarSip" type="text" [(ngModel)]="sip.proxyServer" name="ProxyServer" class="form-control">
+                <input *ngIf="isModificarSip" type="text" [(ngModel)]="sip.proxyServer" name="ProxyServer"
+                    class="form-control">
             </td>
         </tr>
         <tr>
             <th>RegistrarServer</th>
             <td>
                 <span *ngIf="!isModificarSip">{{sip.registrarServer}}</span>
-                <input *ngIf="isModificarSip" type="text" [(ngModel)]="sip.registrarServer" name="RegistrarServer" class="form-control">
+                <input *ngIf="isModificarSip" type="text" [(ngModel)]="sip.registrarServer" name="RegistrarServer"
+                    class="form-control">
             </td>
         </tr>
         <tr>
             <th>UserAgentDomain</th>
             <td>
                 <span *ngIf="!isModificarSip">{{sip.userAgentDomain}}</span>
-                <input *ngIf="isModificarSip" type="text" [(ngModel)]="sip.userAgentDomain" name="UserAgentDomain" class="form-control">
+                <input *ngIf="isModificarSip" type="text" [(ngModel)]="sip.userAgentDomain" name="UserAgentDomain"
+                    class="form-control">
             </td>
         </tr>
         <tr>
             <th>OutboundProxy</th>
             <td>
                 <span *ngIf="!isModificarSip">{{sip.outboundProxy}}</span>
-                <input *ngIf="isModificarSip" type="text" [(ngModel)]="sip.outboundProxy" name="OutboundProxy" class="form-control">
+                <input *ngIf="isModificarSip" type="text" [(ngModel)]="sip.outboundProxy" name="OutboundProxy"
+                    class="form-control">
             </td>
         </tr>
         <tr>

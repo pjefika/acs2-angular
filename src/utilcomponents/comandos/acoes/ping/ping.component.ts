@@ -21,6 +21,8 @@ export class PingComponent extends SuperComponentService implements OnInit {
     public btnPing: boolean = false;
     public nomeBtn: string = "Pingar";
 
+    public loadingMensagem: string = "Realizando Ping - Não encerre esta janela para não gerar falha no dispositivo. Esta ação pode demorar até 5 minutos dependendo do dispositivo";
+
     constructor(
         // public activeModal: NgbActiveModal,
         private pingService: PingService,
@@ -35,6 +37,7 @@ export class PingComponent extends SuperComponentService implements OnInit {
     public pingDiagnostic() {
         this.btnPing = true;
         this.nomeBtn = "Aguarde";
+        this.systemHolderService.btnIsLoadingAction = true;
         this.pingService.pingDiagnostic(this.variavelHolderService.equipamento, this.host)
             .then(data => {
                 this.ping = data;
@@ -45,6 +48,9 @@ export class PingComponent extends SuperComponentService implements OnInit {
                 this.btnPing = false;
                 this.nomeBtn = "Pingar";
                 super.callToasty("Ops, aconteceu algo.", error.mError, "error", 10000);
-            });
+            })
+            .then(() => {
+                this.systemHolderService.btnIsLoadingAction = false;
+            })
     }
 }

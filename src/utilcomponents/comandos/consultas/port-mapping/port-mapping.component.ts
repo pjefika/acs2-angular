@@ -34,13 +34,18 @@ export class PortMappingComponent extends SuperComponentService implements OnIni
 
     public getPortingMapping() {
         this.searching = true;
-        this.portMappingService.getPortingMapping(this.variavelHolderService.equipamento)
+        this.systemHolderService.btnIsLoadingAction = true;
+        this.portMappingService
+            .getPortingMapping(this.variavelHolderService.equipamento)
             .then(data => {
                 this.portMaps = data;
                 this.searching = false;
             }, error => {
                 this.searching = false;
                 this.callToasty("Ops, aconteceu algo.", error.mError, "error", 10000);
+            })
+            .then(() => {
+                this.systemHolderService.btnIsLoadingAction = false;
             });
     }
 

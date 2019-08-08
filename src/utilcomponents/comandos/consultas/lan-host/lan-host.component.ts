@@ -18,7 +18,9 @@ export class LanHostComponent extends SuperComponentService implements OnInit {
 
     public lanHost: LanHost[];
     public searching: boolean = false;
-    public pagSize: number = 5
+    public pagSize: number = 5;
+
+    public loadingMensagem: string = "Buscando Lan Hosts - Não encerre esta janela para não gerar falha no dispositivo. Esta ação pode demorar até 5 minutos dependendo do dispositivo";
 
     constructor(
         // public activeModal: NgbActiveModal,
@@ -35,7 +37,9 @@ export class LanHostComponent extends SuperComponentService implements OnInit {
 
     public getLanHosts() {
         this.searching = true;
-        this.lanHostService.getLanHosts(this.variavelHolderService.equipamento)
+        this.systemHolderService.btnIsLoadingAction = true;
+        this.lanHostService
+            .getLanHosts(this.variavelHolderService.equipamento)
             .then(data => {
                 this.lanHost = data;
                 this.lanHost.forEach(element => {
@@ -47,6 +51,7 @@ export class LanHostComponent extends SuperComponentService implements OnInit {
             })
             .then(() => {
                 this.searching = false;
+                this.systemHolderService.btnIsLoadingAction = false;
             });
     }
 

@@ -5,7 +5,7 @@
         <div #dynamicComponentContainer></div>
     </div>
     <div class="modal-footer">
-        <button type="button" class="btn btn-outline"
+        <button type="button" class="btn btn-outline" [disabled]="systemHolderService.btnIsLoadingAction"
             (click)="systemHolderService.modalactionserachopen = false">Fechar</button>
     </div>
 </clr-modal>

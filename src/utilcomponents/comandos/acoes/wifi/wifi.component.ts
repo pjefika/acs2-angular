@@ -25,23 +25,25 @@ export class WifiComponent extends SuperComponentService implements OnInit {
         return lw;
     }
 
-    private wifi: Wifi[];
-    private searching: boolean = false;
-    private btnSetWifi: boolean = false;
-    private nomeBtn: string = "Modificar";
-    private desabilitede: boolean = false;
-    private ativandoWifi: boolean = false
+    public wifi: Wifi[];
+    public searching: boolean = false;
+    public btnSetWifi: boolean = false;
+    public nomeBtn: string = "Modificar";
+    public desabilitede: boolean = false;
+    public ativandoWifi: boolean = false
 
-    private redetypechoosed: number;
-    private wifichoose: Wifi;
-    private wifisToSet: Wifi[] = [new Wifi, new Wifi];
-    private wifiToSet: Wifi = new Wifi;
+    public redetypechoosed: number;
+    public wifichoose: Wifi;
+    public wifisToSet: Wifi[] = [new Wifi, new Wifi];
+    public wifiToSet: Wifi = new Wifi;
 
-    private canaispossiveis: CanaisPossiveis[];
+    public canaispossiveis: CanaisPossiveis[];
 
-    private showbtnwifi5g: boolean = false;
+    public showbtnwifi5g: boolean = false;
 
-    private bloqbtnswitchrede: boolean = false;
+    public bloqbtnswitchrede: boolean = false;
+
+    public loadingMensagem: string = "Buscando Wifi - Não encerre esta janela para não gerar falha no dispositivo. Esta ação pode demorar até 5 minutos dependendo do dispositivo";
 
     constructor(
         private wifiService: WifiService,
@@ -56,7 +58,7 @@ export class WifiComponent extends SuperComponentService implements OnInit {
         this.getCanaisPossiveis();
     }
 
-    private clickchoosewifi(rtc: number) {
+    public clickchoosewifi(rtc: number) {
         switch (rtc) {
             case 2:
                 this.wifichoose = this.wifi[0];
@@ -90,10 +92,12 @@ export class WifiComponent extends SuperComponentService implements OnInit {
         }
     }
 
-    private getWifi() {
+    public getWifi() {
         this.searching = true;
         this.btnSetWifi = true;
-        this.wifiService.getWifi(this.variavelHolderService.equipamento)
+        this.systemHolderService.btnIsLoadingAction = true;
+        this.wifiService
+            .getWifi(this.variavelHolderService.equipamento)
             .then(data => {
                 this.wifi = data;
                 this.searching = false;
@@ -108,11 +112,12 @@ export class WifiComponent extends SuperComponentService implements OnInit {
                 this.callToasty("Ops, aconteceu algo.", error.mError, "error", 10000);
             })
             .then(() => {
+                this.systemHolderService.btnIsLoadingAction = false;
                 this.clickchoosewifi(2);
             });
     }
 
-    addToSet(val, kindOf: Number) {
+    public addToSet(val, kindOf: Number) {
         switch (kindOf) {
             case 1:
                 this.wifiToSet.operStatus = val
@@ -132,7 +137,7 @@ export class WifiComponent extends SuperComponentService implements OnInit {
         console.log(this.wifiToSet)
     }
 
-    private getWifiMock() {
+    public getWifiMock() {
         this.searching = true;
         this.btnSetWifi = true;
         setTimeout(() => {
@@ -154,19 +159,7 @@ export class WifiComponent extends SuperComponentService implements OnInit {
     }
 
     public setWifiLista() {
-        // let wl: Wifi[] = this.wifi;
-        // switch (this.redetypechoosed) {
-        //     case 2:
-        //         wl[0] = this.wifichoose;
-        //         break;
-        //     case 5:
-        //         wl[wl.length - 1] = this.wifichoose;
-        //         break;
-        // }
-
-        // for (let i = 0; i < wl.length; i++) {
-        //     delete wl[i].broadcastEnabled;
-        // }
+        this.systemHolderService.btnIsLoadingAction = true;
         this.bloqbtnswitchrede = true;
         this.showbtnwifi5g = false;
         this.btnSetWifi = true;
@@ -193,6 +186,7 @@ export class WifiComponent extends SuperComponentService implements OnInit {
                     this.bloqbtnswitchrede = false;
                     this.validbtnwifi5();
                     this.ativandoWifi = false
+                    this.systemHolderService.btnIsLoadingAction = false;
                 })
         } else {
             this.callToasty("Não houve alteração.", "", "warning", 7000);
@@ -200,7 +194,8 @@ export class WifiComponent extends SuperComponentService implements OnInit {
             this.btnSetWifi = false;
             this.bloqbtnswitchrede = false;
             this.validbtnwifi5();
-            this.ativandoWifi = false
+            this.ativandoWifi = false;
+            this.systemHolderService.btnIsLoadingAction = false;
 
         }
 
@@ -223,7 +218,7 @@ export class WifiComponent extends SuperComponentService implements OnInit {
             });
     }
 
-    private validbtnwifi5() {
+    public validbtnwifi5() {
         if (this.wifi.length > 1) {
             this.showbtnwifi5g = true;
         } else {

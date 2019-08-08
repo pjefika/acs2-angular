@@ -31,6 +31,7 @@ export class ResetComponent extends SuperComponentService implements OnInit {
     public ngOnInit() { }
 
     public resetar() {
+        this.systemHolderService.btnIsLoadingAction = true;
         if (!this.disableBtn) {
             this.disableBtn = true;
             this.nomeBtn = "Aguarde";
@@ -45,7 +46,10 @@ export class ResetComponent extends SuperComponentService implements OnInit {
                     }
                 }, error => {
                     this.callToasty("Ops, aconteceu algo.", error.mError, "error", 0);
-                });
+                })
+                .then(() => {
+                    this.systemHolderService.btnIsLoadingAction = false;
+                })
         }
     }
 

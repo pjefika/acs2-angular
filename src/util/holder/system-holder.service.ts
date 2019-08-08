@@ -19,8 +19,10 @@ export class SystemHolderService {
 
     public modalactionserachopen: boolean = false;
 
-    public modalcomponent: any;    
-    public modaltitle: string;    
+    public modalcomponent: any;
+    public modaltitle: string;
+
+    public btnIsLoadingAction: boolean = false;
 
     constructor() { }
 

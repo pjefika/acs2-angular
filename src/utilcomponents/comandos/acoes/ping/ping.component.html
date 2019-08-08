@@ -1,34 +1,40 @@
-<div class="form-group">
-    <label>Endereço</label>
-    <input type="text" class="form-control" [(ngModel)]="host">
-</div>
-<table class="table table-vertical" *ngIf="ping">
-    <tbody>
-        <tr>
-            <th>Status</th>
-            <td>{{ping.status}}</td>
-        </tr>
-        <tr>
-            <th>Tempo</th>
-            <td>{{ping.avgRespTime}}</td>
-        </tr>
-        <tr>
-            <th>Quantidade Sucesso</th>
-            <td>{{ping.qtdSuccess}}</td>
-        </tr>
-        <tr>
-            <th>Quantidade Erro</th>
-            <td>{{ping.qtdFailures}}</td>
-        </tr>
-        <tr>
-            <th>Endereço</th>
-            <td>{{ping.hostAddress}}</td>
-        </tr>
-        <tr>
-            <th>Repetições</th>
-            <td>{{ping.repetitions}}</td>
-        </tr>
+<div *ngIf="systemHolderService.btnIsLoadingAction">
+    <div class="form-group">
+        <label>Endereço</label>
+        <input type="text" class="form-control" [(ngModel)]="host">
+    </div>
+    <table class="table table-vertical" *ngIf="ping">
+        <tbody>
+            <tr>
+                <th>Status</th>
+                <td>{{ping.status}}</td>
+            </tr>
+            <tr>
+                <th>Tempo</th>
+                <td>{{ping.avgRespTime}}</td>
+            </tr>
+            <tr>
+                <th>Quantidade Sucesso</th>
+                <td>{{ping.qtdSuccess}}</td>
+            </tr>
+            <tr>
+                <th>Quantidade Erro</th>
+                <td>{{ping.qtdFailures}}</td>
+            </tr>
+            <tr>
+                <th>Endereço</th>
+                <td>{{ping.hostAddress}}</td>
+            </tr>
+            <tr>
+                <th>Repetições</th>
+                <td>{{ping.repetitions}}</td>
+            </tr>
 
-    </tbody>
-</table>
+        </tbody>
+    </table>
+</div>
+
 <button type="button" class="btn btn-primary" (click)="pingDiagnostic()" [disabled]="btnPing">{{nomeBtn}}</button>
+
+<loading-component [searchWhat]="loadingMensagem" [searching]="systemHolderService.btnIsLoadingAction">
+</loading-component>

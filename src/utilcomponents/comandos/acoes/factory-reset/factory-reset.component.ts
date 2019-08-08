@@ -31,6 +31,7 @@ export class FactoryResetComponent extends SuperComponentService implements OnIn
 
     public factoryReset() {
         if (!this.disableBtn) {
+            this.systemHolderService.btnIsLoadingAction = true;
             this.disableBtn = true;
             this.nomeBtn = "Aguarde";
             this.factoryResetService.factoryReset(this.variavelHolderService.equipamento)
@@ -44,7 +45,10 @@ export class FactoryResetComponent extends SuperComponentService implements OnIn
                     }
                 }, error => {
                     this.callToasty("Ops, aconteceu algo.", error.mError, "error", 0);
-                });
+                })
+                .then(() => {
+                    this.systemHolderService.btnIsLoadingAction = false;
+                })
 
         }
     }

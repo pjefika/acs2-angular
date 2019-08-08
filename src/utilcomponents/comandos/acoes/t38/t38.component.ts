@@ -4,6 +4,7 @@ import { VariavelHolderService } from 'util/holder/variavel-holder.service';
 import { ToastyComponent } from 'utilcomponents/toasty/toasty.component';
 import { SuperComponentService } from 'util/supercomponent/super-component.service';
 import { T38 } from 'viewmodel/t38/t38';
+import { SystemHolderService } from 'util/holder/system-holder.service';
 
 @Component({
 	selector: 'app-t38',
@@ -23,7 +24,8 @@ export class T38Component extends SuperComponentService implements OnInit {
 
 	constructor(private t38Service: T38Service,
 		public variavelHolderService: VariavelHolderService,
-		public toastyComponent: ToastyComponent) {
+		public toastyComponent: ToastyComponent,
+		public systemHolderService: SystemHolderService) {
 		super(toastyComponent);
 	}
 
@@ -32,6 +34,7 @@ export class T38Component extends SuperComponentService implements OnInit {
 	}
 
 	public getT38Status() {
+		this.systemHolderService.btnIsLoadingAction = true;
 		this.isLoading = true;
 		this.loadingMenssage = "Consultando informações";
 		this.t38Service
@@ -43,6 +46,7 @@ export class T38Component extends SuperComponentService implements OnInit {
 			})
 			.then(() => {
 				this.isLoading = false;
+				this.systemHolderService.btnIsLoadingAction = false;
 			});
 	}
 

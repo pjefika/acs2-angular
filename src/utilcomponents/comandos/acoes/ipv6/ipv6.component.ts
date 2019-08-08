@@ -4,6 +4,7 @@ import { ToastyComponent } from 'utilcomponents/toasty/toasty.component';
 import { VariavelHolderService } from 'util/holder/variavel-holder.service';
 import { Ipv6Service } from './ipv6.service';
 import { IPV6 } from 'viewmodel/ipv6/ipv6';
+import { SystemHolderService } from 'util/holder/system-holder.service';
 
 @Component({
 	selector: 'app-ipv6',
@@ -23,7 +24,8 @@ export class Ipv6Component extends SuperComponentService implements OnInit {
 
 	constructor(private ipv6Service: Ipv6Service,
 		public variavelHolderService: VariavelHolderService,
-		public toastyComponent: ToastyComponent) {
+		public toastyComponent: ToastyComponent,
+		public systemHolderService: SystemHolderService) {
 		super(toastyComponent);
 	}
 
@@ -34,6 +36,7 @@ export class Ipv6Component extends SuperComponentService implements OnInit {
 	public getIPV6Status() {
 		this.isLoading = true;
 		this.loadingMenssage = "Consultando informações";
+		this.systemHolderService.btnIsLoadingAction = true;
 		this.ipv6Service
 			.getIPV6Status(this.variavelHolderService.equipamento)
 			.then(resposta => {
@@ -43,11 +46,13 @@ export class Ipv6Component extends SuperComponentService implements OnInit {
 			})
 			.then(() => {
 				this.isLoading = false;
+				this.systemHolderService.btnIsLoadingAction = false;
 			});
 	}
 
 	public setIPV6Status() {
 		this.isLoading = true;
+		this.systemHolderService.btnIsLoadingAction = true;
 		this.loadingMenssage = this.ipv6Model.enabled ? "Desativando " : "Ativando " + "IPV6";
 
 		if (this.ipv6Model.enabled) {
@@ -70,6 +75,7 @@ export class Ipv6Component extends SuperComponentService implements OnInit {
 			})
 			.then(() => {
 				this.isLoading = false;
+				this.systemHolderService.btnIsLoadingAction = false;
 			});
 	}
 

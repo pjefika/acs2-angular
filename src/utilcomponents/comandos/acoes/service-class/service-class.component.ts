@@ -35,6 +35,7 @@ export class ServiceClassComponent extends SuperComponentService implements OnIn
     }
 
     public getServiceClass() {
+        this.systemHolderService.btnIsLoadingAction = true;
         this.searching = true;
         this.btnServiceClass = true;
         this.serviceClassService.getServiceClass(this.variavelHolderService.equipamento)
@@ -47,10 +48,14 @@ export class ServiceClassComponent extends SuperComponentService implements OnIn
                 this.btnServiceClass = false;
                 // this.activeModal.close();
                 this.callToasty("Ops, aconteceu algo.", error.mError, "error", 10000);
-            });
+            })
+            .then(() => {
+                this.systemHolderService.btnIsLoadingAction = false;
+            })
     }
 
     public setServiceClass() {
+        this.systemHolderService.btnIsLoadingAction = true;
         if (this.serviceClass) {
             this.btnServiceClass = true;
             this.nomeBtn = "Aguarde";
@@ -65,7 +70,10 @@ export class ServiceClassComponent extends SuperComponentService implements OnIn
                     this.nomeBtn = "Modificar";
                     this.callToasty("Ops, aconteceu algo.", error.mError, "error", 10000);
                     this.btnServiceClass = false;
-                });
+                })
+                .then(() => {
+                    this.systemHolderService.btnIsLoadingAction = false;
+                })
         }
     }
 }

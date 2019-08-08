@@ -33,18 +33,22 @@ export class AuthPPPoEComponent extends SuperComponentService implements OnInit 
     }
 
     public getPPPoECredentials() {
+        this.systemHolderService.btnIsLoadingAction = true;
         this.searching = true;
         this.authPPPoEService.getPPPoECredentials(this.variavelHolderService.equipamento)
             .then(data => {
                 this.pppoecred = data;
-                this.searching = false;
             }, error => {
-                this.searching = false;
                 this.callToasty("Ops, aconteceu algo.", error.mError, "error", 10000);
+            })
+            .then(() => {
+                this.searching = false;
+                this.systemHolderService.btnIsLoadingAction = false;
             })
     }
 
     public setPPPoECredentials() {
+        this.systemHolderService.btnIsLoadingAction = true;
         if (this.pppoecred && !this.btnDisabled) {
             this.btnName = "Aguarde";
             this.btnDisabled = true;
@@ -62,7 +66,10 @@ export class AuthPPPoEComponent extends SuperComponentService implements OnInit 
                     this.btnName = "Modificar";
                     this.btnDisabled = false;
                     this.callToasty("Ops, aconteceu algo.", error.mError, "error", 10000);
-                });
+                })
+                .then(() => {
+                    this.systemHolderService.btnIsLoadingAction = false;
+                })
         }
     }
 

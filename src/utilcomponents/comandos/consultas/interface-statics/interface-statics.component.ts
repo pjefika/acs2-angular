@@ -35,6 +35,7 @@ export class InterfaceStaticsComponent extends SuperComponentService implements 
     public getInterfaceStatistics() {
         this.intStatic = null;
         this.searching = true;
+        this.systemHolderService.btnIsLoadingAction = true;
         this.interfaceStaticsService.getInterfaceStatistics(this.variavelHolderService.equipamento)
             .then(data => {
                 this.intStatic = data;
@@ -42,6 +43,9 @@ export class InterfaceStaticsComponent extends SuperComponentService implements 
             }, error => {
                 this.callToasty("Ops, aconteceu algo.", error.mError, "error", 10000);
                 this.searching = false;
+            })
+            .then(() => {
+                this.systemHolderService.btnIsLoadingAction = false;
             });
     }
 

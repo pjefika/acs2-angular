@@ -27,6 +27,8 @@ export class SipSetComponent extends SuperComponentService implements OnInit {
     public btnSipModificar: boolean = false;
     public btnModificarNome: string = "Modificar";
 
+    public loadingMensagem: string = "Realizando Configurações SIP - Não encerre esta janela para não gerar falha no dispositivo. Esta ação pode demorar até 5 minutos dependendo do dispositivo";
+
     constructor(
         // public activeModal: NgbActiveModal,
         private sipService: SipService,
@@ -43,6 +45,7 @@ export class SipSetComponent extends SuperComponentService implements OnInit {
         this.searching = true;
         this.btnSip = true;
         this.nomeBtn = "Aguarde";
+        this.systemHolderService.btnIsLoadingAction = true;
         this.sipService.getSipDiagnostics(this.variavelHolderService.equipamento, this.phyref)
             .then(data => {
                 this.sip = data;
@@ -55,7 +58,10 @@ export class SipSetComponent extends SuperComponentService implements OnInit {
                 this.btnSip = false;
                 this.nomeBtn = "Consultar";
                 this.callToasty("Ops, aconteceu algo.", error.mError, "error", 10000);
-            });
+            })
+            .then(() => {
+                this.systemHolderService.btnIsLoadingAction = false;
+            })
     }
 
     public editarTable() {
@@ -63,9 +69,10 @@ export class SipSetComponent extends SuperComponentService implements OnInit {
     }
 
     public setSipDiagnostics() {
-        this.btnSipModificar = true;
-        this.btnModificarNome = "Aguarde";
         if (this.sipIn) {
+            this.btnSipModificar = true;
+            this.btnModificarNome = "Aguarde";
+            this.systemHolderService.btnIsLoadingAction = true;
             this.sipService.setSipActivation(this.variavelHolderService.equipamento, this.sipIn)
                 .then(data => {
                     if (data) {
@@ -80,7 +87,10 @@ export class SipSetComponent extends SuperComponentService implements OnInit {
                     }
                 }, error => {
                     this.callToasty("Ops, aconteceu algo.", error.mError, "error", 10000);
-                });
+                })
+                .then(() => {
+                    this.systemHolderService.btnIsLoadingAction = false;
+                })
         }
     }
 

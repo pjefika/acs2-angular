@@ -34,6 +34,7 @@ export class DhcpComponent extends SuperComponentService implements OnInit {
     }
 
     public getDhcp() {
+        this.systemHolderService.btnIsLoadingAction = true;
         this.searching = true;
         this.btnSetDhcp = true;
         this.dhcpService.getDhcp(this.variavelHolderService.equipamento)
@@ -45,11 +46,13 @@ export class DhcpComponent extends SuperComponentService implements OnInit {
             .then(() => {
                 this.searching = false;
                 this.btnSetDhcp = false;
+                this.systemHolderService.btnIsLoadingAction = false;
             })
     }
 
     public setDhcp() {
         if (this.dhcp) {
+            this.systemHolderService.btnIsLoadingAction = true;
             this.btnSetDhcp = true;
             this.dhcpService.setDhcp(this.variavelHolderService.equipamento, this.dhcp)
                 .then(data => {
@@ -60,6 +63,9 @@ export class DhcpComponent extends SuperComponentService implements OnInit {
                     }
                 }, error => {
                     this.callToasty("Ops, aconteceu algo.", error.mError, "error", 10000);
+                })
+                .then(() => {
+                    this.systemHolderService.btnIsLoadingAction = false;
                 });
         }
     }

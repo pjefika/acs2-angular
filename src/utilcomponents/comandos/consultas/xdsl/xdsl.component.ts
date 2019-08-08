@@ -34,6 +34,7 @@ export class XdslComponent extends SuperComponentService implements OnInit {
 
     public getXdslDiagnostic() {
         this.searching = true;
+        this.systemHolderService.btnIsLoadingAction = true;
         this.xdslService.getXdslDiagnostic(this.variavelHolderService.equipamento)
             .then(data => {
                 this.xdsl = data;
@@ -42,5 +43,8 @@ export class XdslComponent extends SuperComponentService implements OnInit {
                 this.searching = false;
                 this.callToasty("Ops, aconteceu algo.", error.mError, "error", 10000);
             })
+            .then(() => {
+                this.systemHolderService.btnIsLoadingAction = false;
+            });
     }
 }

@@ -33,7 +33,9 @@ export class WanComponent extends SuperComponentService implements OnInit {
 
     public getWanInfo() {
         this.searching = true;
-        this.wanService.getWanInfo(this.variavelHolderService.equipamento)
+        this.systemHolderService.btnIsLoadingAction = true;
+        this.wanService
+            .getWanInfo(this.variavelHolderService.equipamento)
             .then(data => {
                 this.wan = data;
                 this.searching = false;
@@ -41,5 +43,8 @@ export class WanComponent extends SuperComponentService implements OnInit {
                 this.searching = false;
                 this.callToasty("Ops, aconteceu algo.", error.mError, "error", 10000);
             })
+            .then(() => {
+                this.systemHolderService.btnIsLoadingAction = false;
+            });
     }
 }
