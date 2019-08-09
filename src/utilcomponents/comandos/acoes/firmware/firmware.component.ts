@@ -32,7 +32,7 @@ export class FirmwareComponent extends SuperComponentService implements OnInit {
     }
 
     private getInfoFirmware() {
-        this.systemHolderService.btnIsLoadingAction = true;
+        // this.systemHolderService.btnIsLoadingAction = true;
         this.btnnameupdatefirmware = "Validando Firmware";
         this.firmareService
             .getInfoFirmware(this.variavelHolderService.equipamento.deviceGUID)
@@ -49,12 +49,12 @@ export class FirmwareComponent extends SuperComponentService implements OnInit {
                 this.callToasty("Ops, aconteceu algo", error.mError, "error", 10000);
             })
             .then(() => {
-                this.systemHolderService.btnIsLoadingAction = false;
+                // this.systemHolderService.btnIsLoadingAction = false;
             })
     }
 
     public setInfoFirmware() {
-        this.systemHolderService.btnIsLoadingAction = true;
+        // this.systemHolderService.btnIsLoadingAction = true;
         this.btnnameupdatefirmware = "Atualizando Firmware";
         this.btndisableupdatefirmware = true;
         this.firmareService
@@ -73,7 +73,7 @@ export class FirmwareComponent extends SuperComponentService implements OnInit {
                     this.btndisableupdatefirmware = false;
                     this.btnnameupdatefirmware = "Atualizar Firmware";
                 }
-                this.systemHolderService.btnIsLoadingAction = false;
+                // this.systemHolderService.btnIsLoadingAction = false;
             });
     }
 

@@ -1,4 +1,4 @@
-<div *ngIf="systemHolderService.btnIsLoadingAction">
+<div *ngIf="!systemHolderService.btnIsLoadingAction">
     <div class="form-group">
         <label>Endereço</label>
         <input type="text" class="form-control" [(ngModel)]="host">
