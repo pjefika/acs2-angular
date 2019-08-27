@@ -1,18 +1,28 @@
 import { Component, OnInit, Input, ViewChild, ViewContainerRef, ComponentFactoryResolver, ReflectiveInjector } from '@angular/core';
 import { VariavelHolderService } from 'util/holder/variavel-holder.service';
 import { SystemHolderService } from 'util/holder/system-holder.service';
+import { ModalService } from './modal.service';
+import { SuperComponentService } from 'util/supercomponent/super-component.service';
+import { ToastyComponent } from 'utilcomponents/toasty/toasty.component';
+import { e } from '@angular/core/src/render3';
 
 @Component({
     selector: 'modal-component',
     templateUrl: 'modal.component.html',
-    styleUrls: ['modal.component.css']
+    styleUrls: ['modal.component.css'],
+    providers: [ModalService]
 })
 
-export class ModalComponent implements OnInit {
+
+
+export class ModalComponent extends SuperComponentService implements OnInit {
 
     @Input() public openmodal: boolean;
 
     @Input() public title: any;
+
+    openComponent: boolean = false;
+    hanging: boolean = false;
 
     // @Input() public component: any;
 
@@ -40,9 +50,32 @@ export class ModalComponent implements OnInit {
     constructor(
         public variavelHolderService: VariavelHolderService,
         public systemHolderService: SystemHolderService,
-        private resolver: ComponentFactoryResolver) { }
+        private resolver: ComponentFactoryResolver,
+        public modalService: ModalService,
+        public toastyComponent: ToastyComponent) {
+        super(toastyComponent);
+    }
 
-    public ngOnInit() { }
+    public ngOnInit() {
+        this.getDeviceQueue()
+    }
+
+    getDeviceQueue() {
+        this.systemHolderService.btnIsLoadingAction = true;
+        this.hanging = true;
+        this.modalService.getDeviceActionQueue(this.variavelHolderService.equipamento)
+            .then(r => {
+                console.table(r)
+            }, e => {
+                console.log(e)
+                this.callToasty("Ops, aconteceu algo.", e.mError, "error", 10000);
+            })
+            .then(() => {
+                this.hanging = false;
+                this.systemHolderService.btnIsLoadingAction = false;
+            })
+
+    }
 
     private validComponent() {
         // let valid: boolean = false;
