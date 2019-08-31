@@ -24,6 +24,9 @@ export class SystemHolderService {
 
     public btnIsLoadingAction: boolean = false;
 
+    public checkingqueue: boolean = false;
+    public execForcedCommand: boolean = true;
+
     constructor() { }
 
 }

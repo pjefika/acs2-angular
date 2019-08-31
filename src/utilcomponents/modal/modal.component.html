@@ -2,23 +2,6 @@
     [clrModalClosable]="false" [clrModalSize]="'xl'">
     <h3 class="modal-title">{{title}}</h3>
     <div class="modal-body">
-        <div *ngIf="openComponent;else dynamicComponentContainer">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Comando</th>
-                        <th>Estado</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>oioi</td>
-                        <td>oioi</td>
-                    </tr>
-                </tbody>
-            </table>
-            <button type="button" class="btn btn-solid" [disabled]="hanging" (click)="openComponent = true"></button>
-        </div>
         <ng-template #dynamicComponentContainer></ng-template>
     </div>
     <div class="modal-footer">

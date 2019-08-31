@@ -1,0 +1,41 @@
+<div *ngIf="systemHolderService.checkingqueue">
+  <loading-component [searchWhat]="loadingphrase" [searching]="searching">
+  </loading-component>
+  <div *ngIf="!searching">
+    <div class="row flex-items-xs-center">
+      <div class="col-xs-6">
+        <div class="card">
+          <!-- <div class="card-header">
+          
+        </div> -->
+          <div class="card-block">
+            <div class="card-title">
+              Fila de Comandos do Equipamento
+            </div>
+            <div class="card-text">
+              <table class="table" *ngIf="variavelHolderService.queuePicture.queue.length > 0">
+                <thead>
+                  <tr>
+                    <th>Comando</th>
+                    <th>Estado</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let q of variavelHolderService.queuePicture.queue">
+                    <td>{{q.functionName}}</td>
+                    <td>{{q.deviceActionStatus.currentState}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="card-footer">
+            <button class="btn btn-sm" (click)="getDeviceQueue()">Reconsultar</button>
+            <button class="btn btn-sm" (click)="clearDeviceQueue()">Limpar & Reconsultar</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

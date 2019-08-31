@@ -1,3 +1,11 @@
+<device-queue></device-queue>
+<div *ngIf="!intStatic">
+    <button (click)="getInterfaceStatistics()">Consultar</button>
+    <div class="checkbox">
+        <input type="checkbox" id="forced" [(ngModel)]="systemHolderService.execForcedCommand">
+        <label for="forced">Forçar execução</label>
+    </div>
+</div>
 <loading-component [searchWhat]="'Buscando Interface Statics'" [searching]="searching"></loading-component>
 <div *ngIf="intStatic">
     <h4>Estatísticas de Interface</h4>

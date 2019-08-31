@@ -21,9 +21,6 @@ export class ModalComponent extends SuperComponentService implements OnInit {
 
     @Input() public title: any;
 
-    openComponent: boolean = false;
-    hanging: boolean = false;
-
     // @Input() public component: any;
 
     currentComponent = null;
@@ -57,25 +54,8 @@ export class ModalComponent extends SuperComponentService implements OnInit {
     }
 
     public ngOnInit() {
-        this.getDeviceQueue()
     }
 
-    getDeviceQueue() {
-        this.systemHolderService.btnIsLoadingAction = true;
-        this.hanging = true;
-        this.modalService.getDeviceActionQueue(this.variavelHolderService.equipamento)
-            .then(r => {
-                console.table(r)
-            }, e => {
-                console.log(e)
-                this.callToasty("Ops, aconteceu algo.", e.mError, "error", 10000);
-            })
-            .then(() => {
-                this.hanging = false;
-                this.systemHolderService.btnIsLoadingAction = false;
-            })
-
-    }
 
     private validComponent() {
         // let valid: boolean = false;

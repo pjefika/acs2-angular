@@ -18,6 +18,7 @@ export class InterfaceStaticsComponent extends SuperComponentService implements 
 
     public intStatic: InterfaceStatic[];
     public searching: boolean = false;
+ 
 
     constructor(
         // public activeModal: NgbActiveModal,
@@ -29,7 +30,7 @@ export class InterfaceStaticsComponent extends SuperComponentService implements 
     }
 
     public ngOnInit() {
-        this.getInterfaceStatistics();
+        this.systemHolderService.checkingqueue = true
     }
 
     public getInterfaceStatistics() {

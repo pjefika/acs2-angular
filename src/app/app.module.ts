@@ -63,6 +63,7 @@ import { ClarityModule } from "@clr/angular";
 import { FirmwareComponent } from 'utilcomponents/comandos/acoes/firmware/firmware.component';
 import { Ipv6Component } from 'utilcomponents/comandos/acoes/ipv6/ipv6.component';
 import { T38Component } from 'utilcomponents/comandos/acoes/t38/t38.component';
+import { DeviceQueueComponent } from '../utilcomponents/comandos/device-queue/device-queue.component';
 
 
 @NgModule({
@@ -107,7 +108,8 @@ import { T38Component } from 'utilcomponents/comandos/acoes/t38/t38.component';
 		ValidaTipoRedeComponent,
 		FirmwareComponent,
 		Ipv6Component,
-		T38Component
+		T38Component,
+		DeviceQueueComponent
 	],
 	imports: [
 		BrowserModule,
